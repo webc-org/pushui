@@ -1,0 +1,176 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pages: write
+  packages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
+        env:
+          CI: true
+
+      - name: Lint
+        run: pnpm lint
+
+  publish:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          registry-url: https://npm.pkg.github.com
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Get @yop/styles version
+        id: styles_version
+        run: |
+          VERSION=$(node -p "require('./packages/styles/package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Get @yop/react version
+        id: react_version
+        run: |
+          VERSION=$(node -p "require('./packages/react/package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if @yop/styles version exists
+        id: check_styles
+        run: |
+          if npm view @yop/styles@${{ steps.styles_version.outputs.VERSION }} version 2>/dev/null; then
+            echo "EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Check if @yop/react version exists
+        id: check_react
+        run: |
+          if npm view @yop/react@${{ steps.react_version.outputs.VERSION }} version 2>/dev/null; then
+            echo "EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Publish @yop/styles
+        if: steps.check_styles.outputs.EXISTS != 'true'
+        run: npm publish --workspace=@yop/styles
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @yop/react
+        if: steps.check_react.outputs.EXISTS != 'true'
+        run: npm publish --workspace=@yop/react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if styles tag exists
+        id: styles_tag_check
+        run: |
+          if git rev-parse "@yop/styles@${{ steps.styles_version.outputs.VERSION }}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "TAG_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check if react tag exists
+        id: react_tag_check
+        run: |
+          if git rev-parse "@yop/react@${{ steps.react_version.outputs.VERSION }}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "TAG_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create @yop/styles release
+        if: steps.styles_tag_check.outputs.TAG_EXISTS == 'false' && steps.check_styles.outputs.EXISTS != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: '@yop/styles@${{ steps.styles_version.outputs.VERSION }}'
+          name: '@yop/styles@${{ steps.styles_version.outputs.VERSION }}'
+          body: |
+            ## @yop/styles v${{ steps.styles_version.outputs.VERSION }}
+
+            ### Installation
+            ```bash
+            pnpm add @yop/styles@${{ steps.styles_version.outputs.VERSION }}
+            ```
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create @yop/react release
+        if: steps.react_tag_check.outputs.TAG_EXISTS == 'false' && steps.check_react.outputs.EXISTS != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: '@yop/react@${{ steps.react_version.outputs.VERSION }}'
+          name: '@yop/react@${{ steps.react_version.outputs.VERSION }}'
+          body: |
+            ## @yop/react v${{ steps.react_version.outputs.VERSION }}
+
+            ### Installation
+            ```bash
+            pnpm add @yop/react@${{ steps.react_version.outputs.VERSION }}
+            ```
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
