@@ -10,7 +10,8 @@
     "test": "turbo test",
     "clean": "turbo clean",
     "storybook": "pnpm --filter @yop/storybook-react dev",
-    "build-storybook": "pnpm --filter @yop/storybook-react build"
+    "build-storybook": "pnpm --filter @yop/storybook-react build",
+    "release": "./scripts/release.sh"
   },
   "devDependencies": {
     "stylelint": "^17.0.0",

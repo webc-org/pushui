@@ -28,12 +28,7 @@ export const Playground: Story = {
 export const WithImage: Story = {
   render: () => (
     <Logo href="/">
-      <Image
-        src="/YOP_black.svg"
-        alt="Yop Logo"
-        width={81}
-        height={28}
-      />
+      <Image src="/YOP_black.svg" alt="Yop Logo" width={81} height={28} />
     </Logo>
   ),
 }

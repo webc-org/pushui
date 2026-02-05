@@ -1,6 +1,6 @@
 {
   "name": "@yop/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yop React component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -18,8 +18,12 @@
     },
     "./styles.css": "./dist/index.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

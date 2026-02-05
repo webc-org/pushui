@@ -1,10 +1,16 @@
 {
   "name": "@yop/styles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yop design system styles",
   "main": "dist/index.css",
-  "files": ["dist", "styles"],
-  "sideEffects": ["*.css", "*.scss"],
+  "files": [
+    "dist",
+    "styles"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "scripts": {
     "build": "sass styles/index.scss dist/index.css --style=compressed && sass styles/index.scss dist/index.expanded.css",
     "dev": "sass styles/index.scss dist/index.css --watch",

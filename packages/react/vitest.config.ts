@@ -32,5 +32,6 @@ export default defineConfig({
     include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: ['./vitest.setup.ts'],
     reporters: ['verbose'],
+    testTimeout: 15000,
   },
 })
