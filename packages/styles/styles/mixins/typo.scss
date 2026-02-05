@@ -1,0 +1,168 @@
+$tx-color-base-link: var(--color-black);
+$tx-color-base-link-active: var(--color-primary-2);
+$tx-color-code: var(--color-white);
+$bg-color-code: var(--color-black);
+$bg-color-note: var(--color-primary-3);
+$bd-color-note: var(--color-primary-1);
+$tx-color-note: var(--color-primary-1);
+$bd-color-table-row: var(--color-grey-5);
+$bg-color-table-row-th: var(--color-grey-6);
+$bg-color-table-row-even: var(--color-grey-7);
+$bd-color-hr: var(--color-grey-5);
+$bg-mark: var(--color-warning-3);
+$heading-sizes: (
+  h1: 8,
+  h2: 7,
+  h3: 6,
+  h4: 5,
+  h5: 4,
+  h6: 3,
+);
+
+@mixin base-heading {
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+}
+
+@mixin base-link {
+  background: none;
+  color: $tx-color-base-link;
+  font-size: var(--font-size-4);
+  outline: none;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-base-link-active;
+    text-decoration: none;
+  }
+}
+
+@mixin base-paragraph {
+  line-height: var(--line-height-default);
+}
+
+@mixin base-code-block {
+  background-color: $bg-color-code;
+  color: $tx-color-code;
+  overflow-x: auto;
+  padding: 2rem;
+
+  code {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@mixin base-code-inline {
+  background-color: $bg-color-code;
+  border-radius: var(--radius-2);
+  color: $tx-color-code;
+  padding: 0.5rem;
+}
+
+@mixin base-keyboard {
+  background-color: $bg-color-code;
+  border-radius: var(--radius-2);
+  color: $tx-color-code;
+  padding: 0.5rem;
+}
+
+@mixin base-note {
+  background-color: $bg-color-note;
+  border-color: $bd-color-note;
+  border-left: 0.3rem solid;
+  color: $tx-color-note;
+  padding: 1rem;
+}
+
+@mixin base-blockquote {
+  @include base-note;
+}
+
+@mixin base-caption {
+  font-size: var(--font-size-2);
+  opacity: .5;
+}
+
+@mixin base-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    background-color: $bg-color-table-row-th;
+    font-weight: var(--font-weight-strong);
+  }
+
+  th,
+  td {
+    border: 0.1rem solid $bd-color-table-row;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: $bg-color-table-row-even;
+  }
+}
+
+@mixin base-hr {
+  border: none;
+  border-top: 0.1rem solid $bd-color-hr;
+}
+
+@mixin base-mark {
+  background-color: $bg-mark;
+  padding: 0.2rem 0.5rem;
+}
+
+@mixin base-list {
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul ul {
+    list-style-type: circle;
+  }
+
+  ol ol {
+    list-style-type: lower-alpha;
+  }
+
+  ul ul ul {
+    list-style-type: square;
+  }
+
+  ol ol ol {
+    list-style-type: lower-roman;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 2rem;
+    padding-left: 2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+

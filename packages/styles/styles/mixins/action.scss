@@ -1,0 +1,197 @@
+@use 'sass:map';
+@use './color' as *;
+
+$bg-color-button-close: var(--color-grey-6);
+$bg-color-button-close-active: var(--color-primary-2);
+$tx-color-button-close-active: var(--color-white);
+
+@mixin action-base {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+  outline: none;
+  position: relative;
+  transition: all 0.1s ease;
+}
+
+@mixin action-appearances {
+  &.appearance-button,
+  &.appearance-outline {
+    border-radius: var(--radius-3);
+    font-weight: var(--font-weight-button);
+    height: 4rem;
+    padding: 0 2rem;
+    text-decoration: none;
+  }
+
+  &.appearance-underline,
+  &.appearance-default {
+    align-self: center;
+    height: auto;
+    text-decoration: none;
+  }
+
+  &.appearance-underline {
+    &::before {
+      background: currentcolor;
+      bottom: 0;
+      content: '';
+      height: 0.1rem;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: translateY(0.1rem);
+      transition: transform var(--transition-default);
+      width: 100%;
+    }
+
+    &:hover:not([disabled], [aria-disabled='true']),
+    &:focus-visible:not([disabled], [aria-disabled='true']) {
+      &::before {
+        transform: translateY(0.4rem);
+      }
+    }
+  }
+}
+
+@mixin action-variants {
+  @each $name in $color-variants {
+    $base: var(--color-#{$name}-2);
+    $hover: var(--color-#{$name}-1);
+    $text: var(--color-white);
+    $contrast-base: var(--color-#{$name}-contrast);
+    $contrast-hover: var(--color-#{$name}-3);
+    $contrast-text: var(--color-#{$name}-1);
+
+    &.variant-#{$name} {
+      background: transparent;
+      color: $base;
+
+      &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+      &:hover:not([disabled], [aria-disabled='true']),
+      &:focus-visible:not([disabled], [aria-disabled='true']) {
+        color: $hover;
+      }
+
+      &.appearance-button {
+        background: $base;
+        color: $text;
+
+        &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+        &:hover:not([disabled], [aria-disabled='true']),
+        &:focus-visible:not([disabled], [aria-disabled='true']) {
+          background: $hover;
+          color: $text;
+        }
+      }
+
+      &.appearance-outline {
+        border: 0.1rem solid $base;
+
+        &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+        &:hover:not([disabled], [aria-disabled='true']),
+        &:focus-visible:not([disabled], [aria-disabled='true']) {
+          background: $hover;
+          border-color: $hover;
+          color: $text;
+        }
+      }
+
+      &.appearance-underline::before {
+        background: $base;
+      }
+
+      &.appearance-underline[aria-selected='true']:not([disabled], [aria-disabled='true'])::before,
+      &.appearance-underline:hover:not([disabled], [aria-disabled='true'])::before,
+      &.appearance-underline:focus-visible:not([disabled], [aria-disabled='true'])::before {
+        background: $hover;
+      }
+
+      &.contrast {
+        color: $contrast-base;
+
+        &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+        &:hover:not([disabled], [aria-disabled='true']),
+        &:focus-visible:not([disabled], [aria-disabled='true']) {
+          color: $contrast-hover;
+        }
+
+        &.appearance-button {
+          background: $contrast-base;
+          color: $contrast-text;
+
+          &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+          &:hover:not([disabled], [aria-disabled='true']),
+          &:focus-visible:not([disabled], [aria-disabled='true']) {
+            background: $contrast-hover;
+            color: $contrast-text;
+          }
+        }
+
+        &.appearance-outline {
+          border-color: $contrast-base;
+
+          &[aria-selected='true']:not([disabled], [aria-disabled='true']),
+          &:hover:not([disabled], [aria-disabled='true']),
+          &:focus-visible:not([disabled], [aria-disabled='true']) {
+            background: $contrast-hover;
+            border-color: $contrast-hover;
+            color: $contrast-text;
+          }
+        }
+
+        &.appearance-underline::before {
+          background: $contrast-base;
+        }
+
+        &.appearance-underline[aria-selected='true']:not([disabled], [aria-disabled='true'])::before,
+        &.appearance-underline:hover:not([disabled], [aria-disabled='true'])::before,
+        &.appearance-underline:focus-visible:not([disabled], [aria-disabled='true'])::before {
+          background: $contrast-hover;
+        }
+      }
+    }
+  }
+}
+
+@mixin action-disabled {
+  &[disabled],
+  &[aria-disabled='true'] {
+    opacity: 0.5;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      cursor: not-allowed;
+      inset: 0;
+      pointer-events: all;
+      position: absolute;
+    }
+  }
+}
+
+@mixin action-close {
+  align-items: center;
+  background: transparent;
+  background-color: $bg-color-button-close;
+  border: none;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-5);
+  height: 2.5rem;
+  justify-content: center;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  width: 2.5rem;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $bg-color-button-close-active;
+    color: $tx-color-button-close-active;
+    opacity: 1;
+  }
+}

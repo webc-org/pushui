@@ -1,0 +1,13 @@
+@use 'styles/mixins/form' as *;
+
+.wrapper {
+  @include form-wrapper;
+}
+
+.label {
+  @include form-label;
+}
+
+.input {
+  @include form-input;
+}

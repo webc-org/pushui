@@ -1,0 +1,70 @@
+@use 'styles/mixins/typo' as *;
+
+$bg-color-row-even: var(--color-grey-7);
+$bg-color-row-hover: var(--color-grey-6);
+$bg-color-head: var(--color-grey-6);
+$bg-color-foot: var(--color-grey-6);
+
+.table {
+  @include base-table;
+
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table:not(.bordered) {
+  th,
+  td {
+    border: 0;
+  }
+}
+
+.table.striped tbody tr:nth-child(even) {
+  background-color: $bg-color-row-even;
+}
+
+.table:not(.striped) tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.table.hoverable tbody tr:hover {
+  background-color: $bg-color-row-hover;
+}
+
+.table.compact th,
+.table.compact td {
+  padding: 0.5rem 1rem;
+}
+
+.head {
+  background-color: $bg-color-head;
+}
+
+.foot {
+  background-color: $bg-color-foot;
+  font-weight: var(--font-weight-strong);
+}
+
+.headerCell {
+  font-weight: var(--font-weight-strong);
+  text-align: left;
+}
+
+.cell {
+  text-align: left;
+}
+
+.caption {
+  font-size: var(--font-size-2);
+  opacity: .5;
+  padding: 1rem;
+  text-align: left;
+}
+
+.caption.top {
+  caption-side: top;
+}
+
+.caption.bottom {
+  caption-side: bottom;
+}

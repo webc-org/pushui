@@ -1,0 +1,34 @@
+$bg-color-avatar: var(--color-secondary-2);
+$tx-color-avatar: var(--color-white);
+
+.avatar {
+  align-items: center;
+  aspect-ratio: 1;
+  background-color: $bg-color-avatar;
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.initials {
+  color: $tx-color-avatar;
+  font-weight: var(--font-weight-heading);
+  text-transform: uppercase;
+}
+
+$variants: default, primary, secondary, success, danger, warning, info;
+
+@each $variant in $variants {
+  .variant-#{$variant} {
+    background-color: var(--color-#{$variant}-2);
+    color: var(--color-#{$variant}-1);
+  }
+}

@@ -1,0 +1,23 @@
+@use 'styles/mixins/typo' as *;
+
+.audio {
+  display: block;
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-3);
+  margin-bottom: 1rem;
+}
+
+.caption {
+  @include base-caption;
+
+  margin-top: 1rem;
+}
+
+.transcript {
+  display: inline-block;
+  font-size: var(--font-size-2);
+  margin-top: 1rem;
+}

@@ -1,0 +1,6 @@
+export * from './FooterMain'
+export * from './FooterMainLink'
+export * from './FooterMainLogo'
+export * from './FooterMainMenu'
+export * from './FooterMainNav'
+export * from './FooterMainNavTitle'

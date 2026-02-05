@@ -1,0 +1,20 @@
+$bg-color-card: var(--color-white);
+
+.card {
+  background-color: $bg-color-card;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardFooter {
+  display: flex;
+}

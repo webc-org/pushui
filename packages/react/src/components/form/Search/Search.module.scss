@@ -1,0 +1,111 @@
+@use 'styles/mixins/form' as *;
+
+$tx-color-icon: var(--color-grey-3);
+$tx-color-clear: var(--color-grey-3);
+$tx-color-clear-active: var(--color-primary-2);
+$bg-color-dropdown: var(--color-white);
+$bd-color-dropdown: var(--color-grey-4);
+$bg-color-result-active: var(--color-grey-6); 
+$tx-color-no-result: var(--color-grey-3);
+
+.wrapper {
+  @include form-wrapper;
+}
+
+.label {
+  @include form-label;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  color: $tx-color-icon;
+  left: 1.25rem;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input {
+  @include form-input;
+
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.clearButton {
+  align-items: center;
+  border-radius: var(--radius-2);
+  color: $tx-color-clear;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-clear-active;
+  }
+}
+
+.dropdown {
+  background-color: $bg-color-dropdown;
+  border: 0.1rem solid $bd-color-dropdown;
+  border-radius: var(--radius-3);
+  max-height: 30rem;
+  overflow-y: auto;
+  position: fixed;
+  z-index: var(--z-index-5);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.resultList {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.resultItem {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: background-color var(--transition-default);
+
+  &:hover,
+  &.focused {
+    background-color: $bg-color-result-active;
+  }
+}
+
+.noResults {
+  color: $tx-color-no-result;
+  padding: 1rem;
+  text-align: center;
+}
+
+.dropdownLoading {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}

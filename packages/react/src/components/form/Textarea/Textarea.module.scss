@@ -1,0 +1,30 @@
+@use 'styles/mixins/form' as *;
+
+.wrapper {
+  @include form-wrapper;
+}
+
+.label {
+  @include form-label;
+}
+
+.textarea {
+  @include form-input;
+
+  height: auto;
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 1.25rem;
+}
+
+.count {
+  font-size: var(--font-size-2);
+  margin-left: auto;
+  opacity: .5;
+}

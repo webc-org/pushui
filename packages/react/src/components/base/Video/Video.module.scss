@@ -1,0 +1,12 @@
+@use 'styles/mixins/typo' as *;
+
+.video {
+  height: auto;
+  width: 100%;
+}
+
+.caption {
+  @include base-caption;
+
+  margin-top: 0.8rem;
+}

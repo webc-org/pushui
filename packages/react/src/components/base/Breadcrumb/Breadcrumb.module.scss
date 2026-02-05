@@ -1,0 +1,37 @@
+$tx-color-link-active: var(--color-primary-2);
+
+.breadcrumb {
+  display: flex;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-link-active;
+    text-decoration: underline;
+  }
+}
+
+.current {
+  color: $tx-color-link-active;
+}
+
+.separator {
+  display: flex;
+  opacity: .5;
+}

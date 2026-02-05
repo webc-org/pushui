@@ -1,0 +1,143 @@
+@use '../mixins/mq' as *;
+
+$text-aligns: left, center, right;
+
+@each $align in $text-aligns {
+  .text-#{$align} {
+    text-align: $align;
+  }
+}
+
+$justify: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly,
+);
+
+@each $name, $value in $justify {
+  .justify-#{$name} {
+    justify-content: $value;
+  }
+}
+
+$items: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'stretch': stretch,
+  'baseline': baseline,
+);
+
+@each $name, $value in $items {
+  .items-#{$name} {
+    align-items: $value;
+  }
+}
+
+@each $name, $value in $items {
+  .self-#{$name} {
+    align-self: $value;
+  }
+}
+
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-col-reverse { flex-direction: column-reverse; }
+
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+
+@include mq-sm {
+  @each $align in $text-aligns {
+    .text-sm-#{$align} { text-align: $align; }
+  }
+
+  @each $name, $value in $justify {
+    .justify-sm-#{$name} { justify-content: $value; }
+  }
+
+  @each $name, $value in $items {
+    .items-sm-#{$name} { align-items: $value; }
+    .self-sm-#{$name} { align-self: $value; }
+  }
+
+  .flex-sm-row { flex-direction: row; }
+  .flex-sm-col { flex-direction: column; }
+  .flex-sm-row-reverse { flex-direction: row-reverse; }
+  .flex-sm-col-reverse { flex-direction: column-reverse; }
+  .flex-sm-wrap { flex-wrap: wrap; }
+  .flex-sm-nowrap { flex-wrap: nowrap; }
+}
+
+
+@include mq-md {
+  @each $align in $text-aligns {
+    .text-md-#{$align} { text-align: $align; }
+  }
+
+  @each $name, $value in $justify {
+    .justify-md-#{$name} { justify-content: $value; }
+  }
+
+  @each $name, $value in $items {
+    .items-md-#{$name} { align-items: $value; }
+    .self-md-#{$name} { align-self: $value; }
+  }
+
+  .flex-md-row { flex-direction: row; }
+  .flex-md-col { flex-direction: column; }
+  .flex-md-row-reverse { flex-direction: row-reverse; }
+  .flex-md-col-reverse { flex-direction: column-reverse; }
+  .flex-md-wrap { flex-wrap: wrap; }
+  .flex-md-nowrap { flex-wrap: nowrap; }
+}
+
+
+@include mq-lg {
+  @each $align in $text-aligns {
+    .text-lg-#{$align} { text-align: $align; }
+  }
+
+  @each $name, $value in $justify {
+    .justify-lg-#{$name} { justify-content: $value; }
+  }
+
+  @each $name, $value in $items {
+    .items-lg-#{$name} { align-items: $value; }
+    .self-lg-#{$name} { align-self: $value; }
+  }
+
+  .flex-lg-row { flex-direction: row; }
+  .flex-lg-col { flex-direction: column; }
+  .flex-lg-row-reverse { flex-direction: row-reverse; }
+  .flex-lg-col-reverse { flex-direction: column-reverse; }
+  .flex-lg-wrap { flex-wrap: wrap; }
+  .flex-lg-nowrap { flex-wrap: nowrap; }
+}
+
+@include mq-xl {
+  @each $align in $text-aligns {
+    .text-xl-#{$align} { text-align: $align; }
+  }
+
+  @each $name, $value in $justify {
+    .justify-xl-#{$name} { justify-content: $value; }
+  }
+
+  @each $name, $value in $items {
+    .items-xl-#{$name} { align-items: $value; }
+    .self-xl-#{$name} { align-self: $value; }
+  }
+
+  .flex-xl-row { flex-direction: row; }
+  .flex-xl-col { flex-direction: column; }
+  .flex-xl-row-reverse { flex-direction: row-reverse; }
+  .flex-xl-col-reverse { flex-direction: column-reverse; }
+  .flex-xl-wrap { flex-wrap: wrap; }
+  .flex-xl-nowrap { flex-wrap: nowrap; }
+}

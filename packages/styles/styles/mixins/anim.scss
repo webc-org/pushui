@@ -1,0 +1,44 @@
+@mixin anim-fade {
+  opacity: 0;
+  transition: all var(--transition-default);
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.removing {
+    opacity: 0;
+  }
+}
+
+@mixin anim-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all var(--transition-default);
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &.removing {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@mixin anim-slide-up {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all var(--transition-default);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.removing {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}

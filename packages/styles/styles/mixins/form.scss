@@ -1,0 +1,65 @@
+$bg-color-form-input: var(--color-white);
+$bg-color-form-input-placeholder: var(--color-grey-2);
+$bg-color-form-input-active: var(--color-primary-2);
+$bg-color-form-input-disabled: var(--color-grey-6);
+$bd-color-form-input: var(--color-grey-4);
+$tx-color-form-input: ar(--color-black);
+$tx-color-label: var(--color-grey-2);
+
+@mixin form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@mixin form-label {
+  color: $tx-color-label;
+}
+
+@mixin form-input {
+  background-color: $bg-color-form-input;
+  border: 0.1rem solid $bd-color-form-input;
+  border-radius: var(--radius-3);
+  color: $tx-color-form-input;
+  font-family: inherit;
+  height: 4rem;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+  width: 100%;
+
+  &::selection {
+    background: transparent;
+  }
+
+  &:focus {
+    border-color: $bg-color-form-input-active;
+  }
+
+  &:disabled {
+    background-color: $bg-color-form-input-disabled;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &::placeholder {
+    color: $bg-color-form-input-placeholder;
+  }
+}
+
+@mixin form-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@mixin form-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

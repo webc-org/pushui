@@ -1,0 +1,308 @@
+@use 'sass:map';
+@use 'styles/mixins/mq' as *;
+
+$gaps: (
+  0: 0,
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+  5: 3rem,
+);
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@for $i from 1 through 12 {
+  .grid--#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+}
+
+@each $name, $value in $gaps {
+  .grid--gap-#{$name} {
+    gap: $value;
+  }
+}
+
+.gridItem {
+  grid-column: span 1;
+}
+
+@for $i from 1 through 12 {
+  .gridItem-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+@for $i from 1 through 6 {
+  .gridItem--row-#{$i} {
+    grid-row: span #{$i};
+
+    > * {
+      height: 100%;
+    }
+  }
+}
+
+@include mq-xs {
+  @for $i from 1 through 12 {
+    .grid--xs-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+    .gridItem--xs-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .grid--gap-xs-#{$name} {
+      gap: $value;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .gridItem--row-xs-#{$i} {
+      grid-row: span #{$i};
+
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@include mq-sm {
+  @for $i from 1 through 12 {
+    .grid--sm-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+    .gridItem--sm-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .grid--gap-sm-#{$name} {
+      gap: $value;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .gridItem--row-sm-#{$i} {
+      grid-row: span #{$i};
+
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@include mq-md {
+  @for $i from 1 through 12 {
+    .grid--md-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+    .gridItem--md-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .grid--gap-md-#{$name} {
+      gap: $value;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .gridItem--row-md-#{$i} {
+      grid-row: span #{$i};
+
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@include mq-lg {
+  @for $i from 1 through 12 {
+    .grid--lg-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+    .gridItem--lg-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .grid--gap-lg-#{$name} {
+      gap: $value;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .gridItem--row-lg-#{$i} {
+      grid-row: span #{$i};
+
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@include mq-xl {
+  @for $i from 1 through 12 {
+    .grid--xl-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+    .gridItem--xl-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .grid--gap-xl-#{$name} {
+      gap: $value;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    .gridItem--row-xl-#{$i} {
+      grid-row: span #{$i};
+
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.masonry {
+  column-count: 1;
+  column-gap: 1rem;
+  display: block;
+  grid-template-columns: unset;
+}
+
+@for $i from 1 through 12 {
+  .masonry.grid--#{$i} {
+    column-count: #{$i};
+  }
+}
+
+@each $name, $value in $gaps {
+  .masonry.grid--gap-#{$name} {
+    column-gap: $value;
+  }
+}
+
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@each $name, $value in $gaps {
+  .masonry.grid--gap-#{$name} .masonryItem {
+    margin-bottom: $value;
+  }
+}
+
+.masonry.grid--gap-0 .masonryItem {
+  margin-bottom: 0;
+}
+
+@include mq-xs {
+  @for $i from 1 through 12 {
+    .masonry.grid--xs-#{$i} {
+      column-count: #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .masonry.grid--gap-xs-#{$name} {
+      column-gap: $value;
+    }
+
+    .masonry.grid--gap-xs-#{$name} .masonryItem {
+      margin-bottom: $value;
+    }
+  }
+}
+
+@include mq-sm {
+  @for $i from 1 through 12 {
+    .masonry.grid--sm-#{$i} {
+      column-count: #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .masonry.grid--gap-sm-#{$name} {
+      column-gap: $value;
+    }
+
+    .masonry.grid--gap-sm-#{$name} .masonryItem {
+      margin-bottom: $value;
+    }
+  }
+}
+
+@include mq-md {
+  @for $i from 1 through 12 {
+    .masonry.grid--md-#{$i} {
+      column-count: #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .masonry.grid--gap-md-#{$name} {
+      column-gap: $value;
+    }
+
+    .masonry.grid--gap-md-#{$name} .masonryItem {
+      margin-bottom: $value;
+    }
+  }
+}
+
+@include mq-lg {
+  @for $i from 1 through 12 {
+    .masonry.grid--lg-#{$i} {
+      column-count: #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .masonry.grid--gap-lg-#{$name} {
+      column-gap: $value;
+    }
+
+    .masonry.grid--gap-lg-#{$name} .masonryItem {
+      margin-bottom: $value;
+    }
+  }
+}
+
+@include mq-xl {
+  @for $i from 1 through 12 {
+    .masonry.grid--xl-#{$i} {
+      column-count: #{$i};
+    }
+  }
+
+  @each $name, $value in $gaps {
+    .masonry.grid--gap-xl-#{$name} {
+      column-gap: $value;
+    }
+
+    .masonry.grid--gap-xl-#{$name} .masonryItem {
+      margin-bottom: $value;
+    }
+  }
+}

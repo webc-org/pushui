@@ -1,0 +1,41 @@
+@use '../mixins/mq' as *;
+
+$displays: (
+  'none': none,
+  'block': block,
+  'flex': flex,
+  'grid': grid,
+  'inline': inline,
+  'inline-block': inline-block,
+  'inline-flex': inline-flex,
+);
+
+@each $name, $value in $displays {
+  .d-#{$name} {
+    display: $value;
+  }
+}
+
+@include mq-sm {
+  @each $name, $value in $displays {
+    .d-sm-#{$name} { display: $value; }
+  }
+}
+
+@include mq-md {
+  @each $name, $value in $displays {
+    .d-md-#{$name} { display: $value; }
+  }
+}
+
+@include mq-lg {
+  @each $name, $value in $displays {
+    .d-lg-#{$name} { display: $value; }
+  }
+}
+
+@include mq-xl {
+  @each $name, $value in $displays {
+    .d-xl-#{$name} { display: $value; }
+  }
+}

@@ -1,0 +1,22 @@
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tabList {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.tabPanels {
+  display: flex;
+}
+
+.tabPanel {
+  display: flex;
+}
+
+.tabButton {
+  display: inline-flex;
+}

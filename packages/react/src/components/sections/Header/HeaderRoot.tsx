@@ -1,0 +1,143 @@
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
+import clsx from 'clsx'
+import { HeaderContext } from './HeaderContext'
+import styles from './Header.module.scss'
+import type { HeaderNavTypes, HeaderTypes } from './Header.types'
+
+export function HeaderRoot({
+  ref,
+  children,
+  baseId,
+  transparent = false,
+  textColor = 'light',
+  className,
+  ...rest
+}: HeaderTypes) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [navCounts, setNavCounts] = useState({
+    main: 0,
+    top: 0,
+    mobile: 0,
+  })
+  const navIndexes = useRef({ main: 0, top: 0, mobile: 0 })
+  const generatedId = useId()
+  const id = baseId || generatedId
+  const mobileMenuId = `header-mobile-menu-${id}`
+  const mobileToggleId = `header-mobile-toggle-${id}`
+
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), [])
+
+  const registerNav = useCallback((type: HeaderNavTypes) => {
+    navIndexes.current[type] += 1
+    const index = navIndexes.current[type]
+    setNavCounts((prev) => ({ ...prev, [type]: prev[type] + 1 }))
+    return index
+  }, [])
+
+  const getNavCount = useCallback(
+    (type: HeaderNavTypes) => navCounts[type],
+    [navCounts]
+  )
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isOpen) {
+        setIsOpen(false)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false)
+        document.getElementById(mobileToggleId)?.focus()
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isOpen, mobileToggleId])
+
+  useEffect(() => {
+    if (!transparent) return
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [transparent])
+
+  const isTransparent = transparent && !isScrolled
+
+  const value = useMemo(
+    () => ({
+      isOpen,
+      toggle,
+      mobileMenuId,
+      mobileToggleId,
+      registerNav,
+      getNavCount,
+      isTransparent,
+      textColor,
+    }),
+    [
+      isOpen,
+      mobileMenuId,
+      mobileToggleId,
+      toggle,
+      registerNav,
+      getNavCount,
+      isTransparent,
+      textColor,
+    ]
+  )
+
+  return (
+    <HeaderContext.Provider value={value}>
+      <header
+        ref={ref}
+        data-header-root
+        className={clsx(
+          styles.header,
+          transparent && styles.transparent,
+          transparent &&
+            (textColor === 'light' ? styles.textLight : styles.textDark),
+          transparent && isScrolled && styles.scrolled,
+          className
+        )}
+        {...rest}
+      >
+        <div
+          className={clsx(styles.overlay, isOpen && styles.isOpen)}
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+        {children}
+      </header>
+    </HeaderContext.Provider>
+  )
+}

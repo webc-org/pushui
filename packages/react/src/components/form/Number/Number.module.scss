@@ -1,0 +1,102 @@
+@use 'styles/mixins/form' as *;
+
+$bd-color-input-active: var(--color-primary-2);
+$bg-color-nav: var(--color-grey-3);
+$bg-color-nav-active: var(--color-primary-2);
+$bg-color-button: var(--color-white);
+$bg-color-button-active: var(--color-primary-2);
+$tx-color-button-active: var(--color-white);
+
+.wrapper {
+  @include form-wrapper;
+
+  overflow: hidden;
+
+  &.disabled {
+    @include form-disabled;
+  }
+}
+
+.label {
+  @include form-label;
+}
+
+.inputWrapper {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.input {
+  @include form-input;
+
+  flex: 1;
+  padding-right: 2.5rem;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+
+  .wrapper:not(.disabled):hover &,
+  .wrapper:not(.disabled):focus-within & {
+    border: 0.1rem solid $bd-color-input-active;
+  }
+}
+
+.nav {
+  background-color: $bg-color-nav;
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  overflow: hidden;
+  padding: 0.1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .wrapper:not(.disabled):hover &,
+  .wrapper:not(.disabled):focus-within & {
+    background-color: $bg-color-nav-active;
+  }
+}
+
+.button {
+  align-items: center;
+  background-color: $bg-color-button;
+  color: var(--color-grey-2);
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-width: 4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:is(:focus-visible, :hover):not(:disabled) {
+    background: $bg-color-button-active;
+    color: $tx-color-button-active;
+  }
+
+  &.increment {
+    border-radius: 0 var(--radius-2) 0 0;
+  }
+
+  &.decrement {
+    border-radius: 0 0 var(--radius-2);
+  }
+
+  svg {
+    transform: scale(1.25);
+  }
+}

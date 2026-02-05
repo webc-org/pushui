@@ -1,0 +1,12 @@
+@use 'styles/mixins/color' as *;
+@use 'styles/mixins/typo' as *;
+
+.note {
+  @include base-note;
+
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+  @include color-variants;
+}

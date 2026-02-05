@@ -1,0 +1,267 @@
+@use 'styles/mixins/form' as *;
+
+
+$thumb-size-sm: 1.4rem;
+$thumb-size-md: 2rem;
+$rail-size-sm: 0.3rem;
+$rail-size-md: 0.4rem;
+$label-offset: 1rem;
+
+
+$bg-color-rail: var(--color-grey-5);
+$bg-color-track: var(--color-primary-2);
+$bg-color-track-inverted: var(--color-grey-4);
+$bg-color-thumb: var(--color-primary-2);
+$bd-color-thumb: var(--color-white);
+$bg-color-value: var(--color-grey-1);
+$tx-color-value: var(--color-white);
+$bg-color-mark: var(--color-white);
+$bg-color-mark-active: var(--color-primary-contrast);
+$tx-color-label: var(--color-grey-2);
+$bd-color-label-after: var(--color-grey-1);
+
+.slider {
+  position: relative;
+  touch-action: none;
+  user-select: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rail {
+  background-color: $bg-color-rail;
+  cursor: pointer;
+  position: relative;
+}
+
+.track {
+  background-color: $bg-color-track;
+  border-radius: inherit;
+  position: absolute;
+}
+
+.track.inverted {
+  background-color: $bg-color-track-inverted;
+}
+
+.thumb {
+  background-color: $bg-color-thumb;
+  border: 0.2rem solid $bd-color-thumb;
+  border-radius: 50%;
+  box-shadow: 0 0.2rem 0.4rem var(--color-black-20);
+  cursor: grab;
+  height: $thumb-size-md;
+  position: absolute;
+  transition:
+    box-shadow var(--transition-default),
+    transform var(--transition-default);
+  width: $thumb-size-md;
+  z-index: 1;
+}
+
+.thumb:hover {
+  box-shadow:
+    0 0.2rem 0.4rem var(--color-black-20),
+    0 0 0 0.8rem var(--color-primary-3);
+}
+
+.thumb:focus-visible {
+  box-shadow:
+    0 0.2rem 0.4rem var(--color-black-20),
+    0 0 0 0.3rem var(--color-primary-2);
+}
+
+.thumb.active {
+  cursor: grabbing;
+}
+
+.valueLabel {
+  background-color: $bg-color-value;
+  border-radius: var(--radius-2);
+  color: $tx-color-value;
+  font-size: var(--font-size-3);
+  padding: 0.5rem 1rem;
+  pointer-events: none;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.valueLabel::after {
+  border: 0.5rem solid transparent;
+  content: '';
+  position: absolute;
+}
+
+.marks {
+  position: absolute;
+}
+
+.mark {
+  position: absolute;
+}
+
+.markDot {
+  background-color: $bg-color-mark;
+  border-radius: 50%;
+  display: block;
+  height: 0.4rem;
+  width: 0.4rem;
+}
+
+.markLabel {
+  color: $tx-color-label;
+  font-size: var(--font-size-3);
+  position: absolute;
+  white-space: nowrap;
+}
+
+.noTrack .rail {
+  background-color: $bg-color-rail;
+}
+
+.markActive .markDot {
+  background-color: $bg-color-mark-active;
+}
+
+.sm .thumb {
+  height: $thumb-size-sm;
+  width: $thumb-size-sm;
+}
+
+.horizontal {
+  height: $thumb-size-md;
+  padding: 0 calc($thumb-size-md / 2);
+  width: 100%;
+}
+
+.horizontal .rail {
+  height: $rail-size-md;
+  width: 100%;
+}
+
+.horizontal .track {
+  height: 100%;
+}
+
+.horizontal .thumb {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.horizontal .thumb.active {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.horizontal .valueLabel {
+  bottom: calc(100% + $label-offset);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.horizontal .valueLabel::after {
+  border-top-color: $bd-color-label-after;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+}
+
+.horizontal .marks {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.horizontal .mark {
+  top: 50%;
+  transform: translateX(-50%);
+}
+
+.horizontal .markDot {
+  transform: translateY(-50%);
+}
+
+.horizontal .markLabel {
+  top: calc(100% + 0.8rem);
+  transform: translateX(-50%);
+}
+
+.vertical {
+  height: 16rem;
+  padding: calc($thumb-size-md / 2) 0;
+  width: $thumb-size-md;
+}
+
+.vertical .rail {
+  height: 100%;
+  width: $rail-size-md;
+}
+
+.vertical .track {
+  width: 100%;
+}
+
+.vertical .thumb {
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.vertical .thumb.active {
+  transform: translate(-50%, 50%) scale(1.1);
+}
+
+.vertical .valueLabel {
+  left: calc(100% + $label-offset);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vertical .valueLabel::after {
+  border-right-color: $bd-color-label-after;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vertical .marks {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.vertical .mark {
+  left: 50%;
+  transform: translateY(50%);
+}
+
+.vertical .markDot {
+  transform: translateX(-50%);
+}
+
+.vertical .markLabel {
+  left: calc($thumb-size-md / 2 + 0.4rem);
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.horizontal.sm {
+  height: $thumb-size-sm;
+  padding: 0 calc($thumb-size-sm / 2);
+}
+
+.horizontal.sm .rail {
+  height: $rail-size-sm;
+}
+
+.vertical.sm {
+  padding: calc($thumb-size-sm / 2) 0;
+  width: $thumb-size-sm;
+}
+
+.vertical.sm .rail {
+  width: $rail-size-sm;
+}

@@ -1,0 +1,14 @@
+@use 'styles/mixins/action' as *;
+
+
+.link {
+  text-decoration: none;
+}
+
+
+.styled {
+  @include action-base;
+  @include action-appearances;
+  @include action-variants;
+  @include action-disabled;
+}

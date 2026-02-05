@@ -1,0 +1,45 @@
+@use '../mixins/color' as *;
+
+@each $variant in $color-variants {
+  @each $level in $color-levels {
+    .bg-#{$variant}-#{$level} {
+      background-color: var(--color-#{$variant}-#{$level});
+    }
+  }
+}
+
+@each $variant in $color-variants {
+  @each $level in $color-levels {
+    .text-#{$variant}-#{$level} {
+      color: var(--color-#{$variant}-#{$level});
+    }
+  }
+}
+
+@for $i from 1 through 7 {
+  .bg-grey-#{$i} {
+    background-color: var(--color-grey-#{$i});
+  }
+}
+
+@for $i from 1 through 7 {
+  .text-grey-#{$i} {
+    color: var(--color-grey-#{$i});
+  }
+}
+
+.bg-black {
+  background-color: var(--color-black);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.text-white {
+  color: var(--color-white);
+}

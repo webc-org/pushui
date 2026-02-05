@@ -1,0 +1,226 @@
+@use '../mixins/mq' as *;
+
+$sizes: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+$directions: (
+  't': 'top',
+  'r': 'right',
+  'b': 'bottom',
+  'l': 'left',
+);
+$axes: (
+  'v': ('top', 'bottom'),
+  'h': ('left', 'right'),
+);
+
+
+.m-0 { margin: 0; }
+.p-0 { padding: 0; }
+.g-0 { gap: 0; }
+
+@each $dir, $prop in $directions {
+  .m#{$dir}-0 { margin-#{$prop}: 0; }
+  .p#{$dir}-0 { padding-#{$prop}: 0; }
+}
+
+@each $axis, $props in $axes {
+  .m#{$axis}-0 { @each $prop in $props { margin-#{$prop}: 0; } }
+  .p#{$axis}-0 { @each $prop in $props { padding-#{$prop}: 0; } }
+}
+
+
+.m-auto { margin: auto; }
+
+@each $dir, $prop in $directions {
+  .m#{$dir}-auto { margin-#{$prop}: auto; }
+}
+
+@each $axis, $props in $axes {
+  .m#{$axis}-auto { @each $prop in $props { margin-#{$prop}: auto; } }
+}
+
+
+@each $size in $sizes {
+  .g-#{$size} {
+    gap: var(--spacing-#{$size});
+  }
+}
+
+@each $size in $sizes {
+  .m-#{$size} {
+    margin: var(--spacing-#{$size});
+  }
+
+  @each $dir, $prop in $directions {
+    .m#{$dir}-#{$size} {
+      margin-#{$prop}: var(--spacing-#{$size});
+    }
+  }
+
+  @each $axis, $props in $axes {
+    .m#{$axis}-#{$size} {
+      @each $prop in $props {
+        margin-#{$prop}: var(--spacing-#{$size});
+      }
+    }
+  }
+}
+
+@each $size in $sizes {
+  .p-#{$size} {
+    padding: var(--spacing-#{$size});
+  }
+
+  @each $dir, $prop in $directions {
+    .p#{$dir}-#{$size} {
+      padding-#{$prop}: var(--spacing-#{$size});
+    }
+  }
+
+  @each $axis, $props in $axes {
+    .p#{$axis}-#{$size} {
+      @each $prop in $props {
+        padding-#{$prop}: var(--spacing-#{$size});
+      }
+    }
+  }
+}
+
+@include mq-sm {
+  .m-sm-0 { margin: 0; }
+  .p-sm-0 { padding: 0; }
+  .g-sm-0 { gap: 0; }
+  .m-sm-auto { margin: auto; }
+
+  @each $dir, $prop in $directions {
+    .m#{$dir}-sm-0 { margin-#{$prop}: 0; }
+    .p#{$dir}-sm-0 { padding-#{$prop}: 0; }
+    .m#{$dir}-sm-auto { margin-#{$prop}: auto; }
+  }
+
+  @each $axis, $props in $axes {
+    .m#{$axis}-sm-0 { @each $prop in $props { margin-#{$prop}: 0; } }
+    .p#{$axis}-sm-0 { @each $prop in $props { padding-#{$prop}: 0; } }
+    .m#{$axis}-sm-auto { @each $prop in $props { margin-#{$prop}: auto; } }
+  }
+
+  @each $size in $sizes {
+    .m-sm-#{$size} { margin: var(--spacing-#{$size}); }
+    .p-sm-#{$size} { padding: var(--spacing-#{$size}); }
+    .g-sm-#{$size} { gap: var(--spacing-#{$size}); }
+
+    @each $dir, $prop in $directions {
+      .m#{$dir}-sm-#{$size} { margin-#{$prop}: var(--spacing-#{$size}); }
+      .p#{$dir}-sm-#{$size} { padding-#{$prop}: var(--spacing-#{$size}); }
+    }
+
+    @each $axis, $props in $axes {
+      .m#{$axis}-sm-#{$size} { @each $prop in $props { margin-#{$prop}: var(--spacing-#{$size}); } }
+      .p#{$axis}-sm-#{$size} { @each $prop in $props { padding-#{$prop}: var(--spacing-#{$size}); } }
+    }
+  }
+}
+
+@include mq-md {
+  .m-md-0 { margin: 0; }
+  .p-md-0 { padding: 0; }
+  .g-md-0 { gap: 0; }
+  .m-md-auto { margin: auto; }
+
+  @each $dir, $prop in $directions {
+    .m#{$dir}-md-0 { margin-#{$prop}: 0; }
+    .p#{$dir}-md-0 { padding-#{$prop}: 0; }
+    .m#{$dir}-md-auto { margin-#{$prop}: auto; }
+  }
+
+  @each $axis, $props in $axes {
+    .m#{$axis}-md-0 { @each $prop in $props { margin-#{$prop}: 0; } }
+    .p#{$axis}-md-0 { @each $prop in $props { padding-#{$prop}: 0; } }
+    .m#{$axis}-md-auto { @each $prop in $props { margin-#{$prop}: auto; } }
+  }
+
+  @each $size in $sizes {
+    .m-md-#{$size} { margin: var(--spacing-#{$size}); }
+    .p-md-#{$size} { padding: var(--spacing-#{$size}); }
+    .g-md-#{$size} { gap: var(--spacing-#{$size}); }
+
+    @each $dir, $prop in $directions {
+      .m#{$dir}-md-#{$size} { margin-#{$prop}: var(--spacing-#{$size}); }
+      .p#{$dir}-md-#{$size} { padding-#{$prop}: var(--spacing-#{$size}); }
+    }
+
+    @each $axis, $props in $axes {
+      .m#{$axis}-md-#{$size} { @each $prop in $props { margin-#{$prop}: var(--spacing-#{$size}); } }
+      .p#{$axis}-md-#{$size} { @each $prop in $props { padding-#{$prop}: var(--spacing-#{$size}); } }
+    }
+  }
+}
+
+@include mq-lg {
+  .m-lg-0 { margin: 0; }
+  .p-lg-0 { padding: 0; }
+  .g-lg-0 { gap: 0; }
+  .m-lg-auto { margin: auto; }
+
+  @each $dir, $prop in $directions {
+    .m#{$dir}-lg-0 { margin-#{$prop}: 0; }
+    .p#{$dir}-lg-0 { padding-#{$prop}: 0; }
+    .m#{$dir}-lg-auto { margin-#{$prop}: auto; }
+  }
+
+  @each $axis, $props in $axes {
+    .m#{$axis}-lg-0 { @each $prop in $props { margin-#{$prop}: 0; } }
+    .p#{$axis}-lg-0 { @each $prop in $props { padding-#{$prop}: 0; } }
+    .m#{$axis}-lg-auto { @each $prop in $props { margin-#{$prop}: auto; } }
+  }
+
+  @each $size in $sizes {
+    .m-lg-#{$size} { margin: var(--spacing-#{$size}); }
+    .p-lg-#{$size} { padding: var(--spacing-#{$size}); }
+    .g-lg-#{$size} { gap: var(--spacing-#{$size}); }
+
+    @each $dir, $prop in $directions {
+      .m#{$dir}-lg-#{$size} { margin-#{$prop}: var(--spacing-#{$size}); }
+      .p#{$dir}-lg-#{$size} { padding-#{$prop}: var(--spacing-#{$size}); }
+    }
+
+    @each $axis, $props in $axes {
+      .m#{$axis}-lg-#{$size} { @each $prop in $props { margin-#{$prop}: var(--spacing-#{$size}); } }
+      .p#{$axis}-lg-#{$size} { @each $prop in $props { padding-#{$prop}: var(--spacing-#{$size}); } }
+    }
+  }
+}
+
+@include mq-xl {
+  .m-xl-0 { margin: 0; }
+  .p-xl-0 { padding: 0; }
+  .g-xl-0 { gap: 0; }
+  .m-xl-auto { margin: auto; }
+
+  @each $dir, $prop in $directions {
+    .m#{$dir}-xl-0 { margin-#{$prop}: 0; }
+    .p#{$dir}-xl-0 { padding-#{$prop}: 0; }
+    .m#{$dir}-xl-auto { margin-#{$prop}: auto; }
+  }
+
+  @each $axis, $props in $axes {
+    .m#{$axis}-xl-0 { @each $prop in $props { margin-#{$prop}: 0; } }
+    .p#{$axis}-xl-0 { @each $prop in $props { padding-#{$prop}: 0; } }
+    .m#{$axis}-xl-auto { @each $prop in $props { margin-#{$prop}: auto; } }
+  }
+
+  @each $size in $sizes {
+    .m-xl-#{$size} { margin: var(--spacing-#{$size}); }
+    .p-xl-#{$size} { padding: var(--spacing-#{$size}); }
+    .g-xl-#{$size} { gap: var(--spacing-#{$size}); }
+
+    @each $dir, $prop in $directions {
+      .m#{$dir}-xl-#{$size} { margin-#{$prop}: var(--spacing-#{$size}); }
+      .p#{$dir}-xl-#{$size} { padding-#{$prop}: var(--spacing-#{$size}); }
+    }
+
+    @each $axis, $props in $axes {
+      .m#{$axis}-xl-#{$size} { @each $prop in $props { margin-#{$prop}: var(--spacing-#{$size}); } }
+      .p#{$axis}-xl-#{$size} { @each $prop in $props { padding-#{$prop}: var(--spacing-#{$size}); } }
+    }
+  }
+}

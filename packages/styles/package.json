@@ -1,0 +1,25 @@
+{
+  "name": "@yop/styles",
+  "version": "0.0.1",
+  "description": "Yop design system styles",
+  "main": "dist/index.css",
+  "files": ["dist", "styles"],
+  "sideEffects": ["*.css", "*.scss"],
+  "scripts": {
+    "build": "sass styles/index.scss dist/index.css --style=compressed && sass styles/index.scss dist/index.expanded.css",
+    "dev": "sass styles/index.scss dist/index.css --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webc-org/yop.git",
+    "directory": "packages/styles"
+  },
+  "license": "MIT"
+}

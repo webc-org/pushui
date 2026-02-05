@@ -1,0 +1,61 @@
+@use 'styles/mixins/typo' as *;
+
+$bd-color-divider: var(--color-grey-5);
+
+.divider {
+  @include base-hr;
+
+  border-top-color: $bd-color-divider;
+  width: 100%;
+}
+
+.dividerWithText {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+
+  .divider {
+    flex: 1;
+  }
+}
+
+.dividerText {
+  font-size: var(--font-size-3);
+  text-transform: uppercase;
+}
+
+.variant-solid {
+  border-top-style: solid;
+}
+
+.variant-dashed {
+  border-top-style: dashed;
+}
+
+.variant-dotted {
+  border-top-style: dotted;
+}
+
+.spacing-1 {
+  margin: var(--spacing-1) 0;
+}
+
+.spacing-2 {
+  margin: var(--spacing-2) 0;
+}
+
+.spacing-3 {
+  margin: var(--spacing-3) 0;
+}
+
+.spacing-4 {
+  margin: var(--spacing-4) 0;
+}
+
+.spacing-5 {
+  margin: var(--spacing-5) 0;
+}
+
+.hidden {
+  border: none;
+}

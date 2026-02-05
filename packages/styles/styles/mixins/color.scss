@@ -1,0 +1,12 @@
+$color-variants: (default, primary, secondary, success, danger, warning, info);
+$color-levels: (1, 2, 3, contrast);
+
+@mixin color-variants($prefix: 'variant-') {
+  @each $name in $color-variants {
+    &.#{$prefix}#{$name} {
+      background-color: var(--color-#{$name}-3);
+      border-color: var(--color-#{$name}-2);
+      color: var(--color-#{$name}-1);
+    }
+  }
+}

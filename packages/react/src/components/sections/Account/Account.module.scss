@@ -1,0 +1,45 @@
+.section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card {
+  border-radius: var(--radius-3);
+  flex: 1;
+  padding: 2rem;
+}
+
+.cardHeader {
+  flex-direction: column;
+  gap: .5rem
+}
+
+.cardBody {
+  gap: 1rem;
+}
+
+.cardFooter {
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.title {
+  font-size: var(--font-size-6);
+}
+
+.form {
+  background: var(--color-grey-6);
+  border-radius: var(--radius-3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.form [type='submit'],
+.form [class*="file"] {
+  width: 20rem
+}

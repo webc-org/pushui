@@ -1,0 +1,48 @@
+$color-variants: (default, primary, secondary, success, danger, warning, info);
+$color-levels: (1, 2, 3, contrast);
+
+.b {
+  border: 0.1rem solid var(--color-grey-4);
+}
+
+@each $variant in $color-variants {
+  @each $level in $color-levels {
+    .b-#{$variant}-#{$level} {
+      border: 0.1rem solid var(--color-#{$variant}-#{$level});
+    }
+  }
+}
+
+@for $i from 1 through 7 {
+  .b-grey-#{$i} {
+    border: 0.1rem solid var(--color-grey-#{$i});
+  }
+}
+
+.b-black {
+  border: 0.1rem solid var(--color-black);
+}
+
+.b-white {
+  border: 0.1rem solid var(--color-white);
+}
+
+.b-t {
+  border-top: 0.1rem solid var(--color-grey-4);
+}
+
+.b-r {
+  border-right: 0.1rem solid var(--color-grey-4);
+}
+
+.b-b {
+  border-bottom: 0.1rem solid var(--color-grey-4);
+}
+
+.b-l {
+  border-left: 0.1rem solid var(--color-grey-4);
+}
+
+.b-none {
+  border: none;
+}

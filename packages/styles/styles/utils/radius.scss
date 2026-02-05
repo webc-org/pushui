@@ -1,0 +1,13 @@
+@for $i from 1 through 7 {
+  .r-#{$i} {
+    border-radius: var(--radius-#{$i});
+  }
+}
+
+.r-full {
+  border-radius: 9999px;
+}
+
+.r-none {
+  border-radius: 0;
+}

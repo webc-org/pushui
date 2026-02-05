@@ -1,0 +1,804 @@
+@use 'styles/mixins/mq' as *;
+
+$bg-color-header: var(--color-white);
+$bg-color-topbar: var(--color-grey-7);
+$bg-color-dropdown: var(--color-white);
+$bg-color-link-active: var(--color-grey-6);
+$bg-color-overlay: var(--color-black-50);
+$bg-color-mobile-link: var(--color-grey-6);
+$bg-color-mobile-link-active: var(--color-primary-2);
+$bg-color-mobile-dropdown: var(--color-grey-5);
+$bd-color-topbar: var(--color-grey-6);
+$bd-color-dropdown: var(--color-grey-6);
+$bd-color-mobile-separator: var(--color-grey-5);
+$tx-color-link: var(--color-black);
+$tx-color-link-active: var(--color-primary-2);
+$tx-color-mobile-link-active: var(--color-white);
+$bg-color-transparent-topbar-light: var(--color-white-20);
+$bg-color-transparent-main-light: var(--color-white-10);
+$bg-color-transparent-topbar-dark: var(--color-black-10);
+$bg-color-transparent-main-dark: var(--color-black-05);
+$bg-color-transparent-hover-light: var(--color-white-10);
+$bg-color-transparent-hover-dark: var(--color-black-10);
+$tx-color-transparent-light: var(--color-white);
+$tx-color-transparent-dark: var(--color-black);
+
+.header {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-index-3);
+}
+
+.overlay {
+  background-color: $bg-color-overlay;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity var(--transition-default);
+  z-index: var(--z-index-3);
+
+  @include mq-md {
+    display: none;
+  }
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.topBar {
+  background-color: $bg-color-topbar;
+  border-bottom: .1rem solid $bd-color-topbar;
+  display: none;
+
+  @include mq-md {
+    display: block;
+  }
+}
+
+.topContainer {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-2);
+  gap: 2rem;
+  height: var(--height-top-menu);
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 2rem;
+
+}
+
+.topNav {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+.topLink {
+  color: $tx-color-link;
+  font-size: var(--font-size-3);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-link-active;
+    text-decoration: underline;
+  }
+
+  &.current {
+    color: $tx-color-link-active;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.withTopDropdown {
+  position: relative;
+}
+
+.topTrigger {
+  align-items: center;
+  color: $tx-color-link;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-3);
+  gap: 0.5rem;
+  height: var(--height-top-menu);
+  padding: 0 1rem;
+  position: relative;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible,
+  .withTopDropdown:hover &,
+  .withTopDropdown:focus-within & {
+    background-color: transparent;
+    color: $tx-color-link-active;
+
+    &::after {
+      background: $bg-color-dropdown;
+      content: '';
+      height: .1rem;
+      left: 0;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      z-index: var(--z-index-6);
+    }
+  }
+}
+
+.topDropdown {
+  min-width: 15rem;
+  opacity: 0;
+  padding: 1rem 0 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transition:
+    opacity var(--transition-default),
+    visibility var(--transition-default);
+  visibility: hidden;
+  z-index: var(--z-index-5);
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+.topDropdownInner {
+  background-color: $bg-color-topbar;
+  border: .1rem solid $bd-color-topbar;
+  border-radius: var(--radius-3);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.topDropdownLink {
+  background: none;
+  color: var(--color-black);
+  cursor: pointer;
+  display: block;
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-default);
+  margin: 1rem 0 0;
+  text-align: left;
+  text-decoration: none;
+  transition: background-color var(--transition-default);
+  width: 100%;
+
+  &:first-child {
+    margin: 0;
+  }
+
+  &:hover:not(.current),
+  &:focus-visible:not(.current) {
+    color: $tx-color-link-active;
+    text-decoration: underline;
+  }
+
+  &.current {
+    color: $tx-color-link-active;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.main {
+  background-color: $bg-color-header;
+  display: none;
+  min-height: var(--height-main-menu);
+  position: relative;
+  z-index: var(--z-index-4);
+
+  @include mq-md {
+    display: block;
+  }
+}
+
+.mainContainer {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  height: var(--height-main-menu);
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 2rem;
+}
+
+.mainNav {
+  align-items: center;
+  display: none;
+  gap: 1rem;
+
+  @include mq-md {
+    display: flex;
+  }
+}
+
+.mainLogo {
+  display: flex;
+  flex-shrink: 0;
+
+  img,
+  svg {
+    height: auto;
+    max-height: 4rem;
+    width: auto;
+  }
+
+  [data-logo='light'] {
+    display: none;
+  }
+}
+
+.mainLink {
+  align-items: center;
+  background: none;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-4);
+  height: 4rem;
+  padding: 0 2rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $bg-color-link-active;
+    color: $tx-color-link-active;
+    text-decoration: none;
+  }
+
+  &.current {
+    background: none;
+    color: $tx-color-link-active;
+    cursor: default;
+  }
+}
+
+.withMainDropdown {
+  align-items: center;
+  display: flex;
+  height: var(--height-main-menu);
+  position: relative;
+
+  &:hover,
+  &:focus-within {
+    .chevron {
+      transform: rotate(180deg);
+    }
+
+    .mainDropdown,
+    .megaMenu {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+  }
+}
+
+.mainDropdownTrigger {
+  align-items: center;
+  background: none;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-4);
+  gap: 0.5rem;
+  height: 4rem;
+  padding: 0 2rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible,
+  .withMainDropdown:hover &,
+  .withMainDropdown:focus-within & {
+    background-color: $bg-color-link-active;
+    color: $tx-color-link-active;
+  }
+}
+
+.mainDropdownTriggerActive {
+  color: $tx-color-link-active;
+}
+
+.mainDropdownCurrent {
+  color: $tx-color-link-active;
+}
+
+.mainDropdownHasMega {
+  position: static;
+}
+
+.mainDropdown {
+  left: 0;
+  min-width: 20rem;
+  opacity: 0;
+  padding: 1rem 0 0;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  transition:
+    opacity var(--transition-default),
+    visibility var(--transition-default);
+  visibility: hidden;
+  z-index: var(--z-index-5);
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+.mainDropdownInner {
+  background: $bg-color-dropdown;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  padding: 2rem;
+}
+
+.megaMenu {
+  left: 50%;
+  max-width: var(--container-max-width);
+  opacity: 0;
+  padding: 1rem 2rem 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transform: translateX(-50%);
+  transition:
+    opacity var(--transition-default),
+    visibility var(--transition-default);
+  visibility: hidden;
+  width: 100%;
+  z-index: var(--z-index-5);
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+.megaMenuInner {
+  background: $bg-color-dropdown;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @include mq-lg {
+    padding: 4rem;
+  }
+}
+
+.mainDropdownLink {
+  background: none;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  cursor: pointer;
+  display: block;
+  font-size: var(--font-size-3);
+  padding: 1rem 0 0;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    color var(--transition-default),
+    background-color var(--transition-default);
+  width: 100%;
+
+  &:first-child {
+    padding: 0;
+  }
+
+  &:hover:not(.current),
+  &:focus-visible:not(.current) {
+    color: $tx-color-link-active;
+    text-decoration: underline;
+  }
+
+  &.current {
+    color: $tx-color-link-active;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.mobile {
+  position: relative;
+
+  @include mq-md {
+    display: none;
+  }
+}
+
+.mobileBar {
+  align-items: center;
+  background-color: $bg-color-header;
+  display: flex;
+  height: var(--height-mobile-menu);
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.mobileTop {
+  align-items: center;
+  display: flex;
+  height: var(--height-mobile-menu);
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background: $bd-color-mobile-separator;
+    content: '';
+    display: block;
+    height: .1rem;
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+  }
+}
+
+.mobileLogo {
+  flex-shrink: 0;
+
+  [data-logo='light'] {
+    display: none;
+  }
+}
+
+.mobileToggle {
+  align-items: center;
+  background: none;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  cursor: pointer;
+  display: flex;
+  padding: 0.8rem;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-link-active;
+  }
+}
+
+.mobileMenu {
+  background-color: $bg-color-header;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  inset: var(--height-mobile-menu) 0 0 auto;
+  max-width: 100%;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  transform: translateX(100%);
+  transition: transform var(--transition-default);
+  width: 48rem;
+  z-index: var(--z-index-4);
+
+  @include mq-md {
+    display: none;
+  }
+
+  &.mobileMenuOpen {
+    transform: translateX(0);
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 0 2rem;
+}
+
+.mobileLink {
+  background-color: $bg-color-mobile-link;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  display: block;
+  font-size: var(--font-size-4);
+  padding: 1rem 2rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $bg-color-mobile-link-active;
+    color: $tx-color-mobile-link-active;
+  }
+
+  &.current {
+    background-color: $bg-color-mobile-link;
+    color: $tx-color-link-active;
+  }
+}
+
+.withMobileDropdown {
+  border-radius: var(--radius-2);
+}
+
+.mobileDropdownTrigger {
+  align-items: center;
+  background-color: $bg-color-mobile-link;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-4);
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  width: 100%;
+
+  &.isOpen {
+    background-color: $bg-color-mobile-dropdown;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $bg-color-mobile-link-active;
+    color: $tx-color-mobile-link-active;
+    text-decoration: none;
+  }
+}
+
+.mobileDropdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-default);
+
+  &.isOpen {
+    grid-template-rows: 1fr;
+    padding: 0.5rem 0 0;
+  }
+}
+
+.mobileDropdownInner {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  overflow: hidden;
+}
+
+.mobileDropdownLink {
+  background-color: $bg-color-mobile-dropdown;
+  border-radius: var(--radius-2);
+  color: $tx-color-link;
+  display: block;
+  font-size: var(--font-size-3);
+  padding: 1rem 2rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $bg-color-mobile-link-active;
+    color: $tx-color-mobile-link-active;
+    text-decoration: none;
+  }
+
+  &.current {
+    background-color: $bg-color-mobile-dropdown;
+    color: $tx-color-link-active;
+  }
+}
+
+.chevron {
+  transition: transform var(--transition-default);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.transparent {
+  .topBar {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    transition:
+      background-color var(--transition-default),
+      border-color var(--transition-default);
+  }
+
+  .main {
+    background-color: transparent;
+    transition: background-color var(--transition-default);
+  }
+
+  .mobileBar {
+    background-color: transparent;
+    transition: background-color var(--transition-default);
+  }
+
+  .mainLogo,
+  .mobileLogo {
+    [data-logo='default'] {
+      display: none;
+    }
+
+    [data-logo='light'] {
+      display: block;
+    }
+  }
+
+  &.textLight {
+    .topBar {
+      background-color: $bg-color-transparent-topbar-light;
+    }
+
+    .main {
+      background-color: $bg-color-transparent-main-light;
+    }
+
+    .topLink,
+    .topTrigger,
+    .mainLink,
+    .mainDropdownTrigger,
+    .mobileToggle,
+    .chevron {
+      color: $tx-color-transparent-light;
+    }
+
+    .mainLink:hover,
+    .mainLink:focus-visible,
+    .mainDropdownTrigger:hover,
+    .mainDropdownTrigger:focus-visible,
+    .withMainDropdown:hover .mainDropdownTrigger,
+    .withMainDropdown:focus-within .mainDropdownTrigger {
+      background-color: $bg-color-transparent-hover-light;
+      color: $tx-color-transparent-light;
+    }
+
+    .withMainDropdown:hover .chevron,
+    .withMainDropdown:focus-within .chevron,
+    .withTopDropdown:hover .chevron,
+    .withTopDropdown:focus-within .chevron {
+      color: $tx-color-transparent-light;
+    }
+
+    .topTrigger:hover,
+    .topTrigger:focus-visible,
+    .withTopDropdown:hover .topTrigger,
+    .withTopDropdown:focus-within .topTrigger {
+      background-color: $bg-color-transparent-hover-light;
+      border-color: transparent;
+      color: $tx-color-transparent-light;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &.textDark {
+    .topBar {
+      background-color: $bg-color-transparent-topbar-dark;
+    }
+
+    .main {
+      background-color: $bg-color-transparent-main-dark;
+    }
+
+    .topLink,
+    .topTrigger,
+    .mainLink,
+    .mainDropdownTrigger,
+    .mobileToggle,
+    .chevron {
+      color: $tx-color-transparent-dark;
+    }
+
+    .mainLink:hover,
+    .mainLink:focus-visible,
+    .mainDropdownTrigger:hover,
+    .mainDropdownTrigger:focus-visible,
+    .withMainDropdown:hover .mainDropdownTrigger,
+    .withMainDropdown:focus-within .mainDropdownTrigger {
+      background-color: $bg-color-transparent-hover-dark;
+      color: $tx-color-transparent-dark;
+    }
+
+    .withMainDropdown:hover .chevron,
+    .withMainDropdown:focus-within .chevron,
+    .withTopDropdown:hover .chevron,
+    .withTopDropdown:focus-within .chevron {
+      color: $tx-color-transparent-dark;
+    }
+
+    .topTrigger:hover,
+    .topTrigger:focus-visible,
+    .withTopDropdown:hover .topTrigger,
+    .withTopDropdown:focus-within .topTrigger {
+      background-color: $bg-color-transparent-hover-dark;
+      border-color: transparent;
+      color: $tx-color-transparent-dark;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &.scrolled {
+    .topBar {
+      background-color: $bg-color-topbar;
+      border-bottom-color: $bd-color-topbar;
+    }
+
+    .main {
+      background-color: $bg-color-header;
+    }
+
+    .mobileBar {
+      background-color: $bg-color-header;
+    }
+
+    .mainLogo,
+    .mobileLogo {
+      [data-logo='default'] {
+        display: block;
+      }
+
+      [data-logo='light'] {
+        display: none;
+      }
+    }
+
+    .chevron,
+    .topLink,
+    .mainLink,
+    .topTrigger,
+    .mobileToggle,
+    .mainDropdownTrigger {
+      color: $tx-color-link;
+    }
+
+    .mainLink:hover,
+    .mainLink:focus-visible,
+    .mainDropdownTrigger:hover,
+    .mainDropdownTrigger:focus-visible,
+    .withMainDropdown:hover .mainDropdownTrigger,
+    .withMainDropdown:focus-within .mainDropdownTrigger {
+      background-color: $bg-color-link-active;
+      color: $tx-color-link-active;
+    }
+
+    .withMainDropdown:hover .chevron,
+    .withMainDropdown:focus-within .chevron,
+    .withTopDropdown:hover .chevron,
+    .withTopDropdown:focus-within .chevron {
+      color: $tx-color-link-active;
+    }
+
+    .topTrigger:hover,
+    .topTrigger:focus-visible,
+    .withTopDropdown:hover .topTrigger,
+    .withTopDropdown:focus-within .topTrigger {
+      background-color: transparent;
+      border-color: transparent;
+      color: $tx-color-link-active;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@use '../mixins/mq' as *;
+
+$sizes: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+
+@each $size in $sizes {
+  .fs-#{$size} {
+    font-size: var(--font-size-#{$size});
+  }
+}
+
+@include mq-sm {
+  @each $size in $sizes {
+    .fs-sm-#{$size} { font-size: var(--font-size-#{$size}); }
+  }
+}
+
+@include mq-md {
+  @each $size in $sizes {
+    .fs-md-#{$size} { font-size: var(--font-size-#{$size}); }
+  }
+}
+
+@include mq-lg {
+  @each $size in $sizes {
+    .fs-lg-#{$size} { font-size: var(--font-size-#{$size}); }
+  }
+}
+
+@include mq-xl {
+  @each $size in $sizes {
+    .fs-xl-#{$size} { font-size: var(--font-size-#{$size}); }
+  }
+}
+
+$weights: body, button, strong, heading;
+
+@each $weight in $weights {
+  .fw-#{$weight} {
+    font-weight: var(--font-weight-#{$weight});
+  }
+}
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+.text-nowrap { white-space: nowrap; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

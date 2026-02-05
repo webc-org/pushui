@@ -1,0 +1,78 @@
+@use '../mixins/typo' as *;
+
+* {
+  border: 0 solid;
+  box-sizing: border-box;
+  margin: 0;
+  overflow-wrap: break-word;
+  padding: 0;
+
+  &::before,
+  &::after {
+    border: 0 solid;
+    box-sizing: border-box;
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+body {
+  color: var(--color-black);
+  font-family: var(--site-font);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-default);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button {
+  @include base-link;
+}
+
+svg {
+  font-size: inherit;
+}
+
+@each $level, $size in $heading-sizes {
+  #{$level} {
+    font-size: var(--font-size-#{$size});
+  }
+}
+
+ul, ol {
+  list-style-position: inside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

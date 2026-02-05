@@ -1,0 +1,170 @@
+@use 'styles/mixins/form' as *;
+
+$tx-color-trigger: var(--color-grey-2);
+$tx-color-trigger-active: var(--color-primary-2);
+$tx-color-button-active: var(--color-white);
+$bg-color-button-active: var(--color-primary-2);
+$bg-color-button-1: var(--color-grey-6);
+$bg-color-button-2: var(--color-grey-5);
+
+.wrapper {
+  @include form-wrapper;
+}
+
+.label {
+  @include form-label;
+}
+
+.input {
+  @include form-input;
+
+  cursor: pointer;
+  padding-right: 4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.trigger {
+  align-items: center;
+  background: transparent;
+  color: $tx-color-trigger;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-5);
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:is(:hover, :focus-visible):not(:disabled) {
+    color: $tx-color-trigger-active;
+  }
+}
+
+.inputWrapper {
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  &:is(:hover, :focus-within) {
+    .input:not(:disabled) {
+      border-color: $bg-color-button-active;
+    }
+
+    .trigger:not(:disabled) {
+      color: $bg-color-button-active;
+    }
+  }
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.monthYear {
+  align-items: center;
+  background-color: $bg-color-button-1;
+  display: flex;
+  flex: 1;
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-strong);
+  height: 4rem;
+  justify-content: center;
+}
+
+.day {
+  align-items: center;
+  aspect-ratio: 1;
+  background-color: $bg-color-button-1;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-4);
+  justify-content: center;
+  text-decoration: none;
+  width: 4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.selected,
+  &:is(:hover, :focus-visible):not(:disabled) {
+    background-color: $bg-color-button-active;
+    color: $tx-color-button-active;
+  }
+
+  &.today {
+    background-color: $bg-color-button-2;
+  }
+}
+
+.navButton {
+  align-items: center;
+  background-color: $bg-color-button-1;
+  border-radius: var(--radius-2);
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  width: 4rem;
+
+  &:is(:hover, :focus-visible) {
+    background-color: $bg-color-button-active;
+    color: $tx-color-button-active;
+  }
+}
+
+.weekdays {
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.weekday {
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-default);
+  text-align: center;
+  width: 4rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.empty {
+  aspect-ratio: 1;
+}
+
+.footer {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerButton {
+  flex: 1;
+}

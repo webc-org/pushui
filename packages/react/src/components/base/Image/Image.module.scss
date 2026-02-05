@@ -1,0 +1,15 @@
+@use 'styles/mixins/typo' as *;
+
+.image {
+  height: auto;
+}
+
+.figure {
+  display: inline-block;
+}
+
+.caption {
+  @include base-caption;
+
+  margin-top: 0.8rem;
+}

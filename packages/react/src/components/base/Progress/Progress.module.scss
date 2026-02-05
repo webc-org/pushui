@@ -1,0 +1,50 @@
+$bg-color-progress: var(--color-grey-5);
+
+.progress {
+  background-color: $bg-color-progress;
+  border-radius: 9999px;
+  height:.5rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.bar {
+  border-radius: 9999px;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.label {
+  font-size: var(--font-size-2);
+  opacity: .5;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(calc(100% + 0.8rem), -50%);
+}
+
+
+$variants: default, primary, secondary, success, danger, warning, info;
+
+@each $variant in $variants {
+  .variant-#{$variant} .bar {
+    background-color: var(--color-#{$variant}-2);
+  }
+}
+
+
+.indeterminate .bar {
+  animation: indeterminate 1.5s ease-in-out infinite;
+  width: 30%;
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(400%);
+  }
+}

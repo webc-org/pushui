@@ -1,0 +1,22 @@
+$tx-color-logo: var(--color-black);
+$tx-color-logo-active: var(--color-primary-2);
+
+.logo {
+  align-items: center;
+  color: $tx-color-logo;
+  display: inline-flex;
+  overflow: hidden;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-logo-active;
+    text-decoration: none;
+  }
+}
+
+.fallback {
+  color: $tx-color-logo;
+  font-size: var(--font-size-7);
+  font-weight: var(--font-weight-heading);
+}

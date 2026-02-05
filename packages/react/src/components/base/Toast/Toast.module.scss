@@ -1,0 +1,80 @@
+@use 'styles/mixins/action' as *;
+@use 'styles/mixins/mq' as *;
+
+$bg-color-toast: var(--color-white);
+
+.toasts {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  left: 0;
+  padding: 0 0 1rem;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: var(--z-index-4);
+
+  @include mq-lg {
+    padding: 0 0 2rem;
+  }
+}
+
+.toast {
+  background-color: $bg-color-toast;
+  border-radius: var(--radius-3);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-4);
+  margin-bottom: -0.5rem;
+  max-height: 0;
+  max-width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(1rem);
+  transition:
+    max-height 0.25s ease-out,
+    margin-bottom 0.25s ease-out,
+    opacity 0.2s ease-out 0.05s,
+    transform 0.2s ease-out 0.05s;
+  width: 35.5rem;
+
+  &.active {
+    margin-bottom: 0;
+    max-height: 20rem;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0);
+  }
+
+  &.removing {
+    margin-bottom: -0.5rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.15s ease-in,
+      transform 0.15s ease-in,
+      max-height 0.2s ease-in 0.1s,
+      margin-bottom 0.2s ease-in 0.1s;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+.close {
+  @include action-close;
+
+  right: 0.25rem;
+  top: 0.25rem;
+}

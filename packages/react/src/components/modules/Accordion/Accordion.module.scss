@@ -1,0 +1,86 @@
+$bg-color-accordion: var(--color-white);
+$bd-color-accordion: var(--color-grey-5);
+$tx-color-trigger: var(--color-black);
+$tx-color-trigger-active: var(--color-primary-2);
+$bg-color-accordion-expanded: var(--color-grey-6);
+$bg-color-accordion-inner-expanded: var(--color-grey-5);
+
+.accordion {
+  background: $bg-color-accordion;
+  border: 0.1rem solid $bd-color-accordion;
+  border-radius: var(--radius-3);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  border-bottom: 0.1rem solid $bd-color-accordion;
+
+  &:last-child {
+    border: 0;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.trigger {
+  align-items: center;
+  background: transparent;
+  color: $tx-color-trigger;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  width: 100%;
+
+  &.expanded,
+  &:hover,
+  &:focus-visible {
+    color: $tx-color-trigger-active;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform var(--transition-default);
+
+  .expanded & {
+    transform: rotate(180deg);
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition-default);
+
+  &.contentExpanded {
+    background: $bg-color-accordion-expanded;
+    grid-template-rows: 1fr;
+  }
+}
+
+.contentInner {
+  border-top: 0.1rem solid transparent;
+  overflow: hidden;
+  padding: 0 2rem;
+  transition: padding var(--transition-default);
+
+  .contentExpanded & {
+    border-color: $bg-color-accordion-inner-expanded;
+    padding: 2rem;
+  }
+}
