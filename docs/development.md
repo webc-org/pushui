@@ -14,10 +14,10 @@ pnpm clean         # Clean all dist folders
 ### Package-specific
 
 ```bash
-pnpm --filter @yop/react build     # Build React package
-pnpm --filter @yop/react test      # Test React package
-pnpm --filter @yop/react dev       # Watch mode
-pnpm --filter @yop/styles build    # Build styles package
+pnpm --filter @pushui/react build     # Build React package
+pnpm --filter @pushui/react test      # Test React package
+pnpm --filter @pushui/react dev       # Watch mode
+pnpm --filter @pushui/styles build    # Build styles package
 ```
 
 ## Dependencies
@@ -32,13 +32,13 @@ pnpm --filter @yop/styles build    # Build styles package
 
 ```typescript
 // Components
-import { Button, Header, Select } from '@yop/react'
+import { Button, Header, Select } from '@pushui/react'
 
 // CSS (import once at app root)
-import '@yop/react/styles.css'
+import '@pushui/react/styles.css'
 
 // Or use standalone styles package
-import '@yop/styles'
+import '@pushui/styles'
 ```
 
 ## SSR Compatibility
@@ -50,7 +50,7 @@ Compatible with Next.js, Remix, Gatsby. Uses `useId()` for stable hydration.
 Rename imports to avoid conflicts:
 
 ```tsx
-import { Image as BaseImage, Link as BaseLink } from '@yop/react'
+import { Image as BaseImage, Link as BaseLink } from '@pushui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 ```
@@ -59,7 +59,7 @@ import Link from 'next/link'
 
 The monorepo uses Turborepo for build orchestration:
 
-- `@yop/react` depends on `@yop/styles` for SCSS mixins
+- `@pushui/react` depends on `@pushui/styles` for SCSS mixins
 - Build order is automatic based on dependencies
 - Builds are cached for speed
 

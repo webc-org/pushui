@@ -17,10 +17,10 @@ Tests focus on **meaningful behavior**, not implementation details.
 pnpm test
 
 # React package only
-pnpm --filter @yop/react test
+pnpm --filter @pushui/react test
 
 # Watch mode
-pnpm --filter @yop/react test:watch
+pnpm --filter @pushui/react test:watch
 ```
 
 ## Test File Pattern

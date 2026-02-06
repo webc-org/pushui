@@ -296,8 +296,8 @@ For dark backgrounds:
 
 ```tsx
 // React package includes styles
-import '@yop/react/styles.css'
+import '@pushui/react/styles.css'
 
 // Or standalone styles
-import '@yop/styles'
+import '@pushui/styles'
 ```

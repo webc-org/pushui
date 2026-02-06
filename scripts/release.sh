@@ -51,7 +51,7 @@ fi
 
 echo -e "${GREEN}[4/5] Bumping versions...${NC}"
 
-# Bump @yop/styles
+# Bump @pushui/styles
 cd packages/styles
 CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
 if [ "$CURRENT_PATCH" -ge 99 ]; then
@@ -60,10 +60,10 @@ else
   pnpm version patch --no-git-tag-version > /dev/null
 fi
 STYLES_VERSION=$(node -p "require('./package.json').version")
-echo -e "  @yop/styles: ${YELLOW}${STYLES_VERSION}${NC}"
+echo -e "  @pushui/styles: ${YELLOW}${STYLES_VERSION}${NC}"
 cd ../..
 
-# Bump @yop/react
+# Bump @pushui/react
 cd packages/react
 CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
 if [ "$CURRENT_PATCH" -ge 99 ]; then
@@ -72,7 +72,7 @@ else
   pnpm version patch --no-git-tag-version > /dev/null
 fi
 REACT_VERSION=$(node -p "require('./package.json').version")
-echo -e "  @yop/react:  ${YELLOW}${REACT_VERSION}${NC}"
+echo -e "  @pushui/react:  ${YELLOW}${REACT_VERSION}${NC}"
 cd ../..
 
 git add .
@@ -85,4 +85,4 @@ if ! git push; then
   exit 1
 fi
 
-echo -e "${GREEN}✅ Released @yop/styles@${STYLES_VERSION} and @yop/react@${REACT_VERSION}${NC}"
+echo -e "${GREEN}✅ Released @pushui/styles@${STYLES_VERSION} and @pushui/react@${REACT_VERSION}${NC}"

@@ -1,5 +1,5 @@
 {
-  "name": "@yop/storybook-react",
+  "name": "@pushui/storybook-react",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "preview": "npx serve storybook-static"
   },
   "dependencies": {
-    "@yop/react": "workspace:*"
+    "@pushui/react": "workspace:*"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.0.4",

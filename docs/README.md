@@ -1,4 +1,4 @@
-# Yop Documentation
+# Push UI Documentation
 
 Multi-framework UI component library with shared design system.
 
@@ -6,26 +6,26 @@ Multi-framework UI component library with shared design system.
 
 | Package | Description | Status |
 |---------|-------------|--------|
-| `@yop/styles` | SCSS design system, CSS variables, utility classes | Ready |
-| `@yop/react` | React component library (48 components) | Ready |
-| `@yop/vue` | Vue component library | Planned |
-| `@yop/angular` | Angular component library | Planned |
+| `@pushui/styles` | SCSS design system, CSS variables, utility classes | Ready |
+| `@pushui/react` | React component library (48 components) | Ready |
+| `@pushui/vue` | Vue component library | Planned |
+| `@pushui/angular` | Angular component library | Planned |
 
 ## Installation
 
 ```bash
 # React
-pnpm add @yop/react
+pnpm add @pushui/react
 
 # Styles only
-pnpm add @yop/styles
+pnpm add @pushui/styles
 ```
 
 ## Usage
 
 ```tsx
-import { Button, Header, Select } from '@yop/react'
-import '@yop/react/styles.css'
+import { Button, Header, Select } from '@pushui/react'
+import '@pushui/react/styles.css'
 ```
 
 ## Documentation
@@ -43,8 +43,8 @@ import '@yop/react/styles.css'
 
 ```bash
 # Clone
-git clone https://github.com/webc-org/yop.git
-cd yop
+git clone https://github.com/webc-org/pushui.git
+cd pushui
 
 # Install
 pnpm install

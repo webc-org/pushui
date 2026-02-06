@@ -1,7 +1,7 @@
 {
-  "name": "@yop/react",
-  "version": "0.0.4",
-  "description": "Yop React component library",
+  "name": "@pushui/react",
+  "version": "0.0.2",
+  "description": "Push UI React component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -69,7 +69,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/webc-org/yop.git",
+    "url": "https://github.com/webc-org/pushui.git",
     "directory": "packages/react"
   },
   "license": "MIT"

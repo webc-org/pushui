@@ -1,5 +1,5 @@
 {
-  "name": "yop",
+  "name": "pushui",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -9,9 +9,9 @@
     "lint:css:fix": "stylelint \"packages/**/*.scss\" --fix",
     "test": "turbo test",
     "clean": "turbo clean",
-    "storybook": "pnpm --filter @yop/storybook-react dev",
-    "build-storybook": "pnpm --filter @yop/storybook-react build",
-    "release": "./scripts/release.sh"
+    "storybook": "pnpm --filter @pushui/storybook-react dev",
+    "build-storybook": "pnpm --filter @pushui/storybook-react build",
+    "pushui": "./scripts/release.sh"
   },
   "devDependencies": {
     "stylelint": "^17.0.0",

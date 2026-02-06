@@ -3,15 +3,15 @@
 ## Monorepo Structure
 
 ```
-yop/
+pushui/
 ├── packages/
-│   ├── styles/              # @yop/styles - Shared SCSS design system
+│   ├── styles/              # @pushui/styles - Shared SCSS design system
 │   │   └── styles/          # SCSS source files
 │   │       ├── mixins/      # SCSS mixins (mq, typo, etc.)
 │   │       ├── utilities/   # Utility classes
 │   │       └── index.scss   # Main entry
 │   │
-│   └── react/               # @yop/react - React component library
+│   └── react/               # @pushui/react - React component library
 │       └── src/
 │           ├── components/
 │           │   ├── base/    # Atomic UI elements (21)
@@ -31,8 +31,8 @@ yop/
 
 | Package | Description | Entry |
 |---------|-------------|-------|
-| `@yop/styles` | SCSS design system, CSS variables, utility classes | `dist/index.css` |
-| `@yop/react` | React components with CSS Modules | `dist/index.mjs` |
+| `@pushui/styles` | SCSS design system, CSS variables, utility classes | `dist/index.css` |
+| `@pushui/react` | React components with CSS Modules | `dist/index.mjs` |
 
 ## Path Aliases (packages/react)
 
