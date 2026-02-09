@@ -1,6 +1,7 @@
 @use '../mixins/mq' as *;
 
 html {
+  overscroll-behavior-y: none;
   display: block;
   margin: 0;
   padding: 0;

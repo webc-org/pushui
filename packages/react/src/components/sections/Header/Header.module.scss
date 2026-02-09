@@ -238,9 +238,6 @@ $tx-color-transparent-dark: var(--color-black);
     width: auto;
   }
 
-  [data-logo='light'] {
-    display: none;
-  }
 }
 
 .mainLink {
@@ -462,10 +459,6 @@ $tx-color-transparent-dark: var(--color-black);
 
 .mobileLogo {
   flex-shrink: 0;
-
-  [data-logo='light'] {
-    display: none;
-  }
 }
 
 .mobileToggle {
@@ -632,125 +625,60 @@ $tx-color-transparent-dark: var(--color-black);
   }
 
   &.textLight {
-    .topBar {
-      background-color: $bg-color-transparent-topbar-light;
-    }
-
-    .main {
-      background-color: $bg-color-transparent-main-light;
-    }
-
-    .topLink,
-    .topTrigger,
-    .top .chevron,
-    .mainLink,
-    .main .chevron,
-    .mainDropdownTrigger,
-    .mobileBar .mobileToggle {
-      color: $tx-color-transparent-light;
-    }
-
-    .mainLink:hover,
-    .mainLink:focus-visible,
-    .mainDropdownTrigger:hover,
-    .mainDropdownTrigger:focus-visible,
-    .withMainDropdown:hover .mainDropdownTrigger,
-    .withMainDropdown:focus-within .mainDropdownTrigger {
-      background-color: $bg-color-transparent-hover-light;
-      color: $tx-color-transparent-light;
-    }
-
-    .withMainDropdown:hover .chevron,
-    .withMainDropdown:focus-within .chevron,
-    .withTopDropdown:hover .chevron,
-    .withTopDropdown:focus-within .chevron {
-      color: $tx-color-transparent-light;
-    }
-
-    .topTrigger:hover,
-    .topTrigger:focus-visible,
-    .withTopDropdown:hover .topTrigger,
-    .withTopDropdown:focus-within .topTrigger {
-      background-color: $bg-color-transparent-hover-light;
-      border-color: transparent;
-      color: $tx-color-transparent-light;
-
-      &::after {
-        display: none;
-      }
-    }
+    --t-bg-topbar: #{$bg-color-transparent-topbar-light};
+    --t-bg-main: #{$bg-color-transparent-main-light};
+    --t-tx: #{$tx-color-transparent-light};
+    --t-bg-hover: #{$bg-color-transparent-hover-light};
+    --t-bg-hover-top: #{$bg-color-transparent-hover-light};
+    --t-tx-hover: #{$tx-color-transparent-light};
+    --t-trigger-after: none;
   }
 
   &.textDark {
-    .topBar {
-      background-color: $bg-color-transparent-topbar-dark;
-    }
-
-    .main {
-      background-color: $bg-color-transparent-main-dark;
-    }
-
-    .topLink,
-    .topTrigger,
-    .mainLink,
-    .mainDropdownTrigger,
-    .mobileToggle,
-    .chevron {
-      color: $tx-color-transparent-dark;
-    }
-
-    .mainLink:hover,
-    .mainLink:focus-visible,
-    .mainDropdownTrigger:hover,
-    .mainDropdownTrigger:focus-visible,
-    .withMainDropdown:hover .mainDropdownTrigger,
-    .withMainDropdown:focus-within .mainDropdownTrigger {
-      background-color: $bg-color-transparent-hover-dark;
-      color: $tx-color-transparent-dark;
-    }
-
-    .withMainDropdown:hover .chevron,
-    .withMainDropdown:focus-within .chevron,
-    .withTopDropdown:hover .chevron,
-    .withTopDropdown:focus-within .chevron {
-      color: $tx-color-transparent-dark;
-    }
-
-    .topTrigger:hover,
-    .topTrigger:focus-visible,
-    .withTopDropdown:hover .topTrigger,
-    .withTopDropdown:focus-within .topTrigger {
-      background-color: $bg-color-transparent-hover-dark;
-      border-color: transparent;
-      color: $tx-color-transparent-dark;
-
-      &::after {
-        display: none;
-      }
-    }
+    --t-bg-topbar: #{$bg-color-transparent-topbar-dark};
+    --t-bg-main: #{$bg-color-transparent-main-dark};
+    --t-tx: #{$tx-color-transparent-dark};
+    --t-bg-hover: #{$bg-color-transparent-hover-dark};
+    --t-bg-hover-top: #{$bg-color-transparent-hover-dark};
+    --t-tx-hover: #{$tx-color-transparent-dark};
+    --t-trigger-after: none;
   }
 
   &.scrolled {
-    .topBar {
-      background-color: $bg-color-topbar;
-      border-bottom-color: $bd-color-topbar;
-    }
+    --t-bg-topbar: #{$bg-color-topbar};
+    --t-bg-main: #{$bg-color-header};
+    --t-tx: #{$tx-color-link};
+    --t-bg-hover: #{$bg-color-link-active};
+    --t-bg-hover-top: transparent;
+    --t-tx-hover: #{$tx-color-link-active};
+    --t-trigger-after: block;
 
-    .main {
-      background-color: $bg-color-header;
+    .topBar {
+      border-bottom-color: $bd-color-topbar;
     }
 
     .mobileBar {
       background-color: $bg-color-header;
     }
+  }
 
-    .chevron,
+  &.textLight,
+  &.textDark,
+  &.scrolled {
+    .topBar {
+      background-color: var(--t-bg-topbar);
+    }
+
+    .main {
+      background-color: var(--t-bg-main);
+    }
+
     .topLink,
-    .mainLink,
     .topTrigger,
+    .mainLink,
     .mainDropdownTrigger,
     .mobileBar .mobileToggle {
-      color: $tx-color-link;
+      color: var(--t-tx);
     }
 
     .mainLink:hover,
@@ -759,24 +687,28 @@ $tx-color-transparent-dark: var(--color-black);
     .mainDropdownTrigger:focus-visible,
     .withMainDropdown:hover .mainDropdownTrigger,
     .withMainDropdown:focus-within .mainDropdownTrigger {
-      background-color: $bg-color-link-active;
-      color: $tx-color-link-active;
+      background-color: var(--t-bg-hover);
+      color: var(--t-tx-hover);
     }
 
     .withMainDropdown:hover .chevron,
     .withMainDropdown:focus-within .chevron,
     .withTopDropdown:hover .chevron,
     .withTopDropdown:focus-within .chevron {
-      color: $tx-color-link-active;
+      color: var(--t-tx-hover);
     }
 
     .topTrigger:hover,
     .topTrigger:focus-visible,
     .withTopDropdown:hover .topTrigger,
     .withTopDropdown:focus-within .topTrigger {
-      background-color: transparent;
+      background-color: var(--t-bg-hover-top);
       border-color: transparent;
-      color: $tx-color-link-active;
+      color: var(--t-tx-hover);
+
+      &::after {
+        display: var(--t-trigger-after);
+      }
     }
   }
 }
