@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, ElementType, ReactNode } from 'react'
 
-export type HeaderTextColor = 'light' | 'dark'
+export type HeaderTextColor = 'light' | 'dark' | undefined
 
 export type HeaderTypes = ComponentPropsWithRef<'header'> & {
   children: ReactNode

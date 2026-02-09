@@ -13,21 +13,21 @@ import type { HeaderNavTypes, HeaderTypes } from './Header.types'
 
 export function HeaderRoot({
   ref,
-  children,
   baseId,
-  transparent = false,
-  textColor = 'light',
+  children,
   className,
+  textColor,
+  transparent = false,
   ...rest
 }: HeaderTypes) {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [navCounts, setNavCounts] = useState({
-    main: 0,
     top: 0,
+    main: 0,
     mobile: 0,
   })
-  const navIndexes = useRef({ main: 0, top: 0, mobile: 0 })
+  const navIndexes = useRef({ top: 0, main: 0, mobile: 0 })
   const generatedId = useId()
   const id = baseId || generatedId
   const mobileMenuId = `header-mobile-menu-${id}`
@@ -123,10 +123,10 @@ export function HeaderRoot({
         data-header-root
         className={clsx(
           styles.header,
+          isScrolled && styles.scrolled,
           transparent && styles.transparent,
-          transparent &&
-            (textColor === 'light' ? styles.textLight : styles.textDark),
-          transparent && isScrolled && styles.scrolled,
+          textColor === 'dark' && styles.textDark,
+          textColor === 'light' && styles.textLight,
           className
         )}
         {...rest}

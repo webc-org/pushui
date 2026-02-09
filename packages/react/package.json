@@ -1,6 +1,6 @@
 {
   "name": "@pushui/react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Push UI React component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.11",
+    "@storybook/react": "^10.1.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.0",
     "@testing-library/react": "^16.2.0",
@@ -53,9 +54,9 @@
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.0",
     "esbuild-sass-plugin": "^3.3.0",
+    "jsdom": "^26.0.0",
     "postcss": "^8.4.49",
     "postcss-modules": "^6.0.1",
-    "jsdom": "^26.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "^1.83.0",

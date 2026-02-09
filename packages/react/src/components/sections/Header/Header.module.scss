@@ -631,17 +631,6 @@ $tx-color-transparent-dark: var(--color-black);
     transition: background-color var(--transition-default);
   }
 
-  .mainLogo,
-  .mobileLogo {
-    [data-logo='default'] {
-      display: none;
-    }
-
-    [data-logo='light'] {
-      display: block;
-    }
-  }
-
   &.textLight {
     .topBar {
       background-color: $bg-color-transparent-topbar-light;
@@ -753,17 +742,6 @@ $tx-color-transparent-dark: var(--color-black);
 
     .mobileBar {
       background-color: $bg-color-header;
-    }
-
-    .mainLogo,
-    .mobileLogo {
-      [data-logo='default'] {
-        display: block;
-      }
-
-      [data-logo='light'] {
-        display: none;
-      }
     }
 
     .chevron,

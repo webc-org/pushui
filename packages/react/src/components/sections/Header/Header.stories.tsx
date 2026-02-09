@@ -44,6 +44,18 @@ import {
   useHeader,
 } from './index'
 
+function HeaderLogo() {
+  const { isTransparent, textColor } = useHeader()
+  const src = isTransparent && textColor === 'light'
+    ? '/YOP_white.svg'
+    : '/YOP_black.svg'
+  return (
+    <Logo href="/">
+      <Image src={src} alt="Push UI" />
+    </Logo>
+  )
+}
+
 function HeaderActions() {
   const { isTransparent, textColor } = useHeader()
   const contrast = isTransparent && textColor === 'light'
@@ -233,14 +245,7 @@ export const Default: Story = {
     <HeaderRoot {...args}>
       <HeaderMain>
         <HeaderMainLogo>
-          <Logo href="/">
-            <Image
-              src="/YOP_black.svg"
-              alt="Yop Logo"
-              width={81}
-              height={28}
-            />
-          </Logo>
+          <HeaderLogo />
         </HeaderMainLogo>
 
         <HeaderMainNav>
@@ -273,14 +278,7 @@ export const Default: Story = {
       <HeaderMobile>
         <HeaderMobileBar>
           <HeaderMobileLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMobileLogo>
           <HeaderMobileToggle />
         </HeaderMobileBar>
@@ -312,14 +310,7 @@ export const WithTopBar: Story = {
 
       <HeaderMain>
         <HeaderMainLogo>
-          <Logo href="/">
-            <Image
-              src="/YOP_black.svg"
-              alt="Yop Logo"
-              width={81}
-              height={28}
-            />
-          </Logo>
+          <HeaderLogo />
         </HeaderMainLogo>
 
         <HeaderMainNav>
@@ -346,14 +337,7 @@ export const WithTopBar: Story = {
       <HeaderMobile>
         <HeaderMobileBar>
           <HeaderMobileLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMobileLogo>
           <HeaderMobileToggle />
         </HeaderMobileBar>
@@ -368,14 +352,7 @@ export const WithDropdowns: Story = {
     <HeaderRoot>
       <HeaderMain>
         <HeaderMainLogo>
-          <Logo href="/">
-            <Image
-              src="/YOP_black.svg"
-              alt="Yop Logo"
-              width={81}
-              height={28}
-            />
-          </Logo>
+          <HeaderLogo />
         </HeaderMainLogo>
 
         <HeaderMainNav>
@@ -403,14 +380,7 @@ export const WithDropdowns: Story = {
       <HeaderMobile>
         <HeaderMobileBar>
           <HeaderMobileLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMobileLogo>
           <HeaderMobileToggle />
         </HeaderMobileBar>
@@ -425,14 +395,7 @@ export const MegaMenu: Story = {
     <HeaderRoot>
       <HeaderMain>
         <HeaderMainLogo>
-          <Logo href="/">
-            <Image
-              src="/YOP_black.svg"
-              alt="Yop Logo"
-              width={81}
-              height={28}
-            />
-          </Logo>
+          <HeaderLogo />
         </HeaderMainLogo>
 
         <HeaderMainNav>
@@ -463,14 +426,7 @@ export const MegaMenu: Story = {
       <HeaderMobile>
         <HeaderMobileBar>
           <HeaderMobileLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMobileLogo>
           <HeaderMobileToggle />
         </HeaderMobileBar>
@@ -503,14 +459,7 @@ export const TransparentHero: Story = {
 
         <HeaderMain>
           <HeaderMainLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMainLogo>
 
           <HeaderMainNav>
@@ -536,14 +485,7 @@ export const TransparentHero: Story = {
         <HeaderMobile>
           <HeaderMobileBar>
             <HeaderMobileLogo>
-              <Logo href="/">
-                <Image
-                  src="/YOP_black.svg"
-                  alt="Yop Logo"
-                  width={81}
-                  height={28}
-                />
-              </Logo>
+              <HeaderLogo />
             </HeaderMobileLogo>
             <HeaderMobileToggle />
           </HeaderMobileBar>
@@ -614,14 +556,7 @@ export const TransparentDarkText: Story = {
 
         <HeaderMain>
           <HeaderMainLogo>
-            <Logo href="/">
-              <Image
-                src="/YOP_black.svg"
-                alt="Yop Logo"
-                width={81}
-                height={28}
-              />
-            </Logo>
+            <HeaderLogo />
           </HeaderMainLogo>
 
           <HeaderMainNav>
@@ -647,14 +582,7 @@ export const TransparentDarkText: Story = {
         <HeaderMobile>
           <HeaderMobileBar>
             <HeaderMobileLogo>
-              <Logo href="/">
-                <Image
-                  src="/YOP_black.svg"
-                  alt="Yop Logo"
-                  width={81}
-                  height={28}
-                />
-              </Logo>
+              <HeaderLogo />
             </HeaderMobileLogo>
             <HeaderMobileToggle />
           </HeaderMobileBar>

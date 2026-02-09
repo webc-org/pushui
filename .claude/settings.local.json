@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(./scripts/release.sh:*)"
+      "Bash(./scripts/release.sh:*)",
+      "Bash(chmod:*)"
     ]
   }
 }
