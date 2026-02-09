@@ -18,6 +18,7 @@ const appearances: LinkAppearance[] = [
   'underline',
   'outline',
   'button',
+  'icon',
 ]
 
 const meta: Meta<typeof Link> = {
@@ -129,6 +130,31 @@ export const Disabled: Story = {
     disabled: true,
     variant: 'primary',
     appearance: 'button',
+  },
+}
+
+export const Icon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      {variants.map((v) => (
+        <Link
+          key={v}
+          href="#"
+          variant={v}
+          appearance="icon"
+          className="icon-search"
+          aria-label={`Search (${v})`}
+        />
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Icon-only links using lucide-static icon font classes. The icon is rendered via CSS; use `aria-label` for accessibility.',
+      },
+    },
   },
 }
 

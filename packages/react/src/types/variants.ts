@@ -12,6 +12,7 @@ export type ActionAppearance =
   | 'underline'
   | 'outline'
   | 'button'
+  | 'icon'
 
 export type HorizontalAlign = 'left' | 'center' | 'right'
 

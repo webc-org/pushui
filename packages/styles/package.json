@@ -1,6 +1,6 @@
 {
   "name": "@pushui/styles",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Push UI design system styles",
   "main": "dist/index.css",
   "files": [
@@ -27,5 +27,8 @@
     "url": "https://github.com/webc-org/pushui.git",
     "directory": "packages/styles"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lucide-static": "^0.563.0"
+  }
 }

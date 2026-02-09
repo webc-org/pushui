@@ -18,6 +18,7 @@ const appearances: ButtonAppearance[] = [
   'underline',
   'outline',
   'button',
+  'icon',
 ]
 
 const meta: Meta<typeof Button> = {
@@ -138,6 +139,55 @@ export const Disabled: Story = {
     disabled: true,
     variant: 'primary',
     appearance: 'button',
+  },
+}
+
+export const Icon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      {variants.map((v) => (
+        <Button
+          key={v}
+          variant={v}
+          appearance="icon"
+          className="icon-search"
+          aria-label={`Search (${v})`}
+        />
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Icon-only buttons using lucide-static icon font classes. The icon is rendered via CSS; use `aria-label` for accessibility.',
+      },
+    },
+  },
+}
+
+export const IconButton: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      {variants.map((v) => (
+        <Button
+          key={v}
+          variant={v}
+          appearance="button"
+          className="icon-search"
+          aria-label={`Search (${v})`}
+          style={{ width: '4rem', padding: 0 }}
+        />
+      ))}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Icon-only buttons with `appearance="button"` styling (background, border-radius). Use inline or utility styles to make them square.',
+      },
+    },
   },
 }
 
