@@ -1,12 +1,15 @@
 import type { ComponentPropsWithRef, ElementType, ReactNode } from 'react'
 
 export type HeaderTextColor = 'light' | 'dark' | undefined
+export type HeaderOverlay = 'light' | 'dark' | undefined
 
 export type HeaderTypes = ComponentPropsWithRef<'header'> & {
   children: ReactNode
   baseId?: string
   transparent?: boolean
   textColor?: HeaderTextColor
+  overlayTop?: HeaderOverlay
+  overlayMain?: HeaderOverlay
 }
 
 export type HeaderTopTypes = ComponentPropsWithRef<'div'> & {

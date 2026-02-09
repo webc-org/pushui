@@ -17,6 +17,8 @@ export function HeaderRoot({
   children,
   className,
   textColor,
+  overlayTop,
+  overlayMain,
   transparent = false,
   ...rest
 }: HeaderTypes) {
@@ -127,6 +129,8 @@ export function HeaderRoot({
           transparent && styles.transparent,
           textColor === 'dark' && styles.textDark,
           textColor === 'light' && styles.textLight,
+          overlayTop && styles[`overlayTop-${overlayTop}`],
+          overlayMain && styles[`overlayMain-${overlayMain}`],
           className
         )}
         {...rest}

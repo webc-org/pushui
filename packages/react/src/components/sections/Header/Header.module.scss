@@ -625,8 +625,6 @@ $tx-color-transparent-dark: var(--color-black);
   }
 
   &.textLight {
-    --t-bg-topbar: #{$bg-color-transparent-topbar-light};
-    --t-bg-main: #{$bg-color-transparent-main-light};
     --t-tx: #{$tx-color-transparent-light};
     --t-bg-hover: #{$bg-color-transparent-hover-light};
     --t-bg-hover-top: #{$bg-color-transparent-hover-light};
@@ -635,13 +633,27 @@ $tx-color-transparent-dark: var(--color-black);
   }
 
   &.textDark {
-    --t-bg-topbar: #{$bg-color-transparent-topbar-dark};
-    --t-bg-main: #{$bg-color-transparent-main-dark};
     --t-tx: #{$tx-color-transparent-dark};
     --t-bg-hover: #{$bg-color-transparent-hover-dark};
     --t-bg-hover-top: #{$bg-color-transparent-hover-dark};
     --t-tx-hover: #{$tx-color-transparent-dark};
     --t-trigger-after: none;
+  }
+
+  &.overlayTop-light {
+    --t-bg-topbar: #{$bg-color-transparent-topbar-light};
+  }
+
+  &.overlayTop-dark {
+    --t-bg-topbar: #{$bg-color-transparent-topbar-dark};
+  }
+
+  &.overlayMain-light {
+    --t-bg-main: #{$bg-color-transparent-main-light};
+  }
+
+  &.overlayMain-dark {
+    --t-bg-main: #{$bg-color-transparent-main-dark};
   }
 
   &.scrolled {
@@ -665,14 +677,6 @@ $tx-color-transparent-dark: var(--color-black);
   &.textLight,
   &.textDark,
   &.scrolled {
-    .topBar {
-      background-color: var(--t-bg-topbar);
-    }
-
-    .main {
-      background-color: var(--t-bg-main);
-    }
-
     .topLink,
     .topTrigger,
     .mainLink,
@@ -709,6 +713,22 @@ $tx-color-transparent-dark: var(--color-black);
       &::after {
         display: var(--t-trigger-after);
       }
+    }
+  }
+
+  &.overlayTop-light,
+  &.overlayTop-dark,
+  &.scrolled {
+    .topBar {
+      background-color: var(--t-bg-topbar);
+    }
+  }
+
+  &.overlayMain-light,
+  &.overlayMain-dark,
+  &.scrolled {
+    .main {
+      background-color: var(--t-bg-main);
     }
   }
 }

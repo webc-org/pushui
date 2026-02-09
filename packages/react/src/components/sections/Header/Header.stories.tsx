@@ -440,7 +440,12 @@ export const MegaMenu: Story = {
 export const TransparentHero: Story = {
   render: () => (
     <>
-      <HeaderRoot transparent textColor="light">
+      <HeaderRoot
+        transparent
+        textColor="light"
+        overlayTop="light"
+        overlayMain="light"
+      >
         <HeaderTop>
           <HeaderTopNav aria-label="main-top-bar">
             <HeaderTopLink asChild>
@@ -537,7 +542,12 @@ export const TransparentHero: Story = {
 export const TransparentDarkText: Story = {
   render: () => (
     <>
-      <HeaderRoot transparent textColor="dark">
+      <HeaderRoot
+        transparent
+        textColor="dark"
+        overlayTop="dark"
+        overlayMain="dark"
+      >
         <HeaderTop>
           <HeaderTopNav aria-label="main-top-bar">
             <HeaderTopLink asChild>
@@ -622,6 +632,102 @@ export const TransparentDarkText: Story = {
           Scroll up and down to see the header transition between
           transparent and solid states. The header becomes solid once you
           scroll past the hero section.
+        </p>
+      </Section>
+    </>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
+
+export const TransparentNoOverlay: Story = {
+  render: () => (
+    <>
+      <HeaderRoot transparent textColor="light">
+        <HeaderTop>
+          <HeaderTopNav aria-label="main-top-bar">
+            <HeaderTopLink asChild>
+              <Link href="/">Help</Link>
+            </HeaderTopLink>
+            <HeaderTopLink asChild>
+              <Link href="/">Contact</Link>
+            </HeaderTopLink>
+          </HeaderTopNav>
+
+          <HeaderTopNav aria-label="locale-top-bar">
+            <HeaderTopDropdown label="EN">
+              <LanguageDropdownContent />
+            </HeaderTopDropdown>
+          </HeaderTopNav>
+        </HeaderTop>
+
+        <HeaderMain>
+          <HeaderMainLogo>
+            <HeaderLogo />
+          </HeaderMainLogo>
+
+          <HeaderMainNav>
+            <HeaderMainLink asChild current>
+              <Link href="/" aria-current="page">
+                Home
+              </Link>
+            </HeaderMainLink>
+            <HeaderMainLink asChild>
+              <Link href="/">Products</Link>
+            </HeaderMainLink>
+            <HeaderMainDropdown label="Solutions">
+              <ProductsDropdown />
+            </HeaderMainDropdown>
+            <HeaderMainLink asChild>
+              <Link href="/">About</Link>
+            </HeaderMainLink>
+          </HeaderMainNav>
+
+          <HeaderActions />
+        </HeaderMain>
+
+        <HeaderMobile>
+          <HeaderMobileBar>
+            <HeaderMobileLogo>
+              <HeaderLogo />
+            </HeaderMobileLogo>
+            <HeaderMobileToggle />
+          </HeaderMobileBar>
+          <MobileMenuContent />
+        </HeaderMobile>
+      </HeaderRoot>
+
+      <Banner
+        backgroundImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80"
+        overlay="dark"
+        horizontalAlign="center"
+        verticalAlign="center"
+        className="h-screen"
+      >
+        <BannerContent textColor="light" textAlign="center">
+          <BannerTitle level="h1">No Overlay Header</BannerTitle>
+          <BannerSubtitle className="mt-1 fs-5">
+            Transparent bars with no background tint
+          </BannerSubtitle>
+          <BannerActions className="mt-5">
+            <Button appearance="button" variant="primary" contrast>
+              Get Started
+            </Button>
+            <Button appearance="outline" variant="default" contrast>
+              Learn More
+            </Button>
+          </BannerActions>
+        </BannerContent>
+      </Banner>
+
+      <Section className="p-8">
+        <SectionHeader>
+          <SectionTitle level="h2">Below the Fold</SectionTitle>
+        </SectionHeader>
+        <p>
+          This story uses textColor=&quot;light&quot; without an overlay,
+          so the header bars are fully transparent with no tint.
         </p>
       </Section>
     </>
