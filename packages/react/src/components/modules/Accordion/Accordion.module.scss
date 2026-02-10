@@ -1,3 +1,5 @@
+@use './styles/mixins/mq' as *;
+
 $bg-color-accordion: var(--color-white);
 $bd-color-accordion: var(--color-grey-5);
 $tx-color-trigger: var(--color-black);
@@ -37,11 +39,15 @@ $bg-color-accordion-inner-expanded: var(--color-grey-5);
   display: flex;
   font-weight: var(--font-weight-strong);
   justify-content: space-between;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1rem;
   text-align: left;
   text-decoration: none;
   transition: background-color 0.15s ease;
   width: 100%;
+
+  @include mq-md {
+    padding: 1.5rem 2rem;
+  }
 
   &.expanded,
   &:hover,
@@ -85,6 +91,10 @@ $bg-color-accordion-inner-expanded: var(--color-grey-5);
 
   .contentExpanded & {
     border-color: $bg-color-accordion-inner-expanded;
-    padding: 2rem;
+    padding: 2rem 1rem;
+
+    @include mq-md {
+      padding: 2rem;
+    }
   }
 }

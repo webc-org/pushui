@@ -58,10 +58,9 @@ function Footer({ strings, privacyPolicyUrl, termsUrl }: FooterProps) {
       {privacyPolicyUrl && (
         <Link
           href={privacyPolicyUrl}
-          appearance="underline"
           target="_blank"
           rel="noopener"
-          className="fs-2"
+          className="fs-2 fs-md-3"
         >
           {strings.privacyPolicyLabel}
         </Link>
@@ -72,10 +71,9 @@ function Footer({ strings, privacyPolicyUrl, termsUrl }: FooterProps) {
       {termsUrl && (
         <Link
           href={termsUrl}
-          appearance="underline"
           target="_blank"
           rel="noopener"
-          className="fs-2"
+          className="fs-2 fs-md-3"
         >
           {strings.termsLabel}
         </Link>
@@ -120,6 +118,7 @@ function Intro({
           {strings.necessaryOnly}
         </Button>
         <Button
+          className={styles.button}
           appearance="outline"
           variant="default"
           onClick={onMoreChoices}

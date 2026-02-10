@@ -1,5 +1,5 @@
-$tx-color-base-link: var(--color-primary-2);
-$tx-color-base-link-active: var(--color-primary-1);
+$tx-color-base-link: var(--color-black);
+$tx-color-base-link-active: var(--color-primary-2);
 $tx-color-code: var(--color-white);
 $bg-color-code: var(--color-black);
 $bg-color-note: var(--color-primary-3);
@@ -29,7 +29,6 @@ $heading-sizes: (
   color: $tx-color-base-link;
   cursor: pointer;
   font-size: var(--font-size-4);
-  font-weight: var(--font-weight-strong);
   outline: none;
   text-decoration: underline;
 
