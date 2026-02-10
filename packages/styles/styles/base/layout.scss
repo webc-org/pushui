@@ -53,6 +53,8 @@ body {
     }
   }
 
+  // Doubled selector is an intentional specificity hack
+  // to override .with-mobile-nav / .with-main-nav / .with-top-nav padding
   &.header-transparent.header-transparent {
     padding-top: 0;
 

@@ -63,10 +63,7 @@ $heading-sizes: (
 }
 
 @mixin base-keyboard {
-  background-color: $bg-color-code;
-  border-radius: var(--radius-2);
-  color: $tx-color-code;
-  padding: 0.5rem;
+  @include base-code-inline;
 }
 
 @mixin base-note {

@@ -3,7 +3,7 @@ $bg-color-form-input-placeholder: var(--color-grey-2);
 $bg-color-form-input-active: var(--color-primary-2);
 $bg-color-form-input-disabled: var(--color-grey-6);
 $bd-color-form-input: var(--color-grey-4);
-$tx-color-form-input: ar(--color-black);
+$tx-color-form-input: var(--color-black);
 $tx-color-label: var(--color-grey-2);
 
 @mixin form-wrapper {

@@ -8,27 +8,9 @@ $sizes: 1, 2, 3, 4, 5, 6, 7, 8, 9;
   }
 }
 
-@include mq-sm {
+@include responsive using ($bp) {
   @each $size in $sizes {
-    .fs-sm-#{$size} { font-size: var(--font-size-#{$size}); }
-  }
-}
-
-@include mq-md {
-  @each $size in $sizes {
-    .fs-md-#{$size} { font-size: var(--font-size-#{$size}); }
-  }
-}
-
-@include mq-lg {
-  @each $size in $sizes {
-    .fs-lg-#{$size} { font-size: var(--font-size-#{$size}); }
-  }
-}
-
-@include mq-xl {
-  @each $size in $sizes {
-    .fs-xl-#{$size} { font-size: var(--font-size-#{$size}); }
+    .fs-#{$bp}-#{$size} { font-size: var(--font-size-#{$size}); }
   }
 }
 

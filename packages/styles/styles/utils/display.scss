@@ -16,26 +16,8 @@ $displays: (
   }
 }
 
-@include mq-sm {
+@include responsive using ($bp) {
   @each $name, $value in $displays {
-    .d-sm-#{$name} { display: $value; }
-  }
-}
-
-@include mq-md {
-  @each $name, $value in $displays {
-    .d-md-#{$name} { display: $value; }
-  }
-}
-
-@include mq-lg {
-  @each $name, $value in $displays {
-    .d-lg-#{$name} { display: $value; }
-  }
-}
-
-@include mq-xl {
-  @each $name, $value in $displays {
-    .d-xl-#{$name} { display: $value; }
+    .d-#{$bp}-#{$name} { display: $value; }
   }
 }
