@@ -79,7 +79,7 @@ export function Modal({
 
   // Escape key
   useEffect(() => {
-    if (!active || removing) return
+    if (!active || removing || hideCloseButton) return
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -89,7 +89,7 @@ export function Modal({
 
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [active, removing])
+  }, [active, removing, hideCloseButton])
 
   // Auto-close duration
   useEffect(() => {

@@ -149,6 +149,7 @@ export function GDPRProvider({
       id,
       title: strings.title,
       width: modalWidth,
+      hideCloseButton: true,
       children: (
         <GDPRModal
           categories={categories}
