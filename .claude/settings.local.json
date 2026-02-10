@@ -3,7 +3,12 @@
     "allow": [
       "Bash(./scripts/release.sh:*)",
       "Bash(chmod:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm --filter @pushui/storybook-react dev:*)",
+      "Bash(python3:*)",
+      "Bash(git -C /Users/charles/Web/pushui remote -v)"
     ]
   }
 }

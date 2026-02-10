@@ -7,7 +7,8 @@ Multi-framework UI component library with shared design system.
 | Package | Description | Status |
 |---------|-------------|--------|
 | `@pushui/styles` | SCSS design system, CSS variables, utility classes | Ready |
-| `@pushui/react` | React component library (48 components) | Ready |
+| `@pushui/react` | React component library (49 components) | Ready |
+| `@pushui/svelte` | Svelte component library | Planned |
 | `@pushui/vue` | Vue component library | Planned |
 | `@pushui/angular` | Angular component library | Planned |
 
@@ -39,11 +40,15 @@ import '@pushui/react/styles.css'
 | [testing.md](testing.md) | Test guidelines |
 | [development.md](development.md) | Commands, package exports, SSR |
 
+## Demo
+
+[Storybook](https://webc-org.github.io/pushui/)
+
 ## Quick Start
 
 ```bash
 # Clone
-git clone https://github.com/webc-org/pushui.git
+git clone https://github.com/webc-org/yop.git pushui
 cd pushui
 
 # Install

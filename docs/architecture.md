@@ -21,7 +21,8 @@ pushui/
 │           ├── types/       # Shared TypeScript types
 │           └── index.ts     # Library entry point
 │
-├── apps/                    # (future) Storybook, docs site
+├── apps/
+│   └── storybook-react/     # Storybook for @pushui/react
 ├── docs/                    # Documentation
 ├── turbo.json               # Turborepo config
 └── pnpm-workspace.yaml      # pnpm workspaces
@@ -29,10 +30,15 @@ pushui/
 
 ## Packages
 
-| Package | Description | Entry |
-|---------|-------------|-------|
-| `@pushui/styles` | SCSS design system, CSS variables, utility classes | `dist/index.css` |
-| `@pushui/react` | React components with CSS Modules | `dist/index.mjs` |
+| Package | Description | Entry | Status |
+|---------|-------------|-------|--------|
+| `@pushui/styles` | Shared SCSS design system, CSS variables, utility classes | `dist/index.css` | Ready |
+| `@pushui/react` | React components with CSS Modules | `dist/index.mjs` | Ready |
+| `@pushui/svelte` | Svelte components | — | Planned |
+| `@pushui/vue` | Vue components | — | Planned |
+| `@pushui/angular` | Angular components | — | Planned |
+
+`@pushui/styles` is shared across all framework packages — each framework package imports its SCSS mixins and variables.
 
 ## Path Aliases (packages/react)
 

@@ -5,10 +5,12 @@
 ### Root (monorepo)
 
 ```bash
+pnpm dev           # Run Storybook (apps/storybook-react)
 pnpm build         # Build all packages (via turborepo)
 pnpm test          # Run all tests
-pnpm lint          # Biome check all packages
+pnpm lint          # Biome + Stylelint
 pnpm clean         # Clean all dist folders
+pnpm pushui "msg"  # Lint, test, build, storybook, version bump, commit, push
 ```
 
 ### Package-specific
@@ -25,7 +27,8 @@ pnpm --filter @pushui/styles build    # Build styles package
 | Package                | Purpose                       |
 |------------------------|-------------------------------|
 | `clsx`                 | Conditional className utility |
-| `embla-carousel-react` | Carousel functionality        |
+| `embla-carousel`       | Carousel core                 |
+| `embla-carousel-react` | Carousel React bindings       |
 | `lucide-react`         | Icon set                      |
 
 ## Package Exports
