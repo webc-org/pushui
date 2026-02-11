@@ -16,10 +16,9 @@ $tx-color-transparent-light: var(--color-white);
 $tx-color-transparent-dark: var(--color-black);
 $bg-color-topbar: var(--color-grey-7);
 $bg-color-topbar-transparent-light: var(--color-white-20);
-$bg-color-topbar-transparent-dark: var(--color-black-10);
-$bd-color-topbar: var(--color-grey-6);
+$bg-color-topbar-transparent-dark: var(--color-black-20);
 $bg-color-mainbar-transparent-light: var(--color-white-10);
-$bg-color-mainbar-transparent-dark: var(--color-black-05);
+$bg-color-mainbar-transparent-dark: var(--color-black-10);
 $bg-color-mainbar-dropdown: var(--color-white);
 $bg-color-mainbar-link-active: var(--color-grey-6);
 
@@ -145,8 +144,8 @@ $bg-color-mainbar-link-active: var(--color-grey-6);
 
 .topDropdownInner {
   background-color: $bg-color-topbar;
-  border: .1rem solid $bd-color-topbar;
   border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -377,6 +376,7 @@ $bg-color-mainbar-link-active: var(--color-grey-6);
 .mainDropdownInner {
   background: $bg-color-mainbar-dropdown;
   border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
   color: $tx-color-link;
   padding: 2rem;
 }

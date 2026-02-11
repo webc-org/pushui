@@ -5,9 +5,9 @@ $track-height: 2.4rem;
 $thumb-size: 1.8rem;
 $thumb-margin: 0.3rem;
 $bg-color-track: var(--color-grey-4);
+$bg-color-track-focus: var(--color-grey-3);
 $bg-color-track-active: var(--color-primary-2);
 $bg-color-thumb: var(--color-white);
-$tx-color-label: var(--color-black);
 
 .wrapper {
   align-items: center;
@@ -41,14 +41,18 @@ $tx-color-label: var(--color-black);
   width: 0;
 
   &:focus-visible + .track {
-    box-shadow: 0 0 0 0.2rem var(--color-primary-2);
+    background-color: $bg-color-track-focus;
+
+    &.checked {
+      background-color: $bg-color-track-active;
+    }
   }
 }
 
 .thumb {
   background-color: $bg-color-thumb;
   border-radius: 50%;
-  box-shadow: 0 0.1rem 0.3rem var(--color-black-20);
+  box-shadow: var(--shadow-1);
   height: $thumb-size;
   transform: translateX(0);
   transition: transform var(--transition-default);
@@ -57,8 +61,4 @@ $tx-color-label: var(--color-black);
   .checked & {
     transform: translateX($track-width - $thumb-size - $thumb-margin * 2);
   }
-}
-
-.label {
-  color: $tx-color-label;
 }

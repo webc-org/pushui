@@ -7,7 +7,7 @@ $rail-size-sm: 0.3rem;
 $rail-size-md: 0.4rem;
 $label-offset: 1rem;
 
-
+// COLORS
 $bg-color-rail: var(--color-grey-5);
 $bg-color-track: var(--color-primary-2);
 $bg-color-track-inverted: var(--color-grey-4);
@@ -51,7 +51,7 @@ $bd-color-label-after: var(--color-grey-1);
   background-color: $bg-color-thumb;
   border: 0.2rem solid $bd-color-thumb;
   border-radius: 50%;
-  box-shadow: 0 0.2rem 0.4rem var(--color-black-20);
+  box-shadow: var(--shadow-1);
   cursor: grab;
   height: $thumb-size-md;
   position: absolute;
@@ -60,22 +60,6 @@ $bd-color-label-after: var(--color-grey-1);
     transform var(--transition-default);
   width: $thumb-size-md;
   z-index: 1;
-}
-
-.thumb:hover {
-  box-shadow:
-    0 0.2rem 0.4rem var(--color-black-20),
-    0 0 0 0.8rem var(--color-primary-3);
-}
-
-.thumb:focus-visible {
-  box-shadow:
-    0 0.2rem 0.4rem var(--color-black-20),
-    0 0 0 0.3rem var(--color-primary-2);
-}
-
-.thumb.active {
-  cursor: grabbing;
 }
 
 .valueLabel {
