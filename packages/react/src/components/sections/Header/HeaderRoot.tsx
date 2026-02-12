@@ -16,10 +16,9 @@ export function HeaderRoot({
   baseId,
   children,
   className,
+  overlay = false,
   textColor,
-  overlayTop,
-  overlayMain,
-  transparent = false,
+  style,
   ...rest
 }: HeaderTypes) {
   const [isOpen, setIsOpen] = useState(false)
@@ -82,8 +81,6 @@ export function HeaderRoot({
   }, [isOpen, mobileToggleId])
 
   useEffect(() => {
-    if (!transparent) return
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
@@ -91,9 +88,7 @@ export function HeaderRoot({
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [transparent])
-
-  const isTransparent = transparent && !isScrolled
+  }, [])
 
   const value = useMemo(
     () => ({
@@ -103,7 +98,8 @@ export function HeaderRoot({
       mobileToggleId,
       registerNav,
       getNavCount,
-      isTransparent,
+      isScrolled,
+      overlay,
       textColor,
     }),
     [
@@ -113,7 +109,8 @@ export function HeaderRoot({
       toggle,
       registerNav,
       getNavCount,
-      isTransparent,
+      isScrolled,
+      overlay,
       textColor,
     ]
   )
@@ -125,14 +122,11 @@ export function HeaderRoot({
         data-header-root
         className={clsx(
           styles.header,
-          isScrolled && styles.scrolled,
-          transparent && styles.transparent,
           textColor === 'dark' && styles.textDark,
           textColor === 'light' && styles.textLight,
-          overlayTop && styles[`overlayTop-${overlayTop}`],
-          overlayMain && styles[`overlayMain-${overlayMain}`],
           className
         )}
+        style={style}
         {...rest}
       >
         <div

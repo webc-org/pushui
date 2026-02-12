@@ -1,20 +1,19 @@
 import type { ComponentPropsWithRef, ElementType, ReactNode } from 'react'
 
 export type HeaderTextColor = 'light' | 'dark' | undefined
-export type HeaderOverlay = 'light' | 'dark' | undefined
 
 export type HeaderTypes = ComponentPropsWithRef<'header'> & {
   children: ReactNode
   baseId?: string
-  transparent?: boolean
+  overlay?: boolean
   textColor?: HeaderTextColor
-  overlayTop?: HeaderOverlay
-  overlayMain?: HeaderOverlay
 }
 
 export type HeaderTopTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   containerClassName?: string
+  bgColor?: string
+  bgOpacity?: number
 }
 
 export type HeaderTopNavTypes = ComponentPropsWithRef<'nav'> & {
@@ -33,6 +32,8 @@ export type HeaderTopDropdownTypes = ComponentPropsWithRef<'div'> & {
 export type HeaderMainTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   containerClassName?: string
+  bgColor?: string
+  bgOpacity?: number
 }
 
 export type HeaderMainLogoTypes = ComponentPropsWithRef<'div'> & {
@@ -63,6 +64,8 @@ export type HeaderMobileLogoTypes = ComponentPropsWithRef<'div'> & {
 
 export type HeaderMobileBarTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
+  bgColor?: string
+  bgOpacity?: number
 }
 
 export type HeaderMobileToggleTypes = Omit<
@@ -141,6 +144,7 @@ export type HeaderContextTypes = {
   mobileToggleId: string
   registerNav: (type: HeaderNavTypes) => number
   getNavCount: (type: HeaderNavTypes) => number
-  isTransparent: boolean
+  isScrolled: boolean
+  overlay: boolean
   textColor: HeaderTextColor
 }

@@ -308,15 +308,15 @@ Add `header-transparent` class to `<body>` to remove default header padding:
 
 ### Context
 
-`useHeader()` exposes `isTransparent` and `textColor` for consumer-side logic (e.g. logo swap):
+`useHeader()` exposes `isScrolled` and `textColor` for consumer-side logic (e.g. logo swap):
 
 ```tsx
-const { isTransparent, textColor } = useHeader()
+const { isScrolled, textColor } = useHeader()
 ```
 
 | Value | Type | Description |
 |-------|------|-------------|
-| `isTransparent` | `boolean` | `true` when transparent and not scrolled |
+| `isScrolled` | `boolean` | `true` when page has scrolled past threshold |
 | `textColor` | `'light' \| 'dark'` | Current text color variant |
 
 ## Behavior
