@@ -9,26 +9,24 @@ export function HeaderTop({
   children,
   className,
   containerClassName,
-  bgColor,
-  bgOpacity,
+  bgColor = 'var(--color-grey-7)',
+  bgOpacity = 1,
   style,
   ...rest
 }: HeaderTopTypes) {
   const { isScrolled } = useHeader()
-  const opacity =
-    bgOpacity !== undefined ? (isScrolled ? 1 : bgOpacity) : undefined
+  const opacity = isScrolled ? 1 : bgOpacity
+  const customStyles = {
+    ...style,
+    '--header-top-bg': bgColor,
+    '--header-top-opacity': opacity,
+  } as CSSProperties
 
   return (
     <div
       ref={ref}
+      style={customStyles}
       className={clsx(styles.topBar, className)}
-      style={
-        {
-          ...style,
-          ...(bgColor && { '--header-top-bg': bgColor }),
-          ...(opacity !== undefined && { '--bar-bg-opacity': opacity }),
-        } as CSSProperties
-      }
       {...rest}
     >
       <div className={clsx(styles.topContainer, containerClassName)}>

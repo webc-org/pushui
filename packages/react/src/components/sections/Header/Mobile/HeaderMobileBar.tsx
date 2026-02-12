@@ -8,26 +8,24 @@ export function HeaderMobileBar({
   ref,
   children,
   className,
-  bgColor,
-  bgOpacity,
+  bgColor = 'var(--color-white)',
+  bgOpacity = 1,
   style,
   ...rest
 }: HeaderMobileBarTypes) {
   const { isScrolled } = useHeader()
-  const opacity =
-    bgOpacity !== undefined ? (isScrolled ? 1 : bgOpacity) : undefined
+  const opacity = isScrolled ? 1 : bgOpacity
+  const customStyles = {
+    ...style,
+    '--header-mobile-bg': bgColor,
+    '--header-mobile-opacity': opacity,
+  } as CSSProperties
 
   return (
     <div
       ref={ref}
+      style={customStyles}
       className={clsx(styles.mobileBar, className)}
-      style={
-        {
-          ...style,
-          ...(bgColor && { '--header-main-bg': bgColor }),
-          ...(opacity !== undefined && { '--bar-bg-opacity': opacity }),
-        } as CSSProperties
-      }
       {...rest}
     >
       {children}

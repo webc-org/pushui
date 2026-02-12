@@ -43,7 +43,7 @@
     content: '';
     height: 100%;
     left: 0;
-    opacity: var(--bar-bg-opacity, 1);
+    opacity: var(--header-top-opacity, 1);
     position: absolute;
     top: 0;
     transition: opacity var(--transition-default);
@@ -541,10 +541,10 @@
   position: relative;
 
   &::before {
-    background-color: var(--header-main-bg);
+    background-color: var(--header-mobile-bg);
     content: '';
     inset: 0;
-    opacity: var(--bar-bg-opacity, 1);
+    opacity: var(--header-mobile-opacity);
     position: absolute;
     transition: opacity var(--transition-default);
   }
