@@ -14,6 +14,7 @@ export type HeaderTopTypes = ComponentPropsWithRef<'div'> & {
   containerClassName?: string
   bgColor?: string
   bgOpacity?: string
+  textColor?: HeaderTextColor
 }
 
 export type HeaderTopNavTypes = ComponentPropsWithRef<'nav'> & {
@@ -34,6 +35,7 @@ export type HeaderMainTypes = ComponentPropsWithRef<'div'> & {
   containerClassName?: string
   bgColor?: string
   bgOpacity?: string
+  textColor?: HeaderTextColor
 }
 
 export type HeaderMainLogoTypes = ComponentPropsWithRef<'div'> & {
@@ -66,6 +68,7 @@ export type HeaderMobileBarTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   bgColor?: string
   bgOpacity?: string
+  textColor?: HeaderTextColor
 }
 
 export type HeaderMobileToggleTypes = Omit<
@@ -80,6 +83,8 @@ export type HeaderMobileToggleTypes = Omit<
 export type HeaderMobileMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   'aria-label'?: string
+  bgColor?: string
+  textColor?: HeaderTextColor
 }
 
 export type HeaderMobileTopTypes = ComponentPropsWithRef<'div'> & {

@@ -238,6 +238,7 @@ Top utility bar (help links, language selector).
 | `containerClassName` | `string` | - | Inner container class |
 | `bgColor` | `string` | `'var(--color-grey-7)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
 
 ### HeaderMain
 
@@ -249,6 +250,7 @@ Main navigation bar with logo and links.
 | `containerClassName` | `string` | - | Inner container class |
 | `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
 
 ### HeaderMobileBar
 
@@ -259,6 +261,18 @@ Mobile bar containing logo and toggle.
 | `children` | `ReactNode` | - | Logo and toggle |
 | `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
+
+### HeaderMobileMenu
+
+Slide-out mobile navigation panel.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Menu content |
+| `aria-label` | `string` | `'Mobile navigation'` | Accessible label |
+| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
+| `textColor` | `'light' \| 'dark'` | - | Text/icon color |
 
 ### HeaderMainDropdown
 
@@ -304,16 +318,19 @@ Use `overlay` and `textColor` to float the header over hero content. Each bar co
 
 ```tsx
 <HeaderRoot isOverlay textColor="light">
-  <HeaderTop bgColor="#111" bgOpacity="0.2">
+  <HeaderTop bgColor="#111" bgOpacity="0.2" textColor="light">
     {/* top bar */}
   </HeaderTop>
-  <HeaderMain bgColor="#222" bgOpacity="0.2">
+  <HeaderMain bgColor="#222" bgOpacity="0.2" textColor="light">
     {/* main nav */}
   </HeaderMain>
   <HeaderMobile>
-    <HeaderMobileBar bgColor="#222" bgOpacity="1">
+    <HeaderMobileBar bgColor="#222" bgOpacity="1" textColor="light">
       {/* mobile bar */}
     </HeaderMobileBar>
+    <HeaderMobileMenu bgColor="#333">
+      {/* mobile menu with custom bg */}
+    </HeaderMobileMenu>
   </HeaderMobile>
 </HeaderRoot>
 

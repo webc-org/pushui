@@ -592,17 +592,17 @@
     color: var(--color-primary-2);
   }
 
-  .textLight .mobileBar & {
+  .mobileBar.textLight & {
     color: var(--color-white);
   }
 
-  .textDark .mobileBar & {
+  .mobileBar.textDark & {
     color: var(--color-black);
   }
 }
 
 .mobileMenu {
-  background-color: var(--header-main-bg);
+  background-color: var(--header-mobile-menu-bg, var(--color-white));
   display: flex;
   flex-direction: column;
   gap: 2rem;

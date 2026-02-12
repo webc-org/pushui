@@ -11,10 +11,12 @@ export function HeaderMain({
   containerClassName,
   bgColor = 'var(--color-white)',
   bgOpacity = '1',
+  textColor: textColorProp,
   style,
   ...rest
 }: HeaderMainTypes) {
-  const { isScrolled } = useHeader()
+  const { isScrolled, textColor: contextTextColor } = useHeader()
+  const textColor = textColorProp ?? contextTextColor
   const opacity = isScrolled ? '1' : bgOpacity
   const shadow = isScrolled || opacity === '1' ? 'var(--shadow-1)' : 'none'
   const customStyles = {
@@ -28,7 +30,12 @@ export function HeaderMain({
     <div
       ref={ref}
       style={customStyles}
-      className={clsx(styles.mainBar, className)}
+      className={clsx(
+        styles.mainBar,
+        textColor === 'dark' && styles.textDark,
+        textColor === 'light' && styles.textLight,
+        className
+      )}
       {...rest}
     >
       <div className={clsx(styles.mainContainer, containerClassName)}>

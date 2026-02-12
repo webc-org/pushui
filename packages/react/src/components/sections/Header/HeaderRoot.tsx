@@ -120,12 +120,7 @@ export function HeaderRoot({
       <header
         ref={ref}
         data-header-root
-        className={clsx(
-          styles.header,
-          textColor === 'dark' && styles.textDark,
-          textColor === 'light' && styles.textLight,
-          className
-        )}
+        className={clsx(styles.header, className)}
         style={style}
         {...rest}
       >

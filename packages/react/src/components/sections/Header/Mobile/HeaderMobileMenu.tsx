@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { type CSSProperties, useCallback, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
@@ -9,9 +9,15 @@ export function HeaderMobileMenu({
   children,
   className,
   'aria-label': ariaLabel = 'Mobile navigation',
+  bgColor,
+  textColor,
+  style,
   ...rest
 }: HeaderMobileMenuTypes) {
   const { isOpen, mobileMenuId } = useHeader()
+  const customStyles = bgColor
+    ? ({ ...style, '--header-mobile-menu-bg': bgColor } as CSSProperties)
+    : style
   const menuRef = useRef<HTMLElement | null>(null)
 
   const setMenuRef = useCallback((node: HTMLElement | null) => {
@@ -72,9 +78,12 @@ export function HeaderMobileMenu({
       id={mobileMenuId}
       role="dialog"
       aria-label={ariaLabel}
+      style={customStyles}
       className={clsx(
         styles.mobileMenu,
         isOpen && styles.mobileMenuOpen,
+        textColor === 'dark' && styles.textDark,
+        textColor === 'light' && styles.textLight,
         className
       )}
       {...rest}

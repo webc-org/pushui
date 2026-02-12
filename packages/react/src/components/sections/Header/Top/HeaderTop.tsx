@@ -11,10 +11,12 @@ export function HeaderTop({
   containerClassName,
   bgColor = 'var(--color-grey-7)',
   bgOpacity = '1',
+  textColor: textColorProp,
   style,
   ...rest
 }: HeaderTopTypes) {
-  const { isScrolled } = useHeader()
+  const { isScrolled, textColor: contextTextColor } = useHeader()
+  const textColor = textColorProp ?? contextTextColor
   const opacity = isScrolled ? '1' : bgOpacity
   const customStyles = {
     ...style,
@@ -26,7 +28,12 @@ export function HeaderTop({
     <div
       ref={ref}
       style={customStyles}
-      className={clsx(styles.topBar, className)}
+      className={clsx(
+        styles.topBar,
+        textColor === 'dark' && styles.textDark,
+        textColor === 'light' && styles.textLight,
+        className
+      )}
       {...rest}
     >
       <div className={clsx(styles.topContainer, containerClassName)}>

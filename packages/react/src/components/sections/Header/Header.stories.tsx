@@ -433,7 +433,7 @@ export const DarkHero: Story = {
   render: () => (
     <>
       <HeaderRoot isOverlay textColor="light">
-        <HeaderTop bgColor="#111" bgOpacity="0.2">
+        <HeaderTop bgColor="#111" bgOpacity="0.2" textColor="light">
           <HeaderTopNav aria-label="main-top-bar">
             <HeaderTopLink asChild>
               <Link href="/">Help</Link>
@@ -450,7 +450,7 @@ export const DarkHero: Story = {
           </HeaderTopNav>
         </HeaderTop>
 
-        <HeaderMain bgColor="#222" bgOpacity="0.2">
+        <HeaderMain bgColor="#222" bgOpacity="0.2" textColor="light">
           <HeaderMainLogo>
             <HeaderLogo />
           </HeaderMainLogo>
@@ -476,7 +476,7 @@ export const DarkHero: Story = {
         </HeaderMain>
 
         <HeaderMobile>
-          <HeaderMobileBar bgColor="#222" bgOpacity="1">
+          <HeaderMobileBar bgColor="#222" bgOpacity="1" textColor="light">
             <HeaderMobileLogo>
               <HeaderLogo />
             </HeaderMobileLogo>
@@ -530,7 +530,11 @@ export const LightHero: Story = {
   render: () => (
     <>
       <HeaderRoot isOverlay textColor="dark">
-        <HeaderTop bgColor="var(--color-grey-7)" bgOpacity="0.2">
+        <HeaderTop
+          bgColor="var(--color-grey-7)"
+          bgOpacity="0.2"
+          textColor="dark"
+        >
           <HeaderTopNav aria-label="main-top-bar">
             <HeaderTopLink asChild>
               <Link href="/">Help</Link>
@@ -547,7 +551,11 @@ export const LightHero: Story = {
           </HeaderTopNav>
         </HeaderTop>
 
-        <HeaderMain bgColor="var(--color-white)" bgOpacity="0.2">
+        <HeaderMain
+          bgColor="var(--color-white)"
+          bgOpacity="0.2"
+          textColor="dark"
+        >
           <HeaderMainLogo>
             <HeaderLogo />
           </HeaderMainLogo>
@@ -573,7 +581,11 @@ export const LightHero: Story = {
         </HeaderMain>
 
         <HeaderMobile>
-          <HeaderMobileBar bgColor="var(--color-white)" bgOpacity="1">
+          <HeaderMobileBar
+            bgColor="var(--color-white)"
+            bgOpacity="1"
+            textColor="dark"
+          >
             <HeaderMobileLogo>
               <HeaderLogo />
             </HeaderMobileLogo>

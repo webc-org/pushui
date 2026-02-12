@@ -10,10 +10,12 @@ export function HeaderMobileBar({
   className,
   bgColor = 'var(--color-white)',
   bgOpacity = '1',
+  textColor: textColorProp,
   style,
   ...rest
 }: HeaderMobileBarTypes) {
-  const { isScrolled } = useHeader()
+  const { isScrolled, textColor: contextTextColor } = useHeader()
+  const textColor = textColorProp ?? contextTextColor
   const opacity = isScrolled ? '1' : bgOpacity
   const customStyles = {
     ...style,
@@ -25,7 +27,12 @@ export function HeaderMobileBar({
     <div
       ref={ref}
       style={customStyles}
-      className={clsx(styles.mobileBar, className)}
+      className={clsx(
+        styles.mobileBar,
+        textColor === 'dark' && styles.textDark,
+        textColor === 'light' && styles.textLight,
+        className
+      )}
       {...rest}
     >
       {children}
