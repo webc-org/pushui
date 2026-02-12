@@ -75,13 +75,13 @@ Placeholder for logo during loading states.
 
 ```tsx
 <HeaderRoot>
-  <HeaderMain>
-    <HeaderMainLogo>
+  <MainMenu>
+    <MainMenuLogo>
       <Logo href="/">
         <img src="/logo.svg" alt="Company" />
       </Logo>
-    </HeaderMainLogo>
-  </HeaderMain>
+    </MainMenuLogo>
+  </MainMenu>
 </HeaderRoot>
 ```
 

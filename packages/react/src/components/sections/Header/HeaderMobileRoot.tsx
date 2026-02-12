@@ -1,13 +1,13 @@
 import clsx from 'clsx'
-import styles from '../Header.module.scss'
-import type { HeaderMobileTypes } from '../Header.types'
+import styles from './Header.module.scss'
+import type { HeaderMobileRootTypes } from './Header.types'
 
-export function HeaderMobile({
+export function HeaderMobileRoot({
   ref,
   children,
   className,
   ...rest
-}: HeaderMobileTypes) {
+}: HeaderMobileRootTypes) {
   return (
     <div ref={ref} className={clsx(styles.mobile, className)} {...rest}>
       {children}

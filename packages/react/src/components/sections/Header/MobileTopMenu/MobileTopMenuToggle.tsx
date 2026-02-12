@@ -3,16 +3,16 @@ import { Button } from 'components'
 import { Menu, X } from 'lucide-react'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
-import type { HeaderMobileToggleTypes } from '../Header.types'
+import type { MobileTopMenuToggleTypes } from '../Header.types'
 
-export function HeaderMobileToggle({
+export function MobileTopMenuToggle({
   ref,
   label,
   closeLabel = 'Close',
   menuLabel = 'Menu',
   className,
   ...rest
-}: HeaderMobileToggleTypes) {
+}: MobileTopMenuToggleTypes) {
   const { isOpen, toggle, mobileMenuId, mobileToggleId } = useHeader()
 
   return (
@@ -24,7 +24,7 @@ export function HeaderMobileToggle({
       aria-expanded={isOpen}
       aria-controls={mobileMenuId}
       aria-label={label || (isOpen ? closeLabel : menuLabel)}
-      className={clsx(styles.mobileToggle, className)}
+      className={clsx(styles.mobileTopMenuToggle, className)}
       {...rest}
     >
       {isOpen ? (

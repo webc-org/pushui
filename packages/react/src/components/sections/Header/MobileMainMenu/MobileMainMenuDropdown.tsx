@@ -3,16 +3,16 @@ import clsx from 'clsx'
 import { Button } from 'components'
 import { ChevronDown } from 'lucide-react'
 import styles from '../Header.module.scss'
-import type { HeaderMobileDropdownTypes } from '../Header.types'
+import type { MobileMainMenuDropdownTypes } from '../Header.types'
 
-export function HeaderMobileDropdown({
+export function MobileMainMenuDropdown({
   ref,
   children,
   label,
   baseId,
   className,
   ...rest
-}: HeaderMobileDropdownTypes) {
+}: MobileMainMenuDropdownTypes) {
   const [isExpanded, setIsExpanded] = useState(false)
   const generatedId = useId()
   const id = baseId || generatedId
@@ -28,7 +28,7 @@ export function HeaderMobileDropdown({
   return (
     <div
       ref={ref}
-      className={clsx(styles.mobileDropdownWrapper, className)}
+      className={clsx(styles.mobileMainMenuDropdownWrapper, className)}
       {...rest}
     >
       <Button
@@ -36,7 +36,7 @@ export function HeaderMobileDropdown({
         aria-expanded={isExpanded}
         aria-controls={dropdownId}
         className={clsx(
-          styles.mobileDropdownTrigger,
+          styles.mobileMainMenuDropdownTrigger,
           isExpanded && styles.isOpen
         )}
         onClick={() => setIsExpanded((prev) => !prev)}
@@ -57,11 +57,13 @@ export function HeaderMobileDropdown({
         id={dropdownId}
         ref={dropdownRef}
         className={clsx(
-          styles.mobileDropdown,
+          styles.mobileMainMenuDropdown,
           isExpanded && styles.isOpen
         )}
       >
-        <div className={styles.mobileDropdownInner}>{children}</div>
+        <div className={styles.mobileMainMenuDropdownInner}>
+          {children}
+        </div>
       </div>
     </div>
   )

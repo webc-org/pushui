@@ -9,29 +9,29 @@ import {
   // Root
   HeaderRoot,
   // Top bar
-  HeaderTop,
-  HeaderTopNav,
-  HeaderTopLink,
-  HeaderTopDropdown,
-  HeaderTopDropdownLink,
+  TopMenu,
+  TopMenuNav,
+  TopMenuLink,
+  TopMenuDropdown,
+  TopMenuDropdownLink,
   // Main navigation
-  HeaderMain,
-  HeaderMainLogo,
-  HeaderMainNav,
-  HeaderMainLink,
-  HeaderMainDropdown,
-  HeaderMainDropdownLink,
+  MainMenu,
+  MainMenuLogo,
+  MainMenuNav,
+  MainMenuLink,
+  MainMenuDropdown,
+  MainMenuDropdownLink,
   // Mobile
-  HeaderMobile,
-  HeaderMobileBar,
-  HeaderMobileLogo,
-  HeaderMobileToggle,
-  HeaderMobileMenu,
-  HeaderMobileTop,
-  HeaderMobileNav,
-  HeaderMobileLink,
-  HeaderMobileDropdown,
-  HeaderMobileDropdownLink,
+  HeaderMobileRoot,
+  MobileTopMenu,
+  MobileTopMenuLogo,
+  MobileTopMenuToggle,
+  MobileMainMenu,
+  MobileMainMenuTop,
+  MobileMainMenuNav,
+  MobileMainMenuLink,
+  MobileMainMenuDropdown,
+  MobileMainMenuDropdownLink,
 } from '@ui'
 ```
 
@@ -41,55 +41,55 @@ import {
 
 ```tsx
 <HeaderRoot>
-  <HeaderMain>
-    <HeaderMainLogo>
+  <MainMenu>
+    <MainMenuLogo>
       <Logo href="/">
         <Image src="/logo.svg" alt="Site Logo" width={144} height={40} />
       </Logo>
-    </HeaderMainLogo>
+    </MainMenuLogo>
 
-    <HeaderMainNav>
-      <HeaderMainLink asChild current>
+    <MainMenuNav>
+      <MainMenuLink asChild current>
         <Link href="/">Home</Link>
-      </HeaderMainLink>
-      <HeaderMainLink asChild>
+      </MainMenuLink>
+      <MainMenuLink asChild>
         <Link href="/products">Products</Link>
-      </HeaderMainLink>
-      <HeaderMainLink asChild>
+      </MainMenuLink>
+      <MainMenuLink asChild>
         <Link href="/about">About</Link>
-      </HeaderMainLink>
-    </HeaderMainNav>
+      </MainMenuLink>
+    </MainMenuNav>
 
-    <HeaderMainNav>
+    <MainMenuNav>
       <Button appearance="button" variant="primary">Sign Up</Button>
-    </HeaderMainNav>
-  </HeaderMain>
+    </MainMenuNav>
+  </MainMenu>
 
-  <HeaderMobile>
-    <HeaderMobileBar>
-      <HeaderMobileLogo>
+  <HeaderMobileRoot>
+    <MobileTopMenu>
+      <MobileTopMenuLogo>
         <Logo href="/">
           <Image src="/logo.svg" alt="Site Logo" width={144} height={40} />
         </Logo>
-      </HeaderMobileLogo>
-      <HeaderMobileToggle />
-    </HeaderMobileBar>
+      </MobileTopMenuLogo>
+      <MobileTopMenuToggle />
+    </MobileTopMenu>
 
-    <HeaderMobileMenu>
-      <HeaderMobileTop>
+    <MobileMainMenu>
+      <MobileMainMenuTop>
         <Title level="h3">Menu</Title>
-        <HeaderMobileToggle />
-      </HeaderMobileTop>
-      <HeaderMobileNav>
-        <HeaderMobileLink asChild>
+        <MobileTopMenuToggle />
+      </MobileMainMenuTop>
+      <MobileMainMenuNav>
+        <MobileMainMenuLink asChild>
           <Link href="/">Home</Link>
-        </HeaderMobileLink>
-        <HeaderMobileLink asChild>
+        </MobileMainMenuLink>
+        <MobileMainMenuLink asChild>
           <Link href="/products">Products</Link>
-        </HeaderMobileLink>
-      </HeaderMobileNav>
-    </HeaderMobileMenu>
-  </HeaderMobile>
+        </MobileMainMenuLink>
+      </MobileMainMenuNav>
+    </MobileMainMenu>
+  </HeaderMobileRoot>
 </HeaderRoot>
 ```
 
@@ -97,121 +97,121 @@ import {
 
 ```tsx
 <HeaderRoot>
-  <HeaderTop>
-    <HeaderTopNav>
-      <HeaderTopLink asChild>
+  <TopMenu>
+    <TopMenuNav>
+      <TopMenuLink asChild>
         <Link href="/help">Help</Link>
-      </HeaderTopLink>
-      <HeaderTopLink asChild>
+      </TopMenuLink>
+      <TopMenuLink asChild>
         <Link href="/contact">Contact</Link>
-      </HeaderTopLink>
-    </HeaderTopNav>
+      </TopMenuLink>
+    </TopMenuNav>
 
-    <HeaderTopNav>
-      <HeaderTopDropdown label="EN">
-        <HeaderTopDropdownLink asChild>
+    <TopMenuNav>
+      <TopMenuDropdown label="EN">
+        <TopMenuDropdownLink asChild>
           <Link href="/en">English</Link>
-        </HeaderTopDropdownLink>
-        <HeaderTopDropdownLink asChild>
+        </TopMenuDropdownLink>
+        <TopMenuDropdownLink asChild>
           <Link href="/fr">Français</Link>
-        </HeaderTopDropdownLink>
-      </HeaderTopDropdown>
-    </HeaderTopNav>
-  </HeaderTop>
+        </TopMenuDropdownLink>
+      </TopMenuDropdown>
+    </TopMenuNav>
+  </TopMenu>
 
-  <HeaderMain>
+  <MainMenu>
     {/* main navigation */}
-  </HeaderMain>
+  </MainMenu>
 
-  <HeaderMobile>
+  <HeaderMobileRoot>
     {/* mobile menu */}
-  </HeaderMobile>
+  </HeaderMobileRoot>
 </HeaderRoot>
 ```
 
 ### With Dropdowns
 
 ```tsx
-<HeaderMainNav>
-  <HeaderMainLink asChild>
+<MainMenuNav>
+  <MainMenuLink asChild>
     <Link href="/">Home</Link>
-  </HeaderMainLink>
+  </MainMenuLink>
 
-  <HeaderMainDropdown label="Products" current>
-    <HeaderMainDropdownLink asChild>
+  <MainMenuDropdown label="Products" current>
+    <MainMenuDropdownLink asChild>
       <Link href="/software">Software</Link>
-    </HeaderMainDropdownLink>
-    <HeaderMainDropdownLink asChild>
+    </MainMenuDropdownLink>
+    <MainMenuDropdownLink asChild>
       <Link href="/services">Services</Link>
-    </HeaderMainDropdownLink>
-  </HeaderMainDropdown>
+    </MainMenuDropdownLink>
+  </MainMenuDropdown>
 
-  <HeaderMainDropdown label="Solutions">
-    <HeaderMainDropdownLink asChild>
+  <MainMenuDropdown label="Solutions">
+    <MainMenuDropdownLink asChild>
       <Link href="/enterprise">Enterprise</Link>
-    </HeaderMainDropdownLink>
-    <HeaderMainDropdownLink asChild>
+    </MainMenuDropdownLink>
+    <MainMenuDropdownLink asChild>
       <Link href="/startup">Startup</Link>
-    </HeaderMainDropdownLink>
-  </HeaderMainDropdown>
-</HeaderMainNav>
+    </MainMenuDropdownLink>
+  </MainMenuDropdown>
+</MainMenuNav>
 ```
 
 ### Mega Menu
 
 ```tsx
-<HeaderMainDropdown label="Solutions" mega>
+<MainMenuDropdown label="Solutions" mega>
   <Grid col={4} gap="md">
     <GridItem>
       <Title level="h4">Products</Title>
-      <HeaderMainDropdownLink asChild>
+      <MainMenuDropdownLink asChild>
         <Link href="/product-a">Product A</Link>
-      </HeaderMainDropdownLink>
-      <HeaderMainDropdownLink asChild>
+      </MainMenuDropdownLink>
+      <MainMenuDropdownLink asChild>
         <Link href="/product-b">Product B</Link>
-      </HeaderMainDropdownLink>
+      </MainMenuDropdownLink>
     </GridItem>
     <GridItem>
       <Title level="h4">Services</Title>
-      <HeaderMainDropdownLink asChild>
+      <MainMenuDropdownLink asChild>
         <Link href="/consulting">Consulting</Link>
-      </HeaderMainDropdownLink>
+      </MainMenuDropdownLink>
     </GridItem>
     {/* more columns */}
   </Grid>
-</HeaderMainDropdown>
+</MainMenuDropdown>
 ```
 
 ### Mobile Menu with Dropdowns
 
 ```tsx
-<HeaderMobileMenu>
-  <HeaderMobileTop>
+<MobileMainMenu>
+  <MobileMainMenuTop>
     <Title level="h3">Menu</Title>
-    <HeaderMobileToggle />
-  </HeaderMobileTop>
+    <MobileTopMenuToggle />
+  </MobileMainMenuTop>
 
-  <HeaderMobileNav>
-    <HeaderMobileLink asChild>
+  <MobileMainMenuNav>
+    <MobileMainMenuLink asChild>
       <Link href="/">Home</Link>
-    </HeaderMobileLink>
+    </MobileMainMenuLink>
 
-    <HeaderMobileDropdown label="Products">
-      <HeaderMobileDropdownLink asChild>
+    <MobileMainMenuDropdown label="Products">
+      <MobileMainMenuDropdownLink asChild>
         <Link href="/software">Software</Link>
-      </HeaderMobileDropdownLink>
-      <HeaderMobileDropdownLink asChild>
+      </MobileMainMenuDropdownLink>
+      <MobileMainMenuDropdownLink asChild>
         <Link href="/services">Services</Link>
-      </HeaderMobileDropdownLink>
-    </HeaderMobileDropdown>
-  </HeaderMobileNav>
+      </MobileMainMenuDropdownLink>
+    </MobileMainMenuDropdown>
+  </MobileMainMenuNav>
 
-  <HeaderMobileNav>
+  <MobileMainMenuNav>
     <Button appearance="button" variant="primary" className="w-full">
       Sign Up
     </Button>
-  </HeaderMobileNav>
-</HeaderMobileMenu>
+  </MobileMainMenuNav>
+</MobileMainMenu>
 ```
 
 ## Components
@@ -228,7 +228,7 @@ Root container providing context for mobile menu state.
 | `textColor` | `'light' \| 'dark'` | - | Text/icon color |
 | `className` | `string` | - | Additional CSS class |
 
-### HeaderTop
+### TopMenu
 
 Top utility bar (help links, language selector).
 
@@ -240,7 +240,7 @@ Top utility bar (help links, language selector).
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
 | `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
 
-### HeaderMain
+### MainMenu
 
 Main navigation bar with logo and links.
 
@@ -252,7 +252,7 @@ Main navigation bar with logo and links.
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
 | `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
 
-### HeaderMobileBar
+### MobileTopMenu
 
 Mobile bar containing logo and toggle.
 
@@ -263,7 +263,7 @@ Mobile bar containing logo and toggle.
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
 | `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
 
-### HeaderMobileMenu
+### MobileMainMenu
 
 Slide-out mobile navigation panel.
 
@@ -274,7 +274,7 @@ Slide-out mobile navigation panel.
 | `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
 | `textColor` | `'light' \| 'dark'` | - | Text/icon color |
 
-### HeaderMainDropdown
+### MainMenuDropdown
 
 Dropdown menu in main nav.
 
@@ -285,11 +285,11 @@ Dropdown menu in main nav.
 | `mega` | `boolean` | `false` | Full-width mega menu |
 | `current` | `boolean` | `false` | Mark as current section |
 
-### HeaderMobile
+### HeaderMobileRoot
 
 Container for mobile navigation (visible < 1024px).
 
-### HeaderMobileToggle
+### MobileTopMenuToggle
 
 Hamburger/close button for mobile menu.
 
@@ -305,12 +305,12 @@ All link components support `asChild` for custom link rendering and `current` fo
 
 | Component | Description |
 |-----------|-------------|
-| `HeaderTopLink` | Link in top bar |
-| `HeaderTopDropdownLink` | Link in top dropdown |
-| `HeaderMainLink` | Link in main nav |
-| `HeaderMainDropdownLink` | Link in main dropdown |
-| `HeaderMobileLink` | Link in mobile menu |
-| `HeaderMobileDropdownLink` | Link in mobile dropdown |
+| `TopMenuLink` | Link in top bar |
+| `TopMenuDropdownLink` | Link in top dropdown |
+| `MainMenuLink` | Link in main nav |
+| `MainMenuDropdownLink` | Link in main dropdown |
+| `MobileMainMenuLink` | Link in mobile menu |
+| `MobileMainMenuDropdownLink` | Link in mobile dropdown |
 
 ## Overlay Header
 
@@ -318,20 +318,20 @@ Use `overlay` and `textColor` to float the header over hero content. Each bar co
 
 ```tsx
 <HeaderRoot isOverlay textColor="light">
-  <HeaderTop bgColor="#111" bgOpacity="0.2" textColor="light">
+  <TopMenu bgColor="#111" bgOpacity="0.2" textColor="light">
     {/* top bar */}
-  </HeaderTop>
-  <HeaderMain bgColor="#222" bgOpacity="0.2" textColor="light">
+  </TopMenu>
+  <MainMenu bgColor="#222" bgOpacity="0.2" textColor="light">
     {/* main nav */}
-  </HeaderMain>
-  <HeaderMobile>
-    <HeaderMobileBar bgColor="#222" bgOpacity="1" textColor="light">
+  </MainMenu>
+  <HeaderMobileRoot>
+    <MobileTopMenu bgColor="#222" bgOpacity="1" textColor="light">
       {/* mobile bar */}
-    </HeaderMobileBar>
-    <HeaderMobileMenu bgColor="#333">
+    </MobileTopMenu>
+    <MobileMainMenu bgColor="#333">
       {/* mobile menu with custom bg */}
-    </HeaderMobileMenu>
-  </HeaderMobile>
+    </MobileMainMenu>
+  </HeaderMobileRoot>
 </HeaderRoot>
 
 <Banner backgroundImage="..." overlay="dark" className="h-screen">
@@ -382,47 +382,47 @@ const { isOverlay, isScrolled, textColor } = useHeader()
 
 ```tsx
 <HeaderRoot>
-  <HeaderTop>
-    <HeaderTopNav>
-      <HeaderTopLink asChild>
+  <TopMenu>
+    <TopMenuNav>
+      <TopMenuLink asChild>
         <Link href="/stores">Find a Store</Link>
-      </HeaderTopLink>
-      <HeaderTopLink asChild>
+      </TopMenuLink>
+      <TopMenuLink asChild>
         <Link href="/help">Help</Link>
-      </HeaderTopLink>
-    </HeaderTopNav>
-    <HeaderTopNav>
-      <HeaderTopDropdown label="USD">
+      </TopMenuLink>
+    </TopMenuNav>
+    <TopMenuNav>
+      <TopMenuDropdown label="USD">
         {/* currency options */}
-      </HeaderTopDropdown>
-    </HeaderTopNav>
-  </HeaderTop>
+      </TopMenuDropdown>
+    </TopMenuNav>
+  </TopMenu>
 
-  <HeaderMain>
-    <HeaderMainLogo>
+  <MainMenu>
+    <MainMenuLogo>
       <Logo href="/"><Image src="/logo.svg" alt="Store" /></Logo>
-    </HeaderMainLogo>
-    <HeaderMainNav>
-      <HeaderMainDropdown label="Shop" mega>
+    </MainMenuLogo>
+    <MainMenuNav>
+      <MainMenuDropdown label="Shop" mega>
         {/* category grid */}
-      </HeaderMainDropdown>
-      <HeaderMainLink asChild>
+      </MainMenuDropdown>
+      <MainMenuLink asChild>
         <Link href="/sale">Sale</Link>
-      </HeaderMainLink>
-    </HeaderMainNav>
-    <HeaderMainNav>
+      </MainMenuLink>
+    </MainMenuNav>
+    <MainMenuNav>
       <Button appearance="ghost">
         <Icon name="search" />
       </Button>
       <Button appearance="ghost">
         <Icon name="cart" />
       </Button>
-    </HeaderMainNav>
-  </HeaderMain>
+    </MainMenuNav>
+  </MainMenu>
 
-  <HeaderMobile>
+  <HeaderMobileRoot>
     {/* mobile menu */}
-  </HeaderMobile>
+  </HeaderMobileRoot>
 </HeaderRoot>
 ```
 
@@ -431,66 +431,66 @@ const { isOverlay, isScrolled, textColor } = useHeader()
 ```tsx
 <HeaderRoot isOverlay={isOverlay} textColor={textColor}>
   {data.topBar && (
-    <HeaderTop bgColor={data.topBar.bgColor} bgOpacity={data.topBar.bgOpacity}>
-      <HeaderTopNav>
+    <TopMenu bgColor={data.topBar.bgColor} bgOpacity={data.topBar.bgOpacity}>
+      <TopMenuNav>
         {data.topBar.links.map(link => (
-          <HeaderTopLink key={link.id} asChild>
+          <TopMenuLink key={link.id} asChild>
             <Link href={link.url}>{link.label}</Link>
-          </HeaderTopLink>
+          </TopMenuLink>
         ))}
-      </HeaderTopNav>
+      </TopMenuNav>
       {data.locales && (
-        <HeaderTopNav>
-          <HeaderTopDropdown label={currentLocale}>
+        <TopMenuNav>
+          <TopMenuDropdown label={currentLocale}>
             {data.locales.map(locale => (
-              <HeaderTopDropdownLink key={locale.code} asChild>
+              <TopMenuDropdownLink key={locale.code} asChild>
                 <Link href={`/${locale.code}`}>{locale.name}</Link>
-              </HeaderTopDropdownLink>
+              </TopMenuDropdownLink>
             ))}
-          </HeaderTopDropdown>
-        </HeaderTopNav>
+          </TopMenuDropdown>
+        </TopMenuNav>
       )}
-    </HeaderTop>
+    </TopMenu>
   )}
 
-  <HeaderMain bgColor={data.mainNav?.bgColor} bgOpacity={data.mainNav?.bgOpacity}>
-    <HeaderMainLogo>
+  <MainMenu bgColor={data.mainNav?.bgColor} bgOpacity={data.mainNav?.bgOpacity}>
+    <MainMenuLogo>
       <Logo href="/">
         <Image
           src={getMediaUrl(data.logo.url)}
           alt={data.logo.alternativeText}
         />
       </Logo>
-    </HeaderMainLogo>
+    </MainMenuLogo>
 
-    <HeaderMainNav>
+    <MainMenuNav>
       {data.mainNav.map(item => (
         item.children?.length ? (
-          <HeaderMainDropdown
+          <MainMenuDropdown
             key={item.id}
             label={item.label}
             mega={item.mega}
           >
             {item.children.map(child => (
-              <HeaderMainDropdownLink key={child.id} asChild>
+              <MainMenuDropdownLink key={child.id} asChild>
                 <Link href={child.url}>{child.label}</Link>
-              </HeaderMainDropdownLink>
+              </MainMenuDropdownLink>
             ))}
-          </HeaderMainDropdown>
+          </MainMenuDropdown>
         ) : (
-          <HeaderMainLink key={item.id} asChild>
+          <MainMenuLink key={item.id} asChild>
             <Link href={item.url}>{item.label}</Link>
-          </HeaderMainLink>
+          </MainMenuLink>
         )
       ))}
-    </HeaderMainNav>
-  </HeaderMain>
+    </MainMenuNav>
+  </MainMenu>
 
-  <HeaderMobile>
-    <HeaderMobileBar bgColor={data.mobileNav?.bgColor} bgOpacity={data.mobileNav?.bgOpacity}>
+  <HeaderMobileRoot>
+    <MobileTopMenu bgColor={data.mobileNav?.bgColor} bgOpacity={data.mobileNav?.bgOpacity}>
       {/* mobile bar */}
-    </HeaderMobileBar>
+    </MobileTopMenu>
     {/* mobile menu */}
-  </HeaderMobile>
+  </HeaderMobileRoot>
 </HeaderRoot>
 ```

@@ -2,26 +2,26 @@ import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
-import type { HeaderTopTypes } from '../Header.types'
+import type { MobileTopMenuTypes } from '../Header.types'
 
-export function HeaderTop({
+export function MobileTopMenu({
   ref,
   children,
   className,
-  containerClassName,
-  bgColor = 'var(--color-grey-7)',
+  bgColor = 'var(--color-white)',
   bgOpacity = '1',
   textColor: textColorProp,
+  containerClassName,
   style,
   ...rest
-}: HeaderTopTypes) {
+}: MobileTopMenuTypes) {
   const { isScrolled, textColor: contextTextColor } = useHeader()
   const textColor = textColorProp ?? contextTextColor
   const opacity = isScrolled ? '1' : bgOpacity
   const customStyles = {
     ...style,
-    '--header-top-bg': bgColor,
-    '--header-top-opacity': opacity,
+    '--header-mobile-bg': bgColor,
+    '--header-mobile-opacity': opacity,
   } as CSSProperties
 
   return (
@@ -29,14 +29,16 @@ export function HeaderTop({
       ref={ref}
       style={customStyles}
       className={clsx(
-        styles.topBar,
+        styles.mobileTopMenu,
         textColor === 'dark' && styles.textDark,
         textColor === 'light' && styles.textLight,
         className
       )}
       {...rest}
     >
-      <div className={clsx(styles.topContainer, containerClassName)}>
+      <div
+        className={clsx(styles.mobileTopMenuContainer, containerClassName)}
+      >
         {children}
       </div>
     </div>

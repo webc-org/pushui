@@ -85,12 +85,12 @@ Override the container width in your CSS:
 
 ```tsx
 <HeaderRoot>
-  <HeaderMain>
+  <MainMenu>
     <Layout className="flex-row items-center justify-between">
-      <HeaderMainLogo>Logo</HeaderMainLogo>
-      <HeaderMainNav>...</HeaderMainNav>
+      <MainMenuLogo>Logo</MainMenuLogo>
+      <MainMenuNav>...</MainMenuNav>
     </Layout>
-  </HeaderMain>
+  </MainMenu>
 </HeaderRoot>
 ```
 
