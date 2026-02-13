@@ -8,7 +8,10 @@ export function FooterMainNavTitle({
   level = 'h3',
 }: TitleTypes) {
   return (
-    <Title level={level} className={clsx(styles.mainNavTitle, className)}>
+    <Title
+      level={level}
+      className={clsx(styles.headerDesktopMainNavTitle, className)}
+    >
       {children}
     </Title>
   )

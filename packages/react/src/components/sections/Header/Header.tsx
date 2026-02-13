@@ -11,13 +11,15 @@ import { HeaderContext } from './HeaderContext'
 import styles from './Header.module.scss'
 import type { HeaderNavTypes, HeaderTypes } from './Header.types'
 
-export function HeaderRoot({
+export function Header({
   ref,
   baseId,
   children,
   className,
   isOverlay = false,
-  textColor,
+  textColor = 'dark',
+  desktop,
+  mobile,
   style,
   ...rest
 }: HeaderTypes) {
@@ -90,6 +92,34 @@ export function HeaderRoot({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const mergedDesktop = useMemo(
+    () => ({
+      top: {
+        bgColor: desktop?.top?.bgColor ?? 'var(--color-grey-7)',
+        bgOpacity: desktop?.top?.bgOpacity ?? '1',
+      },
+      main: {
+        bgColor: desktop?.main?.bgColor ?? 'var(--color-white)',
+        bgOpacity: desktop?.main?.bgOpacity ?? '1',
+      },
+    }),
+    [desktop]
+  )
+
+  const mergedMobile = useMemo(
+    () => ({
+      top: {
+        bgColor: mobile?.top?.bgColor ?? 'var(--color-grey-7)',
+        bgOpacity: mobile?.top?.bgOpacity ?? '1',
+      },
+      main: {
+        bgColor: mobile?.main?.bgColor ?? 'var(--color-white)',
+        bgOpacity: mobile?.main?.bgOpacity ?? '1',
+      },
+    }),
+    [mobile]
+  )
+
   const value = useMemo(
     () => ({
       isOpen,
@@ -101,6 +131,8 @@ export function HeaderRoot({
       isScrolled,
       isOverlay,
       textColor,
+      desktop: mergedDesktop,
+      mobile: mergedMobile,
     }),
     [
       isOpen,
@@ -112,6 +144,8 @@ export function HeaderRoot({
       isScrolled,
       isOverlay,
       textColor,
+      mergedDesktop,
+      mergedMobile,
     ]
   )
 
@@ -124,11 +158,6 @@ export function HeaderRoot({
         style={style}
         {...rest}
       >
-        <div
-          className={clsx(styles.mobileOverlay, isOpen && styles.isOpen)}
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
         {children}
       </header>
     </HeaderContext.Provider>

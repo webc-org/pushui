@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import styles from '../Header.module.scss'
-import type { HeaderDesktopTopMenuLinkTypes } from '../Header.types'
+import styles from './HeaderDesktopTop.module.scss'
+import type { HeaderDesktopTopMenuLinkTypes } from './HeaderDesktopTopMenu.types'
 
 export function HeaderDesktopTopMenuLink({
   asChild,
@@ -13,11 +13,7 @@ export function HeaderDesktopTopMenuLink({
   const Comp = asChild ? Slot : 'a'
   return (
     <Comp
-      className={clsx(
-        styles.topLink,
-        current && styles.current,
-        className
-      )}
+      className={clsx(styles.link, current && styles.current, className)}
       aria-current={current ? 'page' : undefined}
       {...props}
     >

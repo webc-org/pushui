@@ -7,7 +7,7 @@ Responsive site header with desktop navigation, mobile menu, top bar, and dropdo
 ```tsx
 import {
   // Root
-  HeaderRoot,
+  Header,
   // Top bar
   TopMenu,
   TopMenuNav,
@@ -22,16 +22,16 @@ import {
   MainMenuDropdown,
   MainMenuDropdownLink,
   // Mobile
-  HeaderMobileRoot,
+  HeaderMobile,
   MobileTopMenu,
-  MobileTopMenuLogo,
-  MobileTopMenuToggle,
-  MobileMainMenu,
-  MobileMainMenuTop,
-  MobileMainMenuNav,
-  MobileMainMenuLink,
-  MobileMainMenuDropdown,
-  MobileMainMenuDropdownLink,
+  headerMobileTopMenuLogo,
+  headerMobileTopMenuToggle,
+  headerMobileMainMenu,
+  headerMobileMainMenuTop,
+  headerMobileMainMenuNav,
+  headerMobileMainMenuLink,
+  headerMobileMainMenuDropdown,
+  headerMobileMainMenuDropdownLink,
 } from '@ui'
 ```
 
@@ -40,7 +40,7 @@ import {
 ### Basic Header
 
 ```tsx
-<HeaderRoot>
+<Header>
   <MainMenu>
     <MainMenuLogo>
       <Logo href="/">
@@ -65,38 +65,38 @@ import {
     </MainMenuNav>
   </MainMenu>
 
-  <HeaderMobileRoot>
+  <HeaderMobile>
     <MobileTopMenu>
-      <MobileTopMenuLogo>
+      <headerMobileTopMenuLogo>
         <Logo href="/">
           <Image src="/logo.svg" alt="Site Logo" width={144} height={40} />
         </Logo>
-      </MobileTopMenuLogo>
-      <MobileTopMenuToggle />
+      </headerMobileTopMenuLogo>
+      <headerMobileTopMenuToggle />
     </MobileTopMenu>
 
-    <MobileMainMenu>
-      <MobileMainMenuTop>
+    <headerMobileMainMenu>
+      <headerMobileMainMenuTop>
         <Title level="h3">Menu</Title>
-        <MobileTopMenuToggle />
-      </MobileMainMenuTop>
-      <MobileMainMenuNav>
-        <MobileMainMenuLink asChild>
+        <headerMobileTopMenuToggle />
+      </headerMobileMainMenuTop>
+      <headerMobileMainMenuNav>
+        <headerMobileMainMenuLink asChild>
           <Link href="/">Home</Link>
-        </MobileMainMenuLink>
-        <MobileMainMenuLink asChild>
+        </headerMobileMainMenuLink>
+        <headerMobileMainMenuLink asChild>
           <Link href="/products">Products</Link>
-        </MobileMainMenuLink>
-      </MobileMainMenuNav>
-    </MobileMainMenu>
-  </HeaderMobileRoot>
-</HeaderRoot>
+        </headerMobileMainMenuLink>
+      </headerMobileMainMenuNav>
+    </headerMobileMainMenu>
+  </HeaderMobile>
+</Header>
 ```
 
 ### With Top Bar
 
 ```tsx
-<HeaderRoot>
+<Header>
   <TopMenu>
     <TopMenuNav>
       <TopMenuLink asChild>
@@ -123,10 +123,10 @@ import {
     {/* main navigation */}
   </MainMenu>
 
-  <HeaderMobileRoot>
+  <HeaderMobile>
     {/* mobile menu */}
-  </HeaderMobileRoot>
-</HeaderRoot>
+  </HeaderMobile>
+</Header>
 ```
 
 ### With Dropdowns
@@ -185,38 +185,38 @@ import {
 ### Mobile Menu with Dropdowns
 
 ```tsx
-<MobileMainMenu>
-  <MobileMainMenuTop>
+<headerMobileMainMenu>
+  <headerMobileMainMenuTop>
     <Title level="h3">Menu</Title>
-    <MobileTopMenuToggle />
-  </MobileMainMenuTop>
+    <headerMobileTopMenuToggle />
+  </headerMobileMainMenuTop>
 
-  <MobileMainMenuNav>
-    <MobileMainMenuLink asChild>
+  <headerMobileMainMenuNav>
+    <headerMobileMainMenuLink asChild>
       <Link href="/">Home</Link>
-    </MobileMainMenuLink>
+    </headerMobileMainMenuLink>
 
-    <MobileMainMenuDropdown label="Products">
-      <MobileMainMenuDropdownLink asChild>
+    <headerMobileMainMenuDropdown label="Products">
+      <headerMobileMainMenuDropdownLink asChild>
         <Link href="/software">Software</Link>
-      </MobileMainMenuDropdownLink>
-      <MobileMainMenuDropdownLink asChild>
+      </headerMobileMainMenuDropdownLink>
+      <headerMobileMainMenuDropdownLink asChild>
         <Link href="/services">Services</Link>
-      </MobileMainMenuDropdownLink>
-    </MobileMainMenuDropdown>
-  </MobileMainMenuNav>
+      </headerMobileMainMenuDropdownLink>
+    </headerMobileMainMenuDropdown>
+  </headerMobileMainMenuNav>
 
-  <MobileMainMenuNav>
+  <headerMobileMainMenuNav>
     <Button appearance="button" variant="primary" className="w-full">
       Sign Up
     </Button>
-  </MobileMainMenuNav>
-</MobileMainMenu>
+  </headerMobileMainMenuNav>
+</headerMobileMainMenu>
 ```
 
 ## Components
 
-### HeaderRoot
+### Header
 
 Root container providing context for mobile menu state.
 
@@ -238,7 +238,7 @@ Top utility bar (help links, language selector).
 | `containerClassName` | `string` | - | Inner container class |
 | `bgColor` | `string` | `'var(--color-grey-7)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
 
 ### MainMenu
 
@@ -250,7 +250,7 @@ Main navigation bar with logo and links.
 | `containerClassName` | `string` | - | Inner container class |
 | `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
 
 ### MobileTopMenu
 
@@ -261,9 +261,9 @@ Mobile bar containing logo and toggle.
 | `children` | `ReactNode` | - | Logo and toggle |
 | `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
 | `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to HeaderRoot value) |
+| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
 
-### MobileMainMenu
+### headerMobileMainMenu
 
 Slide-out mobile navigation panel.
 
@@ -285,11 +285,11 @@ Dropdown menu in main nav.
 | `mega` | `boolean` | `false` | Full-width mega menu |
 | `current` | `boolean` | `false` | Mark as current section |
 
-### HeaderMobileRoot
+### HeaderMobile
 
 Container for mobile navigation (visible < 1024px).
 
-### MobileTopMenuToggle
+### headerMobileTopMenuToggle
 
 Hamburger/close button for mobile menu.
 
@@ -309,30 +309,30 @@ All link components support `asChild` for custom link rendering and `current` fo
 | `TopMenuDropdownLink` | Link in top dropdown |
 | `MainMenuLink` | Link in main nav |
 | `MainMenuDropdownLink` | Link in main dropdown |
-| `MobileMainMenuLink` | Link in mobile menu |
-| `MobileMainMenuDropdownLink` | Link in mobile dropdown |
+| `headerMobileMainMenuLink` | Link in mobile menu |
+| `headerMobileMainMenuDropdownLink` | Link in mobile dropdown |
 
 ## Overlay Header
 
 Use `overlay` and `textColor` to float the header over hero content. Each bar controls its own background via `bgColor`/`bgOpacity`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
 
 ```tsx
-<HeaderRoot isOverlay textColor="light">
+<Header isOverlay textColor="light">
   <TopMenu bgColor="#111" bgOpacity="0.2" textColor="light">
     {/* top bar */}
   </TopMenu>
   <MainMenu bgColor="#222" bgOpacity="0.2" textColor="light">
     {/* main nav */}
   </MainMenu>
-  <HeaderMobileRoot>
+  <HeaderMobile>
     <MobileTopMenu bgColor="#222" bgOpacity="1" textColor="light">
       {/* mobile bar */}
     </MobileTopMenu>
-    <MobileMainMenu bgColor="#333">
+    <headerMobileMainMenu bgColor="#333">
       {/* mobile menu with custom bg */}
-    </MobileMainMenu>
-  </HeaderMobileRoot>
-</HeaderRoot>
+    </headerMobileMainMenu>
+  </HeaderMobile>
+</Header>
 
 <Banner backgroundImage="..." overlay="dark" className="h-screen">
   <BannerContent textColor="light">{/* hero content */}</BannerContent>
@@ -381,7 +381,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
 ### E-commerce Header
 
 ```tsx
-<HeaderRoot>
+<Header>
   <TopMenu>
     <TopMenuNav>
       <TopMenuLink asChild>
@@ -420,16 +420,16 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </MainMenuNav>
   </MainMenu>
 
-  <HeaderMobileRoot>
+  <HeaderMobile>
     {/* mobile menu */}
-  </HeaderMobileRoot>
-</HeaderRoot>
+  </HeaderMobile>
+</Header>
 ```
 
 ## Strapi Integration
 
 ```tsx
-<HeaderRoot isOverlay={isOverlay} textColor={textColor}>
+<Header isOverlay={isOverlay} textColor={textColor}>
   {data.topBar && (
     <TopMenu bgColor={data.topBar.bgColor} bgOpacity={data.topBar.bgOpacity}>
       <TopMenuNav>
@@ -453,7 +453,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </TopMenu>
   )}
 
-  <MainMenu bgColor={data.mainNav?.bgColor} bgOpacity={data.mainNav?.bgOpacity}>
+  <MainMenu bgColor={data.headerDesktopMainNav?.bgColor} bgOpacity={data.headerDesktopMainNav?.bgOpacity}>
     <MainMenuLogo>
       <Logo href="/">
         <Image
@@ -464,7 +464,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </MainMenuLogo>
 
     <MainMenuNav>
-      {data.mainNav.map(item => (
+      {data.headerDesktopMainNav.map(item => (
         item.children?.length ? (
           <MainMenuDropdown
             key={item.id}
@@ -486,11 +486,11 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </MainMenuNav>
   </MainMenu>
 
-  <HeaderMobileRoot>
+  <HeaderMobile>
     <MobileTopMenu bgColor={data.mobileNav?.bgColor} bgOpacity={data.mobileNav?.bgOpacity}>
       {/* mobile bar */}
     </MobileTopMenu>
     {/* mobile menu */}
-  </HeaderMobileRoot>
-</HeaderRoot>
+  </HeaderMobile>
+</Header>
 ```

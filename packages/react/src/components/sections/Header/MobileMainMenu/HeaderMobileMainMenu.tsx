@@ -1,54 +1,36 @@
-import { type CSSProperties, useCallback, useEffect, useRef } from 'react'
+import { type CSSProperties, useEffect, useRef } from 'react'
 import clsx from 'clsx'
+import { getFocusableElements } from 'utils'
 import { useHeader } from '../HeaderContext'
-import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuTypes } from '../Header.types'
+import type { HeaderMobileMainMenuTypes } from './HeaderMobileMainMenu.types'
+import styles from './headerMobileMainMenu.module.scss'
 
 export function HeaderMobileMainMenu({
   ref,
   children,
   className,
   'aria-label': ariaLabel = 'Mobile navigation',
-  bgColor,
-  textColor,
   style,
   ...rest
 }: HeaderMobileMainMenuTypes) {
-  const { isOpen, mobileMenuId } = useHeader()
-  const customStyles = bgColor
-    ? ({
-        ...style,
-        '--header-mobile-main-menu-bg': bgColor,
-      } as CSSProperties)
-    : style
-  const menuRef = useRef<HTMLElement | null>(null)
+  const { isOpen, mobileMenuId, textColor, mobile } = useHeader()
 
-  const setMenuRef = useCallback((node: HTMLElement | null) => {
-    if (node) {
-      node.setAttribute('inert', '')
-    }
-    menuRef.current = node
-  }, [])
+  const menuRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (menuRef.current) {
-      if (isOpen) {
-        menuRef.current.removeAttribute('inert')
-      } else {
-        menuRef.current.setAttribute('inert', '')
-      }
+      menuRef.current.inert = !isOpen
     }
   }, [isOpen])
 
   useEffect(() => {
     if (!isOpen) return
 
-    const menu = menuRef.current
-    if (!menu) return
+    if (!menuRef?.current) return
 
-    const focusableElements = menu.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    )
+    const focusableElements = getFocusableElements(menuRef.current)
+    if (focusableElements.length === 0) return
+
     const firstElement = focusableElements[0]
     const lastElement = focusableElements[focusableElements.length - 1]
 
@@ -77,14 +59,20 @@ export function HeaderMobileMainMenu({
 
   return (
     <div
-      ref={setMenuRef}
+      ref={menuRef}
+      inert
       id={mobileMenuId}
       role="dialog"
       aria-label={ariaLabel}
-      style={customStyles}
+      style={
+        {
+          ...style,
+          '--header-mobile-main-bg': mobile.main.bgColor,
+        } as CSSProperties
+      }
       className={clsx(
-        styles.mobileMainMenu,
-        isOpen && styles.mobileMainMenuOpen,
+        styles.menu,
+        isOpen && styles.isOpen,
         textColor === 'dark' && styles.textDark,
         textColor === 'light' && styles.textLight,
         className

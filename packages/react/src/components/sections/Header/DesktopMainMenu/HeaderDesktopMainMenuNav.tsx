@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
-import styles from '../Header.module.scss'
-import type { HeaderDesktopMainMenuNavTypes } from '../Header.types'
+import type { HeaderDesktopMainMenuNavTypes } from './HeaderDesktopMainMenu.types'
+import styles from './headerDesktopMainMenu.module.scss'
 
 export function HeaderDesktopMainMenuNav({
   ref,
@@ -16,7 +16,7 @@ export function HeaderDesktopMainMenuNav({
     <nav
       ref={ref}
       aria-label={label}
-      className={clsx(styles.mainNav, className)}
+      className={clsx(styles.headerDesktopMainNav, className)}
       {...rest}
     >
       {children}

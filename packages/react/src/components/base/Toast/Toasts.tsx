@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from 'react'
+import { getFocusableElements } from 'utils'
 import { Toast } from './Toast'
 import { ToastsContext } from './ToastsContext'
 import styles from './Toast.module.scss'
@@ -38,9 +39,8 @@ export function Toasts({ children }: { children: ReactNode }) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return
 
-      const focusableElements = container.querySelectorAll<HTMLElement>(
-        'button:not([disabled])'
-      )
+      const focusableElements = getFocusableElements(container)
+
       if (focusableElements.length === 0) return
 
       const firstElement = focusableElements[0]

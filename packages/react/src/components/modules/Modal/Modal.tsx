@@ -2,6 +2,7 @@ import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { Button, Title } from 'components'
 import { X } from 'lucide-react'
+import { getFocusableElements } from 'utils'
 import styles from './Modal.module.scss'
 import type { ModalTypes } from './Modal.types'
 
@@ -54,9 +55,7 @@ export function Modal({
     const handleFocusTrap = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return
 
-      const focusableElements = modalRef.current?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      )
+      const focusableElements = getFocusableElements(modalRef.current)
 
       if (!focusableElements || focusableElements.length === 0) return
 

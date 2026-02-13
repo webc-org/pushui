@@ -53,14 +53,14 @@ $tx-color-link-hover: var(--color-primary-2);
   }
 }
 
-.mainNav {
+.headerDesktopMainNav {
   display: flex;
   flex-direction: column;
   font-size: var(--font-size-3);
   gap: 1rem;
 }
 
-.mainNavTitle {
+.headerDesktopMainNavTitle {
   margin: 0 0 1rem;
 }
 

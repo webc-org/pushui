@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
 import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuNavTypes } from '../Header.types'
+import type { HeaderMobileMainMenuNavTypes } from './HeaderMobileMainMenu.types'
 
 export function HeaderMobileMainMenuNav({
   ref,
@@ -16,7 +16,7 @@ export function HeaderMobileMainMenuNav({
     <nav
       ref={ref}
       aria-label={label}
-      className={clsx(styles.mobileMainMenuNav, className)}
+      className={clsx(styles.headerMobileMainMenuNav, className)}
       {...rest}
     >
       {children}

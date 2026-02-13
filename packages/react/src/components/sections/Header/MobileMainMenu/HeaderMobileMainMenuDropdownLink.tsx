@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
 import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuDropdownLinkTypes } from '../Header.types'
+import type { HeaderMobileMainMenuDropdownLinkTypes } from './HeaderMobileMainMenu.types'
 
 export function HeaderMobileMainMenuDropdownLink({
   asChild,
@@ -13,8 +13,9 @@ export function HeaderMobileMainMenuDropdownLink({
   const Comp = asChild ? Slot : 'a'
   return (
     <Comp
+      role="menuitem"
       className={clsx(
-        styles.mobileMainMenuDropdownLink,
+        styles.headerMobileMainMenuDropdownLink,
         current && styles.current,
         className
       )}

@@ -1,0 +1,60 @@
+@use 'styles/mixins/mq' as *;
+@use 'styles/mixins/action' as *;
+@use 'styles/mixins/color' as *;
+
+.menu {
+  display: block;
+
+  &::before {
+    background-color: var(--header-mobile-top-bg);
+    content: '';
+    inset: 0;
+    opacity: var(--header-mobile-top-opacity);
+    position: absolute;
+    transition: opacity var(--transition-default);
+  }
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: var(--height-mobile-menu);
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+
+  img,
+  svg {
+    height: auto;
+    max-height: 3rem;
+    width: auto;
+  }
+}
+
+.toggle {
+  align-items: center;
+  background: none;
+  border-radius: var(--radius-2);
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  padding: 0.8rem;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-primary-2);
+  }
+
+  .textLight & {
+    color: var(--color-white);
+  }
+
+  .textDark & {
+    color: var(--color-black);
+  }
+}

@@ -1,0 +1,198 @@
+@use 'styles/mixins/mq' as *;
+@use 'styles/mixins/action' as *;
+@use 'styles/mixins/color' as *;
+
+.head {
+  align-items: center;
+  display: flex;
+  height: var(--height-mobile-menu);
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background: var(--color-grey-5);
+    content: '';
+    display: block;
+    height: .1rem;
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+  }
+}
+
+.menu {
+  background-color: var(--header-mobile-main-bg, var(--color-white));
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  inset: var(--height-mobile-menu) 0 0 auto;
+  max-width: 100%;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  transform: translateX(100%);
+  transition: transform var(--transition-default);
+  width: 48rem;
+  z-index: var(--z-index-4);
+
+  @include mq-md {
+    display: none;
+  }
+
+  &.isOpen {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 0 2rem;
+}
+
+.link {
+  @include action-base;
+  @include action-appearances;
+  @include action-variants;
+  background-color: var(--color-grey-6);
+  border-radius: var(--radius-2);
+  color: var(--color-black);
+  display: block;
+  font-size: var(--font-size-4);
+  padding: 1rem 2rem;
+  text-decoration: none;
+  width: 100%;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-2);
+    color: var(--color-white);
+  }
+
+  &.current {
+    background-color: var(--color-grey-6);
+    color: var(--color-primary-2);
+  }
+
+  // Default/icon appearance with variant: header colors at rest, variant on hover
+  @each $name in $color-variants {
+    &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
+      color: var(--color-black);
+
+      &:hover,
+      &:focus-visible {
+        background-color: transparent;
+        color: var(--color-#{$name}-2);
+      }
+
+      .textLight & {
+        color: var(--color-white);
+
+        &:hover,
+        &:focus-visible {
+          color: var(--color-#{$name}-contrast);
+        }
+      }
+
+      .textDark & {
+        color: var(--color-black);
+
+        &:hover,
+        &:focus-visible {
+          color: var(--color-#{$name}-contrast);
+        }
+      }
+    }
+  }
+}
+
+.dropdownWrapper {
+  border-radius: var(--radius-2);
+}
+
+.dropdownTrigger {
+  align-items: center;
+  background-color: var(--color-grey-6);
+  border-radius: var(--radius-2);
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-4);
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+
+  &.isOpen {
+    background-color: var(--color-grey-5);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-2);
+    color: var(--color-white);
+  }
+}
+
+.MenuDropdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-default);
+
+  &.isOpen {
+    grid-template-rows: 1fr;
+    padding: 0.5rem 0 0;
+  }
+}
+
+.dropdownInner {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  overflow: hidden;
+}
+
+.dropdownLink {
+  background-color: var(--color-grey-5);
+  border-radius: var(--radius-2);
+  color: var(--color-black);
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-2);
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  &.current {
+    background-color: var(--color-grey-5);
+    color: var(--color-primary-2);
+  }
+}
+
+.chevron {
+  transition: transform var(--transition-default);
+
+  .textLight & {
+    color: var(--color-white);
+  }
+
+  .textDark & {
+    color: var(--color-black);
+  }
+
+  &.isOpen {
+    transform: rotate(180deg);
+  }
+}

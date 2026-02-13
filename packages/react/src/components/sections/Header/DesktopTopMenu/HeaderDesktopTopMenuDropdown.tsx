@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { Button } from 'components'
+import { Button } from 'components/form'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
-import styles from '../Header.module.scss'
-import type { HeaderDesktopTopMenuDropdownTypes } from '../Header.types'
+import styles from './HeaderDesktopTop.module.scss'
+import type { HeaderDesktopTopMenuDropdownTypes } from './HeaderDesktopTopMenu.types'
 
 export function HeaderDesktopTopMenuDropdown({
   children,
@@ -31,7 +31,7 @@ export function HeaderDesktopTopMenuDropdown({
   return (
     <div
       ref={itemRef}
-      className={clsx(styles.topDropdownWrapper, className)}
+      className={clsx(styles.dropdownWrapper, className)}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onFocusCapture={handleFocus}
@@ -46,7 +46,7 @@ export function HeaderDesktopTopMenuDropdown({
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-current={current ? 'page' : undefined}
-        className={styles.topDropdownTrigger}
+        className={styles.dropdownTrigger}
         onClick={isLink ? undefined : () => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
       >
@@ -54,7 +54,7 @@ export function HeaderDesktopTopMenuDropdown({
         <ChevronDown
           size={14}
           aria-hidden="true"
-          className={clsx(styles.chevron, isOpen && styles.chevronOpen)}
+          className={clsx(styles.chevron, isOpen && styles.isOpen)}
         />
       </Trigger>
 
@@ -62,9 +62,9 @@ export function HeaderDesktopTopMenuDropdown({
         inert
         role="menu"
         ref={dropdownRef}
-        className={clsx(styles.topDropdown, isOpen && styles.isOpen)}
+        className={clsx(styles.dropdown, isOpen && styles.isOpen)}
       >
-        <div className={styles.topDropdownInner}>{children}</div>
+        <div className={styles.dropdownInner}>{children}</div>
       </div>
     </div>
   )

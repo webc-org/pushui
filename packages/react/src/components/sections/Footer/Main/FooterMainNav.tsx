@@ -15,11 +15,11 @@ export function FooterMainNav({
     <nav
       ref={ref}
       aria-label={ariaLabel || title || 'Footer navigation'}
-      className={clsx(styles.mainNav, className)}
+      className={clsx(styles.headerDesktopMainNav, className)}
       {...rest}
     >
       {title && (
-        <Title level="h3" className={styles.mainNavTitle}>
+        <Title level="h3" className={styles.headerDesktopMainNavTitle}>
           {title}
         </Title>
       )}

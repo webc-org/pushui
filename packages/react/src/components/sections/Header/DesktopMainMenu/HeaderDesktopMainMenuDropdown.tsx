@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { Button } from 'components'
+import { Button } from 'components/form'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
-import styles from '../Header.module.scss'
-import type { HeaderDesktopMainMenuDropdownTypes } from '../Header.types'
+import type { HeaderDesktopMainMenuDropdownTypes } from './HeaderDesktopMainMenu.types'
+import styles from './headerDesktopMainMenu.module.scss'
 
 export function HeaderDesktopMainMenuDropdown({
   children,
@@ -33,9 +33,8 @@ export function HeaderDesktopMainMenuDropdown({
     <div
       ref={itemRef}
       className={clsx(
-        styles.mainDropdownWrapper,
-        mega && styles.mainDropdownHasMega,
-        current && styles.mainDropdownCurrent,
+        styles.dropdownWrapper,
+        mega && styles.hasMega,
         className
       )}
       onMouseEnter={() => setIsOpen(true)}
@@ -49,12 +48,9 @@ export function HeaderDesktopMainMenuDropdown({
         href={href}
         type={isLink ? undefined : 'button'}
         tabIndex={isLink && current ? -1 : undefined}
-        className={clsx(
-          styles.mainDropdownTrigger,
-          current && styles.mainDropdownTriggerActive
-        )}
+        className={clsx(styles.dropdownTrigger, current && styles.current)}
         aria-expanded={isOpen}
-        aria-haspopup="true"
+        aria-haspopup="menu"
         aria-current={current ? 'page' : undefined}
         onClick={isLink ? undefined : () => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
@@ -63,7 +59,7 @@ export function HeaderDesktopMainMenuDropdown({
         <ChevronDown
           size={16}
           aria-hidden="true"
-          className={clsx(styles.chevron, isOpen && styles.chevronOpen)}
+          className={clsx(styles.chevron, isOpen && styles.isOpen)}
         />
       </TriggerComp>
 
@@ -77,9 +73,7 @@ export function HeaderDesktopMainMenuDropdown({
         )}
       >
         <div
-          className={
-            mega ? styles.megaMenuInner : styles.mainDropdownInner
-          }
+          className={mega ? styles.megaMenuInner : styles.dropdownInner}
         >
           {children}
         </div>

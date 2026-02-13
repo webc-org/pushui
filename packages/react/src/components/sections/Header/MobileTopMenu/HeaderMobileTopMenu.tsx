@@ -1,44 +1,39 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
-import styles from '../Header.module.scss'
-import type { HeaderMobileTopMenuTypes } from '../Header.types'
+import type { HeaderMobileTopMenuTypes } from './HeaderMobileTopMenu.types'
+import styles from './headerMobileTopMenu.module.scss'
 
 export function HeaderMobileTopMenu({
   ref,
   children,
   className,
-  bgColor = 'var(--color-white)',
-  bgOpacity = '1',
-  textColor: textColorProp,
   containerClassName,
   style,
   ...rest
 }: HeaderMobileTopMenuTypes) {
-  const { isScrolled, textColor: contextTextColor } = useHeader()
-  const textColor = textColorProp ?? contextTextColor
-  const opacity = isScrolled ? '1' : bgOpacity
-  const customStyles = {
-    ...style,
-    '--header-mobile-bg': bgColor,
-    '--header-mobile-opacity': opacity,
-  } as CSSProperties
+  const { isScrolled, textColor, mobile } = useHeader()
+  const opacity = isScrolled ? '1' : mobile.top.bgOpacity
 
   return (
     <div
       ref={ref}
-      style={customStyles}
+      style={
+        {
+          ...style,
+          '--header-mobile-top-bg': mobile.top.bgColor,
+          '--header-mobile-top-opacity': opacity,
+        } as CSSProperties
+      }
       className={clsx(
-        styles.mobileTopMenu,
+        styles.menu,
         textColor === 'dark' && styles.textDark,
         textColor === 'light' && styles.textLight,
         className
       )}
       {...rest}
     >
-      <div
-        className={clsx(styles.mobileTopMenuContainer, containerClassName)}
-      >
+      <div className={clsx(styles.container, containerClassName)}>
         {children}
       </div>
     </div>

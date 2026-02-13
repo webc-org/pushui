@@ -7,7 +7,7 @@ export const useHeader = () => {
   const context = useContext(HeaderContext)
 
   if (!context) {
-    throw new Error('Header components must be used within HeaderRoot')
+    throw new Error('Header components must be used within Header')
   }
 
   return context

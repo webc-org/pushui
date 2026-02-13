@@ -84,14 +84,14 @@ Override the container width in your CSS:
 ### Header with Layout
 
 ```tsx
-<HeaderRoot>
+<Header>
   <MainMenu>
     <Layout className="flex-row items-center justify-between">
       <MainMenuLogo>Logo</MainMenuLogo>
       <MainMenuNav>...</MainMenuNav>
     </Layout>
   </MainMenu>
-</HeaderRoot>
+</Header>
 ```
 
 ### Nested Layouts

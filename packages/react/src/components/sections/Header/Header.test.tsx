@@ -6,6 +6,7 @@ import { Button } from 'form/Button'
 import { fireEvent, render, screen } from 'utils/Test'
 import { describe, expect, it } from 'vitest'
 import {
+  Header,
   HeaderDesktopMainMenu,
   HeaderDesktopMainMenuDropdown,
   HeaderDesktopMainMenuDropdownLink,
@@ -17,31 +18,30 @@ import {
   HeaderDesktopTopMenuDropdownLink,
   HeaderDesktopTopMenuLink,
   HeaderDesktopTopMenuNav,
+  HeaderMobile,
   HeaderMobileMainMenu,
   HeaderMobileMainMenuDropdown,
   HeaderMobileMainMenuDropdownLink,
   HeaderMobileMainMenuLink,
-  HeaderMobileRoot,
   HeaderMobileTopMenu,
   HeaderMobileTopMenuToggle,
-  HeaderRoot,
 } from './index'
 
 describe('Header', () => {
   it('renders header with logo', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     expect(screen.getByText('Logo')).toBeInTheDocument()
   })
 
   it('renders top bar', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopTopMenu>
           <HeaderDesktopTopMenuNav>
             <HeaderDesktopTopMenuLink asChild>
@@ -52,14 +52,14 @@ describe('Header', () => {
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     expect(screen.getByText('Help')).toBeInTheDocument()
   })
 
   it('renders top bar item with dropdown', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopTopMenu>
           <HeaderDesktopTopMenuNav>
             <HeaderDesktopTopMenuDropdown label="Language">
@@ -75,7 +75,7 @@ describe('Header', () => {
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
 
     const trigger = screen.getByText('Language').closest('button')!
@@ -89,7 +89,7 @@ describe('Header', () => {
 
   it('renders nav with aria-label', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuNav aria-label="Main menu">
             <HeaderDesktopMainMenuLink asChild>
@@ -97,7 +97,7 @@ describe('Header', () => {
             </HeaderDesktopMainMenuLink>
           </HeaderDesktopMainMenuNav>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     const nav = document.querySelector('nav[aria-label="Main menu"]')
     expect(nav).toBeInTheDocument()
@@ -105,7 +105,7 @@ describe('Header', () => {
 
   it('renders nav links', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuNav>
             <HeaderDesktopMainMenuLink asChild>
@@ -116,7 +116,7 @@ describe('Header', () => {
             </HeaderDesktopMainMenuLink>
           </HeaderDesktopMainMenuNav>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('About')).toBeInTheDocument()
@@ -124,13 +124,13 @@ describe('Header', () => {
 
   it('renders actions', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuNav>
             <Button>Login</Button>
           </HeaderDesktopMainMenuNav>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     expect(screen.getByText('Login')).toBeInTheDocument()
   })
@@ -138,11 +138,11 @@ describe('Header', () => {
   it('toggles mobile menu', async () => {
     const user = userEvent.setup()
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-        <HeaderMobileRoot>
+        <HeaderMobile>
           <HeaderMobileTopMenu>
             <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
@@ -151,8 +151,8 @@ describe('Header', () => {
               <Link href="/">Home</Link>
             </HeaderMobileMainMenuLink>
           </HeaderMobileMainMenu>
-        </HeaderMobileRoot>
-      </HeaderRoot>
+        </HeaderMobile>
+      </Header>
     )
 
     const toggle = screen.getByTestId('mobile-toggle')
@@ -167,17 +167,17 @@ describe('Header', () => {
 
   it('mobile toggle has aria-controls', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-        <HeaderMobileRoot>
+        <HeaderMobile>
           <HeaderMobileTopMenu>
             <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
           <HeaderMobileMainMenu>Menu</HeaderMobileMainMenu>
-        </HeaderMobileRoot>
-      </HeaderRoot>
+        </HeaderMobile>
+      </Header>
     )
 
     const toggle = screen.getByTestId('mobile-toggle')
@@ -188,7 +188,7 @@ describe('Header', () => {
 
   it('dropdown has aria-haspopup and aria-expanded', () => {
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuNav>
             <HeaderDesktopMainMenuDropdown label="Products">
@@ -198,11 +198,11 @@ describe('Header', () => {
             </HeaderDesktopMainMenuDropdown>
           </HeaderDesktopMainMenuNav>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
 
     const trigger = screen.getByText('Products').closest('button')!
-    expect(trigger).toHaveAttribute('aria-haspopup', 'true')
+    expect(trigger).toHaveAttribute('aria-haspopup', 'menu')
     expect(trigger).toHaveAttribute('aria-expanded', 'false')
 
     // Use fireEvent to avoid mouseenter triggering first
@@ -213,11 +213,11 @@ describe('Header', () => {
   it('expands mobile nav item', async () => {
     const user = userEvent.setup()
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-        <HeaderMobileRoot>
+        <HeaderMobile>
           <HeaderMobileTopMenu>
             <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
@@ -230,8 +230,8 @@ describe('Header', () => {
               </div>
             </HeaderMobileMainMenuDropdown>
           </HeaderMobileMainMenu>
-        </HeaderMobileRoot>
-      </HeaderRoot>
+        </HeaderMobile>
+      </Header>
     )
 
     await user.click(screen.getByTestId('mobile-toggle'))
@@ -247,11 +247,11 @@ describe('Header', () => {
   it('closes mobile menu on Escape', async () => {
     const user = userEvent.setup()
     render(
-      <HeaderRoot>
+      <Header>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-        <HeaderMobileRoot>
+        <HeaderMobile>
           <HeaderMobileTopMenu>
             <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
@@ -260,8 +260,8 @@ describe('Header', () => {
               <Link href="/">Home</Link>
             </HeaderMobileMainMenuLink>
           </HeaderMobileMainMenu>
-        </HeaderMobileRoot>
-      </HeaderRoot>
+        </HeaderMobile>
+      </Header>
     )
 
     const toggle = screen.getByTestId('mobile-toggle')
@@ -275,11 +275,11 @@ describe('Header', () => {
   it('forwards ref', () => {
     const ref = { current: null }
     render(
-      <HeaderRoot ref={ref}>
+      <Header ref={ref}>
         <HeaderDesktopMainMenu>
           <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
         </HeaderDesktopMainMenu>
-      </HeaderRoot>
+      </Header>
     )
     expect(ref.current).toBeInstanceOf(HTMLElement)
   })

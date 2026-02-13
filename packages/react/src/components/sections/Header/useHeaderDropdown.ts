@@ -3,7 +3,7 @@ import { useEffect, useEffectEvent, useRef, useState } from 'react'
 export function useHeaderDropdown(isLink: boolean) {
   const [isOpen, setIsOpen] = useState(false)
   const itemRef = useRef<HTMLDivElement>(null)
-  const triggerRef = useRef<HTMLButtonElement & HTMLAnchorElement>(null)
+  const triggerRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleClickOutside = useEffectEvent((e: MouseEvent) => {

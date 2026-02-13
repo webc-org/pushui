@@ -74,7 +74,7 @@ Placeholder for logo during loading states.
 ### In Header
 
 ```tsx
-<HeaderRoot>
+<Header>
   <MainMenu>
     <MainMenuLogo>
       <Logo href="/">
@@ -82,7 +82,7 @@ Placeholder for logo during loading states.
       </Logo>
     </MainMenuLogo>
   </MainMenu>
-</HeaderRoot>
+</Header>
 ```
 
 ### Responsive Logo
