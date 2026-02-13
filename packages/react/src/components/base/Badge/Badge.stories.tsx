@@ -3,7 +3,6 @@ import type { ColorVariant } from 'types'
 import { Badge } from './Badge'
 
 const variants: ColorVariant[] = [
-  'default',
   'primary',
   'secondary',
   'success',
@@ -22,7 +21,7 @@ const meta: Meta<typeof Badge> = {
       options: variants,
       description: 'The color variant of the badge',
       table: {
-        defaultValue: { summary: 'default' },
+        defaultValue: { summary: 'none (grey)' },
       },
     },
     children: {
@@ -32,7 +31,7 @@ const meta: Meta<typeof Badge> = {
   },
   args: {
     children: 'Badge',
-    variant: 'default',
+    variant: undefined,
   },
 }
 

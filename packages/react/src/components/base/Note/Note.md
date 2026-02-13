@@ -30,7 +30,7 @@ import { Note, NoteTitle } from '@ui'
 ### Variants
 
 ```tsx
-<Note variant="default">
+<Note>
   <NoteTitle level="h4">Note</NoteTitle>
   <p>General information.</p>
 </Note>
@@ -77,7 +77,7 @@ Container for the message.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `ColorVariant` | `'default'` | Color theme |
+| `variant` | `ColorVariant` | - | Color theme |
 | `children` | `ReactNode` | - | Note content |
 | `className` | `string` | - | Additional CSS class |
 

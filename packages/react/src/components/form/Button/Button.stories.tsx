@@ -1,10 +1,11 @@
+import type { CSSProperties } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Title } from 'components/base'
 import type { ColorVariant } from 'types'
 import { Button } from './Button'
 import type { ButtonAppearance } from './Button.types'
 
 const variants: ColorVariant[] = [
-  'default',
   'primary',
   'secondary',
   'success',
@@ -14,7 +15,6 @@ const variants: ColorVariant[] = [
 ]
 
 const appearances: ButtonAppearance[] = [
-  'default',
   'underline',
   'outline',
   'button',
@@ -60,68 +60,242 @@ const meta: Meta<typeof Button> = {
   },
 }
 
+const containerStyles = {
+  padding: '4rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2rem',
+} as CSSProperties
+
+const rowStyles = {
+  display: 'flex',
+  gap: '1rem',
+  flexWrap: 'wrap',
+} as CSSProperties
+
 export default meta
 type Story = StoryObj<typeof Button>
 
 export const Playground: Story = {
   args: {
     children: 'Button',
-    variant: 'primary',
-    appearance: 'button',
   },
 }
 
-export const Unstyled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button>No styles</Button>
-      <Button onClick={() => alert('clicked!')}>Click me</Button>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Without `variant` or `appearance`, the button has no visual styles - like a native button reset.',
-      },
-    },
+export const Light: Story = {
+  render: () => {
+    return (
+      <div style={containerStyles} className="bg-white">
+        <Title level="h3">Default</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v}>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} disabled>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3">Icon</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              contrast
+              appearance="icon"
+              className="icon-user fs-6"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              appearance="icon"
+              disabled
+              contrast
+              className="icon-user fs-6"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
+        <Title level="h3">Button</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="button">
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="button" disabled>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3">Outline</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="outline">
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="outline" disabled>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3">Underline</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="underline">
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="underline" disabled>
+              {v}
+            </Button>
+          ))}
+        </div>
+      </div>
+    )
   },
 }
 
-export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      {variants.map((v) => (
-        <Button variant={v} appearance="button" key={v}>
-          {v}
-        </Button>
-      ))}
-    </div>
-  ),
-}
-
-export const AllOutlines: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      {variants.map((v) => (
-        <Button variant={v} appearance="outline" key={v}>
-          {v}
-        </Button>
-      ))}
-    </div>
-  ),
-}
-
-export const AllUnderlines: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      {variants.map((v) => (
-        <Button variant={v} appearance="underline" key={v}>
-          {v}
-        </Button>
-      ))}
-    </div>
-  ),
+export const Dark: Story = {
+  render: () => {
+    return (
+      <div style={containerStyles} className="bg-black">
+        <Title level="h3">Default</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} contrast>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} contrast disabled>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3" className="text-white">
+          Icon
+        </Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              contrast
+              variant={v}
+              appearance="icon"
+              className="icon-search fs-7"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              contrast
+              variant={v}
+              appearance="icon"
+              disabled
+              className="icon-search fs-7"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
+        <Title level="h3" className="text-white">
+          Button
+        </Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="button" contrast>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              appearance="button"
+              disabled
+              contrast
+            >
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3" className="text-white">
+          Outline
+        </Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="outline" contrast>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              appearance="outline"
+              disabled
+              contrast
+            >
+              {v}
+            </Button>
+          ))}
+        </div>
+        <Title level="h3" className="text-white">
+          Underline
+        </Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button key={v} variant={v} appearance="underline" contrast>
+              {v}
+            </Button>
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Button
+              key={v}
+              variant={v}
+              appearance="underline"
+              disabled
+              contrast
+            >
+              {v}
+            </Button>
+          ))}
+        </div>
+      </div>
+    )
+  },
 }
 
 export const Loading: Story = {
@@ -130,109 +304,5 @@ export const Loading: Story = {
     loading: true,
     variant: 'primary',
     appearance: 'button',
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    children: 'Disabled',
-    disabled: true,
-    variant: 'primary',
-    appearance: 'button',
-  },
-}
-
-export const Icon: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      {variants.map((v) => (
-        <Button
-          key={v}
-          variant={v}
-          appearance="icon"
-          className="icon-search"
-          aria-label={`Search (${v})`}
-        />
-      ))}
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Icon-only buttons using lucide-static icon font classes. The icon is rendered via CSS; use `aria-label` for accessibility.',
-      },
-    },
-  },
-}
-
-export const IconButton: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      {variants.map((v) => (
-        <Button
-          key={v}
-          variant={v}
-          appearance="button"
-          className="icon-search"
-          aria-label={`Search (${v})`}
-          style={{ width: '4rem', padding: 0 }}
-        />
-      ))}
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Icon-only buttons with `appearance="button"` styling (background, border-radius). Use inline or utility styles to make them square.',
-      },
-    },
-  },
-}
-
-export const Contrast: Story = {
-  render: () => (
-    <div
-      style={{
-        background: '#1a1a1a',
-        padding: '2rem',
-        borderRadius: '0.5rem',
-      }}
-    >
-      <div
-        style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
-      >
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {variants.map((v) => (
-            <Button variant={v} appearance="button" contrast key={v}>
-              {v}
-            </Button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {variants.map((v) => (
-            <Button variant={v} appearance="outline" contrast key={v}>
-              {v}
-            </Button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {variants.map((v) => (
-            <Button variant={v} appearance="underline" contrast key={v}>
-              {v}
-            </Button>
-          ))}
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `contrast` prop to adapt buttons for dark backgrounds.',
-      },
-    },
   },
 }

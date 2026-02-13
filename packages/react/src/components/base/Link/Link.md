@@ -96,7 +96,7 @@ type ActionAppearance = 'button' | 'outline' | 'ghost' | 'link'
 ### ColorVariant
 
 ```tsx
-type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+type ColorVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
 ```
 
 ## Disabled Behavior

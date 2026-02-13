@@ -3,7 +3,6 @@ import { Note, NoteTitle } from 'components'
 import type { ColorVariant } from 'types'
 
 const variants: ColorVariant[] = [
-  'default',
   'primary',
   'secondary',
   'success',
@@ -22,7 +21,7 @@ const meta: Meta<typeof Note> = {
       options: variants,
       description: 'The color variant of the note',
       table: {
-        defaultValue: { summary: 'default' },
+        defaultValue: { summary: 'none (grey)' },
       },
     },
     children: {
@@ -32,7 +31,7 @@ const meta: Meta<typeof Note> = {
   },
   args: {
     children: 'This is a note message.',
-    variant: 'default',
+    variant: undefined,
   },
 }
 
@@ -42,7 +41,7 @@ type Story = StoryObj<typeof Note>
 export const Playground: Story = {
   args: {
     children: 'This is a note message.',
-    variant: 'default',
+    variant: undefined,
   },
 }
 

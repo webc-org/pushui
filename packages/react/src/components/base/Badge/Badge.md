@@ -46,14 +46,14 @@ import { Badge } from '@ui'
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `ColorVariant` | `'default'` | Color theme |
+| `variant` | `ColorVariant` | - | Color theme |
 | `children` | `ReactNode` | - | Badge content |
 | `className` | `string` | - | Additional CSS class |
 
 ### ColorVariant
 
 ```tsx
-type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+type ColorVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
 ```
 
 ## Styling
@@ -65,7 +65,7 @@ Badges use the color system CSS variables:
 ## Strapi Integration
 
 ```tsx
-<Badge variant={data.status === 'active' ? 'success' : 'default'}>
+<Badge variant={data.status === 'active' ? 'success' : undefined}>
   {data.status}
 </Badge>
 ```

@@ -4,7 +4,6 @@ import type { ColorVariant } from 'types'
 import { Progress } from './Progress'
 
 const variants: ColorVariant[] = [
-  'default',
   'primary',
   'secondary',
   'success',

@@ -62,9 +62,7 @@ export const Login: Story = {
           <Divider spacing={2}>or</Divider>
 
           <AuthForm>
-            <Button variant="default" appearance="button">
-              Continue with Google
-            </Button>
+            <Button appearance="button">Continue with Google</Button>
             <Button variant="secondary" appearance="button">
               Continue with GitHub
             </Button>
@@ -139,9 +137,7 @@ export const Signup: Story = {
           <Divider spacing={2}>or</Divider>
 
           <AuthForm>
-            <Button variant="default" appearance="button">
-              Continue with Google
-            </Button>
+            <Button appearance="button">Continue with Google</Button>
             <Button variant="secondary" appearance="button">
               Continue with GitHub
             </Button>
@@ -251,11 +247,7 @@ export const EmailSent: Story = {
             We've sent a password reset link to your email address. Please
             check your inbox and follow the instructions.
           </Note>
-          <Link
-            variant="default"
-            appearance="button"
-            href="/forgot-password"
-          >
+          <Link appearance="button" href="/forgot-password">
             Resend email
           </Link>
         </AuthCardBody>
@@ -343,7 +335,7 @@ export const VerifyEmailError: Story = {
             The verification link is invalid or has expired. Please request
             a new verification email.
           </Note>
-          <Link href="/reset" variant="default" appearance="button">
+          <Link href="/reset" appearance="button">
             Request new verification
           </Link>
         </AuthCardBody>

@@ -97,10 +97,10 @@ export const Default: Story = {
           life. Start your journey with us and transform the way you work.
         </BannerBody>
         <BannerActions className="mt-4">
-          <Button variant="default" contrast appearance="button">
+          <Button contrast appearance="button">
             Get Started
           </Button>
-          <Button variant="default" contrast appearance="outline">
+          <Button contrast appearance="outline">
             Learn More
           </Button>
         </BannerActions>
@@ -130,7 +130,7 @@ export const WithBackgroundImage: Story = {
           <Button variant="primary" contrast appearance="button">
             Book Now
           </Button>
-          <Link variant="default" contrast appearance="underline">
+          <Link contrast appearance="underline">
             View Gallery
           </Link>
         </BannerActions>
@@ -162,7 +162,7 @@ export const WithBackgroundVideo: Story = {
           <Button variant="primary" contrast appearance="button">
             Watch Now
           </Button>
-          <Button variant="default" contrast appearance="outline">
+          <Button contrast appearance="outline">
             Learn More
           </Button>
         </BannerActions>
@@ -237,7 +237,7 @@ export const BottomContent: Story = {
           <Button variant="primary" contrast appearance="button">
             View Collection
           </Button>
-          <Button variant="default" contrast appearance="outline">
+          <Button contrast appearance="outline">
             See Lookbook
           </Button>
         </BannerActions>
@@ -255,7 +255,7 @@ export const AllVariantsContrast: Story = {
           All variants with contrast prop on dark background
         </BannerSubtitle>
         <BannerActions className="mt-4">
-          <Button variant="default" contrast appearance="button">
+          <Button contrast appearance="button">
             Default
           </Button>
           <Button variant="primary" contrast appearance="button">

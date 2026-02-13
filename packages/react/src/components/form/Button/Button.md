@@ -35,7 +35,7 @@ import { Button } from '@ui'
 ### Color Variants
 
 ```tsx
-<Button appearance="button" variant="default">Default</Button>
+<Button appearance="button">Default</Button>
 <Button appearance="button" variant="primary">Primary</Button>
 <Button appearance="button" variant="secondary">Secondary</Button>
 <Button appearance="button" variant="success">Success</Button>
@@ -98,7 +98,7 @@ type ActionAppearance = 'button' | 'outline' | 'ghost' | 'link'
 ### ColorVariant
 
 ```tsx
-type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+type ColorVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
 ```
 
 ## Loading Behavior

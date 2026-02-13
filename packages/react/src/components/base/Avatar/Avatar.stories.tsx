@@ -3,7 +3,6 @@ import type { ColorVariant } from 'types'
 import { Avatar } from './Avatar'
 
 const variants: ColorVariant[] = [
-  'default',
   'primary',
   'secondary',
   'success',
@@ -48,7 +47,7 @@ const meta: Meta<typeof Avatar> = {
       options: variants,
       description: 'Background color variant for fallback',
       table: {
-        defaultValue: { summary: 'default' },
+        defaultValue: { summary: 'none (grey)' },
       },
     },
     defaultLabel: {
@@ -57,7 +56,7 @@ const meta: Meta<typeof Avatar> = {
     },
   },
   args: {
-    variant: 'default',
+    variant: undefined,
   },
 }
 

@@ -5,7 +5,7 @@ import type { NoteTypes } from './Note.types'
 
 export function Note({
   ref,
-  variant = 'default',
+  variant,
   className,
   children,
   ...rest
@@ -18,7 +18,7 @@ export function Note({
       role="note"
       className={clsx(
         styles.note,
-        styles[`variant-${variant}`],
+        styles[`variant-${variant ?? 'default'}`],
         className
       )}
       {...rest}

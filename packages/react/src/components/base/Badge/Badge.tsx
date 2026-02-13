@@ -6,7 +6,7 @@ export function Badge({
   ref,
   children,
   className,
-  variant = 'default',
+  variant,
   ...rest
 }: BadgeTypes) {
   return (
@@ -14,7 +14,7 @@ export function Badge({
       ref={ref}
       className={clsx(
         styles.badge,
-        styles[`variant-${variant}`],
+        styles[`variant-${variant ?? 'default'}`],
         className
       )}
       {...rest}

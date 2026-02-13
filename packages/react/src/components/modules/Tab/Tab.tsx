@@ -133,7 +133,7 @@ export function TabButton({
   children,
   className,
   appearance,
-  variant = 'default',
+  variant,
   ...props
 }: TabButtonTypes) {
   const { activeTab, setActiveTab, tabId } = useTabContext()

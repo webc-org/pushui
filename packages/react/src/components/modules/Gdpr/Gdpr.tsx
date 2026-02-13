@@ -112,7 +112,6 @@ function Intro({
         <Button
           className={styles.button}
           appearance="outline"
-          variant="default"
           onClick={onNecessaryOnly}
         >
           {strings.necessaryOnly}
@@ -120,7 +119,6 @@ function Intro({
         <Button
           className={styles.button}
           appearance="outline"
-          variant="default"
           onClick={onMoreChoices}
         >
           {strings.moreChoices}
@@ -194,7 +192,6 @@ function Preferences({
         <Button
           className={styles.button}
           appearance="outline"
-          variant="default"
           onClick={onNecessaryOnly}
         >
           {strings.necessaryOnly}
@@ -202,7 +199,6 @@ function Preferences({
         <Button
           className={styles.button}
           appearance="outline"
-          variant="default"
           onClick={onAcceptAll}
         >
           {strings.acceptAll}

@@ -66,7 +66,7 @@ import { Avatar } from '@ui'
 | `name` | `string` | - | Name used to generate initials fallback |
 | `width` | `string` | `'3.2rem'` | Avatar size (aspect-ratio: 1) |
 | `fontSize` | `1-9` | `2` | Font size scale (maps to `--font-size-{n}`) |
-| `variant` | `ColorVariant` | `'default'` | Background color for fallback |
+| `variant` | `ColorVariant` | - | Background color for fallback |
 | `defaultLabel` | `string` | `'Avatar'` | Default aria-label when no alt or name |
 | `className` | `string` | - | Additional CSS class |
 

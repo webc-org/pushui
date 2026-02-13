@@ -21,7 +21,7 @@ export function Avatar({
   name,
   width = '6rem',
   fontSize = 5,
-  variant = 'default',
+  variant,
   defaultLabel = 'Avatar',
   className,
   style,
@@ -40,7 +40,7 @@ export function Avatar({
       aria-label={alt || name || defaultLabel}
       className={clsx(
         styles.avatar,
-        styles[`variant-${variant}`],
+        styles[`variant-${variant ?? 'default'}`],
         className
       )}
       style={{ width, fontSize: fontSizeVar, ...style }}

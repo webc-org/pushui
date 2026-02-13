@@ -225,8 +225,18 @@ Root container providing context for mobile menu state.
 | `children` | `ReactNode` | - | Header content |
 | `baseId` | `string` | auto | Base ID for accessibility |
 | `isOverlay` | `boolean` | `false` | Overlay mode (header floats over content) |
-| `textColor` | `'light' \| 'dark'` | - | Text/icon color |
-| `className` | `string` | - | Additional CSS class |
+| `textColor` | `'light' \| 'dark'` | `'dark'` | Text/icon color |
+| `desktop` | `{ top?: { bgColor, bgOpacity }, main?: { bgColor, bgOpacity } }` | see below | Desktop bar backgrounds |
+| `mobile` | `{ top?: { bgColor, bgOpacity }, main?: { bgColor, bgOpacity } }` | see below | Mobile bar backgrounds |
+
+Background defaults:
+
+| Bar | `bgColor` | `bgOpacity` |
+|-----|-----------|-------------|
+| `desktop.top` | `var(--color-grey-7)` | `1` |
+| `desktop.main` | `var(--color-white)` | `1` |
+| `mobile.top` | `var(--color-grey-7)` | `1` |
+| `mobile.main` | `var(--color-white)` | `1` |
 
 ### TopMenu
 
@@ -236,9 +246,6 @@ Top utility bar (help links, language selector).
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | TopNav components |
 | `containerClassName` | `string` | - | Inner container class |
-| `bgColor` | `string` | `'var(--color-grey-7)'` | Background color (CSS value or hex) |
-| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
 
 ### MainMenu
 
@@ -248,9 +255,6 @@ Main navigation bar with logo and links.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Logo, Nav components |
 | `containerClassName` | `string` | - | Inner container class |
-| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
-| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
 
 ### MobileTopMenu
 
@@ -259,11 +263,9 @@ Mobile bar containing logo and toggle.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Logo and toggle |
-| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
-| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
-| `textColor` | `'light' \| 'dark'` | inherited | Text/icon color (defaults to Header value) |
+| `containerClassName` | `string` | - | Inner container class |
 
-### headerMobileMainMenu
+### HeaderMobileMainMenu
 
 Slide-out mobile navigation panel.
 
@@ -271,8 +273,6 @@ Slide-out mobile navigation panel.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Menu content |
 | `aria-label` | `string` | `'Mobile navigation'` | Accessible label |
-| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
-| `textColor` | `'light' \| 'dark'` | - | Text/icon color |
 
 ### MainMenuDropdown
 
@@ -314,23 +314,25 @@ All link components support `asChild` for custom link rendering and `current` fo
 
 ## Overlay Header
 
-Use `overlay` and `textColor` to float the header over hero content. Each bar controls its own background via `bgColor`/`bgOpacity`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
+Use `isOverlay` and `textColor` to float the header over hero content. Background colors are configured via `desktop`/`mobile` props on `Header`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
 
 ```tsx
-<Header isOverlay textColor="light">
-  <TopMenu bgColor="#111" bgOpacity="0.2" textColor="light">
-    {/* top bar */}
-  </TopMenu>
-  <MainMenu bgColor="#222" bgOpacity="0.2" textColor="light">
-    {/* main nav */}
-  </MainMenu>
+<Header
+  isOverlay
+  textColor="light"
+  desktop={{
+    top: { bgColor: '#111', bgOpacity: '0.2' },
+    main: { bgColor: '#222', bgOpacity: '0.2' },
+  }}
+  mobile={{
+    top: { bgColor: '#222', bgOpacity: '1' },
+  }}
+>
+  <TopMenu>{/* top bar */}</TopMenu>
+  <MainMenu>{/* main nav */}</MainMenu>
   <HeaderMobile>
-    <MobileTopMenu bgColor="#222" bgOpacity="1" textColor="light">
-      {/* mobile bar */}
-    </MobileTopMenu>
-    <headerMobileMainMenu bgColor="#333">
-      {/* mobile menu with custom bg */}
-    </headerMobileMainMenu>
+    <MobileTopMenu>{/* mobile bar */}</MobileTopMenu>
+    <HeaderMobileMainMenu>{/* mobile menu */}</HeaderMobileMainMenu>
   </HeaderMobile>
 </Header>
 
@@ -429,9 +431,19 @@ const { isOverlay, isScrolled, textColor } = useHeader()
 ## Strapi Integration
 
 ```tsx
-<Header isOverlay={isOverlay} textColor={textColor}>
+<Header
+  isOverlay={isOverlay}
+  textColor={textColor}
+  desktop={{
+    top: { bgColor: data.topBar?.bgColor, bgOpacity: data.topBar?.bgOpacity },
+    main: { bgColor: data.mainNav?.bgColor, bgOpacity: data.mainNav?.bgOpacity },
+  }}
+  mobile={{
+    top: { bgColor: data.mobileNav?.bgColor, bgOpacity: data.mobileNav?.bgOpacity },
+  }}
+>
   {data.topBar && (
-    <TopMenu bgColor={data.topBar.bgColor} bgOpacity={data.topBar.bgOpacity}>
+    <TopMenu>
       <TopMenuNav>
         {data.topBar.links.map(link => (
           <TopMenuLink key={link.id} asChild>
@@ -453,7 +465,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </TopMenu>
   )}
 
-  <MainMenu bgColor={data.headerDesktopMainNav?.bgColor} bgOpacity={data.headerDesktopMainNav?.bgOpacity}>
+  <MainMenu>
     <MainMenuLogo>
       <Logo href="/">
         <Image
@@ -464,7 +476,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
     </MainMenuLogo>
 
     <MainMenuNav>
-      {data.headerDesktopMainNav.map(item => (
+      {data.mainNav.map(item => (
         item.children?.length ? (
           <MainMenuDropdown
             key={item.id}
@@ -487,7 +499,7 @@ const { isOverlay, isScrolled, textColor } = useHeader()
   </MainMenu>
 
   <HeaderMobile>
-    <MobileTopMenu bgColor={data.mobileNav?.bgColor} bgOpacity={data.mobileNav?.bgOpacity}>
+    <MobileTopMenu>
       {/* mobile bar */}
     </MobileTopMenu>
     {/* mobile menu */}

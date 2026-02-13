@@ -69,12 +69,7 @@ export const DashboardPage: Story = {
       <DashboardMain>
         <DashboardMainHeader>
           <DashboardMainTitle>Welcome Joe</DashboardMainTitle>
-          <Avatar
-            name="johndoe"
-            width="6rem"
-            fontSize={6}
-            variant="default"
-          />
+          <Avatar name="johndoe" width="6rem" fontSize={6} />
         </DashboardMainHeader>
       </DashboardMain>
     </DashboardLayout>

@@ -13,7 +13,13 @@ $tx-color-button-close-active: var(--color-white);
   justify-content: center;
   outline: none;
   position: relative;
+  text-decoration: underline;
   transition: all 0.1s ease;
+
+  &:hover:not([disabled], [aria-disabled='true']),
+  &:focus-visible:not([disabled], [aria-disabled='true']) {
+    text-decoration: none;
+  }
 }
 
 @mixin action-appearances {
@@ -26,21 +32,11 @@ $tx-color-button-close-active: var(--color-white);
     text-decoration: none;
   }
 
-  &.appearance-underline,
-  &.appearance-default {
+  &.appearance-underline {
     align-self: center;
     height: auto;
     text-decoration: none;
-  }
 
-  &.appearance-icon {
-    background: transparent;
-    height: auto;
-    padding: 0;
-    text-decoration: none;
-  }
-
-  &.appearance-underline {
     &::before {
       background: currentcolor;
       bottom: 0;
@@ -54,109 +50,115 @@ $tx-color-button-close-active: var(--color-white);
       width: 100%;
     }
 
-    &:hover:not([disabled], [aria-disabled='true']),
-    &:focus-visible:not([disabled], [aria-disabled='true']) {
-      &::before {
-        transform: translateY(0.4rem);
-      }
+    &:hover:not([disabled], [aria-disabled='true'])::before,
+    &:focus-visible:not([disabled], [aria-disabled='true'])::before {
+      transform: translateY(0.4rem);
     }
+  }
+
+  &.appearance-icon {
+    background: transparent;
+    height: auto;
+    padding: 0;
+    text-decoration: none;
   }
 }
 
 @mixin action-variants {
   @each $name in $color-variants {
+    // LIGHT
+    $text: var(--color-black);
     $base: var(--color-#{$name}-2);
     $hover: var(--color-#{$name}-1);
-    $text: var(--color-white);
-    $contrast-base: var(--color-#{$name}-contrast);
-    $contrast-hover: var(--color-#{$name}-3);
-    $contrast-text: var(--color-#{$name}-1);
+
+    // DARK
+    $text-contrast: var(--color-white);
+    $base-contrast: var(--color-#{$name}-contrast);
+    $hover-contrast: var(--color-#{$name}-3);
 
     &.variant-#{$name} {
       background: transparent;
-      color: $base;
+      color: $text;
 
       &[aria-selected='true']:not([disabled], [aria-disabled='true']),
       &:hover:not([disabled], [aria-disabled='true']),
       &:focus-visible:not([disabled], [aria-disabled='true']) {
-        color: $hover;
+        color: $base;
       }
 
       &.appearance-button {
         background: $base;
-        color: $text;
+        color: var(--color-white);
 
         &[aria-selected='true']:not([disabled], [aria-disabled='true']),
         &:hover:not([disabled], [aria-disabled='true']),
         &:focus-visible:not([disabled], [aria-disabled='true']) {
           background: $hover;
-          color: $text;
+          color: var(--color-white);
         }
       }
 
       &.appearance-outline {
         border: 0.1rem solid $base;
+        color: $base;
 
         &[aria-selected='true']:not([disabled], [aria-disabled='true']),
         &:hover:not([disabled], [aria-disabled='true']),
         &:focus-visible:not([disabled], [aria-disabled='true']) {
-          background: $hover;
-          border-color: $hover;
-          color: $text;
+          background: $base;
+          border-color: $base;
+          color: var(--color-white);
         }
       }
 
-      &.appearance-underline::before {
-        background: $base;
-      }
+      &.appearance-underline {
+        color: $base;
 
-      &.appearance-underline[aria-selected='true']:not([disabled], [aria-disabled='true'])::before,
-      &.appearance-underline:hover:not([disabled], [aria-disabled='true'])::before,
-      &.appearance-underline:focus-visible:not([disabled], [aria-disabled='true'])::before {
-        background: $hover;
+        ::before {
+          background: $base;
+        }
       }
 
       &.contrast {
-        color: $contrast-base;
+        color: $text-contrast;
 
         &[aria-selected='true']:not([disabled], [aria-disabled='true']),
         &:hover:not([disabled], [aria-disabled='true']),
         &:focus-visible:not([disabled], [aria-disabled='true']) {
-          color: $contrast-hover;
+          color: $base-contrast;
         }
 
         &.appearance-button {
-          background: $contrast-base;
-          color: $contrast-text;
+          background: $base-contrast;
+          color: var(--color-#{$name}-1);
 
           &[aria-selected='true']:not([disabled], [aria-disabled='true']),
-          &:hover:not([disabled], [aria-disabled='true']),
-          &:focus-visible:not([disabled], [aria-disabled='true']) {
-            background: $contrast-hover;
-            color: $contrast-text;
+          &:focus-visible:not([disabled], [aria-disabled='true']),
+          &:hover:not([disabled], [aria-disabled='true']) {
+            background: $hover-contrast;
+            color: var(--color-#{$name}-1);
           }
         }
 
         &.appearance-outline {
-          border-color: $contrast-base;
+          border-color: $base-contrast;
+          color: $base-contrast;
 
           &[aria-selected='true']:not([disabled], [aria-disabled='true']),
-          &:hover:not([disabled], [aria-disabled='true']),
-          &:focus-visible:not([disabled], [aria-disabled='true']) {
-            background: $contrast-hover;
-            border-color: $contrast-hover;
-            color: $contrast-text;
+          &:focus-visible:not([disabled], [aria-disabled='true']),
+          &:hover:not([disabled], [aria-disabled='true']) {
+            background: var(--color-#{$name}-3);
+            border-color: var(--color-#{$name}-3);
+            color: var(--color-#{$name}-1);
           }
         }
 
-        &.appearance-underline::before {
-          background: $contrast-base;
-        }
-
-        &.appearance-underline[aria-selected='true']:not([disabled], [aria-disabled='true'])::before,
-        &.appearance-underline:hover:not([disabled], [aria-disabled='true'])::before,
-        &.appearance-underline:focus-visible:not([disabled], [aria-disabled='true'])::before {
-          background: $contrast-hover;
+        &.appearance-underline {
+          color: $base-contrast;
+          
+          &::before {
+            background: $base-contrast;
+          }
         }
       }
     }

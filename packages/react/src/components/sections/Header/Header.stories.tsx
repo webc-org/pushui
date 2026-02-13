@@ -713,7 +713,7 @@ export const DarkHero: Story = {
             <Button appearance="button" variant="primary" contrast>
               Get Started
             </Button>
-            <Button appearance="outline" variant="default" contrast>
+            <Button appearance="outline" contrast>
               Learn More
             </Button>
           </BannerActions>

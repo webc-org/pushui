@@ -97,7 +97,6 @@ function MultipleToastsStory() {
         Toast 2
       </Button>
       <Button
-        variant="default"
         appearance="button"
         onClick={() =>
           addToast({
