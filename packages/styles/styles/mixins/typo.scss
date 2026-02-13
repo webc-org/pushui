@@ -32,8 +32,8 @@ $heading-sizes: (
   outline: none;
   text-decoration: underline;
 
-  &:hover:not(:disabled),
-  &:focus-visible:not(:disabled) {
+  &:hover:not([disabled], [aria-disabled='true']),
+  &:focus-visible:not([disabled], [aria-disabled='true']) {
     color: $tx-color-base-link-active;
     text-decoration: none;
   }

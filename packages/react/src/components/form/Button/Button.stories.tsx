@@ -107,7 +107,6 @@ export const Light: Story = {
             <Button
               key={v}
               variant={v}
-              contrast
               appearance="icon"
               className="icon-user fs-6"
               aria-label={`Search (${v})`}
@@ -121,7 +120,6 @@ export const Light: Story = {
               variant={v}
               appearance="icon"
               disabled
-              contrast
               className="icon-user fs-6"
               aria-label={`Search (${v})`}
             />
@@ -206,7 +204,7 @@ export const Dark: Story = {
               contrast
               variant={v}
               appearance="icon"
-              className="icon-search fs-7"
+              className="icon-user fs-6"
               aria-label={`Search (${v})`}
             />
           ))}
@@ -219,7 +217,7 @@ export const Dark: Story = {
               variant={v}
               appearance="icon"
               disabled
-              className="icon-search fs-7"
+              className="icon-user fs-6"
               aria-label={`Search (${v})`}
             />
           ))}

@@ -101,6 +101,32 @@ export const Light: Story = {
             </Link>
           ))}
         </div>
+        <Title level="h3">Icon</Title>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Link
+              key={v}
+              href="#"
+              variant={v}
+              appearance="icon"
+              className="icon-user fs-6"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
+        <div style={rowStyles}>
+          {variants.map((v) => (
+            <Link
+              key={v}
+              href="#"
+              variant={v}
+              appearance="icon"
+              disabled
+              className="icon-user fs-6"
+              aria-label={`Search (${v})`}
+            />
+          ))}
+        </div>
         <Title level="h3">Button</Title>
         <div style={rowStyles}>
           {variants.map((v) => (
@@ -164,32 +190,6 @@ export const Light: Story = {
             </Link>
           ))}
         </div>
-        <Title level="h3">Icon</Title>
-        <div style={rowStyles}>
-          {variants.map((v) => (
-            <Link
-              key={v}
-              href="#"
-              variant={v}
-              appearance="icon"
-              className="icon-search fs-7"
-              aria-label={`Search (${v})`}
-            />
-          ))}
-        </div>
-        <div style={rowStyles}>
-          {variants.map((v) => (
-            <Link
-              key={v}
-              href="#"
-              variant={v}
-              appearance="icon"
-              disabled
-              className="icon-search fs-7"
-              aria-label={`Search (${v})`}
-            />
-          ))}
-        </div>
       </div>
     )
   },
@@ -199,7 +199,9 @@ export const Dark: Story = {
   render: () => {
     return (
       <div style={containerStyles} className="bg-black">
-        <Title level="h3">Default</Title>
+        <Title level="h3" className="text-white">
+          Default
+        </Title>
         <div style={rowStyles}>
           {variants.map((v) => (
             <Link key={v} href="#" variant={v} contrast>
