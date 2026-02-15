@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
-import type { HeaderDesktopMainMenuNavTypes } from './HeaderDesktopMainMenu.types'
+import type { HeaderDesktopMainMenuNavTypes } from './HeaderDesktopMain.types'
 import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenuNav({

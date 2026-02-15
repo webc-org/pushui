@@ -2,8 +2,8 @@ import { useEffect, useId, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { Button } from 'components'
 import { ChevronDown } from 'lucide-react'
-import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuDropdownTypes } from './HeaderMobileMainMenu.types'
+import type { HeaderMobileMainMenuDropdownTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenuDropdown({
   ref,

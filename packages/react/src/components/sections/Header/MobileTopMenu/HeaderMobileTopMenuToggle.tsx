@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { Button } from 'components'
 import { Menu, X } from 'lucide-react'
 import { useHeader } from '../HeaderContext'
-import type { HeaderMobileTopMenuToggleTypes } from './HeaderMobileTopMenu.types'
-import styles from './headerMobileTopMenu.module.scss'
+import type { HeaderMobileTopMenuToggleTypes } from './HeaderMobileTop.types'
+import styles from './headerMobileTop.module.scss'
 
 export function HeaderMobileTopMenuToggle({
   ref,

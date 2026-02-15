@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import type { HeaderDesktopTopMenuLinkTypes } from './HeaderDesktopTopMenu.types'
+import type { HeaderDesktopTopMenuLinkTypes } from './HeaderDesktopTop.types'
 import styles from './headerDesktopTop.module.scss'
 
 export function HeaderDesktopTopMenuLink({

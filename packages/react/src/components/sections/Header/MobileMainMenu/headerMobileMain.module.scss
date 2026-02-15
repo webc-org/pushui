@@ -80,7 +80,6 @@
     color: var(--color-primary-2);
   }
 
-  // Default/icon appearance with variant: header colors at rest, variant on hover
   @each $name in $color-variants {
     &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
       color: var(--color-black);
@@ -142,7 +141,7 @@
   }
 }
 
-.MenuDropdown {
+.dropdown {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows var(--transition-default);
@@ -183,14 +182,6 @@
 
 .chevron {
   transition: transform var(--transition-default);
-
-  .textLight & {
-    color: var(--color-white);
-  }
-
-  .textDark & {
-    color: var(--color-black);
-  }
 
   &.isOpen {
     transform: rotate(180deg);

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuLinkTypes } from './HeaderMobileMainMenu.types'
+import type { HeaderMobileMainMenuLinkTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenuLink({
   asChild,
@@ -16,7 +16,7 @@ export function HeaderMobileMainMenuLink({
   return (
     <Comp
       className={clsx(
-        styles.headerMobileMainMenuLink,
+        styles.link,
         current && styles.current,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],

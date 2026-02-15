@@ -1,8 +1,8 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
-import type { HeaderMobileTopMenuTypes } from './HeaderMobileTopMenu.types'
-import styles from './headerMobileTopMenu.module.scss'
+import type { HeaderMobileTopMenuTypes } from './HeaderMobileTop.types'
+import styles from './headerMobileTop.module.scss'
 
 export function HeaderMobileTopMenu({
   ref,

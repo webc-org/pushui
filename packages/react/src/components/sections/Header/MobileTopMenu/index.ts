@@ -1,4 +1,4 @@
 export * from './HeaderMobileTopMenu'
 export * from './HeaderMobileTopMenuLogo'
 export * from './HeaderMobileTopMenuToggle'
-export type * from './HeaderMobileTopMenu.types'
+export type * from './HeaderMobileTop.types'

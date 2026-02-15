@@ -2,8 +2,8 @@ import { type CSSProperties, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import { getFocusableElements } from 'utils'
 import { useHeader } from '../HeaderContext'
-import type { HeaderMobileMainMenuTypes } from './HeaderMobileMainMenu.types'
-import styles from './headerMobileMainMenu.module.scss'
+import type { HeaderMobileMainMenuTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenu({
   ref,

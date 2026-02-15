@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuDropdownLinkTypes } from './HeaderMobileMainMenu.types'
+import type { HeaderMobileMainMenuDropdownLinkTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenuDropdownLink({
   asChild,
@@ -14,11 +14,7 @@ export function HeaderMobileMainMenuDropdownLink({
   return (
     <Comp
       role="menuitem"
-      className={clsx(
-        styles.headerMobileMainMenuDropdownLink,
-        current && styles.current,
-        className
-      )}
+      className={clsx(styles.link, current && styles.current, className)}
       aria-current={current ? 'page' : undefined}
       {...props}
     >

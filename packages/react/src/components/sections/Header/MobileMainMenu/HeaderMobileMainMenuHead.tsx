@@ -1,6 +1,6 @@
 import clsx from 'clsx'
-import styles from '../Header.module.scss'
-import type { HeaderMobileMainMenuHeadTypes } from './HeaderMobileMainMenu.types'
+import type { HeaderMobileMainMenuHeadTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenuHead({
   ref,

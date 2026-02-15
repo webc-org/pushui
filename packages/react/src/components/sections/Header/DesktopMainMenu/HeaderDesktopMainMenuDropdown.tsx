@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { Button } from 'components/form'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
-import type { HeaderDesktopMainMenuDropdownTypes } from './HeaderDesktopMainMenu.types'
+import type { HeaderDesktopMainMenuDropdownTypes } from './HeaderDesktopMain.types'
 import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenuDropdown({
