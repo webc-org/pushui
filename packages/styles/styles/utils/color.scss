@@ -1,5 +1,7 @@
 @use '../mixins/color' as *;
 
+$color-levels: (1, 2, 3, contrast);
+
 @each $variant in $color-variants {
   @each $level in $color-levels {
     .bg-#{$variant}-#{$level} {

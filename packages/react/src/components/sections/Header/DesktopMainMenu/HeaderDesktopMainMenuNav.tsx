@@ -16,7 +16,7 @@ export function HeaderDesktopMainMenuNav({
     <nav
       ref={ref}
       aria-label={label}
-      className={clsx(styles.headerDesktopMainNav, className)}
+      className={clsx(styles.nav, className)}
       {...rest}
     >
       {children}

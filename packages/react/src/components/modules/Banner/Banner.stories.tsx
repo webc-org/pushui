@@ -88,7 +88,7 @@ type Story = StoryObj<typeof Banner>
 
 export const Default: Story = {
   render: (args) => (
-    <Banner {...args} backgroundColor="var(--color-primary-2)">
+    <Banner {...args} backgroundColor="var(--color-primary-1)">
       <BannerContent textColor="light">
         <BannerTitle>Welcome to Our Platform</BannerTitle>
         <BannerSubtitle>Build something amazing today</BannerSubtitle>
@@ -97,10 +97,10 @@ export const Default: Story = {
           life. Start your journey with us and transform the way you work.
         </BannerBody>
         <BannerActions className="mt-4">
-          <Button contrast appearance="button">
+          <Button variant="primary" contrast appearance="button">
             Get Started
           </Button>
-          <Button contrast appearance="outline">
+          <Button variant="primary" contrast appearance="underline">
             Learn More
           </Button>
         </BannerActions>
@@ -130,7 +130,7 @@ export const WithBackgroundImage: Story = {
           <Button variant="primary" contrast appearance="button">
             Book Now
           </Button>
-          <Link contrast appearance="underline">
+          <Link variant="primary" contrast appearance="underline">
             View Gallery
           </Link>
         </BannerActions>
@@ -162,7 +162,7 @@ export const WithBackgroundVideo: Story = {
           <Button variant="primary" contrast appearance="button">
             Watch Now
           </Button>
-          <Button contrast appearance="outline">
+          <Button variant="primary" contrast appearance="outline">
             Learn More
           </Button>
         </BannerActions>
@@ -244,48 +244,4 @@ export const BottomContent: Story = {
       </BannerContent>
     </Banner>
   ),
-}
-
-export const AllVariantsContrast: Story = {
-  render: (args) => (
-    <Banner {...args} horizontalAlign="center" backgroundColor="#1a1a1a">
-      <BannerContent textColor="light" textAlign="center">
-        <BannerTitle level="h2">Contrast Button Variants</BannerTitle>
-        <BannerSubtitle>
-          All variants with contrast prop on dark background
-        </BannerSubtitle>
-        <BannerActions className="mt-4">
-          <Button contrast appearance="button">
-            Default
-          </Button>
-          <Button variant="primary" contrast appearance="button">
-            Primary
-          </Button>
-          <Button variant="secondary" contrast appearance="button">
-            Secondary
-          </Button>
-          <Button variant="success" contrast appearance="button">
-            Success
-          </Button>
-          <Button variant="danger" contrast appearance="button">
-            Danger
-          </Button>
-          <Button variant="warning" contrast appearance="button">
-            Warning
-          </Button>
-          <Button variant="info" contrast appearance="button">
-            Info
-          </Button>
-        </BannerActions>
-      </BannerContent>
-    </Banner>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Use the `contrast` prop on Button and Link components for visibility on dark backgrounds.',
-      },
-    },
-  },
 }

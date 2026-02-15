@@ -20,7 +20,7 @@ export function Button({
 
   const classList = clsx(
     isStyled && styles.styled,
-    isStyled && styles[`variant-${variant ?? 'default'}`],
+    variant && styles[`variant-${variant}`],
     appearance && styles[`appearance-${appearance}`],
     contrast && styles.contrast,
     className

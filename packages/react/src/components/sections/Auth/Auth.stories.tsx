@@ -247,14 +247,12 @@ export const EmailSent: Story = {
             We've sent a password reset link to your email address. Please
             check your inbox and follow the instructions.
           </Note>
-          <Link appearance="button" href="/forgot-password">
-            Resend email
-          </Link>
         </AuthCardBody>
 
         <Divider spacing={2} hidden />
 
         <AuthCardFooter>
+          <AuthLink href="/forgot-password">Resend email</AuthLink>
           <AuthLink href="/">Back to Home Page</AuthLink>
         </AuthCardFooter>
       </AuthCard>
@@ -335,14 +333,12 @@ export const VerifyEmailError: Story = {
             The verification link is invalid or has expired. Please request
             a new verification email.
           </Note>
-          <Link href="/reset" appearance="button">
-            Request new verification
-          </Link>
         </AuthCardBody>
 
         <Divider spacing={2} hidden />
 
         <AuthCardFooter>
+          <AuthLink href="/reset">Request new verification</AuthLink>
           <AuthLink href="/login">Back to Sign in</AuthLink>
         </AuthCardFooter>
       </AuthCard>

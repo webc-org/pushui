@@ -68,7 +68,7 @@ export function HeaderDesktopMainMenuDropdown({
         role="menu"
         ref={dropdownRef}
         className={clsx(
-          mega ? styles.megaMenu : styles.mainDropdown,
+          mega ? styles.megaMenu : styles.dropdown,
           isOpen && styles.isOpen
         )}
       >

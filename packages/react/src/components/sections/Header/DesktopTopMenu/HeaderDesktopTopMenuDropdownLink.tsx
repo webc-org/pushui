@@ -14,7 +14,11 @@ export function HeaderDesktopTopMenuDropdownLink({
   return (
     <Comp
       role="menuitem"
-      className={clsx(styles.link, current && styles.current, className)}
+      className={clsx(
+        styles.dropdownLink,
+        current && styles.current,
+        className
+      )}
       aria-current={current ? 'page' : undefined}
       {...props}
     >

@@ -112,6 +112,7 @@ function Intro({
         <Button
           className={styles.button}
           appearance="outline"
+          variant="primary"
           onClick={onNecessaryOnly}
         >
           {strings.necessaryOnly}
@@ -119,6 +120,7 @@ function Intro({
         <Button
           className={styles.button}
           appearance="outline"
+          variant="primary"
           onClick={onMoreChoices}
         >
           {strings.moreChoices}
@@ -159,7 +161,7 @@ function Preferences({
 
               <div className={styles.categoryControl}>
                 {cat.required ? (
-                  <Badge className={styles.badge} variant="info">
+                  <Badge className={styles.badge} variant="primary">
                     {strings.alwaysActive}
                   </Badge>
                 ) : (
@@ -193,6 +195,7 @@ function Preferences({
           className={styles.button}
           appearance="outline"
           onClick={onNecessaryOnly}
+          variant="primary"
         >
           {strings.necessaryOnly}
         </Button>
@@ -200,6 +203,7 @@ function Preferences({
           className={styles.button}
           appearance="outline"
           onClick={onAcceptAll}
+          variant="primary"
         >
           {strings.acceptAll}
         </Button>

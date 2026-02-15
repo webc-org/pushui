@@ -9,11 +9,7 @@ export function HeaderDesktopMainMenuLogo({
   ...rest
 }: HeaderDesktopMainMenuLogoTypes) {
   return (
-    <div
-      ref={ref}
-      className={clsx(styles.headerDesktopMainLogo, className)}
-      {...rest}
-    >
+    <div ref={ref} className={clsx(styles.logo, className)} {...rest}>
       {children}
     </div>
   )

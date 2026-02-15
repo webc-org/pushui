@@ -14,7 +14,7 @@ export function Badge({
       ref={ref}
       className={clsx(
         styles.badge,
-        styles[`variant-${variant ?? 'default'}`],
+        variant && styles[`variant-${variant}`],
         className
       )}
       {...rest}

@@ -1,8 +1,5 @@
 @use 'styles/mixins/typo' as *;
 
-$tx-color-base-link: var(--color-primary-2);
-$tx-color-base-link-active: var(--color-primary-1);
-
 .richText {
   @include base-paragraph;
   @include base-list;
@@ -37,15 +34,7 @@ $tx-color-base-link-active: var(--color-primary-1);
   }
 
   a {
-    @include base-link;
-
-    color: $tx-color-base-link;
-    font-weight: var(--font-weight-strong);
-
-    &:hover,
-    &:focus-visible {
-      color: $tx-color-base-link-active;
-    }
+    font-weight: bold;
   }
 
   strong,

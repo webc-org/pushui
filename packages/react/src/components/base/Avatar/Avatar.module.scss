@@ -24,7 +24,7 @@ $tx-color-avatar: var(--color-white);
   text-transform: uppercase;
 }
 
-$variants: default, primary, secondary, success, danger, warning, info;
+$variants: primary, secondary, success, danger, warning, info;
 
 @each $variant in $variants {
   .variant-#{$variant} {

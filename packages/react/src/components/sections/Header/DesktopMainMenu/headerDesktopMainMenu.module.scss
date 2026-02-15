@@ -47,18 +47,6 @@
   }
 }
 
-.logo {
-  display: flex;
-  flex-shrink: 0;
-
-  img,
-  svg {
-    height: auto;
-    max-height: 3rem;
-    width: auto;
-  }
-}
-
 .link {
   @include action-base;
   @include action-appearances;
@@ -66,19 +54,13 @@
   background: none;
   border-radius: var(--radius-2);
   color: var(--color-black);
+  cursor: pointer;
   font-size: var(--font-size-4);
   height: 4rem;
   padding: 0 1rem;
   text-decoration: none;
 
-  &:hover,
-  &:focus-visible {
-    color: var(--color-primary-2);
-    text-decoration: none;
-  }
-
   &.current {
-    color: var(--color-primary-2);
     cursor: default;
   }
 
@@ -86,6 +68,7 @@
     color: var(--color-white);
 
     &:hover,
+    &.current,
     &:focus-visible {
       color: var(--color-primary-contrast);
     }
@@ -95,25 +78,19 @@
     color: var(--color-black);
 
     &:hover,
+    &.current,
     &:focus-visible {
       color: var(--color-primary-contrast);
     }
   }
 
-  // Default/icon appearance with variant: header colors at rest, variant on hover
   @each $name in $color-variants {
     &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-      color: var(--color-black);
-
-      &:hover,
-      &:focus-visible {
-        color: var(--color-#{$name}-2);
-      }
-
       .textLight & {
         color: var(--color-white);
 
         &:hover,
+        &.current,
         &:focus-visible {
           color: var(--color-#{$name}-contrast);
         }
@@ -123,8 +100,9 @@
         color: var(--color-black);
 
         &:hover,
+        &.current,
         &:focus-visible {
-          color: var(--color-#{$name}-contrast);
+          color: var(--color-#{$name}-2);
         }
       }
     }
@@ -158,29 +136,20 @@
 
 .dropdownTrigger {
   align-items: center;
-  background: none;
-  border-radius: var(--radius-2);
-  color: var(--color-black);
   cursor: pointer;
   display: flex;
   font-size: var(--font-size-4);
   gap: 0.5rem;
-  height: 4rem;
+  height:  var(--height-main-menu);
   padding: 0 2rem;
   text-decoration: none;
-
-  .dropdownWrapper:hover &,
-  .dropdownWrapper:focus-within & {
-    background-color: var(--color-grey-6);
-    color: var(--color-primary-2);
-  }
 
   .textLight & {
     color: var(--color-white);
   }
 
-  .textLight.current,
   .textLight .dropdownWrapper:hover &,
+  .textLight .dropdownWrapper.current &,
   .textLight .dropdownWrapper:focus-within & {
     color: var(--color-primary-contrast);
   }
@@ -189,8 +158,8 @@
     color: var(--color-black);
   }
 
-  .textLight.current,
   .textDark .dropdownWrapper:hover &,
+  .textDark .dropdownWrapper.current &,
   .textDark .dropdownWrapper:focus-within & {
     color: var(--color-primary-2);
   }
@@ -200,15 +169,25 @@
   left: 0;
   min-width: 20rem;
   opacity: 0;
-  padding: 1rem 0 0;
+  padding: 2rem 0 0;
   pointer-events: none;
   position: absolute;
   top: 100%;
-  transition:
-    opacity var(--transition-default),
-    visibility var(--transition-default);
+  transition: opacity var(--transition-default);
   visibility: hidden;
   z-index: var(--z-index-5);
+
+  &::before {
+    background-color: var(--header-desktop-main-bg);
+    border-radius: var(--radius-2);
+    content: '';
+    height: calc(100% - 2rem);
+    left: 0;
+    opacity: var(--header-desktop-main-opacity);
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+  }
 
   &.isOpen {
     opacity: 1;
@@ -218,83 +197,30 @@
 }
 
 .dropdownInner {
-  background: var(--color-white);
-  border-radius: var(--radius-2);
-  box-shadow: var(--shadow-1);
-  color: var(--color-black);
-  padding: 2rem;
-}
-
-.megaMenu {
-  left: 50%;
-  max-width: var(--container-max-width);
-  opacity: 0;
-  padding: 1rem 2rem 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  transform: translateX(-50%);
-  transition:
-    opacity var(--transition-default),
-    visibility var(--transition-default);
-  visibility: hidden;
-  width: 100%;
-  z-index: var(--z-index-5);
-
-  &.isOpen {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-  }
-}
-
-.megaMenuInner {
-  background: var(--color-white);
-  border-radius: var(--radius-2);
-  color: var(--color-black);
-  margin: 0 auto;
-  padding: 2rem;
-
-  @include mq-lg {
-    padding: 4rem;
-  }
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem;
+  position: relative;
 }
 
 .dropdownLink {
-  background: none;
-  border-radius: var(--radius-2);
-  color: var(--color-black);
-  cursor: pointer;
   display: block;
   font-size: var(--font-size-3);
-  padding: 1rem 0 0;
+  margin: 1rem 0 0;
   text-align: left;
   text-decoration: none;
-  transition:
-    color var(--transition-default),
-    background-color var(--transition-default);
-  width: 100%;
+  transition: color var(--transition-default);
 
-  &:first-child {
-    padding: 0;
-  }
-
-  &:hover:not(.current),
-  &:focus-visible:not(.current) {
-    color: var(--color-primary-2);
+  &:hover,
+  &:focus-visible {
     text-decoration: underline;
   }
 
   &.current {
-    color: var(--color-primary-2);
     cursor: default;
     text-decoration: none;
   }
-}
-
-.chevron {
-  transition: transform var(--transition-default);
 
   .textLight & {
     color: var(--color-white);
@@ -304,7 +230,82 @@
     color: var(--color-black);
   }
 
+  &:hover,
+  &.current,
+  &:focus-visible {
+    .textLight & {
+      color: var(--color-primary-contrast);
+    }
+
+    .textDark & {
+      color: var(--color-primary-2);
+    }
+  }
+}
+
+.megaMenu {
+  left: 50%;
+  max-width: calc(var(--container-max-width) - 4rem);
+  opacity: 0;
+  padding: 2rem 0 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transform: translateX(-50%);
+  transition: opacity var(--transition-default);
+  visibility: hidden;
+  width: 100%;
+  z-index: var(--z-index-5);
+
+  &::before {
+    background-color: var(--header-desktop-main-bg);
+    border-radius: var(--radius-3);
+    content: '';
+    height: calc(100% - 2rem);
+    left: 0;
+    opacity: var(--header-desktop-main-opacity);
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+  }
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+.megaMenuInner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+
+  @include mq-lg {
+    padding: 4rem;
+  }
+}
+
+.chevron {
+  transition: transform var(--transition-default);
+
   &.isOpen {
     transform: rotate(180deg);
+  }
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+
+  img,
+  svg {
+    height: auto;
+    max-height: 3rem;
+    width: auto;
   }
 }

@@ -45,17 +45,6 @@ export const Playground: Story = {
   },
 }
 
-export const WithHeader: Story = {
-  render: () => (
-    <Note variant="warning">
-      <NoteTitle level="h4" className="fs-5">
-        Warning
-      </NoteTitle>
-      <p>This action cannot be undone. Please proceed with caution.</p>
-    </Note>
-  ),
-}
-
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

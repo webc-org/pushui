@@ -18,7 +18,7 @@ export function Note({
       role="note"
       className={clsx(
         styles.note,
-        styles[`variant-${variant ?? 'default'}`],
+        variant && styles[`variant-${variant}`],
         className
       )}
       {...rest}

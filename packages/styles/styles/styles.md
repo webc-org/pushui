@@ -705,7 +705,6 @@ Animation classes use `.active` and `.removing` states:
 ```
 
 Generates classes for all variants:
-- `.variant-default`
 - `.variant-primary`
 - `.variant-secondary`
 - `.variant-success`

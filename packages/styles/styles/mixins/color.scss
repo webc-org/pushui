@@ -1,5 +1,4 @@
-$color-variants: (default, primary, secondary, success, danger, warning, info);
-$color-levels: (1, 2, 3, contrast);
+$color-variants: (primary, secondary, success, danger, warning, info);
 
 @mixin color-variants($prefix: 'variant-') {
   @each $name in $color-variants {
