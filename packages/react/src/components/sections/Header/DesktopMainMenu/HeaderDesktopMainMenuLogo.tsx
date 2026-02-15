@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import type { HeaderDesktopMainMenuLogoTypes } from './HeaderDesktopMainMenu.types'
-import styles from './headerDesktopMainMenu.module.scss'
+import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenuLogo({
   ref,

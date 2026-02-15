@@ -3,7 +3,7 @@ import { Button } from 'components/form'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
 import type { HeaderDesktopMainMenuDropdownTypes } from './HeaderDesktopMainMenu.types'
-import styles from './headerDesktopMainMenu.module.scss'
+import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenuDropdown({
   children,

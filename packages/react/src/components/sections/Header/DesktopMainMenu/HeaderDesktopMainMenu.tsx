@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
 import type { HeaderDesktopMainMenuTypes } from './HeaderDesktopMainMenu.types'
-import styles from './headerDesktopMainMenu.module.scss'
+import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenu({
   ref,
