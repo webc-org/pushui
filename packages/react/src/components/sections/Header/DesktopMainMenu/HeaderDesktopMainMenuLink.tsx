@@ -10,6 +10,7 @@ export function HeaderDesktopMainMenuLink({
   current,
   appearance,
   variant,
+  contrast,
   ...props
 }: HeaderDesktopMainMenuLinkTypes) {
   const Comp = asChild ? Slot : 'a'
@@ -18,9 +19,10 @@ export function HeaderDesktopMainMenuLink({
     <Comp
       className={clsx(
         styles.link,
-        current && styles.current,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
+        contrast && styles.contrast,
+        current && styles.current,
         className
       )}
       aria-current={current ? 'page' : undefined}

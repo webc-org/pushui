@@ -48,9 +48,9 @@
 }
 
 .link {
-  @include action-base;
   @include action-appearances;
   @include action-variants;
+  @include action-base;
   background: none;
   border-radius: var(--radius-2);
   color: var(--color-black);
@@ -80,7 +80,7 @@
     &:hover,
     &.current,
     &:focus-visible {
-      color: var(--color-primary-contrast);
+      color: var(--color-primary-2);
     }
   }
 

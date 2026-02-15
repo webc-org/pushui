@@ -44,12 +44,12 @@ export function Banner({
     >
       {backgroundVideo && (
         <video
-          className={styles.backgroundMedia}
           src={backgroundVideo.src}
           poster={backgroundVideo.poster}
-          autoPlay
-          muted
+          className={styles.backgroundMedia}
           loop
+          muted
+          autoPlay
           playsInline
         />
       )}
@@ -57,8 +57,8 @@ export function Banner({
       <div
         className={clsx(
           styles.container,
-          styles[`horizontal-align-${horizontalAlign}`],
-          styles[`vertical-align-${verticalAlign}`]
+          styles[`vertical-align-${verticalAlign}`],
+          styles[`horizontal-align-${horizontalAlign}`]
         )}
       >
         {children}

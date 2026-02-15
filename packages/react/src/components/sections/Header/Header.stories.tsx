@@ -73,12 +73,13 @@ const HeaderLogoContent = () => {
   )
 }
 
-const HeaderButtonsContent = () => (
+const HeaderButtonsContent = ({ contrast }: { contrast?: boolean }) => (
   <HeaderDesktopMainMenuNav>
     <HeaderDesktopMainMenuLink
       asChild
       appearance="outline"
       variant="primary"
+      contrast={contrast}
     >
       <Link href="/">Sign In</Link>
     </HeaderDesktopMainMenuLink>
@@ -87,6 +88,7 @@ const HeaderButtonsContent = () => (
       asChild
       appearance="button"
       variant="primary"
+      contrast={contrast}
     >
       <Link href="/">Get Started</Link>
     </HeaderDesktopMainMenuLink>
@@ -683,7 +685,7 @@ export const DarkHero: Story = {
             </HeaderDesktopMainMenuLink>
           </HeaderDesktopMainMenuNav>
 
-          <HeaderButtonsContent />
+          <HeaderButtonsContent contrast />
         </HeaderDesktopMainMenu>
 
         <HeaderMobile>
@@ -713,7 +715,7 @@ export const DarkHero: Story = {
             <Button appearance="button" variant="primary" contrast>
               Get Started
             </Button>
-            <Button appearance="outline" contrast>
+            <Button appearance="outline" variant="primary" contrast>
               Learn More
             </Button>
           </BannerActions>
@@ -732,9 +734,6 @@ export const DarkHero: Story = {
       </Section>
     </>
   ),
-  parameters: {
-    layout: 'fullscreen',
-  },
 }
 
 export const LightHero: Story = {
@@ -839,7 +838,4 @@ export const LightHero: Story = {
       </Section>
     </>
   ),
-  parameters: {
-    layout: 'fullscreen',
-  },
 }
