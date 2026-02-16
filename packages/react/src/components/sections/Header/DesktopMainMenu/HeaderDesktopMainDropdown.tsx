@@ -2,20 +2,21 @@ import clsx from 'clsx'
 import { Button } from 'components/form'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
-import type { HeaderDesktopTopMenuDropdownTypes } from './HeaderDesktopTop.types'
-import styles from './headerDesktopTop.module.scss'
+import type { HeaderDesktopMainDropdownTypes } from './HeaderDesktopMain.types'
+import styles from './headerDesktopMain.module.scss'
 
-export function HeaderDesktopTopMenuDropdown({
+export function HeaderDesktopMainDropdown({
   children,
   label,
   href,
   as,
+  mega = false,
   current = false,
   className,
   ...rest
-}: HeaderDesktopTopMenuDropdownTypes) {
+}: HeaderDesktopMainDropdownTypes) {
   const isLink = Boolean(href)
-  const Trigger = href ? as || 'a' : Button
+  const TriggerComp = href ? as || 'a' : Button
 
   const {
     isOpen,
@@ -31,40 +32,51 @@ export function HeaderDesktopTopMenuDropdown({
   return (
     <div
       ref={itemRef}
-      className={clsx(styles.dropdownWrapper, className)}
+      className={clsx(
+        styles.dropdownWrapper,
+        mega && styles.hasMega,
+        className
+      )}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onFocusCapture={handleFocus}
       onBlur={handleBlur}
       {...rest}
     >
-      <Trigger
+      <TriggerComp
         ref={triggerRef}
         href={href}
         type={isLink ? undefined : 'button'}
         tabIndex={isLink && current ? -1 : undefined}
-        aria-haspopup="menu"
+        className={clsx(styles.dropdownTrigger, current && styles.current)}
         aria-expanded={isOpen}
+        aria-haspopup="menu"
         aria-current={current ? 'page' : undefined}
-        className={styles.dropdownTrigger}
         onClick={isLink ? undefined : () => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
       >
         {label}
         <ChevronDown
-          size={14}
+          size={16}
           aria-hidden="true"
           className={clsx(styles.chevron, isOpen && styles.isOpen)}
         />
-      </Trigger>
+      </TriggerComp>
 
       <div
         inert
         role="menu"
         ref={dropdownRef}
-        className={clsx(styles.dropdown, isOpen && styles.isOpen)}
+        className={clsx(
+          mega ? styles.megaMenu : styles.dropdown,
+          isOpen && styles.isOpen
+        )}
       >
-        <div className={styles.dropdownInner}>{children}</div>
+        <div
+          className={mega ? styles.megaMenuInner : styles.dropdownInner}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

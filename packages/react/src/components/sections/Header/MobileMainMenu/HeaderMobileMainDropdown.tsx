@@ -2,17 +2,17 @@ import { useEffect, useId, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { Button } from 'components'
 import { ChevronDown } from 'lucide-react'
-import type { HeaderMobileMainMenuDropdownTypes } from './HeaderMobileMain.types'
+import type { HeaderMobileMainDropdownTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
 
-export function HeaderMobileMainMenuDropdown({
+export function HeaderMobileMainDropdown({
   ref,
   children,
   label,
   baseId,
   className,
   ...rest
-}: HeaderMobileMainMenuDropdownTypes) {
+}: HeaderMobileMainDropdownTypes) {
   const [isExpanded, setIsExpanded] = useState(false)
   const generatedId = useId()
   const id = baseId || generatedId

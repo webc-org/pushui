@@ -1,15 +1,15 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
-import type { HeaderMobileMainMenuNavTypes } from './HeaderMobileMain.types'
+import type { HeaderMobileMainNavTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
 
-export function HeaderMobileMainMenuNav({
+export function HeaderMobileMainNav({
   ref,
   children,
   className,
   'aria-label': ariaLabel,
   ...rest
-}: HeaderMobileMainMenuNavTypes) {
+}: HeaderMobileMainNavTypes) {
   const label = useHeaderNavLabel('mobile', ariaLabel)
 
   return (

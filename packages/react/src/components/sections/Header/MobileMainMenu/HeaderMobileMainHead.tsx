@@ -1,13 +1,13 @@
 import clsx from 'clsx'
-import type { HeaderMobileMainMenuHeadTypes } from './HeaderMobileMain.types'
+import type { HeaderMobileMainHeadTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
 
-export function HeaderMobileMainMenuHead({
+export function HeaderMobileMainHead({
   ref,
   className,
   children,
   ...rest
-}: HeaderMobileMainMenuHeadTypes) {
+}: HeaderMobileMainHeadTypes) {
   return (
     <div ref={ref} className={clsx(styles.head, className)} {...rest}>
       {children}

@@ -1,16 +1,17 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import type { HeaderDesktopTopMenuDropdownLinkTypes } from './HeaderDesktopTop.types'
-import styles from './headerDesktopTop.module.scss'
+import type { HeaderDesktopMainDropdownLinkTypes } from './HeaderDesktopMain.types'
+import styles from './headerDesktopMain.module.scss'
 
-export function HeaderDesktopTopMenuDropdownLink({
+export function HeaderDesktopMainDropdownLink({
   asChild,
   children,
   className,
   current,
   ...props
-}: HeaderDesktopTopMenuDropdownLinkTypes) {
+}: HeaderDesktopMainDropdownLinkTypes) {
   const Comp = asChild ? Slot : 'a'
+
   return (
     <Comp
       role="menuitem"

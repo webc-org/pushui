@@ -7,24 +7,24 @@ import { fireEvent, render, screen } from 'utils/Test'
 import { describe, expect, it } from 'vitest'
 import {
   Header,
+  HeaderDesktopMainDropdown,
+  HeaderDesktopMainDropdownLink,
+  HeaderDesktopMainLink,
+  HeaderDesktopMainLogo,
   HeaderDesktopMainMenu,
-  HeaderDesktopMainMenuDropdown,
-  HeaderDesktopMainMenuDropdownLink,
-  HeaderDesktopMainMenuLink,
-  HeaderDesktopMainMenuLogo,
-  HeaderDesktopMainMenuNav,
+  HeaderDesktopMainNav,
+  HeaderDesktopTopDropdown,
+  HeaderDesktopTopDropdownLink,
+  HeaderDesktopTopLink,
   HeaderDesktopTopMenu,
-  HeaderDesktopTopMenuDropdown,
-  HeaderDesktopTopMenuDropdownLink,
-  HeaderDesktopTopMenuLink,
-  HeaderDesktopTopMenuNav,
+  HeaderDesktopTopNav,
   HeaderMobile,
+  HeaderMobileMainDropdown,
+  HeaderMobileMainDropdownLink,
+  HeaderMobileMainLink,
   HeaderMobileMainMenu,
-  HeaderMobileMainMenuDropdown,
-  HeaderMobileMainMenuDropdownLink,
-  HeaderMobileMainMenuLink,
   HeaderMobileTopMenu,
-  HeaderMobileTopMenuToggle,
+  HeaderMobileTopToggle,
 } from './index'
 
 describe('Header', () => {
@@ -32,7 +32,7 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -43,14 +43,14 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopTopMenu>
-          <HeaderDesktopTopMenuNav>
-            <HeaderDesktopTopMenuLink asChild>
+          <HeaderDesktopTopNav>
+            <HeaderDesktopTopLink asChild>
               <Link href="#">Help</Link>
-            </HeaderDesktopTopMenuLink>
-          </HeaderDesktopTopMenuNav>
+            </HeaderDesktopTopLink>
+          </HeaderDesktopTopNav>
         </HeaderDesktopTopMenu>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -61,19 +61,19 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopTopMenu>
-          <HeaderDesktopTopMenuNav>
-            <HeaderDesktopTopMenuDropdown label="Language">
-              <HeaderDesktopTopMenuDropdownLink asChild>
+          <HeaderDesktopTopNav>
+            <HeaderDesktopTopDropdown label="Language">
+              <HeaderDesktopTopDropdownLink asChild>
                 <Link href="#">Option 1</Link>
-              </HeaderDesktopTopMenuDropdownLink>
-              <HeaderDesktopTopMenuDropdownLink asChild>
+              </HeaderDesktopTopDropdownLink>
+              <HeaderDesktopTopDropdownLink asChild>
                 <Link href="#">Option 2</Link>
-              </HeaderDesktopTopMenuDropdownLink>
-            </HeaderDesktopTopMenuDropdown>
-          </HeaderDesktopTopMenuNav>
+              </HeaderDesktopTopDropdownLink>
+            </HeaderDesktopTopDropdown>
+          </HeaderDesktopTopNav>
         </HeaderDesktopTopMenu>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -91,11 +91,11 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuNav aria-label="Main menu">
-            <HeaderDesktopMainMenuLink asChild>
+          <HeaderDesktopMainNav aria-label="Main menu">
+            <HeaderDesktopMainLink asChild>
               <Link href="/">Home</Link>
-            </HeaderDesktopMainMenuLink>
-          </HeaderDesktopMainMenuNav>
+            </HeaderDesktopMainLink>
+          </HeaderDesktopMainNav>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -107,14 +107,14 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuNav>
-            <HeaderDesktopMainMenuLink asChild>
+          <HeaderDesktopMainNav>
+            <HeaderDesktopMainLink asChild>
               <Link href="/">Home</Link>
-            </HeaderDesktopMainMenuLink>
-            <HeaderDesktopMainMenuLink asChild>
+            </HeaderDesktopMainLink>
+            <HeaderDesktopMainLink asChild>
               <Link href="/about">About</Link>
-            </HeaderDesktopMainMenuLink>
-          </HeaderDesktopMainMenuNav>
+            </HeaderDesktopMainLink>
+          </HeaderDesktopMainNav>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -126,9 +126,9 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuNav>
+          <HeaderDesktopMainNav>
             <Button>Login</Button>
-          </HeaderDesktopMainMenuNav>
+          </HeaderDesktopMainNav>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -140,16 +140,16 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
         <HeaderMobile>
           <HeaderMobileTopMenu>
-            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+            <HeaderMobileTopToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
           <HeaderMobileMainMenu>
-            <HeaderMobileMainMenuLink asChild>
+            <HeaderMobileMainLink asChild>
               <Link href="/">Home</Link>
-            </HeaderMobileMainMenuLink>
+            </HeaderMobileMainLink>
           </HeaderMobileMainMenu>
         </HeaderMobile>
       </Header>
@@ -169,11 +169,11 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
         <HeaderMobile>
           <HeaderMobileTopMenu>
-            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+            <HeaderMobileTopToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
           <HeaderMobileMainMenu>Menu</HeaderMobileMainMenu>
         </HeaderMobile>
@@ -190,13 +190,13 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuNav>
-            <HeaderDesktopMainMenuDropdown label="Products">
-              <HeaderDesktopMainMenuDropdownLink asChild>
+          <HeaderDesktopMainNav>
+            <HeaderDesktopMainDropdown label="Products">
+              <HeaderDesktopMainDropdownLink asChild>
                 <Link href="#">Option</Link>
-              </HeaderDesktopMainMenuDropdownLink>
-            </HeaderDesktopMainMenuDropdown>
-          </HeaderDesktopMainMenuNav>
+              </HeaderDesktopMainDropdownLink>
+            </HeaderDesktopMainDropdown>
+          </HeaderDesktopMainNav>
         </HeaderDesktopMainMenu>
       </Header>
     )
@@ -215,20 +215,20 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
         <HeaderMobile>
           <HeaderMobileTopMenu>
-            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+            <HeaderMobileTopToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
           <HeaderMobileMainMenu>
-            <HeaderMobileMainMenuDropdown label="Products">
+            <HeaderMobileMainDropdown label="Products">
               <div>
-                <HeaderMobileMainMenuDropdownLink asChild>
+                <HeaderMobileMainDropdownLink asChild>
                   <Link href="#">Software</Link>
-                </HeaderMobileMainMenuDropdownLink>
+                </HeaderMobileMainDropdownLink>
               </div>
-            </HeaderMobileMainMenuDropdown>
+            </HeaderMobileMainDropdown>
           </HeaderMobileMainMenu>
         </HeaderMobile>
       </Header>
@@ -249,16 +249,16 @@ describe('Header', () => {
     render(
       <Header>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
         <HeaderMobile>
           <HeaderMobileTopMenu>
-            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+            <HeaderMobileTopToggle data-testid="mobile-toggle" />
           </HeaderMobileTopMenu>
           <HeaderMobileMainMenu>
-            <HeaderMobileMainMenuLink asChild>
+            <HeaderMobileMainLink asChild>
               <Link href="/">Home</Link>
-            </HeaderMobileMainMenuLink>
+            </HeaderMobileMainLink>
           </HeaderMobileMainMenu>
         </HeaderMobile>
       </Header>
@@ -277,7 +277,7 @@ describe('Header', () => {
     render(
       <Header ref={ref}>
         <HeaderDesktopMainMenu>
-          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+          <HeaderDesktopMainLogo>Logo</HeaderDesktopMainLogo>
         </HeaderDesktopMainMenu>
       </Header>
     )

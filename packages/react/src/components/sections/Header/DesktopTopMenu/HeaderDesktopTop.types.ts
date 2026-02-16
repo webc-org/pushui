@@ -5,12 +5,12 @@ export type HeaderDesktopTopMenuTypes = ComponentPropsWithRef<'div'> & {
   containerClassName?: string
 }
 
-export type HeaderDesktopTopMenuNavTypes = ComponentPropsWithRef<'nav'> & {
+export type HeaderDesktopTopNavTypes = ComponentPropsWithRef<'nav'> & {
   children: ReactNode
   'aria-label'?: string
 }
 
-export type HeaderDesktopTopMenuDropdownTypes =
+export type HeaderDesktopTopDropdownTypes =
   ComponentPropsWithRef<'div'> & {
     children: ReactNode
     label: ReactNode
@@ -19,13 +19,13 @@ export type HeaderDesktopTopMenuDropdownTypes =
     current?: boolean
   }
 
-export type HeaderDesktopTopMenuLinkTypes = ComponentPropsWithRef<'a'> & {
+export type HeaderDesktopTopLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
 }
 
-export type HeaderDesktopTopMenuDropdownLinkTypes =
+export type HeaderDesktopTopDropdownLinkTypes =
   ComponentPropsWithRef<'a'> & {
     asChild?: boolean
     children: ReactNode

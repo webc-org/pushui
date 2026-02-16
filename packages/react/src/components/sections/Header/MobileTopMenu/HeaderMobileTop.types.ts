@@ -5,11 +5,11 @@ export type HeaderMobileTopMenuTypes = ComponentPropsWithRef<'div'> & {
   containerClassName?: string
 }
 
-export type HeaderMobileTopMenuLogoTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderMobileTopLogoTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
 }
 
-export type HeaderMobileTopMenuToggleTypes = Omit<
+export type HeaderMobileTopToggleTypes = Omit<
   ComponentPropsWithRef<'button'>,
   'children'
 > & {

@@ -6,25 +6,24 @@ export type HeaderMobileMainMenuTypes = ComponentPropsWithRef<'div'> & {
   'aria-label'?: string
 }
 
-export type HeaderMobileMainMenuHeadTypes =
-  ComponentPropsWithRef<'div'> & {
-    children: ReactNode
-    'aria-label'?: string
-  }
-
-export type HeaderMobileMainMenuNavTypes = ComponentPropsWithRef<'nav'> & {
+export type HeaderMobileMainHeadTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   'aria-label'?: string
 }
 
-export type HeaderMobileMainMenuDropdownTypes =
+export type HeaderMobileMainNavTypes = ComponentPropsWithRef<'nav'> & {
+  children: ReactNode
+  'aria-label'?: string
+}
+
+export type HeaderMobileMainDropdownTypes =
   ComponentPropsWithRef<'div'> & {
     children: ReactNode
     label: ReactNode
     baseId?: string
   }
 
-export type HeaderMobileMainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
+export type HeaderMobileMainLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
@@ -32,7 +31,7 @@ export type HeaderMobileMainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
   variant?: ColorVariant
 }
 
-export type HeaderMobileMainMenuDropdownLinkTypes =
+export type HeaderMobileMainDropdownLinkTypes =
   ComponentPropsWithRef<'a'> & {
     asChild?: boolean
     children: ReactNode

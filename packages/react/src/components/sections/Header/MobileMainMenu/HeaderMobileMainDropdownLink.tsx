@@ -1,18 +1,19 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
-import type { HeaderDesktopTopMenuLinkTypes } from './HeaderDesktopTop.types'
-import styles from './headerDesktopTop.module.scss'
+import type { HeaderMobileMainDropdownLinkTypes } from './HeaderMobileMain.types'
+import styles from './headerMobileMain.module.scss'
 
-export function HeaderDesktopTopMenuLink({
+export function HeaderMobileMainDropdownLink({
   asChild,
   children,
   className,
   current,
   ...props
-}: HeaderDesktopTopMenuLinkTypes) {
+}: HeaderMobileMainDropdownLinkTypes) {
   const Comp = asChild ? Slot : 'a'
   return (
     <Comp
+      role="menuitem"
       className={clsx(styles.link, current && styles.current, className)}
       aria-current={current ? 'page' : undefined}
       {...props}

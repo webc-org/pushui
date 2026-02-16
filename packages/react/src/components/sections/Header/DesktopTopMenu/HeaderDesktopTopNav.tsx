@@ -1,16 +1,16 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
-import type { HeaderDesktopMainMenuNavTypes } from './HeaderDesktopMain.types'
-import styles from './headerDesktopMain.module.scss'
+import type { HeaderDesktopTopNavTypes } from './HeaderDesktopTop.types'
+import styles from './headerDesktopTop.module.scss'
 
-export function HeaderDesktopMainMenuNav({
+export function HeaderDesktopTopNav({
   ref,
   children,
   className,
   'aria-label': ariaLabel,
   ...rest
-}: HeaderDesktopMainMenuNavTypes) {
-  const label = useHeaderNavLabel('main', ariaLabel)
+}: HeaderDesktopTopNavTypes) {
+  const label = useHeaderNavLabel('top', ariaLabel)
 
   return (
     <nav
