@@ -344,7 +344,7 @@ Use `isOverlay` and `textColor` to float the header over hero content. Backgroun
 Add `header-overlay` class to `<body>` to remove default header padding:
 
 ```html
-<body class="with-main-nav with-mobile-nav header-overlay">
+<body class="with-desktop-header-main with-mobile-header-top header-overlay">
 ```
 
 ### Context

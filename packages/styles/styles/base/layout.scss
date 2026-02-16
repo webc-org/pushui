@@ -27,39 +27,37 @@ body {
   min-height: 100vh;
   width: 100%;
 
-  &.with-mobile-nav {
-    padding-top: var(--height-mobile-menu);
+  &.with-mobile-header-top {
+    padding-top: var(--header-mobile-top-height);
 
     @include mq-md {
       padding-top: 0;
     }
   }
 
-  &.with-top-nav {
+  &.with-desktop-header-top {
     @include mq-md {
-      padding-top: var(--height-top-menu);
+      padding-top: var(--header-desktop-top-height);
     }
   }
 
-  &.with-main-nav {
+  &.with-desktop-header-main {
     @include mq-md {
-      padding-top: var(--height-main-menu);
+      padding-top: var(--header-desktop-main-height);
     }
   }
 
-  &.with-main-nav.with-top-nav {
+  &.with-desktop-header-main.with-desktop-header-top {
     @include mq-md {
-      padding-top: calc(var(--height-top-menu) + var(--height-main-menu));
+      padding-top: calc(var(--header-desktop-top-height) + var(--header-desktop-main-height));
     }
   }
 
-  // Doubled selector is an intentional specificity hack
-  // to override .with-mobile-nav / .with-main-nav / .with-top-nav padding
-  &.header-transparent.header-transparent {
-    padding-top: 0;
+  &.is-header-transparent {
+    padding-top: 0 !important;
 
     @include mq-md {
-      padding-top: 0;
+      padding-top: 0 !important;
     }
   }
 
