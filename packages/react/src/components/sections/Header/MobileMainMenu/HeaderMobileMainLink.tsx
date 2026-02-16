@@ -9,6 +9,7 @@ export function HeaderMobileMainLink({
   className,
   current,
   appearance,
+  contrast,
   variant,
   ...props
 }: HeaderMobileMainLinkTypes) {
@@ -20,6 +21,7 @@ export function HeaderMobileMainLink({
         current && styles.current,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
+        contrast && styles.contrast,
         className
       )}
       aria-current={current ? 'page' : undefined}

@@ -7,7 +7,7 @@ import type { GapSize } from './Grid.types'
 const gapSizes: GapSize[] = [0, 1, 2, 3, 4, 5]
 
 const gridStyles = {
-  background: 'var(--color-grey-6)',
+  background: 'var(--color-grey-8)',
   padding: '1rem',
 }
 

@@ -12,7 +12,7 @@ Quick reference for CSS utilities and theming.
 | `--color-{variant}-2` | Base color |
 | `--color-{variant}-3` | Light (background) |
 | `--color-{variant}-contrast` | For dark backgrounds |
-| `--color-grey-1` to `--color-grey-7` | Grey scale (1=dark, 7=light) |
+| `--color-grey-1` to `--color-grey-9` | Grey scale (1=dark, 9=light) |
 | `--color-black`, `--color-white` | Black and white |
 
 Variants: `default`, `primary`, `secondary`, `success`, `danger`, `warning`, `info`
@@ -158,13 +158,13 @@ All values support responsive breakpoints.
 ```html
 <!-- Background -->
 <div class="bg-primary-2">primary</div>
-<div class="bg-grey-6">light grey</div>
+<div class="bg-grey-8">light grey</div>
 <div class="bg-white">white</div>
 
 <!-- Text -->
-<p class="text-primary-2">primary</p>
-<p class="text-grey-2">muted</p>
-<p class="text-danger-2">error</p>
+<p class="tx-primary-2">primary</p>
+<p class="tx-grey-4">muted</p>
+<p class="tx-danger-2">error</p>
 ```
 
 ### Font
@@ -195,9 +195,9 @@ All values support responsive breakpoints.
 ### Border & Radius
 
 ```html
-<div class="b">default border</div>
-<div class="b-t">top border</div>
-<div class="b-primary-2">colored border</div>
+<div class="bd">default border</div>
+<div class="bd-t">top border</div>
+<div class="bd-primary-2">colored border</div>
 <div class="r-3">rounded</div>
 <div class="r-full">circle</div>
 ```

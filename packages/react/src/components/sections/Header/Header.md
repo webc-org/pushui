@@ -233,9 +233,9 @@ Background defaults:
 
 | Bar | `bgColor` | `bgOpacity` |
 |-----|-----------|-------------|
-| `desktop.top` | `var(--color-grey-7)` | `1` |
+| `desktop.top` | `var(--color-grey-9)` | `1` |
 | `desktop.main` | `var(--color-white)` | `1` |
-| `mobile.top` | `var(--color-grey-7)` | `1` |
+| `mobile.top` | `var(--color-grey-9)` | `1` |
 | `mobile.main` | `var(--color-white)` | `1` |
 
 ### TopMenu

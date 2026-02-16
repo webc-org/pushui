@@ -1,7 +1,7 @@
 @use 'styles/mixins/form' as *;
 
 $bd-color-input-active: var(--color-primary-2);
-$bg-color-nav: var(--color-grey-3);
+$bg-color-nav: var(--color-grey-5);
 $bg-color-nav-active: var(--color-primary-2);
 $bg-color-button: var(--color-white);
 $bg-color-button-active: var(--color-primary-2);
@@ -71,7 +71,7 @@ $tx-color-button-active: var(--color-white);
 .button {
   align-items: center;
   background-color: $bg-color-button;
-  color: var(--color-grey-2);
+  color: var(--color-grey-4);
   cursor: pointer;
   display: flex;
   flex: 1;

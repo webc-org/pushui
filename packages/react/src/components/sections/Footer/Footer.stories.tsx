@@ -21,7 +21,7 @@ const meta: Meta<typeof FooterRoot> = {
     layout: 'fullscreen',
     backgrounds: {
       default: 'grey',
-      values: [{ name: 'grey', value: 'var(--color-grey-6)' }],
+      values: [{ name: 'grey', value: 'var(--color-grey-8)' }],
     },
   },
 }

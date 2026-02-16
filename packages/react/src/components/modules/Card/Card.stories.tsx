@@ -6,7 +6,7 @@ import { Card, CardBody, CardFooter, CardHeader } from './Card'
 const cardStyles = {
   width: '33.5rem',
   borderRadius: '.5rem',
-  border: '.1rem solid var(--color-grey-6)',
+  border: '.1rem solid var(--color-grey-8)',
 }
 
 const cardHeaderStyles = {

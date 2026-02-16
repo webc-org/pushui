@@ -1,11 +1,11 @@
 @use 'styles/mixins/form' as *;
 
-$tx-color-trigger: var(--color-grey-2);
+$tx-color-trigger: var(--color-grey-4);
 $tx-color-trigger-active: var(--color-primary-2);
 $tx-color-button-active: var(--color-white);
 $bg-color-button-active: var(--color-primary-2);
-$bg-color-button-1: var(--color-grey-6);
-$bg-color-button-2: var(--color-grey-5);
+$bg-color-button-1: var(--color-grey-8);
+$bg-color-button-2: var(--color-grey-7);
 
 .wrapper {
   @include form-wrapper;

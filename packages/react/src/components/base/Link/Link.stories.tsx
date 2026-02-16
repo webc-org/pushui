@@ -199,7 +199,7 @@ export const Dark: Story = {
   render: () => {
     return (
       <div style={containerStyles} className="bg-black">
-        <Title level="h3" className="text-white">
+        <Title level="h3" className="tx-white">
           Default
         </Title>
         <div style={rowStyles}>
@@ -216,7 +216,7 @@ export const Dark: Story = {
             </Link>
           ))}
         </div>
-        <Title level="h3" className="text-white">
+        <Title level="h3" className="tx-white">
           Icon
         </Title>
         <div style={rowStyles}>
@@ -246,7 +246,7 @@ export const Dark: Story = {
             />
           ))}
         </div>
-        <Title level="h3" className="text-white">
+        <Title level="h3" className="tx-white">
           Button
         </Title>
         <div style={rowStyles}>
@@ -276,7 +276,7 @@ export const Dark: Story = {
             </Link>
           ))}
         </div>
-        <Title level="h3" className="text-white">
+        <Title level="h3" className="tx-white">
           Outline
         </Title>
         <div style={rowStyles}>
@@ -306,7 +306,7 @@ export const Dark: Story = {
             </Link>
           ))}
         </div>
-        <Title level="h3" className="text-white">
+        <Title level="h3" className="tx-white">
           Underline
         </Title>
         <div style={rowStyles}>

@@ -95,7 +95,7 @@ export function Header({
   const mergedDesktop = useMemo(
     () => ({
       top: {
-        bgColor: desktop?.top?.bgColor ?? 'var(--color-grey-7)',
+        bgColor: desktop?.top?.bgColor ?? 'var(--color-grey-9)',
         bgOpacity: desktop?.top?.bgOpacity ?? '1',
       },
       main: {
@@ -109,7 +109,7 @@ export function Header({
   const mergedMobile = useMemo(
     () => ({
       top: {
-        bgColor: mobile?.top?.bgColor ?? 'var(--color-grey-7)',
+        bgColor: mobile?.top?.bgColor ?? 'var(--color-grey-9)',
         bgOpacity: mobile?.top?.bgOpacity ?? '1',
       },
       main: {

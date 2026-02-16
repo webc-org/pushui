@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Image>
 const containerStyle = {
   width: '300px',
   height: '200px',
-  border: '2px dashed var(--color-grey-4)',
+  border: '2px dashed var(--color-grey-5)',
   overflow: 'hidden',
 }
 
@@ -126,7 +126,7 @@ export const ObjectFitCover: Story = {
 
 export const ObjectFitContain: Story = {
   render: () => (
-    <div style={{ ...containerStyle, background: 'var(--color-grey-6)' }}>
+    <div style={{ ...containerStyle, background: 'var(--color-grey-8)' }}>
       <Image
         src="https://picsum.photos/800/400"
         alt="Contain fit - entire image visible"
@@ -162,7 +162,7 @@ export const AllFitOptions: Story = {
           <div
             style={{
               ...containerStyle,
-              background: 'var(--color-grey-6)',
+              background: 'var(--color-grey-8)',
             }}
           >
             <Image
@@ -330,7 +330,7 @@ export const CardThumbnail: Story = {
     <div
       style={{
         width: '300px',
-        border: '0.1rem solid var(--color-grey-4)',
+        border: '0.1rem solid var(--color-grey-5)',
         borderRadius: 'var(--radius-3)',
         overflow: 'hidden',
       }}

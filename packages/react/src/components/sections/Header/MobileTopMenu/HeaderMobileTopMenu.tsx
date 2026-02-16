@@ -14,6 +14,7 @@ export function HeaderMobileTopMenu({
 }: HeaderMobileTopMenuTypes) {
   const { isScrolled, textColor, mobile } = useHeader()
   const opacity = isScrolled ? '1' : mobile.top.bgOpacity
+  const shadow = isScrolled || opacity === '1' ? 'var(--shadow-1)' : 'none'
 
   return (
     <div
@@ -22,6 +23,7 @@ export function HeaderMobileTopMenu({
         {
           ...style,
           '--header-mobile-top-bg': mobile.top.bgColor,
+          '--header-mobile-top-shadow': shadow,
           '--header-mobile-top-opacity': opacity,
         } as CSSProperties
       }

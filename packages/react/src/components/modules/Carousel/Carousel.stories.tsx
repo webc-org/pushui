@@ -419,7 +419,7 @@ export const BlackAndWhite: Story = {
           </Banner>
         </CarouselSlide>
         <CarouselSlide>
-          <Banner className="bg-grey-2" minHeight="20rem">
+          <Banner className="bg-grey-4" minHeight="20rem">
             <BannerContent textColor="light" textAlign="center">
               <BannerTitle>Neutral</BannerTitle>
               <BannerSubtitle>Balanced and versatile</BannerSubtitle>

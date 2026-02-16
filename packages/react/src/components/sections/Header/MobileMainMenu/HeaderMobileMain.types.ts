@@ -4,6 +4,7 @@ import type { ActionAppearance, ColorVariant } from 'types'
 export type HeaderMobileMainMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   'aria-label'?: string
+  containerClassName?: string
 }
 
 export type HeaderMobileMainHeadTypes = ComponentPropsWithRef<'div'> & {
@@ -29,6 +30,7 @@ export type HeaderMobileMainLinkTypes = ComponentPropsWithRef<'a'> & {
   current?: boolean
   appearance?: ActionAppearance
   variant?: ColorVariant
+  contrast?: boolean
 }
 
 export type HeaderMobileMainDropdownLinkTypes =
@@ -37,3 +39,12 @@ export type HeaderMobileMainDropdownLinkTypes =
     children: ReactNode
     current?: boolean
   }
+
+export type HeaderMobileMainToggleTypes = Omit<
+  ComponentPropsWithRef<'button'>,
+  'children'
+> & {
+  label?: string
+  closeLabel?: string
+  menuLabel?: string
+}

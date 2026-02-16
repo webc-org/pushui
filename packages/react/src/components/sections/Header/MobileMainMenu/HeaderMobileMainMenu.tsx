@@ -9,6 +9,7 @@ export function HeaderMobileMainMenu({
   ref,
   children,
   className,
+  containerClassName,
   'aria-label': ariaLabel = 'Mobile navigation',
   style,
   ...rest
@@ -79,7 +80,9 @@ export function HeaderMobileMainMenu({
       )}
       {...rest}
     >
-      {children}
+      <div className={clsx(styles.container, containerClassName)}>
+        {children}
+      </div>
     </div>
   )
 }

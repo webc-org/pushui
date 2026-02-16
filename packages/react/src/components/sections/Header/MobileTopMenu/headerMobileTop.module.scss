@@ -4,14 +4,19 @@
 
 .menu {
   display: block;
+  position: relative;
 
   &::before {
     background-color: var(--header-mobile-top-bg);
+    box-shadow: var(--header-mobile-top-shadow);
     content: '';
-    inset: 0;
+    height: 100%;
+    left: 0;
     opacity: var(--header-mobile-top-opacity);
     position: absolute;
+    top: 0;
     transition: opacity var(--transition-default);
+    width: 100%;
   }
 }
 
@@ -45,16 +50,21 @@
   display: flex;
   padding: 0.8rem;
 
-  &:hover,
-  &:focus-visible {
-    color: var(--color-primary-2);
-  }
-
   .textLight & {
     color: var(--color-white);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-primary-contrast);
+    }
   }
 
   .textDark & {
     color: var(--color-black);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-primary-2);
+    }
   }
 }

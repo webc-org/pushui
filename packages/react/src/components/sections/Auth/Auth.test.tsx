@@ -46,7 +46,7 @@ describe('AuthCard', () => {
 
 describe('AuthTitle', () => {
   it('renders with custom className', () => {
-    render(<AuthTitle className="text-success-2">Success Title</AuthTitle>)
+    render(<AuthTitle className="tx-success-2">Success Title</AuthTitle>)
     expect(screen.getByText('Success Title')).toBeInTheDocument()
   })
 })

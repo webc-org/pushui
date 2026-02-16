@@ -1,12 +1,12 @@
 @use 'styles/mixins/form' as *;
 
-$tx-color-icon: var(--color-grey-3);
-$tx-color-clear: var(--color-grey-3);
+$tx-color-icon: var(--color-grey-5);
+$tx-color-clear: var(--color-grey-5);
 $tx-color-clear-active: var(--color-primary-2);
 $bg-color-dropdown: var(--color-white);
-$bd-color-dropdown: var(--color-grey-4);
-$bg-color-result-active: var(--color-grey-6); 
-$tx-color-no-result: var(--color-grey-3);
+$bd-color-dropdown: var(--color-grey-5);
+$bg-color-result-active: var(--color-grey-8); 
+$tx-color-no-result: var(--color-grey-5);
 
 .wrapper {
   @include form-wrapper;

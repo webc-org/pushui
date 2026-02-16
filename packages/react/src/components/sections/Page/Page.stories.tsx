@@ -10,7 +10,7 @@ const meta: Meta<typeof PageRoot> = {
     layout: 'fullscreen',
     backgrounds: {
       default: 'grey',
-      values: [{ name: 'grey', value: 'var(--color-grey-6)' }],
+      values: [{ name: 'grey', value: 'var(--color-grey-8)' }],
     },
   },
   argTypes: {
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof PageRoot>
 export const Playground: Story = {
   render: () => (
     <PageRoot
-      style={{ minHeight: '100vh', background: 'var(--color-grey-6)' }}
+      style={{ minHeight: '100vh', background: 'var(--color-grey-8)' }}
     >
       <header
         style={{ padding: '2rem', background: 'var(--color-white)' }}
@@ -43,7 +43,7 @@ export const Playground: Story = {
       </main>
 
       <footer
-        style={{ padding: '2rem', background: 'var(--color-grey-5)' }}
+        style={{ padding: '2rem', background: 'var(--color-grey-7)' }}
       >
         <p>Footer</p>
       </footer>
@@ -83,7 +83,7 @@ export const WithStickyFooter: Story = {
       <footer
         style={{
           padding: '2rem',
-          background: 'var(--color-grey-5)',
+          background: 'var(--color-grey-7)',
           textAlign: 'center',
         }}
       >
@@ -101,7 +101,7 @@ export const NestedLayout: Story = {
           style={{
             width: '25rem',
             padding: '2rem',
-            background: 'var(--color-grey-6)',
+            background: 'var(--color-grey-8)',
           }}
         >
           <Title level="h3">Sidebar</Title>

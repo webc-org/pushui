@@ -1,15 +1,15 @@
 @use 'styles/mixins/form' as *;
 
 $bg-color-modal: var(--color-white);
-$bd-color-modal: var(--color-grey-4);
-$tx-color-placeholder: var(--color-grey-2);
-$tx-color-trigger: var(--color-grey-2);
+$bd-color-modal: var(--color-grey-5);
+$tx-color-placeholder: var(--color-grey-4);
+$tx-color-trigger: var(--color-grey-4);
 $tx-color-select: var(--color-black);
-$tx-color-clear: var(--color-grey-2);
+$tx-color-clear: var(--color-grey-4);
 $tx-color-clear-active: var(--color-danger-2);
-$bg-color-choice-item: var(--color-grey-6);
-$bg-color-choice-remove: var(--color-grey-5);
-$tx-color-choice-remove: var(--color-grey-2);
+$bg-color-choice-item: var(--color-grey-8);
+$bg-color-choice-remove: var(--color-grey-7);
+$tx-color-choice-remove: var(--color-grey-4);
 $bg-color-choice-remove-active: var(--color-danger-3);
 $tx-color-choice-remove-active: var(--color-danger-2);
 
@@ -111,7 +111,7 @@ $tx-color-choice-remove-active: var(--color-danger-2);
 
   &:hover,
   &.focused {
-    background-color: var(--color-grey-6);
+    background-color: var(--color-grey-8);
   }
 
   &.selected {

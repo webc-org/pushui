@@ -8,17 +8,17 @@ $rail-size-md: 0.4rem;
 $label-offset: 1rem;
 
 // COLORS
-$bg-color-rail: var(--color-grey-5);
+$bg-color-rail: var(--color-grey-7);
 $bg-color-track: var(--color-primary-2);
-$bg-color-track-inverted: var(--color-grey-4);
+$bg-color-track-inverted: var(--color-grey-5);
 $bg-color-thumb: var(--color-primary-2);
 $bd-color-thumb: var(--color-white);
-$bg-color-value: var(--color-grey-1);
+$bg-color-value: var(--color-grey-3);
 $tx-color-value: var(--color-white);
 $bg-color-mark: var(--color-white);
 $bg-color-mark-active: var(--color-primary-contrast);
-$tx-color-label: var(--color-grey-2);
-$bd-color-label-after: var(--color-grey-1);
+$tx-color-label: var(--color-grey-4);
+$bd-color-label-after: var(--color-grey-3);
 
 .slider {
   position: relative;

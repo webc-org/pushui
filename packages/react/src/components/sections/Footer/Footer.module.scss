@@ -1,9 +1,9 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-footer: var(--color-grey-5);
+$bg-color-footer: var(--color-grey-7);
 $bg-color-menu: var(--color-white-50);
-$bd-color-bottom: var(--color-grey-2);
-$tx-color-copyright: var(--color-grey-2);
+$bd-color-bottom: var(--color-grey-4);
+$tx-color-copyright: var(--color-grey-4);
 $tx-color-link-hover: var(--color-primary-2);
 
 .footer {

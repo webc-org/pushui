@@ -1,4 +1,4 @@
-$bg-color-skeleton: var(--color-grey-5);
+$bg-color-skeleton: var(--color-grey-7);
 
 .skeleton {
   background-color: $bg-color-skeleton;
@@ -8,9 +8,9 @@ $bg-color-skeleton: var(--color-grey-5);
   animation: shimmer 1.5s ease-in-out infinite;
   background-image: linear-gradient(
     90deg,
-    var(--color-grey-5) 0%,
-    var(--color-grey-6) 50%,
-    var(--color-grey-5) 100%
+    var(--color-grey-7) 0%,
+    var(--color-grey-8) 50%,
+    var(--color-grey-7) 100%
   );
   background-size: 200% 100%;
 }

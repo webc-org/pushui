@@ -12,20 +12,20 @@ $color-levels: (1, 2, 3, contrast);
 
 @each $variant in $color-variants {
   @each $level in $color-levels {
-    .text-#{$variant}-#{$level} {
+    .tx-#{$variant}-#{$level} {
       color: var(--color-#{$variant}-#{$level});
     }
   }
 }
 
-@for $i from 1 through 7 {
+@for $i from 1 through 9 {
   .bg-grey-#{$i} {
     background-color: var(--color-grey-#{$i});
   }
 }
 
-@for $i from 1 through 7 {
-  .text-grey-#{$i} {
+@for $i from 1 through 9 {
+  .tx-grey-#{$i} {
     color: var(--color-grey-#{$i});
   }
 }
@@ -38,10 +38,10 @@ $color-levels: (1, 2, 3, contrast);
   background-color: var(--color-white);
 }
 
-.text-black {
+.tx-black {
   color: var(--color-black);
 }
 
-.text-white {
+.tx-white {
   color: var(--color-white);
 }

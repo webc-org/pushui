@@ -20,7 +20,6 @@
 
 .headerMobile {
   display: block;
-  position: relative;
 
   @include mq-md {
     display: none;

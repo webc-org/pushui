@@ -1,48 +1,48 @@
 $color-variants: (primary, secondary, success, danger, warning, info);
 $color-levels: (1, 2, 3, contrast);
 
-.b {
-  border: 0.1rem solid var(--color-grey-4);
+.bd {
+  border: 0.1rem solid var(--color-grey-5);
 }
 
 @each $variant in $color-variants {
   @each $level in $color-levels {
-    .b-#{$variant}-#{$level} {
+    .bd-#{$variant}-#{$level} {
       border: 0.1rem solid var(--color-#{$variant}-#{$level});
     }
   }
 }
 
-@for $i from 1 through 7 {
-  .b-grey-#{$i} {
+@for $i from 1 through 9 {
+  .bd-grey-#{$i} {
     border: 0.1rem solid var(--color-grey-#{$i});
   }
 }
 
-.b-black {
+.bd-black {
   border: 0.1rem solid var(--color-black);
 }
 
-.b-white {
+.bd-white {
   border: 0.1rem solid var(--color-white);
 }
 
-.b-t {
-  border-top: 0.1rem solid var(--color-grey-4);
+.bd-t {
+  border-top: 0.1rem solid var(--color-grey-5);
 }
 
-.b-r {
-  border-right: 0.1rem solid var(--color-grey-4);
+.bd-r {
+  border-right: 0.1rem solid var(--color-grey-5);
 }
 
-.b-b {
-  border-bottom: 0.1rem solid var(--color-grey-4);
+.bd-b {
+  border-bottom: 0.1rem solid var(--color-grey-5);
 }
 
-.b-l {
-  border-left: 0.1rem solid var(--color-grey-4);
+.bd-l {
+  border-left: 0.1rem solid var(--color-grey-5);
 }
 
-.b-none {
+.bd-none {
   border: none;
 }

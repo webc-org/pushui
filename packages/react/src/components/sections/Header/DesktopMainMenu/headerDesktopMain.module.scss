@@ -1,15 +1,9 @@
-@use 'styles/mixins/mq' as *;
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/color' as *;
 
 .menu {
-  display: none;
+  display: block;
   position: relative;
-  z-index: var(--z-index-4);
-
-  @include mq-md {
-    display: block;
-  }
 
   &::before {
     background-color: var(--header-desktop-main-bg);
@@ -45,12 +39,8 @@
 
 .nav {
   align-items: center;
-  display: none;
+  display: flex;
   gap: 1rem;
-
-  @include mq-md {
-    display: flex;
-  }
 }
 
 .link {
@@ -59,7 +49,6 @@
   @include action-base;
   background: none;
   border-radius: var(--radius-2);
-  color: var(--color-black);
   cursor: pointer;
   font-size: var(--font-size-4);
   height: 4rem;
@@ -294,10 +283,6 @@
   margin: 0 auto;
   padding: 2rem;
   position: relative;
-
-  @include mq-lg {
-    padding: 4rem;
-  }
 }
 
 .chevron {

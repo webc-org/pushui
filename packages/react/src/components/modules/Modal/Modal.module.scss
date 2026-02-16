@@ -28,7 +28,7 @@
 .modal {
   background: var(--color-white);
   border-radius: var(--radius-3);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-2);
   display: flex;
   flex-direction: column;
   max-height: 90vh;
@@ -41,7 +41,7 @@
 
 .modalHeader {
   align-items: center;
-  border-bottom: 0.1rem solid var(--color-grey-5);
+  border-bottom: 0.1rem solid var(--color-grey-7);
   color: var(--color-black);
   display: flex;
   flex-shrink: 0;

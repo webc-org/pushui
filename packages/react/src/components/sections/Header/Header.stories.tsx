@@ -39,6 +39,7 @@ import {
   HeaderMobileMainLink,
   HeaderMobileMainMenu,
   HeaderMobileMainNav,
+  HeaderMobileMainToggle,
   HeaderMobileTopLogo,
   HeaderMobileTopMenu,
   HeaderMobileTopToggle,
@@ -53,7 +54,7 @@ const meta: Meta<typeof Header> = {
     layout: 'fullscreen',
     backgrounds: {
       default: 'grey',
-      values: [{ name: 'grey', value: 'var(--color-grey-6)' }],
+      values: [{ name: 'grey', value: 'var(--color-grey-8)' }],
     },
   },
 }
@@ -210,11 +211,11 @@ const MegaMenuContent = () => (
   </Grid>
 )
 
-const MobileMenuContent = () => (
+const MobileMenuContent = ({ contrast }: { contrast?: boolean }) => (
   <HeaderMobileMainMenu>
     <HeaderMobileMainHead>
       <Title level="h3">Menu</Title>
-      <HeaderMobileTopToggle />
+      <HeaderMobileMainToggle />
     </HeaderMobileMainHead>
 
     <HeaderMobileMainNav>
@@ -265,10 +266,20 @@ const MobileMenuContent = () => (
     </HeaderMobileMainNav>
 
     <HeaderMobileMainNav>
-      <HeaderMobileMainLink asChild appearance="outline" variant="primary">
+      <HeaderMobileMainLink
+        asChild
+        appearance="outline"
+        variant="primary"
+        contrast={contrast}
+      >
         <Link href="/">Connexion</Link>
       </HeaderMobileMainLink>
-      <HeaderMobileMainLink asChild appearance="button" variant="primary">
+      <HeaderMobileMainLink
+        asChild
+        appearance="button"
+        variant="primary"
+        contrast={contrast}
+      >
         <Link href="/">Inscription</Link>
       </HeaderMobileMainLink>
     </HeaderMobileMainNav>
@@ -644,11 +655,12 @@ export const DarkHero: Story = {
         isOverlay
         textColor="light"
         desktop={{
-          top: { bgColor: '#111', bgOpacity: '0.4' },
-          main: { bgColor: '#222', bgOpacity: '0.2' },
+          top: { bgColor: 'var(--color-grey-1)', bgOpacity: '0.4' },
+          main: { bgColor: 'var(--color-grey-2)', bgOpacity: '0.2' },
         }}
         mobile={{
-          top: { bgColor: '#222', bgOpacity: '1' },
+          top: { bgColor: 'var(--color-grey-1)', bgOpacity: '.4' },
+          main: { bgColor: 'var(--color-grey-2)' },
         }}
       >
         <HeaderDesktop>
@@ -702,7 +714,8 @@ export const DarkHero: Story = {
             </HeaderMobileTopLogo>
             <HeaderMobileTopToggle />
           </HeaderMobileTopMenu>
-          <MobileMenuContent />
+
+          <MobileMenuContent contrast />
         </HeaderMobile>
       </Header>
 
@@ -750,11 +763,12 @@ export const LightHero: Story = {
         isOverlay
         textColor="dark"
         desktop={{
-          top: { bgColor: 'var(--color-grey-7)', bgOpacity: '0.5' },
+          top: { bgColor: 'var(--color-grey-9)', bgOpacity: '0.5' },
           main: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
         }}
         mobile={{
-          top: { bgColor: 'var(--color-white)', bgOpacity: '1' },
+          top: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
+          main: { bgColor: 'var(--color-white)' },
         }}
       >
         <HeaderDesktop>

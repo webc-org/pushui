@@ -1,6 +1,6 @@
 @use 'styles/mixins/typo' as *;
 
-$bd-color-divider: var(--color-grey-5);
+$bd-color-divider: var(--color-grey-7);
 
 .divider {
   @include base-hr;

@@ -48,14 +48,16 @@ styles/
 --color-white
 --color-white-50, --color-white-20, --color-white-10
 
-/* Grey scale (1=dark, 7=light) */
---color-grey-1  /* #333 */
---color-grey-2  /* #666 */
---color-grey-3  /* #737373 */
---color-grey-4  /* #949494 */
---color-grey-5  /* #DDD */
---color-grey-6  /* #EEE */
---color-grey-7  /* #F5F5F5 */
+/* Grey scale (1=dark, 9=light) */
+--color-grey-1  /* #111 */
+--color-grey-2  /* #222 */
+--color-grey-3  /* #333 */
+--color-grey-4  /* #666 */
+--color-grey-5  /* #999 */
+--color-grey-6  /* #BBB */
+--color-grey-7  /* #DDD */
+--color-grey-8  /* #EEE */
+--color-grey-9  /* #F5F5F5 */
 
 /* Color variants: default, primary, secondary, success, danger, warning, info */
 --color-{variant}-1        /* dark (hover, text on light) */
@@ -400,7 +402,7 @@ Pattern: `{property}-{breakpoint?}-{value}`
 
 <!-- Grey -->
 <div class="bg-grey-1">dark grey</div>
-<div class="bg-grey-7">light grey</div>
+<div class="bg-grey-9">light grey</div>
 
 <!-- Black/White -->
 <div class="bg-black">black</div>
@@ -411,29 +413,29 @@ Pattern: `{property}-{breakpoint?}-{value}`
 
 ```html
 <!-- Variants -->
-<p class="text-primary-1">dark primary</p>
-<p class="text-primary-2">base primary</p>
-<p class="text-danger-2">danger</p>
-<p class="text-success-2">success</p>
+<p class="tx-primary-1">dark primary</p>
+<p class="tx-primary-2">base primary</p>
+<p class="tx-danger-2">danger</p>
+<p class="tx-success-2">success</p>
 
 <!-- Grey -->
-<p class="text-grey-2">muted text</p>
+<p class="tx-grey-4">muted text</p>
 
 <!-- Black/White -->
-<p class="text-black">black</p>
-<p class="text-white">white</p>
+<p class="tx-black">black</p>
+<p class="tx-white">white</p>
 ```
 
 ### Border
 
 | Class | Description |
 |-------|-------------|
-| `b` | border all sides (grey-4) |
-| `b-t`, `b-r`, `b-b`, `b-l` | directional border (grey-4) |
-| `b-none` | remove border |
-| `b-{variant}-{level}` | colored border (e.g. `b-primary-2`) |
-| `b-grey-{1-7}` | grey border |
-| `b-black`, `b-white` | black/white border |
+| `bd` | border all sides (grey-5) |
+| `bd-t`, `bd-r`, `bd-b`, `bd-l` | directional border (grey-5) |
+| `bd-none` | remove border |
+| `bd-{variant}-{level}` | colored border (e.g. `bd-primary-2`) |
+| `bd-grey-{1-9}` | grey border |
+| `bd-black`, `bd-white` | black/white border |
 
 ### Border Radius
 
@@ -747,9 +749,9 @@ Generates classes for all variants:
 ### Status Colors
 
 ```html
-<span class="text-success-2">Success message</span>
-<span class="text-danger-2">Error message</span>
-<span class="text-warning-2">Warning message</span>
+<span class="tx-success-2">Success message</span>
+<span class="tx-danger-2">Error message</span>
+<span class="tx-warning-2">Warning message</span>
 <div class="bg-info-3 p-3">Info box</div>
 ```
 

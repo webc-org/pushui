@@ -15,17 +15,18 @@ export function HeaderDesktopMainMenu({
   const { isScrolled, textColor, desktop } = useHeader()
   const opacity = isScrolled ? '1' : desktop.main.bgOpacity
   const shadow = isScrolled || opacity === '1' ? 'var(--shadow-1)' : 'none'
-  const customStyles = {
-    ...style,
-    '--header-desktop-main-bg': desktop.main.bgColor,
-    '--header-desktop-main-shadow': shadow,
-    '--header-desktop-main-opacity': opacity,
-  } as CSSProperties
 
   return (
     <div
       ref={ref}
-      style={customStyles}
+      style={
+        {
+          ...style,
+          '--header-desktop-main-bg': desktop.main.bgColor,
+          '--header-desktop-main-shadow': shadow,
+          '--header-desktop-main-opacity': opacity,
+        } as CSSProperties
+      }
       className={clsx(
         styles.menu,
         textColor === 'dark' && styles.textDark,

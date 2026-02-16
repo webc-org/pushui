@@ -1,11 +1,11 @@
 @use './styles/mixins/mq' as *;
 
 $bg-color-accordion: var(--color-white);
-$bd-color-accordion: var(--color-grey-5);
+$bd-color-accordion: var(--color-grey-7);
 $tx-color-trigger: var(--color-black);
 $tx-color-trigger-active: var(--color-primary-2);
-$bg-color-accordion-expanded: var(--color-grey-6);
-$bg-color-accordion-inner-expanded: var(--color-grey-5);
+$bg-color-accordion-expanded: var(--color-grey-8);
+$bg-color-accordion-inner-expanded: var(--color-grey-7);
 
 .accordion {
   background: $bg-color-accordion;
