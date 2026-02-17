@@ -15,7 +15,6 @@ export function Header({
   className,
   theme = 'light',
   isOverlay = false,
-  textColor = 'dark',
   customStyles,
   ...rest
 }: HeaderTypes) {
@@ -23,13 +22,9 @@ export function Header({
   const id = baseId || generatedId
   const mobileMenuId = `header-mobile-menu-${id}`
   const mobileToggleId = `header-mobile-toggle-${id}`
-
   const { registerNav, getNavCount } = useHeaderNavRegistry()
-
   const isScrolled = useHeaderScroll()
-
   const { isOpen, toggle } = useHeaderMobileToggle(mobileToggleId)
-
   const themeStyles = useHeaderCustomStyles(customStyles, theme)
 
   const value = useMemo(
@@ -42,7 +37,6 @@ export function Header({
       getNavCount,
       isScrolled,
       isOverlay,
-      textColor,
       themeStyles,
       theme,
     }),
@@ -55,7 +49,6 @@ export function Header({
       getNavCount,
       isScrolled,
       isOverlay,
-      textColor,
       themeStyles,
       theme,
     ]
