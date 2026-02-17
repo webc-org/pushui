@@ -59,7 +59,7 @@
     cursor: default;
   }
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
 
     &:hover,
@@ -69,7 +69,7 @@
     }
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
 
     &:hover,
@@ -81,23 +81,23 @@
 
   @each $name in $color-variants {
     &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-      .textLight & {
-        color: var(--color-white);
-
-        &:hover,
-        &.current,
-        &:focus-visible {
-          color: var(--color-#{$name}-contrast);
-        }
-      }
-
-      .textDark & {
+      .light & {
         color: var(--color-black);
 
         &:hover,
         &.current,
         &:focus-visible {
           color: var(--color-#{$name}-2);
+        }
+      }
+
+      .dark & {
+        color: var(--color-white);
+
+        &:hover,
+        &.current,
+        &:focus-visible {
+          color: var(--color-#{$name}-contrast);
         }
       }
     }
@@ -143,23 +143,23 @@
   padding: 0 2rem;
   text-decoration: none;
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
   }
 
-  .textLight .dropdownWrapper:hover &,
-  .textLight .dropdownWrapper.current &,
-  .textLight .dropdownWrapper:focus-within & {
+  .dark .dropdownWrapper:hover &,
+  .dark .dropdownWrapper.current &,
+  .dark .dropdownWrapper:focus-within & {
     color: var(--color-primary-contrast);
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
   }
 
-  .textDark .dropdownWrapper:hover &,
-  .textDark .dropdownWrapper.current &,
-  .textDark .dropdownWrapper:focus-within & {
+  .light .dropdownWrapper:hover &,
+  .light .dropdownWrapper.current &,
+  .light .dropdownWrapper:focus-within & {
     color: var(--color-primary-2);
   }
 }
@@ -220,22 +220,22 @@
     text-decoration: none;
   }
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
   }
 
   &:hover,
   &.current,
   &:focus-visible {
-    .textLight & {
+    .dark & {
       color: var(--color-primary-contrast);
     }
 
-    .textDark & {
+    .light & {
       color: var(--color-primary-2);
     }
   }

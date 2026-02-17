@@ -10,7 +10,7 @@ export function HeaderDesktopMainNav({
   'aria-label': ariaLabel,
   ...rest
 }: HeaderDesktopMainNavTypes) {
-  const label = useHeaderNavLabel('main', ariaLabel)
+  const label = useHeaderNavLabel('desktopMain', ariaLabel)
 
   return (
     <nav

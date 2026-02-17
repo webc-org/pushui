@@ -3,9 +3,9 @@ import { useHeader } from './HeaderContext'
 import type { HeaderNavTypes } from './Header.types'
 
 const NAV_LABELS = {
-  main: 'Main navigation',
-  top: 'Secondary navigation',
-  mobile: 'Mobile navigation',
+  desktopTop: 'Desktop Top Navigation',
+  desktopMain: 'Desktop Main Navigation',
+  mobileMain: 'Mobile Main Navigation',
 }
 
 export function useHeaderNavLabel(
