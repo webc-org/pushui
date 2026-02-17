@@ -2,16 +2,16 @@ import '@testing-library/jest-dom/vitest'
 
 import { render, screen } from 'utils/Test'
 import { describe, expect, it } from 'vitest'
-import { PageRoot } from './Page'
+import { Page } from './Page'
 
-describe('PageRoot', () => {
+describe('Page', () => {
   it('renders children', () => {
     render(
-      <PageRoot>
+      <Page>
         <header>Header</header>
         <main>Main</main>
         <footer>Footer</footer>
-      </PageRoot>
+      </Page>
     )
     expect(screen.getByText('Header')).toBeInTheDocument()
     expect(screen.getByText('Main')).toBeInTheDocument()

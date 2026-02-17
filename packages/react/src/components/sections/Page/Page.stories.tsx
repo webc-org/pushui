@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Title } from 'base/Title'
-import { PageRoot } from './Page'
+import { Page } from './Page'
 
-const meta: Meta<typeof PageRoot> = {
+const meta: Meta<typeof Page> = {
   title: 'Sections/Page',
-  component: PageRoot,
+  component: Page,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -22,11 +22,11 @@ const meta: Meta<typeof PageRoot> = {
 }
 
 export default meta
-type Story = StoryObj<typeof PageRoot>
+type Story = StoryObj<typeof Page>
 
 export const Playground: Story = {
   render: () => (
-    <PageRoot
+    <Page
       style={{ minHeight: '100vh', background: 'var(--color-grey-8)' }}
     >
       <header
@@ -47,22 +47,22 @@ export const Playground: Story = {
       >
         <p>Footer</p>
       </footer>
-    </PageRoot>
+    </Page>
   ),
 }
 
 export const Simple: Story = {
   render: () => (
-    <PageRoot style={{ minHeight: '50vh', padding: '2rem' }}>
+    <Page style={{ minHeight: '50vh', padding: '2rem' }}>
       <Title>Simple Page</Title>
       <p style={{ marginTop: '1rem' }}>Page content goes here.</p>
-    </PageRoot>
+    </Page>
   ),
 }
 
 export const WithStickyFooter: Story = {
   render: () => (
-    <PageRoot style={{ minHeight: '100vh' }}>
+    <Page style={{ minHeight: '100vh' }}>
       <header
         style={{
           padding: '2rem',
@@ -89,13 +89,13 @@ export const WithStickyFooter: Story = {
       >
         <p>© 2024 Company Name. All rights reserved.</p>
       </footer>
-    </PageRoot>
+    </Page>
   ),
 }
 
 export const NestedLayout: Story = {
   render: () => (
-    <PageRoot style={{ minHeight: '100vh' }}>
+    <Page style={{ minHeight: '100vh' }}>
       <div style={{ display: 'flex', flex: 1 }}>
         <aside
           style={{
@@ -121,6 +121,6 @@ export const NestedLayout: Story = {
           </p>
         </main>
       </div>
-    </PageRoot>
+    </Page>
   ),
 }

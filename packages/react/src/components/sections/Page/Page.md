@@ -5,7 +5,7 @@ Root page wrapper that provides consistent layout structure.
 ## Import
 
 ```tsx
-import { PageRoot } from '@ui'
+import { Page } from '@ui'
 ```
 
 ## Usage
@@ -13,19 +13,19 @@ import { PageRoot } from '@ui'
 ### Basic Page
 
 ```tsx
-<PageRoot>
+<Page>
   <Header />
   <main>
     {/* page content */}
   </main>
   <Footer />
-</PageRoot>
+</Page>
 ```
 
 ### With Sections
 
 ```tsx
-<PageRoot>
+<Page>
   <Header />
 
   <Section>
@@ -44,12 +44,12 @@ import { PageRoot } from '@ui'
   </Section>
 
   <Footer />
-</PageRoot>
+</Page>
 ```
 
 ## Props
 
-### PageRoot
+### Page
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -73,7 +73,7 @@ import { PageRoot } from '@ui'
 ### Standard Page Layout
 
 ```tsx
-<PageRoot>
+<Page>
   <Header />
 
   <main>
@@ -90,13 +90,13 @@ import { PageRoot } from '@ui'
   </main>
 
   <Footer />
-</PageRoot>
+</Page>
 ```
 
 ### Landing Page
 
 ```tsx
-<PageRoot>
+<Page>
   <Header />
 
   <Banner
@@ -125,13 +125,13 @@ import { PageRoot } from '@ui'
   </Section>
 
   <Footer />
-</PageRoot>
+</Page>
 ```
 
 ## Strapi Integration
 
 ```tsx
-<PageRoot className={data.pageClass}>
+<Page className={data.pageClass}>
   <Header data={headerData} />
 
   {data.sections.map(section => (
@@ -139,5 +139,5 @@ import { PageRoot } from '@ui'
   ))}
 
   <Footer data={footerData} />
-</PageRoot>
+</Page>
 ```
