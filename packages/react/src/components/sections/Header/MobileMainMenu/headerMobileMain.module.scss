@@ -74,7 +74,9 @@
   color: var(--color-black);
   cursor: pointer;
   display: flex;
-  padding: 0.8rem;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
 
   .dark & {
     color: var(--color-white);

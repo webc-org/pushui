@@ -8,7 +8,10 @@ export function Modals({ children }: { children: ReactNode }) {
   const [modals, setModals] = useState<ModalConfigTypes[]>([])
 
   const addModal = useCallback((options: ModalConfigTypes) => {
-    setModals((prev) => [...prev, { ...options, id: Date.now() }])
+    setModals((prev) => [
+      ...prev,
+      { ...options, id: options.id ?? Date.now() },
+    ])
   }, [])
 
   const removeModal = useCallback((id: number) => {
