@@ -14,7 +14,8 @@ export function HeaderMobileMainMenu({
   style,
   ...rest
 }: HeaderMobileMainMenuTypes) {
-  const { isOpen, mobileMenuId, textColor, mobile } = useHeader()
+  const { isOpen, mobileMenuId, theme, themeStyles } = useHeader()
+  const mobileMainStyles = themeStyles.mobile.main
 
   const menuRef = useRef<HTMLDivElement | null>(null)
 
@@ -68,14 +69,13 @@ export function HeaderMobileMainMenu({
       style={
         {
           ...style,
-          '--header-mobile-main-bg': mobile.main.bgColor,
+          '--header-mobile-main-bg': mobileMainStyles.bgColor,
         } as CSSProperties
       }
       className={clsx(
         styles.menu,
+        styles[theme],
         isOpen && styles.isOpen,
-        textColor === 'dark' && styles.textDark,
-        textColor === 'light' && styles.textLight,
         className
       )}
       {...rest}

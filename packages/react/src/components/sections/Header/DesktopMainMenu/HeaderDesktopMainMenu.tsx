@@ -12,7 +12,7 @@ export function HeaderDesktopMainMenu({
   style,
   ...rest
 }: HeaderDesktopMainMenuTypes) {
-  const { isScrolled, textColor, theme, themeStyles } = useHeader()
+  const { isScrolled, theme, themeStyles } = useHeader()
   const desktopMainStyles = themeStyles.desktop.main
 
   // BACKGROUND
@@ -36,13 +36,7 @@ export function HeaderDesktopMainMenu({
           '--header-desktop-main-opacity': opacity,
         } as CSSProperties
       }
-      className={clsx(
-        styles.menu,
-        styles[theme],
-        textColor === 'dark' && styles.textDark,
-        textColor === 'light' && styles.textLight,
-        className
-      )}
+      className={clsx(styles.menu, styles[theme], className)}
       {...rest}
     >
       <div className={clsx(styles.container, containerClassName)}>

@@ -45,11 +45,11 @@
   position: relative;
   width: 100%;
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
   }
 
@@ -76,7 +76,7 @@
   display: flex;
   padding: 0.8rem;
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
 
     &:hover,
@@ -85,7 +85,7 @@
     }
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
 
     &:hover,
@@ -120,7 +120,7 @@
     cursor: default;
   }
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
 
     &:hover,
@@ -130,7 +130,7 @@
     }
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
 
     &:hover,
@@ -142,7 +142,7 @@
 
   @each $name in $color-variants {
     &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-      .textLight & {
+      .dark & {
         color: var(--color-white);
 
         &:hover,
@@ -152,7 +152,7 @@
         }
       }
 
-      .textDark & {
+      .light & {
         color: var(--color-black);
 
         &:hover,
@@ -182,33 +182,33 @@
   text-decoration: none;
   width: 100%;
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
   }
 
   &.isOpen {
-    .textLight & {
+    .dark & {
       color: var(--color-primary-contrast);
     }
   }
 
-  .textLight .dropdownWrapper:hover &,
-  .textLight .dropdownWrapper:focus-within & {
+  .dark .dropdownWrapper:hover &,
+  .dark .dropdownWrapper:focus-within & {
     color: var(--color-primary-contrast);
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
   }
 
   &.isOpen {
-    .textDark & {
+    .light & {
       color: var(--color-primary-2);
     }
   }
 
-  .textDark .dropdownWrapper:hover &,
-  .textDark .dropdownWrapper:focus-within & {
+  .light .dropdownWrapper:hover &,
+  .light .dropdownWrapper:focus-within & {
     color: var(--color-primary-2);
   }
 }
@@ -232,11 +232,11 @@
   overflow: hidden;
   padding: 0 0 0 2rem;
 
-  .textLight & {
+  .dark & {
     border-color: var(--color-white-20);
   }
 
-  .textDark & {
+  .light & {
     border-color: var(--color-black-20);
   }
 }
@@ -252,22 +252,22 @@
     text-decoration: none;
   }
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
   }
 
   &:hover,
   &.current,
   &:focus-visible {
-    .textLight & {
+    .dark & {
       color: var(--color-primary-contrast);
     }
 
-    .textDark & {
+    .light & {
       color: var(--color-primary-2);
     }
   }

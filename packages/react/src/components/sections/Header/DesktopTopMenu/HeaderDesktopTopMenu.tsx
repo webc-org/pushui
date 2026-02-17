@@ -12,24 +12,26 @@ export function HeaderDesktopTopMenu({
   style,
   ...rest
 }: HeaderDesktopTopMenuTypes) {
-  const { isScrolled, textColor, desktop } = useHeader()
-  const opacity = isScrolled ? '1' : desktop.top.bgOpacity
-  const customStyles = {
-    ...style,
-    '--header-desktop-top-bg': desktop.top.bgColor,
-    '--header-desktop-top-opacity': opacity,
-  } as CSSProperties
+  const { isScrolled, theme, themeStyles } = useHeader()
+  const desktopTopStyles = themeStyles.desktop.top
+
+  // BACKGROUND
+  const background = desktopTopStyles.bgColor
+
+  // OPACITY
+  const opacity = isScrolled ? '1' : desktopTopStyles.bgOpacity
 
   return (
     <div
       ref={ref}
-      style={customStyles}
-      className={clsx(
-        styles.menu,
-        textColor === 'dark' && styles.textDark,
-        textColor === 'light' && styles.textLight,
-        className
-      )}
+      style={
+        {
+          ...style,
+          '--header-desktop-top-bg': background,
+          '--header-desktop-top-opacity': opacity,
+        } as CSSProperties
+      }
+      className={clsx(styles.menu, styles[theme], className)}
       {...rest}
     >
       <div className={clsx(styles.container, containerClassName)}>

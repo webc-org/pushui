@@ -12,9 +12,18 @@ export function HeaderMobileTopMenu({
   style,
   ...rest
 }: HeaderMobileTopMenuTypes) {
-  const { isScrolled, textColor, mobile } = useHeader()
-  const opacity = isScrolled ? '1' : mobile.top.bgOpacity
-  const shadow = isScrolled || opacity === '1' ? 'var(--shadow-1)' : 'none'
+  const { isScrolled, theme, themeStyles } = useHeader()
+  const mobileTopStyles = themeStyles.mobile.top
+
+  // BACKGROUND
+  const background = mobileTopStyles.bgColor
+
+  // OPACITY
+  const opacity = isScrolled ? '1' : mobileTopStyles.bgOpacity
+
+  // SHADOW
+  const hasShadow = isScrolled || opacity === '1'
+  const shadow = hasShadow ? 'var(--shadow-1)' : 'none'
 
   return (
     <div
@@ -22,17 +31,12 @@ export function HeaderMobileTopMenu({
       style={
         {
           ...style,
-          '--header-mobile-top-bg': mobile.top.bgColor,
+          '--header-mobile-top-bg': background,
           '--header-mobile-top-shadow': shadow,
           '--header-mobile-top-opacity': opacity,
         } as CSSProperties
       }
-      className={clsx(
-        styles.menu,
-        textColor === 'dark' && styles.textDark,
-        textColor === 'light' && styles.textLight,
-        className
-      )}
+      className={clsx(styles.menu, styles[theme], className)}
       {...rest}
     >
       <div className={clsx(styles.container, containerClassName)}>

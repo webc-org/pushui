@@ -65,9 +65,8 @@ type Story = StoryObj<typeof Header>
 // CONTENT
 
 const HeaderLogoContent = () => {
-  const { textColor } = useHeader()
-  const src =
-    textColor === 'light' ? '/pushui_white.svg' : '/pushui_black.svg'
+  const { theme } = useHeader()
+  const src = theme === 'dark' ? '/pushui_white.svg' : '/pushui_black.svg'
   return (
     <Logo href="/">
       <Image src={src} alt="Push UI" />
@@ -653,14 +652,24 @@ export const DarkHero: Story = {
     <>
       <Header
         isOverlay
-        textColor="light"
-        desktop={{
-          top: { bgColor: 'var(--color-grey-1)', bgOpacity: '0.4' },
-          main: { bgColor: 'var(--color-grey-2)', bgOpacity: '0.2' },
-        }}
-        mobile={{
-          top: { bgColor: 'var(--color-grey-1)', bgOpacity: '.4' },
-          main: { bgColor: 'var(--color-grey-2)' },
+        theme="dark"
+        customStyles={{
+          desktop: {
+            top: {
+              dark: { bgColor: 'var(--color-grey-1)', bgOpacity: '0.4' },
+            },
+            main: {
+              dark: { bgColor: 'var(--color-grey-2)', bgOpacity: '0.2' },
+            },
+          },
+          mobile: {
+            top: {
+              dark: { bgColor: 'var(--color-grey-1)', bgOpacity: '.4' },
+            },
+            main: {
+              dark: { bgColor: 'var(--color-grey-2)' },
+            },
+          },
         }}
       >
         <HeaderDesktop>
@@ -761,14 +770,24 @@ export const LightHero: Story = {
     <>
       <Header
         isOverlay
-        textColor="dark"
-        desktop={{
-          top: { bgColor: 'var(--color-grey-9)', bgOpacity: '0.5' },
-          main: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
-        }}
-        mobile={{
-          top: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
-          main: { bgColor: 'var(--color-white)' },
+        theme="light"
+        customStyles={{
+          desktop: {
+            top: {
+              light: { bgColor: 'var(--color-grey-9)', bgOpacity: '0.5' },
+            },
+            main: {
+              light: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
+            },
+          },
+          mobile: {
+            top: {
+              light: { bgColor: 'var(--color-white)', bgOpacity: '0.2' },
+            },
+            main: {
+              light: { bgColor: 'var(--color-white)' },
+            },
+          },
         }}
       >
         <HeaderDesktop>

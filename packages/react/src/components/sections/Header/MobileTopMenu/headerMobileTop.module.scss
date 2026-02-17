@@ -50,7 +50,7 @@
   display: flex;
   padding: 0.8rem;
 
-  .textLight & {
+  .dark & {
     color: var(--color-white);
 
     &:hover,
@@ -59,7 +59,7 @@
     }
   }
 
-  .textDark & {
+  .light & {
     color: var(--color-black);
 
     &:hover,
