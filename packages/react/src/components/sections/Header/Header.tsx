@@ -13,9 +13,8 @@ export function Header({
   baseId,
   children,
   className,
-  theme = 'light',
-  isOverlay = false,
   customStyles,
+  isOverlay = false,
   ...rest
 }: HeaderTypes) {
   const generatedId = useId()
@@ -25,7 +24,7 @@ export function Header({
   const { registerNav, getNavCount } = useHeaderNavRegistry()
   const isScrolled = useHeaderScroll()
   const { isOpen, toggle } = useHeaderMobileToggle(mobileToggleId)
-  const themeStyles = useHeaderCustomStyles(customStyles, theme)
+  const themeStyles = useHeaderCustomStyles(customStyles)
 
   const value = useMemo(
     () => ({
@@ -38,7 +37,6 @@ export function Header({
       isScrolled,
       isOverlay,
       themeStyles,
-      theme,
     }),
     [
       isOpen,
@@ -50,7 +48,6 @@ export function Header({
       isScrolled,
       isOverlay,
       themeStyles,
-      theme,
     ]
   )
 

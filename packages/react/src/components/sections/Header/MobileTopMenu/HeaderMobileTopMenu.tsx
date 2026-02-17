@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
+import { useTheme } from 'utils'
 import { useHeader } from '../HeaderContext'
 import type { HeaderMobileTopMenuTypes } from './HeaderMobileTop.types'
 import styles from './headerMobileTop.module.scss'
@@ -12,7 +13,8 @@ export function HeaderMobileTopMenu({
   style,
   ...rest
 }: HeaderMobileTopMenuTypes) {
-  const { isScrolled, theme, themeStyles } = useHeader()
+  const { isScrolled, themeStyles } = useHeader()
+  const { theme } = useTheme()
   const mobileTopStyles = themeStyles.mobile.top
 
   // BACKGROUND

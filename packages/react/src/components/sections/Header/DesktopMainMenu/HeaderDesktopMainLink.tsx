@@ -1,6 +1,5 @@
 import clsx from 'clsx'
-import { Slot } from 'utils'
-import { useHeader } from '../HeaderContext'
+import { Slot, useTheme } from 'utils'
 import type { HeaderDesktopMainLinkTypes } from './HeaderDesktopMain.types'
 import styles from './headerDesktopMain.module.scss'
 
@@ -13,9 +12,9 @@ export function HeaderDesktopMainLink({
   variant,
   ...props
 }: HeaderDesktopMainLinkTypes) {
-  const { theme } = useHeader()
+  const { theme } = useTheme()
   const Comp = asChild ? Slot : 'a'
-  const contrast = theme !== 'light'
+  const contrast = theme === 'dark'
 
   return (
     <Comp

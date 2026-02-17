@@ -1,11 +1,12 @@
 import { useMemo } from 'react'
-import type { ThemeTypes } from 'utils'
+import { useTheme } from 'utils'
 import type { HeaderThemeStylesTypes, HeaderTypes } from './Header.types'
 
 export function useHeaderCustomStyles(
-  customStyles: HeaderTypes['customStyles'],
-  theme: ThemeTypes
+  customStyles: HeaderTypes['customStyles']
 ): HeaderThemeStylesTypes {
+  const { theme } = useTheme()
+
   return useMemo(() => {
     const desktopTopLight = customStyles?.desktop?.top?.light
     const desktopTopDark = customStyles?.desktop?.top?.dark

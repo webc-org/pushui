@@ -89,15 +89,20 @@ export type ColorVariant =
 
 ### Header (sections/Header/)
 
-Complex compound component with context:
+Complex compound component with context and theme support:
 
 ```
 Header/
-├── HeaderRoot.tsx              # Context provider, state management
-├── HeaderContext.tsx           # Context + useHeader hook
-├── Top/                        # Top navigation section
-├── Main/                       # Main navigation section
-├── Mobile/                     # Mobile menu
+├── Header.tsx                  # Root component, context provider
+├── HeaderContext.tsx            # Context + useHeader hook
+├── DesktopTopMenu/             # Desktop top bar (secondary nav)
+├── DesktopMainMenu/            # Desktop main nav (logo, links, dropdowns)
+├── MobileTopMenu/              # Mobile top bar (logo, toggle)
+├── MobileMainMenu/             # Mobile slide-out menu
+├── useHeaderCustomStyles.ts    # Resolves light/dark theme styles with defaults
+├── useHeaderMobileToggle.ts    # Mobile menu open/close, escape, resize, body lock
+├── useHeaderScroll.ts          # Scroll detection (isScrolled)
+├── useHeaderNavRegistry.ts     # Nav registration and counting
 ├── useHeaderDropdown.ts        # Shared dropdown logic hook
 └── useHeaderNavLabel.ts        # Nav aria-label hook
 ```

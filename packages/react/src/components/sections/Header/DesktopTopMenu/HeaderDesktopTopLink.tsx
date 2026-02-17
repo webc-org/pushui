@@ -11,6 +11,7 @@ export function HeaderDesktopTopLink({
   ...props
 }: HeaderDesktopTopLinkTypes) {
   const Comp = asChild ? Slot : 'a'
+
   return (
     <Comp
       className={clsx(styles.link, current && styles.current, className)}

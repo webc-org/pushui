@@ -10,6 +10,7 @@ import {
   SectionTitle,
   Title,
 } from 'components'
+import { ThemeProvider, useTheme } from 'utils'
 import { Button } from '../../form/Button'
 import {
   Banner,
@@ -43,7 +44,6 @@ import {
   HeaderMobileTopLogo,
   HeaderMobileTopMenu,
   HeaderMobileTopToggle,
-  useHeader,
 } from './index'
 
 const meta: Meta<typeof Header> = {
@@ -65,7 +65,7 @@ type Story = StoryObj<typeof Header>
 // CONTENT
 
 const HeaderLogoContent = () => {
-  const { theme } = useHeader()
+  const { theme } = useTheme()
   const src = theme === 'dark' ? '/pushui_white.svg' : '/pushui_black.svg'
   return (
     <Logo href="/">
@@ -74,23 +74,13 @@ const HeaderLogoContent = () => {
   )
 }
 
-const HeaderButtonsContent = ({ contrast }: { contrast?: boolean }) => (
+const HeaderButtonsContent = () => (
   <HeaderDesktopMainNav>
-    <HeaderDesktopMainLink
-      asChild
-      appearance="outline"
-      variant="primary"
-      contrast={contrast}
-    >
+    <HeaderDesktopMainLink asChild appearance="outline" variant="primary">
       <Link href="/">Sign In</Link>
     </HeaderDesktopMainLink>
 
-    <HeaderDesktopMainLink
-      asChild
-      appearance="button"
-      variant="primary"
-      contrast={contrast}
-    >
+    <HeaderDesktopMainLink asChild appearance="button" variant="primary">
       <Link href="/">Get Started</Link>
     </HeaderDesktopMainLink>
   </HeaderDesktopMainNav>
@@ -210,7 +200,7 @@ const MegaMenuContent = () => (
   </Grid>
 )
 
-const MobileMenuContent = ({ contrast }: { contrast?: boolean }) => (
+const MobileMenuContent = () => (
   <HeaderMobileMainMenu>
     <HeaderMobileMainHead>
       <Title level="h3">Menu</Title>
@@ -265,20 +255,10 @@ const MobileMenuContent = ({ contrast }: { contrast?: boolean }) => (
     </HeaderMobileMainNav>
 
     <HeaderMobileMainNav>
-      <HeaderMobileMainLink
-        asChild
-        appearance="outline"
-        variant="primary"
-        contrast={contrast}
-      >
+      <HeaderMobileMainLink asChild appearance="outline" variant="primary">
         <Link href="/">Connexion</Link>
       </HeaderMobileMainLink>
-      <HeaderMobileMainLink
-        asChild
-        appearance="button"
-        variant="primary"
-        contrast={contrast}
-      >
+      <HeaderMobileMainLink asChild appearance="button" variant="primary">
         <Link href="/">Inscription</Link>
       </HeaderMobileMainLink>
     </HeaderMobileMainNav>
@@ -649,10 +629,9 @@ export const MegaMenu: Story = {
 
 export const DarkHero: Story = {
   render: () => (
-    <>
+    <ThemeProvider defaultTheme="dark">
       <Header
         isOverlay
-        theme="dark"
         customStyles={{
           desktop: {
             top: {
@@ -712,7 +691,7 @@ export const DarkHero: Story = {
               </HeaderDesktopMainLink>
             </HeaderDesktopMainNav>
 
-            <HeaderButtonsContent contrast />
+            <HeaderButtonsContent />
           </HeaderDesktopMainMenu>
         </HeaderDesktop>
 
@@ -724,7 +703,7 @@ export const DarkHero: Story = {
             <HeaderMobileTopToggle />
           </HeaderMobileTopMenu>
 
-          <MobileMenuContent contrast />
+          <MobileMenuContent />
         </HeaderMobile>
       </Header>
 
@@ -761,16 +740,15 @@ export const DarkHero: Story = {
           the hero section.
         </p>
       </Section>
-    </>
+    </ThemeProvider>
   ),
 }
 
 export const LightHero: Story = {
   render: () => (
-    <>
+    <ThemeProvider defaultTheme="light">
       <Header
         isOverlay
-        theme="light"
         customStyles={{
           desktop: {
             top: {
@@ -878,6 +856,6 @@ export const LightHero: Story = {
           the hero section.
         </p>
       </Section>
-    </>
+    </ThemeProvider>
   ),
 }

@@ -75,5 +75,5 @@
 | Auth | Authentication pages |
 | Dashboard | Admin dashboard layout |
 | Footer | Site footer |
-| Header | Site header with nav |
+| Header | Site header with nav, light/dark theme support |
 | Page | Page root wrapper |

@@ -272,7 +272,7 @@ All values support responsive breakpoints.
 
 ## Theming
 
-Override CSS variables:
+### CSS Variable Overrides
 
 ```css
 :root {
@@ -282,6 +282,25 @@ Override CSS variables:
   --color-primary-contrast: #60a5fa;
 }
 ```
+
+### ThemeProvider
+
+Light/dark theme support via React context. Defaults to `'light'` without a provider.
+
+```tsx
+import { ThemeProvider, useTheme } from '@pushui/react'
+
+// Wrap app
+<ThemeProvider defaultTheme="light">
+  <App />
+</ThemeProvider>
+
+// Use in any component
+const { theme, setTheme } = useTheme()
+setTheme('dark')
+```
+
+The `Header` component accepts a `theme` prop (`'light' | 'dark'`) and resolves its `customStyles` accordingly — each bar (desktop top/main, mobile top/main) can define separate light and dark background colors and opacities.
 
 ## Contrast Mode
 

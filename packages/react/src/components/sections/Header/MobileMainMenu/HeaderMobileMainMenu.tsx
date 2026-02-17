@@ -1,6 +1,6 @@
 import { type CSSProperties, useEffect, useRef } from 'react'
 import clsx from 'clsx'
-import { getFocusableElements } from 'utils'
+import { getFocusableElements, useTheme } from 'utils'
 import { useHeader } from '../HeaderContext'
 import type { HeaderMobileMainMenuTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
@@ -14,7 +14,8 @@ export function HeaderMobileMainMenu({
   style,
   ...rest
 }: HeaderMobileMainMenuTypes) {
-  const { isOpen, mobileMenuId, theme, themeStyles } = useHeader()
+  const { isOpen, mobileMenuId, themeStyles } = useHeader()
+  const { theme } = useTheme()
   const mobileMainStyles = themeStyles.mobile.main
 
   const menuRef = useRef<HTMLDivElement | null>(null)
