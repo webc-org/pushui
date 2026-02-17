@@ -74,7 +74,6 @@ export type HeaderThemeStylesTypes = {
 export type HeaderTypes = ComponentPropsWithRef<'header'> & {
   children: ReactNode
   baseId?: string
-  isOverlay?: boolean
   theme?: ThemeTypes
   customStyles?: HeaderCustomStylesTypes
 }
@@ -97,6 +96,5 @@ export type HeaderContextTypes = {
   registerNav: (type: HeaderNavTypes) => number
   getNavCount: (type: HeaderNavTypes) => number
   isScrolled: boolean
-  isOverlay: boolean
   themeStyles: HeaderThemeStylesTypes
 }

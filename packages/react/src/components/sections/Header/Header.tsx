@@ -14,7 +14,6 @@ export function Header({
   children,
   className,
   customStyles,
-  isOverlay = false,
   ...rest
 }: HeaderTypes) {
   const generatedId = useId()
@@ -35,7 +34,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isOverlay,
+
       themeStyles,
     }),
     [
@@ -46,7 +45,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isOverlay,
+
       themeStyles,
     ]
   )

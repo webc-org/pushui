@@ -631,7 +631,6 @@ export const DarkHero: Story = {
   render: () => (
     <ThemeProvider defaultTheme="dark">
       <Header
-        isOverlay
         customStyles={{
           desktop: {
             top: {
@@ -748,7 +747,6 @@ export const LightHero: Story = {
   render: () => (
     <ThemeProvider defaultTheme="light">
       <Header
-        isOverlay
         customStyles={{
           desktop: {
             top: {

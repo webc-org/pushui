@@ -224,7 +224,6 @@ Root container providing context for mobile menu state.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Header content |
 | `baseId` | `string` | auto | Base ID for accessibility |
-| `isOverlay` | `boolean` | `false` | Overlay mode (header floats over content) |
 | `textColor` | `'light' \| 'dark'` | `'dark'` | Text/icon color |
 | `desktop` | `{ top?: { bgColor, bgOpacity }, main?: { bgColor, bgOpacity } }` | see below | Desktop bar backgrounds |
 | `mobile` | `{ top?: { bgColor, bgOpacity }, main?: { bgColor, bgOpacity } }` | see below | Mobile bar backgrounds |
@@ -314,37 +313,10 @@ All link components support `asChild` for custom link rendering and `current` fo
 
 ## Overlay Header
 
-Use `isOverlay` and `textColor` to float the header over hero content. Background colors are configured via `desktop`/`mobile` props on `Header`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
-
-```tsx
-<Header
-  isOverlay
-  textColor="light"
-  desktop={{
-    top: { bgColor: '#111', bgOpacity: '0.2' },
-    main: { bgColor: '#222', bgOpacity: '0.2' },
-  }}
-  mobile={{
-    top: { bgColor: '#222', bgOpacity: '1' },
-  }}
->
-  <TopMenu>{/* top bar */}</TopMenu>
-  <MainMenu>{/* main nav */}</MainMenu>
-  <HeaderMobile>
-    <MobileTopMenu>{/* mobile bar */}</MobileTopMenu>
-    <HeaderMobileMainMenu>{/* mobile menu */}</HeaderMobileMainMenu>
-  </HeaderMobile>
-</Header>
-
-<Banner backgroundImage="..." overlay="dark" className="h-screen">
-  <BannerContent textColor="light">{/* hero content */}</BannerContent>
-</Banner>
-```
-
-Add `header-overlay` class to `<body>` to remove default header padding:
+Add `is-header-overlay` class to `<body>` to float the header over content. Background colors are configured via `customStyles` on `Header`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
 
 ```html
-<body class="with-desktop-header-main with-mobile-header-top header-overlay">
+<body class="with-desktop-header-main with-mobile-header-top is-header-overlay">
 ```
 
 ### Context
@@ -352,14 +324,12 @@ Add `header-overlay` class to `<body>` to remove default header padding:
 `useHeader()` exposes state for consumer-side logic (e.g. logo swap):
 
 ```tsx
-const { isOverlay, isScrolled, textColor } = useHeader()
+const { isScrolled } = useHeader()
 ```
 
 | Value | Type | Description |
 |-------|------|-------------|
-| `isOverlay` | `boolean` | `true` when overlay mode is active |
 | `isScrolled` | `boolean` | `true` when page has scrolled past threshold |
-| `textColor` | `'light' \| 'dark'` | Current text color variant |
 
 ## Behavior
 
@@ -432,8 +402,6 @@ const { isOverlay, isScrolled, textColor } = useHeader()
 
 ```tsx
 <Header
-  isOverlay={isOverlay}
-  textColor={textColor}
   desktop={{
     top: { bgColor: data.topBar?.bgColor, bgOpacity: data.topBar?.bgOpacity },
     main: { bgColor: data.mainNav?.bgColor, bgOpacity: data.mainNav?.bgOpacity },

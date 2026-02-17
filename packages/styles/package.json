@@ -1,6 +1,6 @@
 {
   "name": "@pushui/styles",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "Push UI design system styles",
   "main": "dist/index.css",
   "files": [
