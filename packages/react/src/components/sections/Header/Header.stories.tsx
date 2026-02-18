@@ -10,7 +10,7 @@ import {
   SectionTitle,
   Title,
 } from 'components'
-import { ThemeProvider, useTheme } from 'utils'
+import { ThemeProvider, ThemeSwitch, ThemeToggle, useTheme } from 'utils'
 import { Button } from '../../form/Button'
 import {
   Banner,
@@ -76,6 +76,8 @@ const HeaderLogoContent = () => {
 
 const HeaderButtonsContent = () => (
   <HeaderDesktopMainNav>
+    <ThemeToggle />
+
     <HeaderDesktopMainLink asChild appearance="outline" variant="primary">
       <Link href="/">Sign In</Link>
     </HeaderDesktopMainLink>
@@ -89,6 +91,8 @@ const HeaderButtonsContent = () => (
 const HeaderIconsContent = () => {
   return (
     <HeaderDesktopMainNav>
+      <ThemeToggle />
+
       <HeaderDesktopMainLink
         asChild
         appearance="icon"
@@ -261,6 +265,10 @@ const MobileMenuContent = () => (
       <HeaderMobileMainLink asChild appearance="button" variant="primary">
         <Link href="/">Inscription</Link>
       </HeaderMobileMainLink>
+    </HeaderMobileMainNav>
+
+    <HeaderMobileMainNav>
+      <ThemeSwitch />
     </HeaderMobileMainNav>
   </HeaderMobileMainMenu>
 )
