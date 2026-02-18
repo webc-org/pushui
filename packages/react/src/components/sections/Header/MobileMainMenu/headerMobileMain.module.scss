@@ -142,30 +142,6 @@
       color: var(--color-primary-2);
     }
   }
-
-  // @each $name in $color-variants {
-  //   &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-  //     .dark & {
-  //       color: var(--color-white);
-
-  //       &:hover,
-  //       &.current,
-  //       &:focus-visible {
-  //         color: var(--color-#{$name}-contrast);
-  //       }
-  //     }
-
-  //     .light & {
-  //       color: var(--color-black);
-
-  //       &:hover,
-  //       &.current,
-  //       &:focus-visible {
-  //         color: var(--color-#{$name}-2);
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 .dropdownWrapper {
