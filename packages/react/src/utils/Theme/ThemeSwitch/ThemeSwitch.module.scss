@@ -1,0 +1,7 @@
+.label {
+  color: var(--color-black);
+
+  &.contrast {
+    color: var(--color-white)
+  }
+}

@@ -10,6 +10,7 @@
   max-width: 100%;
   overflow-y: auto;
   position: fixed;
+  right: 0;
   top: 0;
   transform: translateX(100%);
   transition: transform var(--transition-default);
@@ -142,29 +143,29 @@
     }
   }
 
-  @each $name in $color-variants {
-    &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-      .dark & {
-        color: var(--color-white);
+  // @each $name in $color-variants {
+  //   &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
+  //     .dark & {
+  //       color: var(--color-white);
 
-        &:hover,
-        &.current,
-        &:focus-visible {
-          color: var(--color-#{$name}-contrast);
-        }
-      }
+  //       &:hover,
+  //       &.current,
+  //       &:focus-visible {
+  //         color: var(--color-#{$name}-contrast);
+  //       }
+  //     }
 
-      .light & {
-        color: var(--color-black);
+  //     .light & {
+  //       color: var(--color-black);
 
-        &:hover,
-        &.current,
-        &:focus-visible {
-          color: var(--color-#{$name}-2);
-        }
-      }
-    }
-  }
+  //       &:hover,
+  //       &.current,
+  //       &:focus-visible {
+  //         color: var(--color-#{$name}-2);
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .dropdownWrapper {

@@ -79,29 +79,29 @@
     }
   }
 
-  @each $name in $color-variants {
-    &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
-      .light & {
-        color: var(--color-black);
+  // @each $name in $color-variants {
+  //   &.variant-#{$name}:not(.appearance-button):not(.appearance-outline) {
+  //     .light & {
+  //       color: var(--color-black);
 
-        &:hover,
-        &.current,
-        &:focus-visible {
-          color: var(--color-#{$name}-2);
-        }
-      }
+  //       &:hover,
+  //       &.current,
+  //       &:focus-visible {
+  //         color: var(--color-#{$name}-2);
+  //       }
+  //     }
 
-      .dark & {
-        color: var(--color-white);
+  //     .dark & {
+  //       color: var(--color-white);
 
-        &:hover,
-        &.current,
-        &:focus-visible {
-          color: var(--color-#{$name}-contrast);
-        }
-      }
-    }
-  }
+  //       &:hover,
+  //       &.current,
+  //       &:focus-visible {
+  //         color: var(--color-#{$name}-contrast);
+  //       }
+  //     }
+  //   }
+  // }
 
   &.appearance-icon {
     font-size: var(--font-size-6);
