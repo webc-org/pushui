@@ -53,7 +53,7 @@ import { Badge } from '@ui'
 ### ColorVariant
 
 ```tsx
-type ColorVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
 ```
 
 ## Styling

@@ -90,13 +90,13 @@ import NextLink from 'next/link'
 ### ActionAppearance
 
 ```tsx
-type ActionAppearance = 'button' | 'outline' | 'ghost' | 'link'
+type ActionAppearance = 'default' | 'underline' | 'outline' | 'button' | 'icon'
 ```
 
 ### ColorVariant
 
 ```tsx
-type ColorVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
+type ColorVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'
 ```
 
 ## Disabled Behavior
