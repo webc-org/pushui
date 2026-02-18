@@ -256,6 +256,14 @@
   width: 100%;
   z-index: var(--z-index-5);
 
+  .dark & {
+    color: var(--color-white);
+  }
+
+  .light & {
+    color: var(--color-black);
+  }
+
   &::before {
     background-color: var(--header-desktop-main-bg);
     border-radius: var(--radius-3);
