@@ -9,6 +9,8 @@
       "base/*": ["./src/components/base/*"],
       "form": ["./src/components/form"],
       "form/*": ["./src/components/form/*"],
+      "modules": ["./src/components/modules"],
+      "modules/*": ["./src/components/modules/*"],
       "utils": ["./src/utils"],
       "utils/*": ["./src/utils/*"],
       "types": ["./src/types"],

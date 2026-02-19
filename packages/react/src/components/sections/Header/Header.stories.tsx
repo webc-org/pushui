@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   Grid,
@@ -19,6 +20,7 @@ import {
   BannerSubtitle,
   BannerTitle,
 } from '../../modules/Banner'
+import { Modals } from '../../modules/Modal'
 import {
   Header,
   HeaderDesktop,
@@ -44,6 +46,7 @@ import {
   HeaderMobileTopLogo,
   HeaderMobileTopMenu,
   HeaderMobileTopToggle,
+  Locale,
 } from './index'
 
 const meta: Meta<typeof Header> = {
@@ -61,6 +64,14 @@ const meta: Meta<typeof Header> = {
 
 export default meta
 type Story = StoryObj<typeof Header>
+
+const locales = [
+  { code: 'en', label: 'English' },
+  { code: 'fr', label: 'Français' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'es', label: 'Español' },
+  { code: 'ja', label: '日本語' },
+]
 
 // CONTENT
 
@@ -864,4 +875,79 @@ export const LightHero: Story = {
       </Section>
     </ThemeProvider>
   ),
+}
+
+export const WithLocale: Story = {
+  render: () => {
+    const [currentTop, setCurrentTop] = useState('en')
+    const [currentMain, setCurrentMain] = useState('fr')
+    return (
+      <ThemeProvider>
+        <Modals>
+          <Header>
+            <HeaderDesktop>
+              <HeaderDesktopTopMenu>
+                <HeaderDesktopTopNav aria-label="top-links">
+                  <HeaderDesktopTopLink asChild>
+                    <Link href="/">Help</Link>
+                  </HeaderDesktopTopLink>
+                  <HeaderDesktopTopLink asChild>
+                    <Link href="/">Contact</Link>
+                  </HeaderDesktopTopLink>
+                </HeaderDesktopTopNav>
+
+                <HeaderDesktopTopNav aria-label="locale-top">
+                  <Locale
+                    locales={locales}
+                    current={currentTop}
+                    onChange={setCurrentTop}
+                    section="top"
+                  />
+                </HeaderDesktopTopNav>
+              </HeaderDesktopTopMenu>
+
+              <HeaderDesktopMainMenu>
+                <HeaderDesktopMainLogo>
+                  <HeaderLogoContent />
+                </HeaderDesktopMainLogo>
+
+                <HeaderDesktopMainNav>
+                  <HeaderDesktopMainLink asChild current>
+                    <Link href="/">Home</Link>
+                  </HeaderDesktopMainLink>
+                  <HeaderDesktopMainLink asChild>
+                    <Link href="/">Products</Link>
+                  </HeaderDesktopMainLink>
+                  <HeaderDesktopMainLink asChild>
+                    <Link href="/">About</Link>
+                  </HeaderDesktopMainLink>
+                </HeaderDesktopMainNav>
+
+                <HeaderDesktopMainNav>
+                  <Locale
+                    locales={locales.slice(0, 3)}
+                    current={currentMain}
+                    onChange={setCurrentMain}
+                    section="main"
+                    mode="modal"
+                  />
+                  <ThemeToggle />
+                </HeaderDesktopMainNav>
+              </HeaderDesktopMainMenu>
+            </HeaderDesktop>
+
+            <HeaderMobile>
+              <HeaderMobileTopMenu>
+                <HeaderMobileTopLogo>
+                  <HeaderLogoContent />
+                </HeaderMobileTopLogo>
+                <HeaderMobileTopToggle />
+              </HeaderMobileTopMenu>
+              <MobileMenuContent />
+            </HeaderMobile>
+          </Header>
+        </Modals>
+      </ThemeProvider>
+    )
+  },
 }

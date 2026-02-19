@@ -1,9 +1,6 @@
 @use 'sass:map';
 @use './color' as *;
 
-$bg-color-button-close: var(--color-grey-8);
-$bg-color-button-close-active: var(--color-primary-2);
-$tx-color-button-close-active: var(--color-white);
 
 @mixin action-base {
   align-items: center;
@@ -181,10 +178,11 @@ $tx-color-button-close-active: var(--color-white);
   }
 }
 
+
 @mixin action-close {
   align-items: center;
   background: transparent;
-  background-color: $bg-color-button-close;
+  background-color: var(--color-grey-8);
   border: none;
   border-radius: var(--radius-2);
   cursor: pointer;
@@ -197,10 +195,10 @@ $tx-color-button-close-active: var(--color-white);
   position: absolute;
   width: 2.5rem;
 
-  &:hover,
-  &:focus-visible {
-    background-color: $bg-color-button-close-active;
-    color: $tx-color-button-close-active;
+  &:hover:not([disabled], [aria-disabled="true"]),
+  &:focus-visible:not([disabled], [aria-disabled="true"]) {
+    background-color: var(--color-primary-2);
+    color: var(--color-white);
     opacity: 1;
   }
 }

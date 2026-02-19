@@ -9,7 +9,7 @@ React component library with TypeScript and SCSS Modules. Components use English
 | base/         | 21    | Avatar, Badge, Pagination, Toast |
 | form/         | 13    | Button, Date, Search, Select |
 | modules/      | 9     | Carousel, Gdpr, Modal, Tab, Table |
-| sections/     | 6     | Header, Footer, Auth, Page |
+| sections/     | 7     | Header (incl. Locale), Footer, Auth, Page |
 
 ## Commands
 

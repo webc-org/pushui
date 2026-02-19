@@ -7,7 +7,7 @@
 | **base/**      | 21    | Audio, Avatar, Badge, Breadcrumb, Divider, Iframe, Image, Layout, Link, Logo, Note, Pagination, Progress, RichText, Section, Skeleton, Spinner, Title, Toast, Tooltip, Video |
 | **form/**      | 13    | Button, Checkbox, Date, File, Number, Password, Radio, Search, Select, Slider, Switch, Text, Textarea |
 | **modules/**   | 9     | Accordion, Banner, Card, Carousel, Gdpr, Grid, Modal, Tab, Table |
-| **sections/**  | 6     | Account, Auth, Dashboard, Footer, Header, Page |
+| **sections/**  | 7     | Account, Auth, Dashboard, Footer, Header (incl. Locale), Page |
 
 ## Base Components
 
@@ -76,4 +76,5 @@
 | Dashboard | Admin dashboard layout |
 | Footer | Site footer |
 | Header | Site header with nav, light/dark theme support |
+| Locale | Language switcher (dropdown or modal mode, part of Header) |
 | Page | Page root wrapper |
