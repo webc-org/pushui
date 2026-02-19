@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { Globe } from 'lucide-react'
+import { Grid } from 'modules/Grid'
 import { useModals } from 'modules/Modal/ModalsContext'
 import { useTheme } from 'utils'
 import type { LocaleTypes } from './Locale.types'
@@ -22,7 +23,7 @@ export function LocaleModal({
       id,
       title: modalTitle ?? 'Select language',
       children: (
-        <div className={styles.modalGrid}>
+        <Grid col={2} gap={0}>
           {locales.map((locale) => (
             <button
               key={locale.code}
@@ -39,7 +40,7 @@ export function LocaleModal({
               {locale.label}
             </button>
           ))}
-        </div>
+        </Grid>
       ),
     })
   }

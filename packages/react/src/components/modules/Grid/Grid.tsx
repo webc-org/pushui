@@ -37,12 +37,12 @@ export function Grid({
   )
 
   const gapClasses = clsx(
-    gap && styles[`grid--gap-${gap}`],
-    gapXS && styles[`grid--gap-xs-${gapXS}`],
-    gapSM && styles[`grid--gap-sm-${gapSM}`],
-    gapMD && styles[`grid--gap-md-${gapMD}`],
-    gapLG && styles[`grid--gap-lg-${gapLG}`],
-    gapXL && styles[`grid--gap-xl-${gapXL}`]
+    gap !== undefined && styles[`grid--gap-${gap}`],
+    gapXS !== undefined && styles[`grid--gap-xs-${gapXS}`],
+    gapSM !== undefined && styles[`grid--gap-sm-${gapSM}`],
+    gapMD !== undefined && styles[`grid--gap-md-${gapMD}`],
+    gapLG !== undefined && styles[`grid--gap-lg-${gapLG}`],
+    gapXL !== undefined && styles[`grid--gap-xl-${gapXL}`]
   )
 
   const gridClasses = clsx(

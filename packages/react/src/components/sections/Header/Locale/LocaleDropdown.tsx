@@ -12,6 +12,7 @@ export function LocaleDropdown({
   current,
   onChange,
   triggerLabel,
+  device = 'desktop',
   section = 'top',
   className,
 }: LocaleTypes) {
@@ -28,7 +29,7 @@ export function LocaleDropdown({
 
   const { themeStyles } = useHeader()
   const { theme } = useTheme()
-  const dropdownBg = themeStyles.desktop[section].bgColor
+  const dropdownBg = themeStyles[device][section].bgColor
 
   const label = triggerLabel ?? current.toUpperCase()
 
