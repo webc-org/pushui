@@ -13,6 +13,7 @@ import {
 } from 'components'
 import { ThemeProvider, ThemeSwitch, ThemeToggle, useTheme } from 'utils'
 import { Button } from '../../form/Button'
+import { InputSearch } from '../../form/Search/Search'
 import {
   Banner,
   BannerActions,
@@ -46,6 +47,7 @@ import {
   HeaderMobileTopLogo,
   HeaderMobileTopMenu,
   HeaderMobileTopToggle,
+  HeaderSearch,
   Locale,
 } from './index'
 
@@ -873,6 +875,53 @@ export const LightHero: Story = {
           the hero section.
         </p>
       </Section>
+    </ThemeProvider>
+  ),
+}
+
+export const WithSearch: Story = {
+  render: () => (
+    <ThemeProvider>
+      <Modals>
+        <Header>
+          <HeaderDesktop>
+            <HeaderDesktopMainMenu>
+              <HeaderDesktopMainLogo>
+                <HeaderLogoContent />
+              </HeaderDesktopMainLogo>
+
+              <HeaderDesktopMainNav>
+                <HeaderDesktopMainLink asChild current>
+                  <Link href="/">Home</Link>
+                </HeaderDesktopMainLink>
+                <HeaderDesktopMainLink asChild>
+                  <Link href="/">Products</Link>
+                </HeaderDesktopMainLink>
+                <HeaderDesktopMainLink asChild>
+                  <Link href="/">About</Link>
+                </HeaderDesktopMainLink>
+              </HeaderDesktopMainNav>
+
+              <HeaderDesktopMainNav>
+                <HeaderSearch modalTitle="Search" width="600px">
+                  <InputSearch placeholder="Search…" autoFocus />
+                </HeaderSearch>
+                <ThemeToggle />
+              </HeaderDesktopMainNav>
+            </HeaderDesktopMainMenu>
+          </HeaderDesktop>
+
+          <HeaderMobile>
+            <HeaderMobileTopMenu>
+              <HeaderMobileTopLogo>
+                <HeaderLogoContent />
+              </HeaderMobileTopLogo>
+              <HeaderMobileTopToggle />
+            </HeaderMobileTopMenu>
+            <MobileMenuContent />
+          </HeaderMobile>
+        </Header>
+      </Modals>
     </ThemeProvider>
   ),
 }

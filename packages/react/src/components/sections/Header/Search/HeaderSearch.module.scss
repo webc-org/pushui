@@ -1,0 +1,24 @@
+.trigger {
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+
+  .dark & {
+    color: var(--color-white);
+  }
+
+  .light & {
+    color: var(--color-black);
+  }
+
+  &:hover,
+  &:focus-visible {
+    .dark & {
+      color: var(--color-primary-contrast);
+    }
+
+    .light & {
+      color: var(--color-primary-2);
+    }
+  }
+}

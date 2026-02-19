@@ -29,14 +29,13 @@ export function LocaleDropdown({
 
   const { themeStyles } = useHeader()
   const { theme } = useTheme()
-  const dropdownBg = themeStyles[device][section].bgColor
-
+  const bgColor = themeStyles[device][section].bgColor
   const label = triggerLabel ?? current.toUpperCase()
 
   return (
     <div
       ref={itemRef}
-      style={{ '--locale-dropdown-bg': dropdownBg } as CSSProperties}
+      style={{ '--locale-dropdown-bg': bgColor } as CSSProperties}
       className={clsx(styles.dropdownWrapper, styles[theme], className)}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
