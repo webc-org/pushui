@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import { Button } from 'components/form'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'utils'
-import { useHeaderTheme } from '../useHeaderTheme'
 import styles from './ThemeToggle.module.scss'
 import type { ThemeToggleTypes } from './ThemeToggle.types'
 
@@ -13,9 +12,8 @@ export function ThemeToggle({
   ...rest
 }: ThemeToggleTypes) {
   const { theme, setTheme } = useTheme()
-  const headerTheme = useHeaderTheme()
   const isDark = theme === 'dark'
-  const isContrast = headerTheme ? headerTheme === 'dark' : isDark
+  const isContrast = isDark
 
   return (
     <Button

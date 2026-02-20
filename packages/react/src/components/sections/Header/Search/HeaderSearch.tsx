@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Search } from 'lucide-react'
 import { useModals } from 'modules/Modal/ModalsContext'
-import { useHeaderTheme } from '../useHeaderTheme'
+import { useTheme } from 'utils'
 import styles from './HeaderSearch.module.scss'
 import type { HeaderSearchTypes } from './HeaderSearch.types'
 
@@ -13,7 +13,7 @@ export function HeaderSearch({
   className,
 }: HeaderSearchTypes) {
   const { addModal } = useModals()
-  const theme = useHeaderTheme()
+  const { theme } = useTheme()
 
   const openModal = () => {
     addModal({

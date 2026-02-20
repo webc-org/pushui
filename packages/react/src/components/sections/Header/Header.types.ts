@@ -97,7 +97,5 @@ export type HeaderContextTypes = {
   registerNav: (type: HeaderNavTypes) => number
   getNavCount: (type: HeaderNavTypes) => number
   isScrolled: boolean
-  isActive: boolean
   themeStyles: HeaderThemeStylesTypes
-  themeOverlay?: ThemeTypes
 }

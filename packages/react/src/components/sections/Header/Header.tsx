@@ -41,9 +41,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isActive,
       themeStyles,
-      themeOverlay,
     }),
     [
       isOpen,
@@ -53,9 +51,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isActive,
       themeStyles,
-      themeOverlay,
     ]
   )
 

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { Globe } from 'lucide-react'
 import { Grid } from 'modules/Grid'
 import { useModals } from 'modules/Modal/ModalsContext'
-import { useHeaderTheme } from '../useHeaderTheme'
+import { useTheme } from 'utils'
 import type { LocaleTypes } from './Locale.types'
 import styles from './LocaleModal.module.scss'
 
@@ -15,7 +15,7 @@ export function LocaleModal({
   className,
 }: LocaleTypes) {
   const { addModal, removeModal } = useModals()
-  const theme = useHeaderTheme()
+  const { theme } = useTheme()
 
   const openModal = () => {
     const id = Date.now()
