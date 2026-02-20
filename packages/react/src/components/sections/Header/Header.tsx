@@ -1,4 +1,4 @@
-import { useId, useMemo } from 'react'
+import { useId, useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { HeaderContext } from './HeaderContext'
 import { useHeaderCustomStyles } from './useHeaderCustomStyles'
@@ -23,6 +23,7 @@ export function Header({
   const mobileToggleId = `header-mobile-toggle-${id}`
   const { registerNav, getNavCount } = useHeaderNavRegistry()
   const isScrolled = useHeaderScroll()
+  const [isHovered, setIsHovered] = useState(false)
   const { isOpen, toggle } = useHeaderMobileToggle(mobileToggleId)
   const themeStyles = useHeaderCustomStyles(
     customStyles,
@@ -39,6 +40,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
+      isHovered,
       themeStyles,
       themeOverlay,
     }),
@@ -50,6 +52,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
+      isHovered,
       themeStyles,
       themeOverlay,
     ]
@@ -61,6 +64,8 @@ export function Header({
         ref={ref}
         data-header-root
         className={clsx(styles.header, className)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         {...rest}
       >
         {children}
