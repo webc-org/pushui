@@ -7,14 +7,14 @@ import styles from './headerDesktopMain.module.scss'
 
 export function HeaderDesktopMainMenu({
   ref,
+  style,
   children,
   className,
   containerClassName,
-  style,
   ...rest
 }: HeaderDesktopMainMenuTypes) {
   const { isScrolled, themeStyles } = useHeader()
-  const { theme } = useHeaderTheme()
+  const theme = useHeaderTheme()
   const desktopMainStyles = themeStyles.desktop.main
 
   // BACKGROUND

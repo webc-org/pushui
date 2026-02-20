@@ -1,4 +1,4 @@
-import type { SwitchTypes } from '../../../components/form/Switch/Switch.types'
+import type { SwitchTypes } from 'components/form'
 
 export type ThemeSwitchTypes = Omit<
   SwitchTypes,

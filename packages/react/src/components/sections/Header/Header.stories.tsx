@@ -11,7 +11,7 @@ import {
   SectionTitle,
   Title,
 } from 'components'
-import { ThemeProvider, ThemeSwitch, ThemeToggle, useTheme } from 'utils'
+import { ThemeProvider, useTheme } from 'utils'
 import { Button } from '../../form/Button'
 import { InputSearch } from '../../form/Search/Search'
 import {
@@ -49,6 +49,8 @@ import {
   HeaderMobileTopToggle,
   HeaderSearch,
   Locale,
+  ThemeSwitch,
+  ThemeToggle,
 } from './index'
 
 const meta: Meta<typeof Header> = {

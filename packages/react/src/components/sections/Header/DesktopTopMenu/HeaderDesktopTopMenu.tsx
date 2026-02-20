@@ -14,7 +14,7 @@ export function HeaderDesktopTopMenu({
   ...rest
 }: HeaderDesktopTopMenuTypes) {
   const { isScrolled, themeStyles } = useHeader()
-  const { theme } = useHeaderTheme()
+  const theme = useHeaderTheme()
   const desktopTopStyles = themeStyles.desktop.top
 
   // BACKGROUND

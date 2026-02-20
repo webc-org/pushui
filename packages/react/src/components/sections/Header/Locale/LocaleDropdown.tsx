@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
-import { useTheme } from 'utils'
 import { useHeader } from '../HeaderContext'
 import { useHeaderDropdown } from '../useHeaderDropdown'
+import { useHeaderTheme } from '../useHeaderTheme'
 import type { LocaleTypes } from './Locale.types'
 import styles from './LocaleDropdown.module.scss'
 
@@ -28,7 +28,7 @@ export function LocaleDropdown({
   } = useHeaderDropdown(false)
 
   const { themeStyles } = useHeader()
-  const { theme } = useTheme()
+  const theme = useHeaderTheme()
   const bgColor = themeStyles[device][section].bgColor
   const label = triggerLabel ?? current.toUpperCase()
 

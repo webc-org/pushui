@@ -13,7 +13,7 @@ export function HeaderDesktopMainLink({
   variant,
   ...props
 }: HeaderDesktopMainLinkTypes) {
-  const { theme } = useHeaderTheme()
+  const theme = useHeaderTheme()
   const Comp = asChild ? Slot : 'a'
   const contrast = theme === 'dark'
 

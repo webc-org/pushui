@@ -1,7 +1,3 @@
 export * from './ThemeContext'
 export * from './ThemeProvider'
-export * from './ThemeSwitch/ThemeSwitch'
-export * from './ThemeToggle/ThemeToggle'
 export type * from './Theme.types'
-export type * from './ThemeSwitch/ThemeSwitch.types'
-export type * from './ThemeToggle/ThemeToggle.types'

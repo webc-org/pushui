@@ -1,9 +1,13 @@
+import { useContext } from 'react'
 import { useTheme } from 'utils'
-import { useHeader } from './HeaderContext'
+import { HeaderContext } from './HeaderContext'
 
 export function useHeaderTheme() {
-  const { themeOverlay, isScrolled } = useHeader()
-  return useTheme(() =>
-    !isScrolled && themeOverlay ? themeOverlay : undefined
+  const header = useContext(HeaderContext)
+  const { theme } = useTheme(() =>
+    header && !header.isScrolled && header.themeOverlay
+      ? header.themeOverlay
+      : undefined
   )
+  return theme
 }
