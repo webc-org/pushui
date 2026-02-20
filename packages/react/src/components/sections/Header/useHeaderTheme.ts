@@ -5,10 +5,7 @@ import { HeaderContext } from './HeaderContext'
 export function useHeaderTheme() {
   const header = useContext(HeaderContext)
   const { theme } = useTheme(() =>
-    header &&
-    !header.isScrolled &&
-    !header.isHovered &&
-    header.themeOverlay
+    header && !header.isScrolled && !header.isActive && header.themeOverlay
       ? header.themeOverlay
       : undefined
   )

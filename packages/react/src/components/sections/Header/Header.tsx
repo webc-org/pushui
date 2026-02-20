@@ -23,13 +23,13 @@ export function Header({
   const mobileToggleId = `header-mobile-toggle-${id}`
   const { registerNav, getNavCount } = useHeaderNavRegistry()
   const isScrolled = useHeaderScroll()
-  const [isHovered, setIsHovered] = useState(false)
+  const [isActive, setIsActive] = useState(false)
   const { isOpen, toggle } = useHeaderMobileToggle(mobileToggleId)
   const themeStyles = useHeaderCustomStyles(
     customStyles,
     themeOverlay,
     isScrolled,
-    isHovered
+    isActive
   )
 
   const value = useMemo(
@@ -41,7 +41,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isHovered,
+      isActive,
       themeStyles,
       themeOverlay,
     }),
@@ -53,7 +53,7 @@ export function Header({
       registerNav,
       getNavCount,
       isScrolled,
-      isHovered,
+      isActive,
       themeStyles,
       themeOverlay,
     ]
@@ -65,8 +65,14 @@ export function Header({
         ref={ref}
         data-header-root
         className={clsx(styles.header, className)}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setIsActive(true)}
+        onMouseLeave={() => setIsActive(false)}
+        onFocus={() => setIsActive(true)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setIsActive(false)
+          }
+        }}
         {...rest}
       >
         {children}
