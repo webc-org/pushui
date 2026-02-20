@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
-import { useTheme } from 'utils'
 import { useHeader } from '../HeaderContext'
+import { useHeaderTheme } from '../useHeaderTheme'
 import type { HeaderDesktopTopMenuTypes } from './HeaderDesktopTop.types'
 import styles from './headerDesktopTop.module.scss'
 
@@ -14,7 +14,7 @@ export function HeaderDesktopTopMenu({
   ...rest
 }: HeaderDesktopTopMenuTypes) {
   const { isScrolled, themeStyles } = useHeader()
-  const { theme } = useTheme()
+  const { theme } = useHeaderTheme()
   const desktopTopStyles = themeStyles.desktop.top
 
   // BACKGROUND

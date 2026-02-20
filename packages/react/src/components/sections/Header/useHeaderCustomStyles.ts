@@ -3,9 +3,13 @@ import { useTheme } from 'utils'
 import type { HeaderThemeStylesTypes, HeaderTypes } from './Header.types'
 
 export function useHeaderCustomStyles(
-  customStyles: HeaderTypes['customStyles']
+  customStyles: HeaderTypes['customStyles'],
+  themeOverlay?: HeaderTypes['themeOverlay'],
+  isScrolled?: boolean
 ): HeaderThemeStylesTypes {
-  const { theme } = useTheme()
+  const { theme } = useTheme(() =>
+    !isScrolled && themeOverlay ? themeOverlay : undefined
+  )
 
   return useMemo(() => {
     const desktopTopLight = customStyles?.desktop?.top?.light
