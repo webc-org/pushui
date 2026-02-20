@@ -5,10 +5,11 @@ import type { HeaderThemeStylesTypes, HeaderTypes } from './Header.types'
 export function useHeaderCustomStyles(
   customStyles: HeaderTypes['customStyles'],
   themeOverlay?: HeaderTypes['themeOverlay'],
-  isScrolled?: boolean
+  isScrolled?: boolean,
+  isHovered?: boolean
 ): HeaderThemeStylesTypes {
   const { theme } = useTheme(() =>
-    !isScrolled && themeOverlay ? themeOverlay : undefined
+    !isScrolled && !isHovered && themeOverlay ? themeOverlay : undefined
   )
 
   return useMemo(() => {

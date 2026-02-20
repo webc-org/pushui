@@ -28,7 +28,8 @@ export function Header({
   const themeStyles = useHeaderCustomStyles(
     customStyles,
     themeOverlay,
-    isScrolled
+    isScrolled,
+    isHovered
   )
 
   const value = useMemo(
