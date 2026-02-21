@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
 import type { HeaderMobileTopNavTypes } from './HeaderMobileTop.types'
-import styles from './headerDesktopMain.module.scss'
+import styles from './headerMobileTop.module.scss'
 
 export function HeaderMobileTopNav({
   ref,
