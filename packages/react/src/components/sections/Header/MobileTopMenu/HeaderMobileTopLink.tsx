@@ -14,12 +14,13 @@ export function HeaderMobileTopLink({
   const { theme } = useTheme()
   const Comp = asChild ? Slot : 'a'
   const contrast = theme === 'dark'
+  const appearance = 'icon'
 
   return (
     <Comp
       className={clsx(
         styles.link,
-        styles[`appearance-icon`],
+        appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
         contrast && styles.contrast,
         current && styles.current,
