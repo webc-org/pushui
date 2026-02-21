@@ -1,4 +1,5 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react'
+import type { ColorVariant } from 'types'
 
 export type HeaderMobileTopMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
@@ -16,4 +17,11 @@ export type HeaderMobileTopToggleTypes = Omit<
   label?: string
   closeLabel?: string
   menuLabel?: string
+}
+
+export type HeaderMobileTopLinkTypes = ComponentPropsWithRef<'a'> & {
+  asChild?: boolean
+  children: ReactNode
+  current?: boolean
+  variant?: ColorVariant
 }

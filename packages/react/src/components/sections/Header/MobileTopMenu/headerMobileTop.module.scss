@@ -70,3 +70,44 @@
     }
   }
 }
+
+.link {
+  @include action-appearances;
+  @include action-variants;
+  @include action-base;
+  background: none;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  font-size: var(--font-size-4);
+  height: 4rem;
+  padding: 0 1rem;
+  text-decoration: none;
+
+  &.current {
+    cursor: default;
+  }
+
+  .dark & {
+    color: var(--color-white);
+
+    &:hover,
+    &.current,
+    &:focus-visible {
+      color: var(--color-primary-contrast);
+    }
+  }
+
+  .light & {
+    color: var(--color-black);
+
+    &:hover,
+    &.current,
+    &:focus-visible {
+      color: var(--color-primary-2);
+    }
+  }
+
+  &.appearance-icon {
+    font-size: 2.4rem;
+  }
+}
