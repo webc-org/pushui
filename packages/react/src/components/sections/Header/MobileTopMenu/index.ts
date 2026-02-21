@@ -1,3 +1,4 @@
+export * from './HeaderMobileTopLink'
 export * from './HeaderMobileTopLogo'
 export * from './HeaderMobileTopMenu'
 export * from './HeaderMobileTopToggle'

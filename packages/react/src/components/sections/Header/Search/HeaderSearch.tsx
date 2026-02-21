@@ -6,11 +6,11 @@ import styles from './HeaderSearch.module.scss'
 import type { HeaderSearchTypes } from './HeaderSearch.types'
 
 export function HeaderSearch({
-  children,
-  triggerLabel = 'Search',
-  modalTitle,
   width,
+  children,
   className,
+  modalTitle,
+  triggerLabel = 'Search',
 }: HeaderSearchTypes) {
   const { addModal } = useModals()
   const { theme } = useTheme()
