@@ -21,6 +21,7 @@ export function HeaderSearch({
       children,
       width,
       closeOnBackdrop: true,
+      position: 'top',
     })
   }
 

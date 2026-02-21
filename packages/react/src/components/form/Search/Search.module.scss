@@ -78,6 +78,13 @@ $tx-color-no-result: var(--color-grey-5);
   &:empty {
     display: none;
   }
+
+  &.inline {
+    margin-top: 0.4rem;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
 .resultList {

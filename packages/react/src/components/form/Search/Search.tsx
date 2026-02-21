@@ -27,6 +27,7 @@ export function InputSearch({
   renderResult,
   noResultsText,
   flip = true,
+  inline = false,
   value: controlledValue,
   onChange,
   placeholder,
@@ -274,55 +275,61 @@ export function InputSearch({
     </div>
   )
 
-  const dropdownElement =
-    mode === 'dropdown' && isOpen && mounted
-      ? createPortal(
-          <div
-            ref={menuRef}
-            id={`${id}-listbox`}
-            role="listbox"
-            onScroll={handleScroll}
-            aria-busy={loading || undefined}
-            className={styles.dropdown}
-            style={{
-              top: `${menuPosition.top}px`,
-              left: `${menuPosition.left}px`,
-              width: `${menuPosition.width}px`,
-            }}
-          >
-            {results.length > 0 ? (
-              <ul className={styles.resultList}>
-                {results.map((result, index) => (
-                  <li
-                    key={result.id}
-                    id={`${id}-option-${index}`}
-                    aria-selected={focusedIndex === index}
-                    className={clsx(
-                      styles.resultItem,
-                      focusedIndex === index && styles.focused
-                    )}
-                    onClick={() => handleSelect(result)}
-                    onMouseEnter={() => setFocusedIndex(index)}
-                  >
-                    {renderResult ? renderResult(result) : result.label}
-                  </li>
-                ))}
-              </ul>
-            ) : !loading ? (
-              <div className={styles.noResults}>
-                {noResultsText ?? 'No results found'}
-              </div>
-            ) : null}
+  const dropdownContent =
+    mode === 'dropdown' && isOpen ? (
+      <div
+        ref={menuRef}
+        id={`${id}-listbox`}
+        role="listbox"
+        onScroll={handleScroll}
+        aria-busy={loading || undefined}
+        className={clsx(styles.dropdown, inline && styles.inline)}
+        style={
+          !inline
+            ? {
+                top: `${menuPosition.top}px`,
+                left: `${menuPosition.left}px`,
+                width: `${menuPosition.width}px`,
+              }
+            : undefined
+        }
+      >
+        {results.length > 0 ? (
+          <ul className={styles.resultList}>
+            {results.map((result, index) => (
+              <li
+                key={result.id}
+                id={`${id}-option-${index}`}
+                aria-selected={focusedIndex === index}
+                className={clsx(
+                  styles.resultItem,
+                  focusedIndex === index && styles.focused
+                )}
+                onClick={() => handleSelect(result)}
+                onMouseEnter={() => setFocusedIndex(index)}
+              >
+                {renderResult ? renderResult(result) : result.label}
+              </li>
+            ))}
+          </ul>
+        ) : !loading ? (
+          <div className={styles.noResults}>
+            {noResultsText ?? 'No results found'}
+          </div>
+        ) : null}
 
-            {loading && hasMore && results.length > 0 && (
-              <div className={styles.dropdownLoading}>
-                <Spinner inline />
-              </div>
-            )}
-          </div>,
-          document.body
-        )
-      : null
+        {loading && hasMore && results.length > 0 && (
+          <div className={styles.dropdownLoading}>
+            <Spinner inline />
+          </div>
+        )}
+      </div>
+    ) : null
+
+  const dropdownElement =
+    !inline && dropdownContent && mounted
+      ? createPortal(dropdownContent, document.body)
+      : dropdownContent
 
   if (mode === 'redirect') {
     return (

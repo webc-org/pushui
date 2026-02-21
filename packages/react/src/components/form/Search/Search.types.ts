@@ -34,6 +34,7 @@ export type InputSearchTypes = Omit<
   renderResult?: (result: SearchResultTypes) => ReactNode
   noResultsText?: string
   flip?: boolean
+  inline?: boolean
 
   // Common
   value?: string
