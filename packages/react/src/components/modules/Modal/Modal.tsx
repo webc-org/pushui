@@ -12,6 +12,7 @@ export function Modal({
   width,
   children,
   onRemove,
+  position = 'center',
   duration = Infinity,
   closeOnBackdrop = false,
   closeLabel = 'Close modal',
@@ -125,6 +126,7 @@ export function Modal({
     <div
       className={clsx(
         styles.modalBackdrop,
+        position === 'top' && styles.top,
         removing && styles.removing,
         active && !removing && styles.active
       )}

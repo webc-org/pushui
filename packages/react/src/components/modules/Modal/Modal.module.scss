@@ -1,5 +1,6 @@
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/anim' as *;
+@use 'styles/mixins/mq' as *;
 
 .modals {
   inset: 0;
@@ -22,6 +23,15 @@
 
   &:not(:first-of-type) {
     background: transparent;
+  }
+
+  &.top {
+    align-items: flex-start;
+    padding-top: 8rem;
+
+    @include mq-md {
+      padding-top: 12rem;
+    }
   }
 }
 

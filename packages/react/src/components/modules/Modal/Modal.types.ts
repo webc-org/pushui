@@ -5,6 +5,7 @@ export type ModalConfigTypes = {
   title?: ReactNode
   children: ReactNode
   width?: string
+  position?: 'center' | 'top'
   closeOnBackdrop?: boolean
   duration?: number
   closeLabel?: string
