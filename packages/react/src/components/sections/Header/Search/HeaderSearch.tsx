@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { InputSearch } from 'form/Search/Search'
 import { Search } from 'lucide-react'
 import { useModals } from 'modules/Modal/ModalsContext'
 import { useTheme } from 'utils'
@@ -7,10 +8,15 @@ import type { HeaderSearchTypes } from './HeaderSearch.types'
 
 export function HeaderSearch({
   width = '56rem',
-  children,
   className,
   modalTitle = 'Search',
   triggerLabel = 'Search',
+  onSearch,
+  onSelect,
+  results = [],
+  loading,
+  noResultsText,
+  renderResult,
 }: HeaderSearchTypes) {
   const { addModal } = useModals()
   const { theme } = useTheme()
@@ -18,7 +24,18 @@ export function HeaderSearch({
   const openModal = () => {
     addModal({
       title: modalTitle,
-      children,
+      children: (
+        <InputSearch
+          mode="dropdown"
+          inline
+          onSearch={onSearch}
+          onSelect={onSelect}
+          results={results}
+          loading={loading}
+          noResultsText={noResultsText}
+          renderResult={renderResult}
+        />
+      ),
       width,
       closeOnBackdrop: true,
       position: 'top',

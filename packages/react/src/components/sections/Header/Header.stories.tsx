@@ -13,7 +13,6 @@ import {
 } from 'components'
 import { ThemeProvider, useTheme } from 'utils'
 import { Button } from '../../form/Button'
-import { InputSearch } from '../../form/Search/Search'
 import {
   Banner,
   BannerActions,
@@ -52,6 +51,7 @@ import {
   ThemeSwitch,
   ThemeToggle,
 } from './index'
+import type { SearchResultTypes } from '../../form/Search/Search.types'
 
 const meta: Meta<typeof Header> = {
   title: 'Sections/Header',
@@ -881,51 +881,72 @@ export const LightHero: Story = {
   ),
 }
 
+const mockResults: SearchResultTypes[] = [
+  { id: 1, label: 'Getting started' },
+  { id: 2, label: 'Installation guide' },
+  { id: 3, label: 'API reference' },
+  { id: 4, label: 'Component library' },
+  { id: 5, label: 'Theming and styles' },
+]
+
 export const WithSearch: Story = {
-  render: () => (
-    <ThemeProvider>
-      <Modals>
-        <Header>
-          <HeaderDesktop>
-            <HeaderDesktopMainMenu>
-              <HeaderDesktopMainLogo>
-                <HeaderLogoContent />
-              </HeaderDesktopMainLogo>
+  render: () => {
+    const [results, setResults] = useState<SearchResultTypes[]>([])
 
-              <HeaderDesktopMainNav>
-                <HeaderDesktopMainLink asChild current>
-                  <Link href="/">Home</Link>
-                </HeaderDesktopMainLink>
-                <HeaderDesktopMainLink asChild>
-                  <Link href="/">Products</Link>
-                </HeaderDesktopMainLink>
-                <HeaderDesktopMainLink asChild>
-                  <Link href="/">About</Link>
-                </HeaderDesktopMainLink>
-              </HeaderDesktopMainNav>
+    const handleSearch = (query: string) => {
+      setResults(
+        mockResults.filter((r) =>
+          r.label.toLowerCase().includes(query.toLowerCase())
+        )
+      )
+    }
 
-              <HeaderDesktopMainNav>
-                <HeaderSearch modalTitle="Search" width="600px">
-                  <InputSearch placeholder="Search…" autoFocus />
-                </HeaderSearch>
-                <ThemeToggle />
-              </HeaderDesktopMainNav>
-            </HeaderDesktopMainMenu>
-          </HeaderDesktop>
+    return (
+      <ThemeProvider>
+        <Modals>
+          <Header>
+            <HeaderDesktop>
+              <HeaderDesktopMainMenu>
+                <HeaderDesktopMainLogo>
+                  <HeaderLogoContent />
+                </HeaderDesktopMainLogo>
 
-          <HeaderMobile>
-            <HeaderMobileTopMenu>
-              <HeaderMobileTopLogo>
-                <HeaderLogoContent />
-              </HeaderMobileTopLogo>
-              <HeaderMobileTopToggle />
-            </HeaderMobileTopMenu>
-            <MobileMenuContent />
-          </HeaderMobile>
-        </Header>
-      </Modals>
-    </ThemeProvider>
-  ),
+                <HeaderDesktopMainNav>
+                  <HeaderDesktopMainLink asChild current>
+                    <Link href="/">Home</Link>
+                  </HeaderDesktopMainLink>
+                  <HeaderDesktopMainLink asChild>
+                    <Link href="/">Products</Link>
+                  </HeaderDesktopMainLink>
+                  <HeaderDesktopMainLink asChild>
+                    <Link href="/">About</Link>
+                  </HeaderDesktopMainLink>
+                </HeaderDesktopMainNav>
+
+                <HeaderDesktopMainNav>
+                  <HeaderSearch
+                    onSearch={handleSearch}
+                    results={results}
+                  />
+                  <ThemeToggle />
+                </HeaderDesktopMainNav>
+              </HeaderDesktopMainMenu>
+            </HeaderDesktop>
+
+            <HeaderMobile>
+              <HeaderMobileTopMenu>
+                <HeaderMobileTopLogo>
+                  <HeaderLogoContent />
+                </HeaderMobileTopLogo>
+                <HeaderMobileTopToggle />
+              </HeaderMobileTopMenu>
+              <MobileMenuContent />
+            </HeaderMobile>
+          </Header>
+        </Modals>
+      </ThemeProvider>
+    )
+  },
 }
 
 export const WithLocale: Story = {
