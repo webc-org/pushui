@@ -5,6 +5,7 @@ import type { HeaderNavTypes } from './Header.types'
 const NAV_LABELS = {
   desktopTop: 'Desktop Top Navigation',
   desktopMain: 'Desktop Main Navigation',
+  mobileTop: 'Mobile Top Navigation',
   mobileMain: 'Mobile Main Navigation',
 }
 

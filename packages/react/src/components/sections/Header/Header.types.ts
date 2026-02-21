@@ -87,7 +87,11 @@ export type HeaderMobileTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
 }
 
-export type HeaderNavTypes = 'desktopTop' | 'desktopMain' | 'mobileMain'
+export type HeaderNavTypes =
+  | 'desktopTop'
+  | 'desktopMain'
+  | 'mobileTop'
+  | 'mobileMain'
 
 export type HeaderContextTypes = {
   isOpen: boolean

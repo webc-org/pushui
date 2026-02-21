@@ -25,3 +25,8 @@ export type HeaderMobileTopLinkTypes = ComponentPropsWithRef<'a'> & {
   current?: boolean
   variant?: ColorVariant
 }
+
+export type HeaderMobileTopNavTypes = ComponentPropsWithRef<'div'> & {
+  children: ReactNode
+  'aria-label'?: string
+}
