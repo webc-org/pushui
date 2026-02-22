@@ -50,7 +50,7 @@ export function HeaderSearch({
         onClick={openModal}
         aria-label={triggerLabel}
       >
-        <Search size={20} aria-hidden="true" />
+        <Search size={24} aria-hidden="true" />
       </button>
     </div>
   )
