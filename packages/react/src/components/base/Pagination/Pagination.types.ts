@@ -14,6 +14,7 @@ export type PaginationTypes = Omit<
   showFirstLast?: boolean
   showPrevNext?: boolean
   disabled?: boolean
+  ariaLabel?: string
   firstPageLabel?: string
   previousPageLabel?: string
   nextPageLabel?: string

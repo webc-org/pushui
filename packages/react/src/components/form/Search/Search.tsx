@@ -33,7 +33,7 @@ export function InputSearch({
   placeholder,
   disabled,
   clearLabel = 'Clear',
-  'aria-label': ariaLabel,
+  ariaLabel,
   ...rest
 }: InputSearchTypes) {
   const id = useId()

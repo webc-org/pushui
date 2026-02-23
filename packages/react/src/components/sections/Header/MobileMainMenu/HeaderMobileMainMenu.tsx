@@ -10,7 +10,7 @@ export function HeaderMobileMainMenu({
   children,
   className,
   containerClassName,
-  'aria-label': ariaLabel = 'Mobile navigation',
+  ariaLabel = 'Mobile main menu',
   style,
   ...rest
 }: HeaderMobileMainMenuTypes) {

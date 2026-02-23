@@ -3,7 +3,8 @@
 html {
   display: block;
   margin: 0;
-  overscroll-behavior-y: none;
+
+  // overscroll-behavior-y: none;
   padding: 0;
 
   &.freeze {

@@ -12,7 +12,7 @@ export type FooterMainMenuTypes = ComponentPropsWithRef<'div'>
 
 export type FooterMainNavTypes = ComponentPropsWithRef<'nav'> & {
   title?: string
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
 export type FooterMainLinkTypes = ComponentPropsWithRef<'a'> & {
@@ -25,7 +25,7 @@ export type FooterBottomTypes = ComponentPropsWithRef<'div'> & {
 }
 
 export type FooterBottomNavTypes = ComponentPropsWithRef<'nav'> & {
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
 export type FooterBottomLinkTypes = ComponentPropsWithRef<'a'> & {

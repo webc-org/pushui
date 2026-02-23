@@ -8,7 +8,7 @@ export function FooterMainNav({
   children,
   className,
   title,
-  'aria-label': ariaLabel,
+  ariaLabel,
   ...rest
 }: FooterMainNavTypes) {
   return (

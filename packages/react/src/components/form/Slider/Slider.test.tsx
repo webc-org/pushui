@@ -183,7 +183,7 @@ describe('Slider', () => {
   describe('accessibility', () => {
     it('has correct ARIA attributes', () => {
       render(
-        <Slider min={0} max={100} defaultValue={50} aria-label="Volume" />
+        <Slider min={0} max={100} defaultValue={50} ariaLabel="Volume" />
       )
 
       const slider = screen.getByRole('slider')

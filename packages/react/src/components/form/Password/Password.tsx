@@ -14,7 +14,7 @@ export function InputPassword({
   labelClassName,
   showLabel = 'Show',
   hideLabel = 'Hide',
-  'aria-label': ariaLabel,
+  ariaLabel,
   ...rest
 }: InputPasswordTypes) {
   const id = useId()

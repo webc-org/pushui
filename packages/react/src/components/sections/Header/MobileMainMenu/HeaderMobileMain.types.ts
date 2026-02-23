@@ -3,18 +3,18 @@ import type { ActionAppearance, ColorVariant } from 'types'
 
 export type HeaderMobileMainMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
-  'aria-label'?: string
+  ariaLabel?: string
   containerClassName?: string
 }
 
 export type HeaderMobileMainHeadTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
 export type HeaderMobileMainNavTypes = ComponentPropsWithRef<'nav'> & {
   children: ReactNode
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
 export type HeaderMobileMainDropdownTypes =

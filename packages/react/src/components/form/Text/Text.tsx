@@ -10,7 +10,7 @@ export function InputText({
   inputClassName,
   labelClassName,
   type = 'text',
-  'aria-label': ariaLabel,
+  ariaLabel,
   ...rest
 }: InputTextTypes) {
   const id = useId()

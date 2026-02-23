@@ -78,7 +78,7 @@ export function Pagination({
   showPrevNext = true,
   disabled = false,
   className,
-  'aria-label': ariaLabel = 'Pagination',
+  ariaLabel = 'Pagination',
   firstPageLabel = 'First page',
   previousPageLabel = 'Previous page',
   nextPageLabel = 'Next page',

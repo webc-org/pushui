@@ -9,4 +9,5 @@ export type BreadcrumbTypes = ComponentPropsWithRef<'nav'> & {
   items: BreadcrumbItemData[]
   separator?: ReactNode
   renderLink?: (item: BreadcrumbItemData, children: ReactNode) => ReactNode
+  ariaLabel?: string
 }

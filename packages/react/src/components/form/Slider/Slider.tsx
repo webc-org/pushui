@@ -39,7 +39,7 @@ export function Slider(props: SliderTypes) {
     valueLabelDisplay = 'off',
     valueLabelFormat,
     getAriaValueText,
-    'aria-label': ariaLabel,
+    ariaLabel,
     'aria-labelledby': ariaLabelledBy,
     className,
     ...rest

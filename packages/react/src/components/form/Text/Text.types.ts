@@ -6,6 +6,7 @@ export type InputTextTypes = Omit<
 > & {
   type?: 'text' | 'email' | 'url' | 'tel'
   label?: string
+  ariaLabel?: string
   inputClassName?: string
   labelClassName?: string
 }

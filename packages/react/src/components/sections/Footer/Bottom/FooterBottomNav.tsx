@@ -6,7 +6,7 @@ export function FooterBottomNav({
   ref,
   children,
   className,
-  'aria-label': ariaLabel = 'Legal navigation',
+  ariaLabel = 'Legal navigation',
   ...rest
 }: FooterBottomNavTypes) {
   return (

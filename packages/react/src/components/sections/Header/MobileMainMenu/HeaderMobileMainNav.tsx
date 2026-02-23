@@ -7,7 +7,7 @@ export function HeaderMobileMainNav({
   ref,
   children,
   className,
-  'aria-label': ariaLabel,
+  ariaLabel,
   ...rest
 }: HeaderMobileMainNavTypes) {
   const label = useHeaderNavLabel('mobileMain', ariaLabel)

@@ -28,5 +28,5 @@ export type HeaderMobileTopLinkTypes = ComponentPropsWithRef<'a'> & {
 
 export type HeaderMobileTopNavTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
-  'aria-label'?: string
+  ariaLabel?: string
 }

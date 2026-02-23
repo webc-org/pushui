@@ -5,6 +5,7 @@ export type InputPasswordTypes = Omit<
   'type'
 > & {
   label?: string
+  ariaLabel?: string
   inputClassName?: string
   labelClassName?: string
   showLabel?: string

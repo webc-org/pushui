@@ -7,10 +7,10 @@ import styles from './headerMobileTop.module.scss'
 
 export function HeaderMobileTopMenu({
   ref,
+  style,
   children,
   className,
   containerClassName,
-  style,
   ...rest
 }: HeaderMobileTopMenuTypes) {
   const { isScrolled, themeStyles } = useHeader()

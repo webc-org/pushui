@@ -108,6 +108,7 @@
   }
 
   &.appearance-icon {
+    display: inline-block;
     font-size: 0;
 
     &::before {

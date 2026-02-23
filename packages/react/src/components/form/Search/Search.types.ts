@@ -40,4 +40,5 @@ export type InputSearchTypes = Omit<
   value?: string
   onChange?: (value: string) => void
   clearLabel?: string
+  ariaLabel?: string
 }

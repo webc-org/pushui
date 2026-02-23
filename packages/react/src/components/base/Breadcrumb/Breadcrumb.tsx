@@ -10,7 +10,7 @@ export function Breadcrumb({
   separator,
   renderLink,
   className,
-  'aria-label': ariaLabel = 'Breadcrumb',
+  ariaLabel = 'Breadcrumb',
   ...rest
 }: BreadcrumbTypes) {
   const separatorElement = separator ?? (

@@ -7,7 +7,7 @@ export type HeaderDesktopTopMenuTypes = ComponentPropsWithRef<'div'> & {
 
 export type HeaderDesktopTopNavTypes = ComponentPropsWithRef<'nav'> & {
   children: ReactNode
-  'aria-label'?: string
+  ariaLabel?: string
 }
 
 export type HeaderDesktopTopDropdownTypes =

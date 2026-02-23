@@ -40,7 +40,7 @@ export type SliderBaseTypes = Omit<
   /** Get aria value text for accessibility */
   getAriaValueText?: (value: number) => string
   /** Label for accessibility */
-  'aria-label'?: string
+  ariaLabel?: string
   /** ID of element that labels the slider */
   'aria-labelledby'?: string
   /** Custom class name */
