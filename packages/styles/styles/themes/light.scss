@@ -1,4 +1,24 @@
 :root, .light {
+  // Color palette — light (−1: dark shade, −2: interactive, −3: light tint)
+  --color-primary-1: #002f5f;
+  --color-primary-2: #06c;
+  --color-primary-3: #cce0ff;
+  --color-secondary-1: #3d1480;
+  --color-secondary-2: #7c3aed;
+  --color-secondary-3: #ede9fe;
+  --color-success-1: #115129;
+  --color-success-2: #15803d;
+  --color-success-3: #dcfce7;
+  --color-danger-1: #5c1010;
+  --color-danger-2: #dc2626;
+  --color-danger-3: #fee2e2;
+  --color-warning-1: #71320b;
+  --color-warning-2: #b45309;
+  --color-warning-3: #fef3c7;
+  --color-info-1: #104b5d;
+  --color-info-2: #0e7490;
+  --color-info-3: #cffafe;
+
   // Opacity
   --theme-opacity-disabled: 0.6;
   --theme-opacity-muted: 0.6;
