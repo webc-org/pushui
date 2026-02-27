@@ -16,6 +16,7 @@
     "@storybook/react-vite": "^10.1.11",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "highlight.js": "^11.11.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "^1.83.0",

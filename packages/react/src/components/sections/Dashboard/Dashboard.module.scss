@@ -1,8 +1,8 @@
-$bg-color-sidebar: var(--color-white);
-$bg-color-main: var(--color-grey-8);
-$bg-color-link: var(--color-grey-7);
-$bg-color-link-active: var(--color-primary-2);
-$tx-color-link-active: var(--color-white);
+$bg-color-sidebar: var(--theme-bg);
+$bg-color-main: var(--theme-bg-2);
+$bg-color-link: var(--theme-border);
+$bg-color-link-active: var(--action-primary-base);
+$tx-color-link-active: var(--action-primary-on);
 
 .layout {
   display: flex;
@@ -76,6 +76,7 @@ $tx-color-link-active: var(--color-white);
   align-items: center;
   background-color: $bg-color-link;
   border-radius: var(--radius-2);
+  color: var(--theme-text);
   cursor: pointer;
   display: flex;
   font-family: inherit;
@@ -87,8 +88,8 @@ $tx-color-link-active: var(--color-white);
   text-decoration: none;
   width: 100%;
 
-  &:hover,
-  &:focus-visible {
+  &:hover:not([disabled], [aria-disabled="true"]),
+  &:focus-visible:not([disabled], [aria-disabled="true"]) {
     background-color: $bg-color-link-active;
     color: $tx-color-link-active;
     text-decoration: none;

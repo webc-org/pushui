@@ -1,9 +1,9 @@
-$bg-color-button: var(--color-grey-7);
-$tx-color-button: var(--color-grey-3);
-$bg-color-button-active: var(--color-primary-2);
-$tx-color-button-active: var(--color-white);
-$bg-color-dot: var(--color-grey-5);
-$bg-color-dot-active: var(--color-primary-2);
+$bg-color-button: var(--theme-bg-2);
+$tx-color-button: var(--theme-text);
+$bg-color-button-active: var(--action-primary-base);
+$tx-color-button-active: var(--action-primary-on);
+$bg-color-dot: var(--theme-border-2);
+$bg-color-dot-active: var(--theme-accent);
 
 .carousel {
   --carousel-slides-per-view: 1;

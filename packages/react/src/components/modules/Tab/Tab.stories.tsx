@@ -6,41 +6,28 @@ const meta: Meta<typeof Tab> = {
   component: Tab,
   tags: ['autodocs'],
   argTypes: {
-    defaultValue: {
-      control: 'text',
-      description: 'The default active tab value',
-    },
+    defaultValue: { control: 'text' },
   },
-  args: {
-    defaultValue: 'tab1',
-  },
+  args: { defaultValue: 'tab1' },
 }
 
 export default meta
 type Story = StoryObj<typeof Tab>
 
-export const Playground: Story = {
-  render: (args) => (
-    <Tab {...args}>
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <Tab defaultValue="tab1">
       <TabList>
         <TabButton value="tab1">Tab 1</TabButton>
         <TabButton value="tab2">Tab 2</TabButton>
         <TabButton value="tab3">Tab 3</TabButton>
       </TabList>
       <TabPanels>
-        <TabPanel value="tab1">Content for tab 1</TabPanel>
-        <TabPanel value="tab2">Content for tab 2</TabPanel>
-        <TabPanel value="tab3">Content for tab 3</TabPanel>
+        <TabPanel value="tab1">Default appearance</TabPanel>
+        <TabPanel value="tab2">Content 2</TabPanel>
+        <TabPanel value="tab3">Content 3</TabPanel>
       </TabPanels>
     </Tab>
-  ),
-  args: {
-    defaultValue: 'tab1',
-  },
-}
-
-export const ButtonAppearance: Story = {
-  render: () => (
     <Tab defaultValue="tab1">
       <TabList>
         <TabButton value="tab1" variant="primary" appearance="button">
@@ -54,10 +41,20 @@ export const ButtonAppearance: Story = {
         </TabButton>
       </TabList>
       <TabPanels>
-        <TabPanel value="tab1">Content for tab 1</TabPanel>
-        <TabPanel value="tab2">Content for tab 2</TabPanel>
-        <TabPanel value="tab3">Content for tab 3</TabPanel>
+        <TabPanel value="tab1">Button appearance</TabPanel>
+        <TabPanel value="tab2">Content 2</TabPanel>
+        <TabPanel value="tab3">Content 3</TabPanel>
       </TabPanels>
     </Tab>
-  ),
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
+}
+
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

@@ -1,10 +1,8 @@
-$bg-color-form-input: var(--color-white);
-$bg-color-form-input-placeholder: var(--color-grey-4);
-$bg-color-form-input-active: var(--color-primary-2);
-$bg-color-form-input-disabled: var(--color-grey-8);
-$bd-color-form-input: var(--color-grey-5);
-$tx-color-form-input: var(--color-black);
-$tx-color-label: var(--color-grey-4);
+$bg-color-form-input: var(--theme-bg);
+$bg-color-form-input-active: var(--theme-accent);
+$bd-color-form-input: var(--theme-border-2);
+$tx-color-form-input: var(--theme-text);
+$tx-color-label: var(--theme-text);
 
 @mixin form-wrapper {
   display: flex;
@@ -14,6 +12,8 @@ $tx-color-label: var(--color-grey-4);
 
 @mixin form-label {
   color: $tx-color-label;
+  font-size: var(--font-size-3);
+  opacity: var(--opacity-muted);
 }
 
 @mixin form-input {
@@ -22,6 +22,7 @@ $tx-color-label: var(--color-grey-4);
   border-radius: var(--radius-3);
   color: $tx-color-form-input;
   font-family: inherit;
+  font-size: var(--font-size-4);
   height: 4rem;
   padding: 0.75rem 2.5rem 0.75rem 0.75rem;
   width: 100%;
@@ -35,19 +36,19 @@ $tx-color-label: var(--color-grey-4);
   }
 
   &:disabled {
-    background-color: $bg-color-form-input-disabled;
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: var(--opacity-disabled);
   }
 
   &::placeholder {
-    color: $bg-color-form-input-placeholder;
+    color: var(--theme-text);
+    opacity: var(--opacity-muted);
   }
 }
 
 @mixin form-disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: var(--opacity-disabled);
 }
 
 @mixin form-spinner {

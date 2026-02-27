@@ -48,7 +48,11 @@ export function HeaderDesktopMainDropdown({
         href={href}
         type={isLink ? undefined : 'button'}
         tabIndex={isLink && current ? -1 : undefined}
-        className={clsx(styles.dropdownTrigger, current && styles.current)}
+        className={clsx(
+          styles.dropdownTrigger,
+          current && styles.current,
+          isOpen && styles.isOpen
+        )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
         aria-current={current ? 'page' : undefined}

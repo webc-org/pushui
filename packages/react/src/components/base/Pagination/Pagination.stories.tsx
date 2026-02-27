@@ -6,87 +6,46 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   tags: ['autodocs'],
   argTypes: {
-    firstPageLabel: { control: 'text' },
-    previousPageLabel: { control: 'text' },
-    nextPageLabel: { control: 'text' },
-    lastPageLabel: { control: 'text' },
+    currentPage: { control: 'number', description: 'Current page' },
+    totalPages: { control: 'number', description: 'Total pages' },
+    showFirstLast: {
+      control: 'boolean',
+      description: 'Show first/last buttons',
+    },
+    showPrevNext: {
+      control: 'boolean',
+      description: 'Show prev/next buttons',
+    },
+    siblingCount: {
+      control: 'number',
+      description: 'Sibling pages count',
+    },
+    disabled: { control: 'boolean', description: 'Disable all buttons' },
   },
+  args: { currentPage: 5, totalPages: 10 },
 }
 
 export default meta
 type Story = StoryObj<typeof Pagination>
 
-export const Default: Story = {
-  args: {
-    currentPage: 5,
-    totalPages: 10,
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <Pagination currentPage={1} totalPages={10} />
+    <Pagination currentPage={5} totalPages={10} />
+    <Pagination currentPage={10} totalPages={10} />
+    <Pagination currentPage={5} totalPages={10} showFirstLast />
+    <Pagination currentPage={5} totalPages={10} showPrevNext={false} />
+    <Pagination currentPage={10} totalPages={20} siblingCount={2} />
+    <Pagination currentPage={5} totalPages={10} disabled />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const FirstPage: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 10,
-  },
-}
-
-export const LastPage: Story = {
-  args: {
-    currentPage: 10,
-    totalPages: 10,
-  },
-}
-
-export const FewPages: Story = {
-  args: {
-    currentPage: 2,
-    totalPages: 5,
-  },
-}
-
-export const ManyPages: Story = {
-  args: {
-    currentPage: 25,
-    totalPages: 50,
-  },
-}
-
-export const WithFirstLast: Story = {
-  args: {
-    currentPage: 10,
-    totalPages: 20,
-    showFirstLast: true,
-  },
-}
-
-export const WithoutPrevNext: Story = {
-  args: {
-    currentPage: 5,
-    totalPages: 10,
-    showPrevNext: false,
-  },
-}
-
-export const MoreSiblings: Story = {
-  args: {
-    currentPage: 10,
-    totalPages: 20,
-    siblingCount: 2,
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    currentPage: 5,
-    totalPages: 10,
-    disabled: true,
-  },
-}
-
-export const CustomHref: Story = {
-  args: {
-    currentPage: 5,
-    totalPages: 10,
-    getPageHref: (page) => `/articles?page=${page}`,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

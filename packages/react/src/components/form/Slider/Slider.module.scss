@@ -8,17 +8,17 @@ $rail-size-md: 0.4rem;
 $label-offset: 1rem;
 
 // COLORS
-$bg-color-rail: var(--color-grey-7);
-$bg-color-track: var(--color-primary-2);
-$bg-color-track-inverted: var(--color-grey-5);
-$bg-color-thumb: var(--color-primary-2);
-$bd-color-thumb: var(--color-white);
-$bg-color-value: var(--color-grey-3);
-$tx-color-value: var(--color-white);
-$bg-color-mark: var(--color-white);
-$bg-color-mark-active: var(--color-primary-contrast);
-$tx-color-label: var(--color-grey-4);
-$bd-color-label-after: var(--color-grey-3);
+$bg-color-rail: var(--theme-border);
+$bg-color-track: var(--theme-accent);
+$bg-color-track-inverted: var(--theme-border-2);
+$bg-color-thumb: var(--theme-accent);
+$bd-color-thumb: var(--theme-bg);
+$bg-color-value: var(--theme-text);
+$tx-color-value: var(--theme-bg);
+$bg-color-mark: var(--theme-border-2);
+$bg-color-mark-active: var(--theme-accent);
+$tx-color-label: var(--theme-text);
+$bd-color-label-after: var(--theme-text);
 
 .slider {
   position: relative;
@@ -98,6 +98,7 @@ $bd-color-label-after: var(--color-grey-3);
 .markLabel {
   color: $tx-color-label;
   font-size: var(--font-size-3);
+  opacity: 0.5;
   position: absolute;
   white-space: nowrap;
 }

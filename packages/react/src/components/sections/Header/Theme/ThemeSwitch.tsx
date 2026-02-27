@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { Switch } from 'components/form'
 import { useTheme } from 'utils'
 import styles from './ThemeSwitch.module.scss'
@@ -10,13 +9,11 @@ export function ThemeSwitch({
 }: ThemeSwitchTypes) {
   const { theme, setTheme } = useTheme()
 
-  const isDark = theme === 'dark'
-
   return (
     <Switch
       label={label}
-      labelClassName={clsx(styles.label, isDark ? styles.contrast : '')}
-      checked={isDark}
+      labelClassName={styles.label}
+      checked={theme === 'dark'}
       onChange={(checked) => setTheme(checked ? 'dark' : 'light')}
       {...rest}
     />

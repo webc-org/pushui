@@ -387,6 +387,7 @@ export function InputDate({
               <Button
                 type="button"
                 appearance="button"
+                variant="secondary"
                 onClick={handleCancel}
                 className={styles.footerButton}
               >

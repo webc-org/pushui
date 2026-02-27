@@ -1,7 +1,14 @@
 @use 'styles/mixins/typo' as *;
 
+.player {
+  background: var(--theme-bg-2);
+  border-radius: var(--radius-3);
+  padding: 0.5rem;
+}
+
 .audio {
   display: block;
+  filter: var(--audio-filter, none);
   width: 100%;
 }
 

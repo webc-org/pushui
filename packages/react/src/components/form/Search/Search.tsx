@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import clsx from 'clsx'
 import { Button, Spinner } from 'components'
 import { Search, X } from 'lucide-react'
+import { useTheme } from 'utils'
 import styles from './Search.module.scss'
 import type { InputSearchTypes, SearchResultTypes } from './Search.types'
 
@@ -36,6 +37,7 @@ export function InputSearch({
   ariaLabel,
   ...rest
 }: InputSearchTypes) {
+  const { theme } = useTheme()
   const id = useId()
   const [internalValue, setInternalValue] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -52,6 +54,7 @@ export function InputSearch({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const justSelectedRef = useRef(false)
 
   useEffect(() => {
     setMounted(true)
@@ -160,6 +163,7 @@ export function InputSearch({
         setInternalValue(result.label)
       }
       onChange?.(result.label)
+      justSelectedRef.current = true
       setIsOpen(false)
       inputRef.current?.focus()
     },
@@ -237,6 +241,10 @@ export function InputSearch({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         onFocus={() => {
+          if (justSelectedRef.current) {
+            justSelectedRef.current = false
+            return
+          }
           if (mode === 'dropdown' && value.length >= minChars) {
             setIsOpen(true)
           }
@@ -328,7 +336,10 @@ export function InputSearch({
 
   const dropdownElement =
     !inline && dropdownContent && mounted
-      ? createPortal(dropdownContent, document.body)
+      ? createPortal(
+          <div className={theme}>{dropdownContent}</div>,
+          document.body
+        )
       : dropdownContent
 
   if (mode === 'redirect') {

@@ -1,7 +1,10 @@
-$bg-color-card: var(--color-white);
+$bg-color-card: var(--card-bg);
+$bd-color-card: var(--card-border);
 
 .card {
   background-color: $bg-color-card;
+  border: 0.1rem solid $bd-color-card;
+  border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;
 }

@@ -6,121 +6,35 @@ const meta: Meta<typeof Page> = {
   title: 'Sections/Page',
   component: Page,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'grey',
-      values: [{ name: 'grey', value: 'var(--color-grey-8)' }],
-    },
-  },
-  argTypes: {
-    children: {
-      control: false,
-      description: 'Page content',
-    },
-  },
+  parameters: { layout: 'fullscreen' },
 }
 
 export default meta
 type Story = StoryObj<typeof Page>
 
-export const Playground: Story = {
-  render: () => (
-    <Page
-      style={{ minHeight: '100vh', background: 'var(--color-grey-8)' }}
-    >
-      <header
-        style={{ padding: '2rem', background: 'var(--color-white)' }}
-      >
-        <Title>Header</Title>
-      </header>
+const Variants = () => (
+  <Page style={{ minHeight: '100vh', background: 'var(--theme-bg-2)' }}>
+    <header style={{ padding: '2rem', background: 'var(--theme-bg)' }}>
+      <Title>Header</Title>
+    </header>
+    <main style={{ flex: 1, padding: '2rem' }}>
+      <Title level="h2">Main Content</Title>
+      <p style={{ marginTop: '1rem' }}>
+        This is the main content area that fills the available space.
+      </p>
+    </main>
+    <footer style={{ padding: '2rem', background: 'var(--theme-bg)' }}>
+      <p>Footer</p>
+    </footer>
+  </Page>
+)
 
-      <main style={{ flex: 1, padding: '2rem' }}>
-        <Title level="h2">Main Content</Title>
-        <p style={{ marginTop: '1rem' }}>
-          This is the main content area that fills the available space.
-        </p>
-      </main>
-
-      <footer
-        style={{ padding: '2rem', background: 'var(--color-grey-7)' }}
-      >
-        <p>Footer</p>
-      </footer>
-    </Page>
-  ),
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Simple: Story = {
-  render: () => (
-    <Page style={{ minHeight: '50vh', padding: '2rem' }}>
-      <Title>Simple Page</Title>
-      <p style={{ marginTop: '1rem' }}>Page content goes here.</p>
-    </Page>
-  ),
-}
-
-export const WithStickyFooter: Story = {
-  render: () => (
-    <Page style={{ minHeight: '100vh' }}>
-      <header
-        style={{
-          padding: '2rem',
-          background: 'var(--color-primary-2)',
-          color: 'white',
-        }}
-      >
-        <Title>Site Header</Title>
-      </header>
-
-      <main style={{ flex: 1, padding: '2rem' }}>
-        <Title level="h2">Content Area</Title>
-        <p style={{ marginTop: '1rem' }}>
-          The footer will stick to the bottom even with minimal content.
-        </p>
-      </main>
-
-      <footer
-        style={{
-          padding: '2rem',
-          background: 'var(--color-grey-7)',
-          textAlign: 'center',
-        }}
-      >
-        <p>© 2024 Company Name. All rights reserved.</p>
-      </footer>
-    </Page>
-  ),
-}
-
-export const NestedLayout: Story = {
-  render: () => (
-    <Page style={{ minHeight: '100vh' }}>
-      <div style={{ display: 'flex', flex: 1 }}>
-        <aside
-          style={{
-            width: '25rem',
-            padding: '2rem',
-            background: 'var(--color-grey-8)',
-          }}
-        >
-          <Title level="h3">Sidebar</Title>
-          <nav style={{ marginTop: '1rem' }}>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '0.5rem' }}>Link 1</li>
-              <li style={{ marginBottom: '0.5rem' }}>Link 2</li>
-              <li style={{ marginBottom: '0.5rem' }}>Link 3</li>
-            </ul>
-          </nav>
-        </aside>
-
-        <main style={{ flex: 1, padding: '2rem' }}>
-          <Title level="h2">Main Content</Title>
-          <p style={{ marginTop: '1rem' }}>
-            Page with sidebar layout using flex container.
-          </p>
-        </main>
-      </div>
-    </Page>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

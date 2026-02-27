@@ -1,16 +1,18 @@
-$bd-color-spinner: var(--color-grey-7);
-$bd-color-spinner-top: var(--color-primary-2);
+$bd-color-spinner: color-mix(in srgb, currentColor 25%, transparent);
+$bd-color-spinner-top: currentColor;
+
 
 .spinner {
   animation: spin 0.8s linear infinite;
+  color: var(--spinner-color, var(--theme-accent));
   aspect-ratio: 1;
   border-color: $bd-color-spinner;
   border-radius: 50%;
   border-style: solid;
   border-top-color: $bd-color-spinner-top;
-  border-width: 0.2rem;
+  border-width: 0.25rem;
   display: inline-block;
-  width: 2rem;
+  width: 2.4rem;
 }
 
 @keyframes spin {

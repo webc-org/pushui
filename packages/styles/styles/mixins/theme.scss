@@ -1,0 +1,24 @@
+@mixin theme-color {
+  color: var(--theme-text);
+}
+
+@mixin theme-link {
+  color: var(--theme-text);
+
+  &:hover,
+  &.current,
+  &:focus-visible {
+    color: var(--theme-accent);
+  }
+}
+
+@mixin theme-dropdown {
+  color: var(--theme-text);
+
+  &:hover,
+  &.current,
+  &:focus-visible,
+  &.isOpen {
+    color: var(--theme-accent);
+  }
+}

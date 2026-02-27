@@ -1,8 +1,8 @@
 // Dropdown mode
+@use 'styles/mixins/theme' as *;
 
 .dropdownWrapper {
   position: relative;
-
 }
 
 .trigger {
@@ -14,24 +14,7 @@
   padding: 0;
   text-decoration: none;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  .dropdownWrapper:hover &,
-  .dropdownWrapper:focus-within & {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-dropdown;
 }
 
 .chevron {
@@ -93,24 +76,7 @@
   text-decoration: none;
   width: 100%;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  &:hover,
-  &:focus-visible {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 
   &.active {
     font-weight: var(--font-weight-semibold);

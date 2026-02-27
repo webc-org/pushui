@@ -1,34 +1,19 @@
 // Modal mode
+@use 'styles/mixins/theme' as *;
 
 .modalTrigger {
   cursor: pointer;
   display: flex;
   padding: 0;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  &:hover,
-  &:focus-visible {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 }
 
 .modalButton {
   align-items: center;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-3);
+  background-color: var(--theme-bg-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-2);
   color: inherit;
   cursor: pointer;
   display: flex;
@@ -39,13 +24,13 @@
 
   &:hover,
   &:focus-visible {
-    background-color: var(--color-bg-hover);
-    border-color: var(--color-primary);
+    border-color: var(--theme-accent);
   }
 
   &.active {
-    border-color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
+    border-color: var(--theme-accent);
+    color: var(--theme-accent);
+    font-weight: var(--font-weight-strong);
   }
 }
 

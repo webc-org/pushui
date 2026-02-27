@@ -11,7 +11,7 @@
 
 .modalBackdrop {
   align-items: center;
-  background: var(--color-black-50);
+  background: var(--modal-backdrop);
   display: flex;
   inset: 0;
   justify-content: center;
@@ -36,7 +36,7 @@
 }
 
 .modal {
-  background: var(--color-white);
+  background: var(--theme-bg);
   border-radius: var(--radius-3);
   box-shadow: var(--shadow-2);
   display: flex;
@@ -51,8 +51,8 @@
 
 .modalHeader {
   align-items: center;
-  border-bottom: 0.1rem solid var(--color-grey-7);
-  color: var(--color-black);
+  border-bottom: 0.1rem solid var(--theme-border-2);
+  color: var(--theme-text);
   display: flex;
   flex-shrink: 0;
   font-size: var(--font-size-5);
@@ -61,7 +61,7 @@
 }
 
 .modalBody {
-  color: var(--color-black);
+  color: var(--theme-text);
   display: flex;
   flex-direction: column;
   font-size: var(--font-size-4);

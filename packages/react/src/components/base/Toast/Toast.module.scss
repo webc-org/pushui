@@ -1,7 +1,8 @@
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/mq' as *;
 
-$bg-color-toast: var(--color-white);
+$bg-color-toast: var(--toast-bg);
+$tx-color-toast: var(--toast-text);
 
 .toasts {
   align-items: center;
@@ -24,6 +25,7 @@ $bg-color-toast: var(--color-white);
 
 .toast {
   background-color: $bg-color-toast;
+  color: $tx-color-toast;
   border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;
@@ -75,6 +77,8 @@ $bg-color-toast: var(--color-white);
 .close {
   @include action-close;
 
+  background-color: transparent;
+  color: $tx-color-toast;
   right: 0.25rem;
   top: 0.25rem;
 }

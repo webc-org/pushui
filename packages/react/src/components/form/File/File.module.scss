@@ -1,14 +1,14 @@
 @use 'styles/mixins/form' as *;
 
-$bg-color-button: var(--color-white);
-$bd-color-button: var(--color-black);
-$bg-color-button-active: var(--color-primary-2);
-$bd-color-button-active: var(--color-primary-2);
-$tx-color-dropzone-active: var(--color-primary-2);
-$bg-color-dropzone: var(--color-grey-8);
-$bg-color-dropzone-active: var(--color-primary-3);
-$bd-color-dropzone: var(--color-grey-5);
-$bd-color-dropzone-active: var(--color-primary-2);
+$bg-color-button: var(--theme-bg);
+$bd-color-button: var(--theme-text);
+$bg-color-button-active: var(--action-primary-base);
+$bd-color-button-active: var(--action-primary-base);
+$tx-color-dropzone-active: var(--action-primary-base);
+$bg-color-dropzone: var(--theme-bg-2);
+$bg-color-dropzone-active: var(--surface-primary-bg);
+$bd-color-dropzone: var(--theme-border-2);
+$bd-color-dropzone-active: var(--action-primary-base);
 
 .wrapper {
   @include form-wrapper;
@@ -48,7 +48,7 @@ $bd-color-dropzone-active: var(--color-primary-2);
   &:is(:focus-visible, :hover):not(:disabled) {
     background-color: $bg-color-button-active;
     border-color: $bd-color-button-active;
-    color: var(--color-white);
+    color: var(--action-primary-on);
     text-decoration: none;
   }
 

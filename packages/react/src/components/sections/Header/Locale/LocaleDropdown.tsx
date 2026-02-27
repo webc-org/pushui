@@ -36,7 +36,7 @@ export function LocaleDropdown({
     <div
       ref={itemRef}
       style={{ '--locale-dropdown-bg': bgColor } as CSSProperties}
-      className={clsx(styles.dropdownWrapper, styles[theme], className)}
+      className={clsx(styles.dropdownWrapper, theme, className)}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onFocusCapture={handleFocus}
@@ -47,7 +47,7 @@ export function LocaleDropdown({
         type="button"
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        className={styles.trigger}
+        className={clsx(styles.trigger, isOpen && styles.isOpen)}
         onClick={() => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
       >

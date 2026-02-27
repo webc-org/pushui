@@ -7,46 +7,26 @@ const meta: Meta<typeof InputNumber> = {
   component: InputNumber,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Input label',
-    },
-    min: {
-      control: 'number',
-      description: 'Minimum value',
-    },
-    max: {
-      control: 'number',
-      description: 'Maximum value',
-    },
-    step: {
-      control: 'number',
-      description: 'Step increment',
-      table: {
-        defaultValue: { summary: '1' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the input is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    incrementLabel: { control: 'text' },
-    decrementLabel: { control: 'text' },
+    label: { control: 'text' },
+    min: { control: 'number' },
+    max: { control: 'number' },
+    step: { control: 'number' },
+    disabled: { control: 'boolean' },
   },
-  args: {
-    label: 'Label',
-    step: 1,
-    disabled: false,
-  },
+  args: { label: 'Label', step: 1, disabled: false },
 }
 
 export default meta
 type Story = StoryObj<typeof InputNumber>
 
-const NumberWithState = (args: {
+const NumberWithState = ({
+  label,
+  value: initial = 0,
+  min,
+  max,
+  step,
+  disabled,
+}: {
   label?: string
   value?: number
   min?: number
@@ -54,39 +34,35 @@ const NumberWithState = (args: {
   step?: number
   disabled?: boolean
 }) => {
-  const [value, setValue] = useState(args.value ?? 0)
-  return <InputNumber {...args} value={value} onChange={setValue} />
+  const [value, setValue] = useState(initial)
+  return (
+    <InputNumber
+      label={label}
+      value={value}
+      onChange={setValue}
+      min={min}
+      max={max}
+      step={step}
+      disabled={disabled}
+    />
+  )
 }
 
-export const Playground: Story = {
-  render: (args) => <NumberWithState {...args} />,
-  args: {
-    label: 'Quantity',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <NumberWithState label="Default" />
+    <NumberWithState label="With min/max (0–120)" min={0} max={120} />
+    <NumberWithState label="Decimal step (0.01)" step={0.01} min={0} />
+    <NumberWithState label="Disabled" disabled />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const WithMinMax: Story = {
-  render: (args) => <NumberWithState {...args} />,
-  args: {
-    label: 'Age',
-    min: 0,
-    max: 120,
-  },
-}
-
-export const WithStep: Story = {
-  render: (args) => <NumberWithState {...args} />,
-  args: {
-    label: 'Price',
-    step: 0.01,
-    min: 0,
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => <NumberWithState {...args} />,
-  args: {
-    label: 'Quantity',
-    disabled: true,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

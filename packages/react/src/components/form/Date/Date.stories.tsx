@@ -7,30 +7,10 @@ const meta: Meta<typeof InputDate> = {
   component: InputDate,
   tags: ['autodocs'],
   argTypes: {
-    placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
-    },
-    dateFormat: {
-      control: 'text',
-      description: 'Date format string (yyyy-MM-dd)',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the date picker is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    label: {
-      control: 'text',
-      description: 'Label for the date picker',
-    },
-    selectDateLabel: { control: 'text' },
-    previousMonthLabel: { control: 'text' },
-    nextMonthLabel: { control: 'text' },
-    cancelLabel: { control: 'text' },
-    applyLabel: { control: 'text' },
+    placeholder: { control: 'text' },
+    dateFormat: { control: 'text' },
+    disabled: { control: 'boolean' },
+    label: { control: 'text' },
   },
   args: {
     placeholder: 'Select a date',
@@ -42,7 +22,15 @@ const meta: Meta<typeof InputDate> = {
 export default meta
 type Story = StoryObj<typeof InputDate>
 
-const DateWithState = (args: {
+const DateWithState = ({
+  placeholder,
+  dateFormat,
+  disabled,
+  label,
+  selected,
+  minDate,
+  maxDate,
+}: {
   placeholder?: string
   dateFormat?: string
   disabled?: boolean
@@ -51,73 +39,45 @@ const DateWithState = (args: {
   minDate?: Date
   maxDate?: Date
 }) => {
-  const [date, setDate] = useState<Date | null>(args.selected || null)
+  const [date, setDate] = useState<Date | null>(selected || null)
   return (
     <InputDate
-      {...args}
+      placeholder={placeholder}
+      dateFormat={dateFormat}
+      disabled={disabled}
+      label={label}
       selected={date}
-      onChange={(newDate) => setDate(newDate)}
+      onChange={setDate}
+      minDate={minDate}
+      maxDate={maxDate}
     />
   )
 }
 
-export const Default: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a date',
-    label: 'Date',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <DateWithState label="Default" placeholder="Select a date" />
+    <DateWithState label="With value" selected={new Date()} />
+    <DateWithState
+      label="Custom format (dd/MM/yyyy)"
+      dateFormat="dd/MM/yyyy"
+      selected={new Date()}
+    />
+    <DateWithState
+      label="Future dates only"
+      minDate={new Date()}
+      placeholder="From today"
+    />
+    <DateWithState label="Disabled" placeholder="Select a date" disabled />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const WithValue: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    selected: new Date(),
-    label: 'Date',
-  },
-}
-
-export const WithMinMax: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a date',
-    label: 'Date (next 30 days only)',
-    minDate: new Date(),
-    maxDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a date',
-    label: 'Date',
-    disabled: true,
-  },
-}
-
-export const CustomFormat: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a date',
-    label: 'Date (dd/MM/yyyy)',
-    dateFormat: 'dd/MM/yyyy',
-    selected: new Date(),
-  },
-}
-
-export const WithoutLabel: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a date',
-  },
-}
-
-export const PastDatesOnly: Story = {
-  render: (args) => <DateWithState {...args} />,
-  args: {
-    placeholder: 'Select a past date',
-    label: 'Birth date',
-    maxDate: new Date(),
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

@@ -1,7 +1,5 @@
-.label {
-  color: var(--color-black);
+@use 'styles/mixins/theme' as *;
 
-  &.contrast {
-    color: var(--color-white)
-  }
+.label {
+  @include theme-color;
 }

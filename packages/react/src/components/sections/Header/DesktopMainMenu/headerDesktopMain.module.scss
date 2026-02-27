@@ -1,5 +1,6 @@
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/color' as *;
+@use 'styles/mixins/theme' as *;
 
 .menu {
   display: block;
@@ -59,25 +60,7 @@
     cursor: default;
   }
 
-  .dark & {
-    color: var(--color-white);
-
-    &:hover,
-    &.current,
-    &:focus-visible {
-      color: var(--color-primary-contrast);
-    }
-  }
-
-  .light & {
-    color: var(--color-black);
-
-    &:hover,
-    &.current,
-    &:focus-visible {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 
   &.appearance-icon {
     font-size: 0;
@@ -94,20 +77,6 @@
   height: var(--header-desktop-main-height);
   position: relative;
 
-  &:hover,
-  &:focus-within {
-    .chevron {
-      transform: rotate(180deg);
-    }
-
-    .mainDropdown,
-    .megaMenu {
-      opacity: 1;
-      pointer-events: auto;
-      visibility: visible;
-    }
-  }
-
   &.hasMega {
     position: static;
   }
@@ -123,25 +92,7 @@
   padding: 0 2rem;
   text-decoration: none;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .dark .dropdownWrapper:hover &,
-  .dark .dropdownWrapper.current &,
-  .dark .dropdownWrapper:focus-within & {
-    color: var(--color-primary-contrast);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  .light .dropdownWrapper:hover &,
-  .light .dropdownWrapper.current &,
-  .light .dropdownWrapper:focus-within & {
-    color: var(--color-primary-2);
-  }
+  @include theme-dropdown;
 }
 
 .dropdown {
@@ -200,25 +151,7 @@
     text-decoration: none;
   }
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  &:hover,
-  &.current,
-  &:focus-visible {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 }
 
 .megaMenu {
@@ -236,13 +169,7 @@
   width: 100%;
   z-index: var(--z-index-5);
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
+  @include theme-color;
 
   &::before {
     background-color: var(--header-desktop-main-bg);

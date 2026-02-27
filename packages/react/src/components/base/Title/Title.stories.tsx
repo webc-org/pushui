@@ -11,40 +11,32 @@ const meta: Meta<typeof Title> = {
     level: {
       control: 'select',
       options: levels,
-      description: 'The heading level (h1-h6)',
-      table: {
-        defaultValue: { summary: 'h1' },
-      },
+      description: 'Heading level (h1-h6)',
     },
-    children: {
-      control: 'text',
-      description: 'Title content',
-    },
+    children: { control: 'text', description: 'Title content' },
   },
-  args: {
-    children: 'Title',
-    level: 'h1',
-  },
+  args: { children: 'Title', level: 'h1' },
 }
 
 export default meta
 type Story = StoryObj<typeof Title>
 
-export const Playground: Story = {
-  args: {
-    children: 'Heading Text',
-    level: 'h1',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    {levels.map((level) => (
+      <Title level={level} key={level}>
+        Heading {level}
+      </Title>
+    ))}
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const AllLevels: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      {levels.map((level) => (
-        <Title level={level} key={level}>
-          Heading {level}
-        </Title>
-      ))}
-    </div>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

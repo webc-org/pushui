@@ -75,7 +75,7 @@ export function HeaderMobileMainMenu({
       }
       className={clsx(
         styles.menu,
-        styles[theme],
+        theme,
         isOpen && styles.isOpen,
         className
       )}

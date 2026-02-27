@@ -1,7 +1,7 @@
 @use './styles/mixins/mq' as *;
 
-$tx-color-gpc: var(--color-warning-2);
-$bg-color-gpc: var(--color-warning-6);
+$tx-color-gpc: var(--surface-warning-text);
+$bg-color-gpc: var(--surface-warning-bg);
 
 .gdpr {
   display: flex;
@@ -94,7 +94,7 @@ $bg-color-gpc: var(--color-warning-6);
 }
 
 .footer {
-  background-color: var(--color-grey-9);
+  background-color: var(--theme-bg-2);
   border-radius: 0 0 var(--radius-2) var(--radius-2);
   display: block;
   font-size: var(--font-size-2);

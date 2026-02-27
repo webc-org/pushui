@@ -1,14 +1,15 @@
-$bg-color-pagination: var(--color-white);
-$bg-color-button: var(--color-grey-9);
-$bg-color-button-active: var(--color-primary-2);
-$bd-color-button-active: var(--color-primary-2);
-$tx-color-button-active: var(--color-white);
-$bg-color-button-current: var(--color-white);
-$bd-color-button-current: var(--color-primary-2);
-$tx-color-button-current: var(--color-primary-2);
+$bg-color-pagination: var(--theme-bg);
+$bg-color-button: var(--theme-bg-2);
+$bg-color-button-active: var(--theme-accent);
+$bd-color-button-active: var(--theme-accent);
+$tx-color-button-active: var(--action-primary-on);
+$bg-color-button-current: var(--theme-bg);
+$bd-color-button-current: var(--theme-accent);
+$tx-color-button-current: var(--theme-accent);
 
 .pagination {
   align-items: center;
+  align-self: flex-start;
   background-color: $bg-color-pagination;
   border-radius: var(--radius-4);
   display: inline-flex;

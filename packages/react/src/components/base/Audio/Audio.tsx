@@ -21,31 +21,33 @@ export function Audio({
   const captionId = useId()
 
   const audio = (
-    <audio
-      ref={ref}
-      src={!sources?.length ? src : undefined}
-      controls={controls}
-      className={styles.audio}
-      aria-labelledby={title ? titleId : undefined}
-      aria-describedby={caption ? captionId : undefined}
-      {...rest}
-    >
-      {sources?.map((source) => (
-        <source key={source.src} src={source.src} type={source.type} />
-      ))}
+    <div className={styles.player}>
+      <audio
+        ref={ref}
+        src={!sources?.length ? src : undefined}
+        controls={controls}
+        className={styles.audio}
+        aria-labelledby={title ? titleId : undefined}
+        aria-describedby={caption ? captionId : undefined}
+        {...rest}
+      >
+        {sources?.map((source) => (
+          <source key={source.src} src={source.src} type={source.type} />
+        ))}
 
-      {fallback || (
-        <p>
-          {fallbackText}
-          {src && (
-            <>
-              {' '}
-              <a href={src}>{fallbackLinkText}</a>
-            </>
-          )}
-        </p>
-      )}
-    </audio>
+        {fallback || (
+          <p>
+            {fallbackText}
+            {src && (
+              <>
+                {' '}
+                <a href={src}>{fallbackLinkText}</a>
+              </>
+            )}
+          </p>
+        )}
+      </audio>
+    </div>
   )
 
   if (title || caption || transcriptUrl) {

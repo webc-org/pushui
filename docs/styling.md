@@ -272,17 +272,6 @@ All values support responsive breakpoints.
 
 ## Theming
 
-### CSS Variable Overrides
-
-```css
-:root {
-  --color-primary-1: #002f5f;
-  --color-primary-2: #06c;
-  --color-primary-3: #cce0ff;
-  --color-primary-contrast: #60a5fa;
-}
-```
-
 ### ThemeProvider
 
 Light/dark theme support via React context. Defaults to `'light'` without a provider.
@@ -300,11 +289,98 @@ const { theme, setTheme } = useTheme()
 setTheme('dark')
 ```
 
-The `Header` component accepts a `theme` prop (`'light' | 'dark'`) and resolves its `customStyles` accordingly — each bar (desktop top/main, mobile top/main) can define separate light and dark background colors and opacities.
+### `.light` / `.dark` Classes
+
+`ThemeProvider` applies a `.light` or `.dark` class to a wrapper element. CSS variables cascade from that class. Both classes fully define all theme tokens so nested light-inside-dark (and vice-versa) works correctly.
+
+### Theme Tokens
+
+Semantic tokens that change between light and dark. Use these in component styles instead of raw color values.
+
+#### Background
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--theme-bg` | `#FFF` | `#111` |
+| `--theme-bg-2` | `#EEE` | `#222` |
+| `--theme-bg-3` | `#FFF` | `#333` |
+
+Use `--theme-bg` for the primary surface (sidebar, header), `--theme-bg-2` for the secondary surface (main content area, inputs), `--theme-bg-3` for nested sections inside cards.
+
+#### Text & Borders
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--theme-text` | `#000` | `#FFF` |
+| `--theme-accent` | `--color-primary-2` | `--color-primary-contrast` |
+| `--theme-border` | `#DDD` | `#222` |
+| `--theme-border-2` | `#666` | `#666` |
+
+#### Action Tokens
+
+Generated per color variant. Use for interactive elements (buttons, links, badges).
+
+| Token | Description |
+|-------|-------------|
+| `--action-{variant}-base` | Default background / accent color |
+| `--action-{variant}-hover` | Hover background |
+| `--action-{variant}-on` | Text color on top of base |
+
+Variants: `primary`, `secondary`, `success`, `danger`, `warning`, `info`
+
+In dark mode, action tokens automatically use the contrast palette (e.g. `--color-primary-contrast` instead of `--color-primary-2`) so colors remain legible.
+
+#### Component Tokens
+
+| Token | Light | Dark |
+|-------|-------|------|
+| `--card-bg` | `#FFF` | `--theme-bg-2` |
+| `--card-border` | `transparent` | `transparent` |
+| `--card-section-bg` | `--theme-bg-2` | `--theme-bg-3` |
+| `--modal-backdrop` | `rgb(0 0 0 / 50%)` | `rgb(255 255 255 / 20%)` |
+| `--toast-bg` | `#111` | `#F5F5F5` |
+| `--toast-text` | `#FFF` | `#000` |
+
+### Surface Tokens
+
+For informational areas (alerts, badges, note blocks). Automatically adapt between light and dark.
+
+| Token pattern | Description |
+|---------------|-------------|
+| `--surface-{variant}-bg` | Background |
+| `--surface-{variant}-border` | Border |
+| `--surface-{variant}-text` | Text |
+
+Variants: `primary`, `secondary`, `success`, `danger`, `warning`, `info`
+
+### CSS Variable Overrides
+
+Override color palette in `:root` to rebrand:
+
+```css
+:root {
+  --color-primary-1: #002f5f;
+  --color-primary-2: #06c;
+  --color-primary-3: #cce0ff;
+  --color-primary-contrast: #60a5fa;
+}
+```
+
+### SCSS Mixins (styles/mixins/theme.scss)
+
+```scss
+@use 'styles/mixins/theme' as *;
+
+.myLink {
+  @include theme-link;      // color: --theme-text, hover: --theme-accent
+  @include theme-dropdown;  // same + .isOpen state
+  @include theme-color;     // color: --theme-text only
+}
+```
 
 ## Contrast Mode
 
-For dark backgrounds:
+For components on colored backgrounds:
 
 ```tsx
 <Button contrast appearance="button">Light button</Button>

@@ -1,4 +1,9 @@
+html,
+body,
+#storybook-root {
+  height: 100%;
+}
+
 body {
   display: block;
-  background: var(--color-grey-6);
 }

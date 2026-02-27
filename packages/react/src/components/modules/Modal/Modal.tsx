@@ -1,8 +1,9 @@
 import { useEffect, useEffectEvent, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import clsx from 'clsx'
 import { Button, Title } from 'components'
 import { X } from 'lucide-react'
-import { getFocusableElements } from 'utils'
+import { getFocusableElements, useTheme } from 'utils'
 import styles from './Modal.module.scss'
 import type { ModalTypes } from './Modal.types'
 
@@ -18,6 +19,7 @@ export function Modal({
   closeLabel = 'Close modal',
   hideCloseButton = false,
 }: ModalTypes) {
+  const { theme } = useTheme()
   const [active, setActive] = useState(false)
   const [removing, setRemoving] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
@@ -122,53 +124,58 @@ export function Modal({
     }
   }, [active, removing])
 
-  return (
-    <div
-      className={clsx(
-        styles.modalBackdrop,
-        position === 'top' && styles.top,
-        removing && styles.removing,
-        active && !removing && styles.active
-      )}
-      onClick={handleBackdropClick}
-      role="presentation"
-    >
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
+    <div className={theme}>
       <div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={title ? modalTitleId : undefined}
-        aria-describedby={modalDescId}
-        ref={modalRef}
         className={clsx(
-          styles.modal,
+          styles.modalBackdrop,
+          position === 'top' && styles.top,
           removing && styles.removing,
           active && !removing && styles.active
         )}
-        style={{ ...(width ? { width } : {}) }}
-        onClick={(e) => e.stopPropagation()}
+        onClick={handleBackdropClick}
+        role="presentation"
       >
-        {title && (
-          <div className={styles.modalHeader} id={modalTitleId}>
-            <Title level="h4">{title}</Title>
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={title ? modalTitleId : undefined}
+          aria-describedby={modalDescId}
+          ref={modalRef}
+          className={clsx(
+            styles.modal,
+            removing && styles.removing,
+            active && !removing && styles.active
+          )}
+          style={{ ...(width ? { width } : {}) }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {title && (
+            <div className={styles.modalHeader} id={modalTitleId}>
+              <Title level="h4">{title}</Title>
+            </div>
+          )}
+
+          {!hideCloseButton && (
+            <Button
+              type="button"
+              title={closeLabel}
+              onClick={handleRemove}
+              aria-label={closeLabel}
+              className={styles.close}
+            >
+              <X size={16} aria-hidden />
+            </Button>
+          )}
+
+          <div id={modalDescId} className={styles.modalBody}>
+            {children}
           </div>
-        )}
-
-        {!hideCloseButton && (
-          <Button
-            type="button"
-            title={closeLabel}
-            onClick={handleRemove}
-            aria-label={closeLabel}
-            className={styles.close}
-          >
-            <X size={16} aria-hidden />
-          </Button>
-        )}
-
-        <div id={modalDescId} className={styles.modalBody}>
-          {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

@@ -19,6 +19,11 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     config.base = process.env.CI ? '/pushui/' : '/'
+    config.css = {
+      preprocessorOptions: {
+        scss: { silenceDeprecations: ['legacy-js-api'] },
+      },
+    }
     config.resolve = {
       ...config.resolve,
       alias: {

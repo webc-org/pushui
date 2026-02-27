@@ -38,21 +38,22 @@ const meta: Meta<typeof Badge> = {
 export default meta
 type Story = StoryObj<typeof Badge>
 
-export const Playground: Story = {
-  args: {
-    children: 'Badge',
-    variant: 'primary',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    {variants.map((v) => (
+      <Badge variant={v} key={v}>
+        {v}
+      </Badge>
+    ))}
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      {variants.map((v) => (
-        <Badge variant={v} key={v}>
-          {v}
-        </Badge>
-      ))}
-    </div>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

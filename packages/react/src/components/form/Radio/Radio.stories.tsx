@@ -3,8 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { InputRadio } from './Radio'
 import type { RadioOptionTypes } from './Radio.types'
 
-const directions = ['vertical', 'horizontal'] as const
-
 const defaultOptions: RadioOptionTypes[] = [
   { value: 'option1', label: 'Option 1' },
   { value: 'option2', label: 'Option 2' },
@@ -16,100 +14,72 @@ const meta: Meta<typeof InputRadio> = {
   component: InputRadio,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Radio group label',
-    },
-    direction: {
-      control: 'select',
-      options: directions,
-      description: 'Layout direction',
-      table: {
-        defaultValue: { summary: 'vertical' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the radio group is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    name: {
-      control: 'text',
-      description: 'Name attribute for the radio group',
-    },
+    label: { control: 'text' },
+    direction: { control: 'select', options: ['vertical', 'horizontal'] },
+    disabled: { control: 'boolean' },
+    name: { control: 'text' },
   },
-  args: {
-    name: 'radio-group',
-    direction: 'vertical',
-    disabled: false,
-  },
+  args: { name: 'radio-group', direction: 'vertical', disabled: false },
 }
 
 export default meta
 type Story = StoryObj<typeof InputRadio>
 
-const RadioWithState = (args: {
+const RadioWithState = ({
+  name,
+  label,
+  direction,
+  disabled,
+  value: initial = '',
+}: {
   name: string
-  options?: RadioOptionTypes[]
   label?: string
   direction?: 'vertical' | 'horizontal'
   disabled?: boolean
   value?: string
 }) => {
   const id = useId()
-  const [value, setValue] = useState(args.value || '')
+  const [value, setValue] = useState(initial)
   return (
     <InputRadio
-      {...args}
-      name={`${args.name}-${id}`}
-      options={args.options || defaultOptions}
+      name={`${name}-${id}`}
+      options={defaultOptions}
+      label={label}
+      direction={direction}
+      disabled={disabled}
       value={value}
       onChange={setValue}
     />
   )
 }
 
-export const Playground: Story = {
-  render: (args) => <RadioWithState {...args} options={defaultOptions} />,
-  args: {
-    name: 'playground',
-    label: 'Select an option',
-    direction: 'vertical',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <RadioWithState
+      name="vertical"
+      label="Vertical"
+      direction="vertical"
+    />
+    <RadioWithState
+      name="horizontal"
+      label="Horizontal"
+      direction="horizontal"
+    />
+    <RadioWithState
+      name="preselected"
+      label="Preselected"
+      value="option2"
+    />
+    <RadioWithState name="disabled" label="Disabled" disabled />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Horizontal: Story = {
-  render: (args) => <RadioWithState {...args} options={defaultOptions} />,
-  args: {
-    name: 'horizontal',
-    label: 'Select an option',
-    direction: 'horizontal',
-  },
-}
-
-export const WithoutLabel: Story = {
-  render: (args) => <RadioWithState {...args} options={defaultOptions} />,
-  args: {
-    name: 'no-label',
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => <RadioWithState {...args} options={defaultOptions} />,
-  args: {
-    name: 'disabled',
-    label: 'Disabled options',
-    disabled: true,
-  },
-}
-
-export const Preselected: Story = {
-  render: (args) => <RadioWithState {...args} options={defaultOptions} />,
-  args: {
-    name: 'preselected',
-    label: 'Select an option',
-    value: 'option2',
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

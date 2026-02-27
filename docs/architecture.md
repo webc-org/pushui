@@ -7,7 +7,7 @@ pushui/
 ├── packages/
 │   ├── styles/              # @pushui/styles - Shared SCSS design system
 │   │   └── styles/          # SCSS source files
-│   │       ├── mixins/      # SCSS mixins (mq, typo, etc.)
+│   │       ├── mixins/      # SCSS mixins (mq, typo, action, theme, form, etc.)
 │   │       ├── utilities/   # Utility classes
 │   │       └── index.scss   # Main entry
 │   │
@@ -17,7 +17,7 @@ pushui/
 │           │   ├── base/    # Atomic UI elements (21)
 │           │   ├── form/    # Form inputs and controls (13)
 │           │   ├── modules/ # Content wrappers (9)
-│           │   └── sections/# Page-level layouts (6)
+│           │   └── sections/# Page-level layouts (7)
 │           ├── types/       # Shared TypeScript types
 │           └── index.ts     # Library entry point
 │

@@ -1,4 +1,4 @@
-$tx-color-link-active: var(--color-primary-2);
+$tx-color-link-active: var(--theme-accent);
 
 .breadcrumb {
   display: flex;
@@ -18,10 +18,11 @@ $tx-color-link-active: var(--color-primary-2);
 }
 
 .link {
+  color: inherit;
   text-decoration: none;
 
-  &:hover,
-  &:focus-visible {
+  &:hover:not([disabled], [aria-disabled="true"]),
+  &:focus-visible:not([disabled], [aria-disabled="true"]) {
     color: $tx-color-link-active;
     text-decoration: underline;
   }

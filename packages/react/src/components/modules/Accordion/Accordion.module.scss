@@ -1,11 +1,11 @@
 @use './styles/mixins/mq' as *;
 
-$bg-color-accordion: var(--color-white);
-$bd-color-accordion: var(--color-grey-7);
-$tx-color-trigger: var(--color-black);
-$tx-color-trigger-active: var(--color-primary-2);
-$bg-color-accordion-expanded: var(--color-grey-8);
-$bg-color-accordion-inner-expanded: var(--color-grey-7);
+$bg-color-accordion: var(--theme-bg);
+$bd-color-accordion: var(--theme-border);
+$tx-color-trigger: var(--theme-text);
+$tx-color-trigger-active: var(--theme-accent);
+$bg-color-accordion-expanded: var(--theme-bg-2);
+$bg-color-accordion-inner-expanded: var(--theme-bg-2);
 
 .accordion {
   background: $bg-color-accordion;
@@ -64,7 +64,7 @@ $bg-color-accordion-inner-expanded: var(--color-grey-7);
 
 .icon {
   flex-shrink: 0;
-  transition: transform var(--transition-default);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   .expanded & {
     transform: rotate(180deg);
@@ -75,7 +75,7 @@ $bg-color-accordion-inner-expanded: var(--color-grey-7);
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
-  transition: grid-template-rows var(--transition-default);
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.contentExpanded {
     background: $bg-color-accordion-expanded;
@@ -87,7 +87,7 @@ $bg-color-accordion-inner-expanded: var(--color-grey-7);
   border-top: 0.1rem solid transparent;
   overflow: hidden;
   padding: 0 2rem;
-  transition: padding var(--transition-default);
+  transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   .contentExpanded & {
     border-color: $bg-color-accordion-inner-expanded;

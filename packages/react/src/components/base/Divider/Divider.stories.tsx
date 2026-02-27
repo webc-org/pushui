@@ -26,114 +26,81 @@ const meta: Meta<typeof Divider> = {
 export default meta
 type Story = StoryObj<typeof Divider>
 
-export const Default: Story = {}
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div>
+      <p
+        style={{
+          marginBottom: '0.5rem',
+          opacity: 0.5,
+          fontSize: '1.2rem',
+        }}
+      >
+        solid
+      </p>
+      <Divider variant="solid" />
+    </div>
+    <div>
+      <p
+        style={{
+          marginBottom: '0.5rem',
+          opacity: 0.5,
+          fontSize: '1.2rem',
+        }}
+      >
+        dashed
+      </p>
+      <Divider variant="dashed" />
+    </div>
+    <div>
+      <p
+        style={{
+          marginBottom: '0.5rem',
+          opacity: 0.5,
+          fontSize: '1.2rem',
+        }}
+      >
+        dotted
+      </p>
+      <Divider variant="dotted" />
+    </div>
+    <div>
+      <p
+        style={{
+          marginBottom: '0.5rem',
+          opacity: 0.5,
+          fontSize: '1.2rem',
+        }}
+      >
+        with text
+      </p>
+      <Divider variant="solid" spacing={2}>
+        or
+      </Divider>
+    </div>
+    <div>
+      <p
+        style={{
+          marginBottom: '0.5rem',
+          opacity: 0.5,
+          fontSize: '1.2rem',
+        }}
+      >
+        hidden
+      </p>
+      <p>Content above</p>
+      <Divider hidden spacing={2} />
+      <p>Content below</p>
+    </div>
+  </div>
+)
 
-export const Solid: Story = {
-  args: {
-    variant: 'solid',
-  },
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Dashed: Story = {
-  args: {
-    variant: 'dashed',
-  },
-}
-
-export const Dotted: Story = {
-  args: {
-    variant: 'dotted',
-  },
-}
-
-export const Spacing1: Story = {
-  args: {
-    spacing: 1,
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below</p>
-      </div>
-    ),
-  ],
-}
-
-export const Spacing2: Story = {
-  args: {
-    spacing: 2,
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below</p>
-      </div>
-    ),
-  ],
-}
-
-export const Spacing3: Story = {
-  args: {
-    spacing: 3,
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below</p>
-      </div>
-    ),
-  ],
-}
-
-export const Spacing4: Story = {
-  args: {
-    spacing: 4,
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below</p>
-      </div>
-    ),
-  ],
-}
-
-export const Hidden: Story = {
-  args: {
-    spacing: 2,
-    hidden: true,
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below (line hidden, spacing only)</p>
-      </div>
-    ),
-  ],
-}
-
-export const WithText: Story = {
-  args: {
-    spacing: 2,
-    children: 'or',
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <p>Content above</p>
-        <Story />
-        <p>Content below</p>
-      </div>
-    ),
-  ],
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

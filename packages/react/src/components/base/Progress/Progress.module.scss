@@ -1,4 +1,4 @@
-$bg-color-progress: var(--color-grey-7);
+$bg-color-progress: var(--theme-border);
 
 .progress {
   background-color: $bg-color-progress;
@@ -25,11 +25,15 @@ $bg-color-progress: var(--color-grey-7);
 }
 
 
-$variants: default, primary, secondary, success, danger, warning, info;
+.variant-default .bar {
+  background-color: var(--theme-accent);
+}
+
+$variants: primary, secondary, success, danger, warning, info;
 
 @each $variant in $variants {
   .variant-#{$variant} .bar {
-    background-color: var(--color-#{$variant}-2);
+    background-color: var(--action-#{$variant}-base);
   }
 }
 

@@ -7,74 +7,51 @@ const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Checkbox label text',
-    },
-    checked: {
-      control: 'boolean',
-      description: 'Whether the checkbox is checked',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the checkbox is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
+    label: { control: 'text' },
+    checked: { control: 'boolean' },
+    disabled: { control: 'boolean' },
   },
-  args: {
-    label: 'Checkbox label',
-    checked: false,
-    disabled: false,
-  },
+  args: { label: 'Checkbox label', checked: false, disabled: false },
 }
 
 export default meta
 type Story = StoryObj<typeof Checkbox>
 
-const CheckboxWithState = (args: {
+const CheckboxWithState = ({
+  label,
+  checked: initial = false,
+  disabled,
+}: {
   label?: string
   checked?: boolean
   disabled?: boolean
 }) => {
-  const [checked, setChecked] = useState(args.checked || false)
-  return <Checkbox {...args} checked={checked} onChange={setChecked} />
+  const [checked, setChecked] = useState(initial)
+  return (
+    <Checkbox
+      label={label}
+      checked={checked}
+      onChange={setChecked}
+      disabled={disabled}
+    />
+  )
 }
 
-export const Playground: Story = {
-  render: (args) => <CheckboxWithState {...args} />,
-  args: {
-    label: 'Accept terms and conditions',
-    checked: false,
-    disabled: false,
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <CheckboxWithState label="Default" />
+    <CheckboxWithState label="Checked" checked />
+    <CheckboxWithState label="Disabled" disabled />
+    <CheckboxWithState label="Disabled + checked" checked disabled />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Checked: Story = {
-  render: (args) => <CheckboxWithState {...args} />,
-  args: {
-    label: 'Checked checkbox',
-    checked: true,
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => <CheckboxWithState {...args} />,
-  args: {
-    label: 'Disabled checkbox',
-    disabled: true,
-  },
-}
-
-export const DisabledChecked: Story = {
-  render: (args) => <CheckboxWithState {...args} />,
-  args: {
-    label: 'Disabled and checked',
-    checked: true,
-    disabled: true,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

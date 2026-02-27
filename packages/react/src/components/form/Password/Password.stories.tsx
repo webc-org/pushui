@@ -6,28 +6,10 @@ const meta: Meta<typeof InputPassword> = {
   component: InputPassword,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Input label',
-    },
-    placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the input is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    required: {
-      control: 'boolean',
-      description: 'Whether the input is required',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
+    disabled: { control: 'boolean' },
+    required: { control: 'boolean' },
     showLabel: { control: 'text' },
     hideLabel: { control: 'text' },
   },
@@ -42,25 +24,28 @@ const meta: Meta<typeof InputPassword> = {
 export default meta
 type Story = StoryObj<typeof InputPassword>
 
-export const Playground: Story = {
-  args: {
-    label: 'Password',
-    placeholder: 'Enter your password',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <InputPassword label="Default" placeholder="Enter password" />
+    <InputPassword
+      label="Required"
+      placeholder="Enter password"
+      required
+    />
+    <InputPassword
+      label="Disabled"
+      placeholder="Enter password"
+      disabled
+    />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Required: Story = {
-  args: {
-    label: 'Password',
-    placeholder: 'Enter your password',
-    required: true,
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    label: 'Password',
-    placeholder: 'Enter your password',
-    disabled: true,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

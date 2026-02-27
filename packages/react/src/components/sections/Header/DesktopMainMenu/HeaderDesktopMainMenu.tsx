@@ -38,7 +38,7 @@ export function HeaderDesktopMainMenu({
           '--header-desktop-main-opacity': opacity,
         } as CSSProperties
       }
-      className={clsx(styles.menu, styles[theme], className)}
+      className={clsx(styles.menu, theme, className)}
       {...rest}
     >
       <div className={clsx(styles.container, containerClassName)}>

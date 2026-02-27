@@ -6,58 +6,54 @@ const meta: Meta<typeof Breadcrumb> = {
   title: 'Base/Breadcrumb',
   component: Breadcrumb,
   tags: ['autodocs'],
+  argTypes: {
+    items: { control: false, description: 'Breadcrumb items array' },
+    separator: { control: false, description: 'Custom separator element' },
+  },
 }
 
 export default meta
 type Story = StoryObj<typeof Breadcrumb>
 
-export const Default: Story = {
-  args: {
-    items: [
-      { label: 'Accueil', href: '/' },
-      { label: 'Produits', href: '/products' },
-      { label: 'Catégorie', href: '/products/category' },
-      { label: 'Article' },
-    ],
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <Breadcrumb
+      items={[{ label: 'Home', href: '/' }, { label: 'Page' }]}
+    />
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Products', href: '/products' },
+        { label: 'Category', href: '/products/category' },
+        { label: 'Item' },
+      ]}
+    />
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Blog', href: '/blog' },
+        { label: 'Article' },
+      ]}
+      separator={<Slash size={14} />}
+    />
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Category', href: '/category' },
+        { label: 'Sub-category', href: '/category/sub' },
+        { label: 'Section', href: '/category/sub/section' },
+        { label: 'A very long article title' },
+      ]}
+    />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const TwoItems: Story = {
-  args: {
-    items: [{ label: 'Accueil', href: '/' }, { label: 'Contact' }],
-  },
-}
-
-export const CustomSeparator: Story = {
-  args: {
-    items: [
-      { label: 'Accueil', href: '/' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Article' },
-    ],
-    separator: <Slash size={14} />,
-  },
-}
-
-export const TextSeparator: Story = {
-  args: {
-    items: [
-      { label: 'Accueil', href: '/' },
-      { label: 'Produits', href: '/products' },
-      { label: 'Détail' },
-    ],
-    separator: '/',
-  },
-}
-
-export const LongBreadcrumb: Story = {
-  args: {
-    items: [
-      { label: 'Accueil', href: '/' },
-      { label: 'Catégorie principale', href: '/category' },
-      { label: 'Sous-catégorie', href: '/category/sub' },
-      { label: 'Section', href: '/category/sub/section' },
-      { label: 'Article avec un titre très long' },
-    ],
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

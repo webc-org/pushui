@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Link } from 'base/Link'
 import { Button } from 'form/Button'
 import {
   Banner,
   BannerActions,
-  BannerBody,
   BannerContent,
   BannerSubtitle,
   BannerTitle,
@@ -15,64 +13,25 @@ import type {
   VerticalAlignTypes,
 } from './Banner.types'
 
-const horizontalAlignOptions: HorizontalAlignTypes[] = [
-  'left',
-  'center',
-  'right',
-]
-const verticalAlignOptions: VerticalAlignTypes[] = [
-  'start',
-  'center',
-  'end',
-]
-const overlayOptions: BannerOverlayTypes[] = ['none', 'light', 'dark']
-
-const sampleImage =
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80'
-
 const meta: Meta<typeof Banner> = {
   title: 'Modules/Banner',
   component: Banner,
   tags: ['autodocs'],
   argTypes: {
-    backgroundImage: {
-      control: 'text',
-      description: 'URL of the background image',
-    },
-    backgroundColor: {
-      control: 'color',
-      description: 'Background color (used when no image)',
-    },
+    backgroundImage: { control: 'text' },
+    backgroundColor: { control: 'color' },
     overlay: {
       control: 'select',
-      options: overlayOptions,
-      description: 'Overlay for better text contrast',
-      table: {
-        defaultValue: { summary: 'none' },
-      },
+      options: ['none', 'light', 'dark'] as BannerOverlayTypes[],
     },
-    minHeight: {
-      control: 'text',
-      description: 'Minimum height of the banner',
-      table: {
-        defaultValue: { summary: '40rem' },
-      },
-    },
+    minHeight: { control: 'text' },
     horizontalAlign: {
       control: 'select',
-      options: horizontalAlignOptions,
-      description: 'Horizontal alignment of content',
-      table: {
-        defaultValue: { summary: 'left' },
-      },
+      options: ['left', 'center', 'right'] as HorizontalAlignTypes[],
     },
     verticalAlign: {
       control: 'select',
-      options: verticalAlignOptions,
-      description: 'Vertical alignment of content',
-      table: {
-        defaultValue: { summary: 'center' },
-      },
+      options: ['start', 'center', 'end'] as VerticalAlignTypes[],
     },
   },
   args: {
@@ -86,106 +45,36 @@ const meta: Meta<typeof Banner> = {
 export default meta
 type Story = StoryObj<typeof Banner>
 
-export const Default: Story = {
-  render: (args) => (
-    <Banner {...args} backgroundColor="var(--color-primary-1)">
-      <BannerContent textColor="light">
-        <BannerTitle>Welcome to Our Platform</BannerTitle>
-        <BannerSubtitle>Build something amazing today</BannerSubtitle>
-        <BannerBody className="mt-3">
-          Discover the tools and resources you need to bring your ideas to
-          life. Start your journey with us and transform the way you work.
-        </BannerBody>
-        <BannerActions className="mt-4">
-          <Button variant="primary" contrast appearance="button">
-            Get Started
-          </Button>
-          <Button variant="primary" contrast appearance="underline">
-            Learn More
-          </Button>
-        </BannerActions>
-      </BannerContent>
-    </Banner>
-  ),
-}
+const sampleImage =
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80'
 
-export const WithBackgroundImage: Story = {
-  render: (args) => (
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
     <Banner
-      {...args}
       backgroundImage={sampleImage}
       overlay="dark"
       horizontalAlign="center"
     >
-      <BannerContent textColor="light">
-        <BannerTitle>Explore the Mountains</BannerTitle>
+      <BannerContent textColor="light" textAlign="center">
+        <BannerTitle>Dark Overlay — Center</BannerTitle>
         <BannerSubtitle>
           Adventure awaits beyond the horizon
         </BannerSubtitle>
-        <BannerBody className="mt-3">
-          Experience breathtaking views and unforgettable moments in
-          nature's most spectacular landscapes.
-        </BannerBody>
         <BannerActions className="mt-4">
           <Button variant="primary" contrast appearance="button">
             Book Now
           </Button>
-          <Link variant="primary" contrast appearance="underline">
-            View Gallery
-          </Link>
         </BannerActions>
       </BannerContent>
     </Banner>
-  ),
-}
-
-export const WithBackgroundVideo: Story = {
-  render: (args) => (
     <Banner
-      {...args}
-      backgroundVideo={{
-        src: 'https://www.w3schools.com/html/mov_bbb.mp4',
-        poster:
-          'https://peach.blender.org/wp-content/uploads/bbb-splash.png',
-      }}
-      overlay="dark"
-      horizontalAlign="center"
-    >
-      <BannerContent textColor="light" textAlign="center">
-        <BannerTitle>Cinematic Experience</BannerTitle>
-        <BannerSubtitle>Immerse yourself in motion</BannerSubtitle>
-        <BannerBody className="mt-3">
-          Video backgrounds create engaging, dynamic hero sections that
-          capture attention instantly.
-        </BannerBody>
-        <BannerActions className="mt-4">
-          <Button variant="primary" contrast appearance="button">
-            Watch Now
-          </Button>
-          <Button variant="primary" contrast appearance="outline">
-            Learn More
-          </Button>
-        </BannerActions>
-      </BannerContent>
-    </Banner>
-  ),
-}
-
-export const LightOverlay: Story = {
-  render: (args) => (
-    <Banner
-      {...args}
       backgroundImage={sampleImage}
       overlay="light"
       horizontalAlign="left"
     >
       <BannerContent textColor="dark">
-        <BannerTitle>Nature Retreats</BannerTitle>
+        <BannerTitle>Light Overlay — Left</BannerTitle>
         <BannerSubtitle>Find your peace</BannerSubtitle>
-        <BannerBody className="mt-3">
-          Disconnect from the everyday and reconnect with yourself in our
-          carefully curated natural escapes.
-        </BannerBody>
         <BannerActions className="mt-4">
           <Button variant="primary" appearance="button">
             Explore
@@ -193,23 +82,16 @@ export const LightOverlay: Story = {
         </BannerActions>
       </BannerContent>
     </Banner>
-  ),
-}
-
-export const RightAligned: Story = {
-  render: (args) => (
     <Banner
-      {...args}
       backgroundImage={sampleImage}
       overlay="dark"
       horizontalAlign="right"
+      minHeight="50rem"
+      verticalAlign="end"
     >
       <BannerContent textColor="light" maxWidth="50rem">
-        <BannerTitle level="h2">Premium Collection</BannerTitle>
+        <BannerTitle level="h2">Right Aligned — Bottom</BannerTitle>
         <BannerSubtitle>Exclusive designs for you</BannerSubtitle>
-        <BannerBody className="mt-3">
-          Handcrafted with attention to every detail.
-        </BannerBody>
         <BannerActions className="mt-4">
           <Button variant="secondary" contrast appearance="button">
             Shop Now
@@ -217,31 +99,15 @@ export const RightAligned: Story = {
         </BannerActions>
       </BannerContent>
     </Banner>
-  ),
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const BottomContent: Story = {
-  render: (args) => (
-    <Banner
-      {...args}
-      backgroundImage={sampleImage}
-      overlay="dark"
-      minHeight="50rem"
-      horizontalAlign="left"
-      verticalAlign="end"
-    >
-      <BannerContent textColor="light">
-        <BannerTitle level="h2">Summer Collection 2025</BannerTitle>
-        <BannerSubtitle>Now Available</BannerSubtitle>
-        <BannerActions className="mt-4">
-          <Button variant="primary" contrast appearance="button">
-            View Collection
-          </Button>
-          <Button contrast appearance="outline">
-            See Lookbook
-          </Button>
-        </BannerActions>
-      </BannerContent>
-    </Banner>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

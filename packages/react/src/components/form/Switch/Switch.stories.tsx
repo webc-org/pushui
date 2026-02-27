@@ -6,45 +6,31 @@ const meta: Meta<typeof Switch> = {
   component: Switch,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Label text',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disable the switch',
-    },
-    defaultChecked: {
-      control: 'boolean',
-      description: 'Initial checked state (uncontrolled)',
-    },
+    label: { control: 'text' },
+    disabled: { control: 'boolean' },
+    defaultChecked: { control: 'boolean' },
   },
-  args: {
-    label: 'Enable feature',
-    disabled: false,
-  },
+  args: { label: 'Enable feature', disabled: false },
 }
 
 export default meta
 type Story = StoryObj<typeof Switch>
 
-export const Default: Story = {}
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Switch label="Default" />
+    <Switch label="Checked" defaultChecked />
+    <Switch label="Disabled" disabled />
+    <Switch label="Disabled + checked" disabled defaultChecked />
+  </div>
+)
 
-export const Checked: Story = {
-  args: {
-    defaultChecked: true,
-  },
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-}
-
-export const DisabledChecked: Story = {
-  args: {
-    disabled: true,
-    defaultChecked: true,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

@@ -1,6 +1,7 @@
 @use 'styles/mixins/mq' as *;
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/color' as *;
+@use 'styles/mixins/theme' as *;
 
 .menu {
   background-color: var(--header-mobile-main-bg);
@@ -46,16 +47,10 @@
   position: relative;
   width: 100%;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
+  @include theme-color;
 
   &::after {
-    background: var(--color-grey-7);
+    background: var(--theme-border);
     content: '';
     display: block;
     height: .1rem;
@@ -72,30 +67,13 @@
   align-items: center;
   background: none;
   border-radius: var(--radius-2);
-  color: var(--color-black);
   cursor: pointer;
   display: flex;
   height: 2.5rem;
   justify-content: center;
   width: 2.5rem;
 
-  .dark & {
-    color: var(--color-white);
-
-    &:hover,
-    &:focus-visible {
-      color: var(--color-primary-contrast);
-    }
-  }
-
-  .light & {
-    color: var(--color-black);
-
-    &:hover,
-    &:focus-visible {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 }
 
 .nav {
@@ -123,25 +101,7 @@
     cursor: default;
   }
 
-  .dark & {
-    color: var(--color-white);
-
-    &:hover,
-    &.current,
-    &:focus-visible {
-      color: var(--color-primary-contrast);
-    }
-  }
-
-  .light & {
-    color: var(--color-black);
-
-    &:hover,
-    &.current,
-    &:focus-visible {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 }
 
 .dropdownWrapper {
@@ -161,35 +121,7 @@
   text-decoration: none;
   width: 100%;
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  &.isOpen {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-  }
-
-  .dark .dropdownWrapper:hover &,
-  .dark .dropdownWrapper:focus-within & {
-    color: var(--color-primary-contrast);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  &.isOpen {
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
-
-  .light .dropdownWrapper:hover &,
-  .light .dropdownWrapper:focus-within & {
-    color: var(--color-primary-2);
-  }
+  @include theme-dropdown;
 }
 
 .dropdown {
@@ -205,19 +137,11 @@
 }
 
 .dropdownInner {
-  border-left: .2rem solid;
+  border-left: .2rem solid var(--theme-border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   padding: 0 0 0 2rem;
-
-  .dark & {
-    border-color: var(--color-white-20);
-  }
-
-  .light & {
-    border-color: var(--color-black-20);
-  }
 }
 
 .dropdownLink {
@@ -231,25 +155,7 @@
     text-decoration: none;
   }
 
-  .dark & {
-    color: var(--color-white);
-  }
-
-  .light & {
-    color: var(--color-black);
-  }
-
-  &:hover,
-  &.current,
-  &:focus-visible {
-    .dark & {
-      color: var(--color-primary-contrast);
-    }
-
-    .light & {
-      color: var(--color-primary-2);
-    }
-  }
+  @include theme-link;
 }
 
 .chevron {

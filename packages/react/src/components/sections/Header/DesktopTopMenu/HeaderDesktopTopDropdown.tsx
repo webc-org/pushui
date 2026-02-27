@@ -46,7 +46,7 @@ export function HeaderDesktopTopDropdown({
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-current={current ? 'page' : undefined}
-        className={styles.dropdownTrigger}
+        className={clsx(styles.dropdownTrigger, isOpen && styles.isOpen)}
         onClick={isLink ? undefined : () => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
       >

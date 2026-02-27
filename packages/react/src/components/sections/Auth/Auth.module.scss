@@ -1,6 +1,6 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-form: var(--color-grey-9);
+$bg-color-form: var(--card-section-bg);
 
 .section {
   align-items: center;

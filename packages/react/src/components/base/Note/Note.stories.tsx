@@ -38,24 +38,25 @@ const meta: Meta<typeof Note> = {
 export default meta
 type Story = StoryObj<typeof Note>
 
-export const Playground: Story = {
-  args: {
-    children: 'This is a note message.',
-    variant: undefined,
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    {variants.map((v) => (
+      <Note variant={v} key={v}>
+        <NoteTitle level="h4" className="fs-5">
+          {v}
+        </NoteTitle>
+        <p>This is a {v} note with a header.</p>
+      </Note>
+    ))}
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      {variants.map((v) => (
-        <Note variant={v} key={v}>
-          <NoteTitle level="h4" className="fs-5">
-            {v}
-          </NoteTitle>
-          <p>This is a {v} note with a header.</p>
-        </Note>
-      ))}
-    </div>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

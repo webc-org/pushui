@@ -1,10 +1,10 @@
 @use 'styles/mixins/form' as *;
+@use 'styles/mixins/theme' as *;
 
-$tx-color-checkbox: var(--color-white);
-$bg-color-checkbox: var(--color-white);
-$bg-color-checkbox-active: var(--color-primary-2);
-$bd-color-checkbox: var(--color-black);
-$bd-color-checkbox-active: var(--color-primary-2);
+$bg-color-checkbox: var(--theme-bg);
+$bg-color-checkbox-active: var(--theme-accent);
+$bd-color-checkbox: var(--theme-border-2);
+$bd-color-checkbox-active: var(--theme-accent);
 
 .wrapper {
   align-items: center;
@@ -47,7 +47,7 @@ $bd-color-checkbox-active: var(--color-primary-2);
 }
 
 .checkIcon {
-  color: $tx-color-checkbox;
+  color: var(--theme-bg);
   font-size: var(--font-size-3);
 }
 

@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom'
 import { Spinner } from 'base/Spinner'
 import clsx from 'clsx'
 import { ChevronDown, X } from 'lucide-react'
+import { useTheme } from 'utils'
 import { Button } from '../Button'
 import { SelectContextRoot, useSelectContext } from './SelectContext'
 import styles from './Select.module.scss'
@@ -88,8 +89,14 @@ const handleKeyboardNavigation = (
 // OPTION LIST ITEM
 const OptionListItem = memo((props: OptionListItemTypes) => {
   const { option, index, disabled, className } = props
-  const { multiple, focusedIndex, value, toggleOption, controlId } =
-    useSelectContext()
+  const {
+    multiple,
+    focusedIndex,
+    setFocusedIndex,
+    value,
+    toggleOption,
+    controlId,
+  } = useSelectContext()
 
   const isSelected = value.some((o) => o.value === option.value)
   const isFocused = focusedIndex === index
@@ -116,6 +123,7 @@ const OptionListItem = memo((props: OptionListItemTypes) => {
       id={`${controlId}-option-${index}`}
       aria-selected={isSelected}
       aria-disabled={disabled || undefined}
+      onMouseEnter={() => setFocusedIndex(index)}
       onClick={(e) => {
         e.stopPropagation()
         if (!disabled) toggleOption(option)
@@ -312,6 +320,7 @@ ChoiceListItem.displayName = 'ChoiceListItem'
 const SelectModal = memo(
   ({ children, className, ...rest }: SelectModalTypes) => {
     const [mounted, setMounted] = useState(false)
+    const { theme } = useTheme()
     const {
       isOpen,
       menuPosition,
@@ -358,26 +367,28 @@ const SelectModal = memo(
     if (!isOpen || !mounted) return null
 
     return createPortal(
-      <div
-        ref={menuRef}
-        id={controlId}
-        onScroll={handleScroll}
-        aria-busy={loading || undefined}
-        className={clsx(styles.selectModal, className)}
-        style={{
-          top: `${menuPosition.top}px`,
-          left: `${menuPosition.left}px`,
-          width: `${menuPosition.width}px`,
-        }}
-        {...rest}
-      >
-        {children}
+      <div className={theme}>
+        <div
+          ref={menuRef}
+          id={controlId}
+          onScroll={handleScroll}
+          aria-busy={loading || undefined}
+          className={clsx(styles.selectModal, className)}
+          style={{
+            top: `${menuPosition.top}px`,
+            left: `${menuPosition.left}px`,
+            width: `${menuPosition.width}px`,
+          }}
+          {...rest}
+        >
+          {children}
 
-        {loading && (
-          <div className={styles.selectLoading}>
-            <Spinner inline />
-          </div>
-        )}
+          {loading && (
+            <div className={styles.selectLoading}>
+              <Spinner inline />
+            </div>
+          )}
+        </div>
       </div>,
       document.body
     )

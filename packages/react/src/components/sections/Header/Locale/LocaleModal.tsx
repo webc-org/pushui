@@ -23,7 +23,7 @@ export function LocaleModal({
       id,
       title: modalTitle ?? 'Select language',
       children: (
-        <Grid col={2} gap={0}>
+        <Grid col={2} gap={1}>
           {locales.map((locale) => (
             <button
               key={locale.code}
@@ -46,7 +46,7 @@ export function LocaleModal({
   }
 
   return (
-    <div className={styles[theme]}>
+    <div className={theme}>
       <button
         type="button"
         className={clsx(styles.modalTrigger, className)}

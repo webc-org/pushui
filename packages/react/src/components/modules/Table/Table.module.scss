@@ -1,9 +1,9 @@
 @use 'styles/mixins/typo' as *;
 
-$bg-color-row-even: var(--color-grey-9);
-$bg-color-row-hover: var(--color-grey-8);
-$bg-color-head: var(--color-grey-8);
-$bg-color-foot: var(--color-grey-8);
+$bg-color-row-even: var(--theme-bg-2);
+$bg-color-row-hover: var(--theme-bg-2);
+$bg-color-head: var(--theme-bg-2);
+$bg-color-foot: var(--theme-bg-2);
 
 .table {
   @include base-table;

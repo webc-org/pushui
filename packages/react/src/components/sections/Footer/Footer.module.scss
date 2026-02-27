@@ -1,10 +1,9 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-footer: var(--color-grey-7);
-$bg-color-menu: var(--color-white-50);
-$bd-color-bottom: var(--color-grey-4);
-$tx-color-copyright: var(--color-grey-4);
-$tx-color-link-hover: var(--color-primary-2);
+$bg-color-footer: var(--theme-bg-2);
+$bg-color-menu: var(--theme-bg);
+$bd-color-bottom: var(--theme-border);
+$tx-color-link-hover: var(--theme-accent);
 
 .footer {
   background: $bg-color-footer;
@@ -56,7 +55,6 @@ $tx-color-link-hover: var(--color-primary-2);
 .headerDesktopMainNav {
   display: flex;
   flex-direction: column;
-  font-size: var(--font-size-3);
   gap: 1rem;
 }
 
@@ -68,7 +66,6 @@ $tx-color-link-hover: var(--color-primary-2);
   border-top: .1rem solid $bd-color-bottom;
   display: flex;
   flex-direction: column-reverse;
-  font-size: var(--font-size-3);
   gap: 2rem;
   padding: 3rem 0;
 
@@ -81,7 +78,8 @@ $tx-color-link-hover: var(--color-primary-2);
 }
 
 .copyright {
-  color: $tx-color-copyright;
+  color: var(--theme-text);
+  opacity: 0.5;
 }
 
 .bottomNav {

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { useTheme } from 'utils'
 import { Logo } from './Logo'
 
 const meta: Meta<typeof Logo> = {
@@ -10,10 +11,22 @@ const meta: Meta<typeof Logo> = {
 export default meta
 type Story = StoryObj<typeof Logo>
 
-export const Playground: Story = {
-  render: () => (
+const LogoContent = () => {
+  const { theme } = useTheme()
+  const src = theme === 'dark' ? '/pushui_white.svg' : '/pushui_black.svg'
+  return (
     <Logo href="/">
-      <img src="/pushui_black.svg" alt="Push UI" />
+      <img src={src} alt="Push UI" />
     </Logo>
-  ),
+  )
+}
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <LogoContent />,
+}
+
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <LogoContent />,
 }

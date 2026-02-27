@@ -14,33 +14,23 @@ const meta: Meta = {
     ),
   ],
   argTypes: {
-    title: {
-      control: 'text',
-      description: 'Modal title',
-    },
-    width: {
-      control: 'text',
-      description: 'Modal width (e.g., "400px", "50vw")',
-    },
-    closeLabel: {
-      control: 'text',
-      description: 'Close button aria-label',
-    },
+    title: { control: 'text' },
+    width: { control: 'text' },
+    closeLabel: { control: 'text' },
   },
-  args: {
-    title: 'Modal Title',
-    width: '500px',
-  },
+  args: { title: 'Modal Title', width: '500px' },
 }
 
 export default meta
 type Story = StoryObj
 
 const ModalTrigger = ({
+  label = 'Open Modal',
   title = 'Modal Title',
   width,
   children = <p>Modal content goes here.</p>,
 }: {
+  label?: string
   title?: string
   width?: string
   children?: React.ReactNode
@@ -52,43 +42,35 @@ const ModalTrigger = ({
       appearance="button"
       onClick={() => addModal({ title, width, children })}
     >
-      Open Modal
+      {label}
     </Button>
   )
 }
 
-export const Playground: Story = {
-  render: (args: { title?: string; width?: string }) => (
-    <ModalTrigger title={args.title} width={args.width}>
-      <p>Click the button to open the modal.</p>
-    </ModalTrigger>
-  ),
-  args: {
-    title: 'Modal Title',
-    width: '500px',
-  },
-}
-
-export const Small: Story = {
-  render: () => (
-    <ModalTrigger title="Small Modal" width="400px">
+const Variants = () => (
+  <div style={{ display: 'flex', gap: '1rem' }}>
+    <ModalTrigger label="Small (400px)" title="Small Modal" width="400px">
       <p>Small modal content.</p>
     </ModalTrigger>
-  ),
-}
-
-export const Medium: Story = {
-  render: () => (
-    <ModalTrigger title="Medium Modal" width="500px">
+    <ModalTrigger
+      label="Medium (500px)"
+      title="Medium Modal"
+      width="500px"
+    >
       <p>Medium modal content.</p>
     </ModalTrigger>
-  ),
-}
-
-export const Large: Story = {
-  render: () => (
-    <ModalTrigger title="Large Modal" width="800px">
+    <ModalTrigger label="Large (800px)" title="Large Modal" width="800px">
       <p>Large modal content.</p>
     </ModalTrigger>
-  ),
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
+}
+
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

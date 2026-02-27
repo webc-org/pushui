@@ -5,50 +5,27 @@ import { Info } from 'lucide-react'
 import { Tooltip } from './Tooltip'
 import type { TooltipPosition } from './Tooltip.types'
 
-const wrapperStyle: CSSProperties = {
-  padding: '5rem',
-  display: 'flex',
-  justifyContent: 'center',
-  minHeight: '30rem',
-  alignItems: 'center',
-}
-const paragraphStyle: CSSProperties = {
+const positions: TooltipPosition[] = ['top', 'bottom', 'left', 'right']
+
+const triggerStyle: CSSProperties = {
   alignItems: 'center',
   display: 'flex',
   gap: '.5rem',
-  justifyContent: 'center',
 }
-
-const positions: TooltipPosition[] = ['top', 'bottom', 'left', 'right']
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Base/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
   argTypes: {
-    content: {
-      control: 'text',
-      description: 'Tooltip content',
-    },
+    content: { control: 'text', description: 'Tooltip content' },
     position: {
       control: 'select',
       options: positions,
       description: 'Position relative to trigger',
-      table: {
-        defaultValue: { summary: 'top' },
-      },
     },
-    delay: {
-      control: 'number',
-      description: 'Delay before showing (ms)',
-      table: {
-        defaultValue: { summary: '200' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disable the tooltip',
-    },
+    delay: { control: 'number', description: 'Delay before showing (ms)' },
+    disabled: { control: 'boolean', description: 'Disable the tooltip' },
   },
   args: {
     content: 'This is a tooltip',
@@ -61,167 +38,53 @@ const meta: Meta<typeof Tooltip> = {
 export default meta
 type Story = StoryObj<typeof Tooltip>
 
-export const Default: Story = {
-  render: (args) => (
-    <div style={wrapperStyle}>
-      <p style={paragraphStyle}>
-        <Tooltip {...args}>
+const Variants = () => (
+  <div
+    style={{
+      padding: '8rem',
+      display: 'flex',
+      gap: '4rem',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+    }}
+  >
+    {positions.map((pos) => (
+      <p key={pos} style={triggerStyle}>
+        <Tooltip content={`Tooltip ${pos}`} position={pos} delay={0}>
           <Info size={20} />
         </Tooltip>
-        Hover me
+        {pos}
       </p>
-    </div>
-  ),
-}
-
-export const AllPositions: Story = {
-  render: () => (
-    <div
-      style={{
-        padding: '8rem',
-        display: 'flex',
-        gap: '4rem',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-      }}
-    >
-      {positions.map((pos) => (
-        <p key={pos} style={paragraphStyle}>
-          <Tooltip content={`Tooltip on ${pos}`} position={pos} delay={0}>
-            <Info size={20} />
-          </Tooltip>
-          {pos}
-        </p>
-      ))}
-    </div>
-  ),
-}
-
-export const LongContent: Story = {
-  args: {
-    content:
-      'This is a longer tooltip with more detailed information that wraps to multiple lines.',
-  },
-  render: (args) => (
-    <div style={wrapperStyle}>
-      <p style={paragraphStyle}>
-        <Tooltip {...args}>
-          <Info size={20} />
-        </Tooltip>
-        Hover for details
-      </p>
-    </div>
-  ),
-}
-
-export const WithReactContent: Story = {
-  render: () => {
-    const TooltipContent = (
-      <>
-        <Title level="h5">Bold title</Title>
-        <p style={{ opacity: 0.8 }}>Additional info</p>
-      </>
-    )
-
-    return (
-      <div style={wrapperStyle}>
-        <p style={paragraphStyle}>
-          <Tooltip content={TooltipContent} delay={0}>
-            <Info size={20} />
-          </Tooltip>
-          Hover for details
-        </p>
-      </div>
-    )
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-  render: (args) => (
-    <div style={wrapperStyle}>
-      <p style={paragraphStyle}>
-        <Tooltip {...args}>
-          <Info size={20} />
-        </Tooltip>
-        No tooltip
-      </p>
-    </div>
-  ),
-}
-
-export const NoDelay: Story = {
-  args: {
-    delay: 0,
-  },
-  render: (args) => (
-    <div style={wrapperStyle}>
-      <Tooltip {...args}>
-        <p>Instant tooltip</p>
+    ))}
+    <p style={triggerStyle}>
+      <Tooltip
+        content={
+          <>
+            <Title level="h5">Rich content</Title>
+            <p style={{ opacity: 0.8 }}>Extra info</p>
+          </>
+        }
+        delay={0}
+      >
+        <Info size={20} />
       </Tooltip>
-    </div>
-  ),
+      rich
+    </p>
+    <p style={triggerStyle}>
+      <Tooltip content="Won't show" disabled>
+        <Info size={20} />
+      </Tooltip>
+      disabled
+    </p>
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const EdgeDetection: Story = {
-  render: () => (
-    <div
-      style={{
-        padding: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20rem',
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <p style={paragraphStyle}>
-          <Tooltip
-            content="This tooltip should flip to the right"
-            position="left"
-            delay={0}
-          >
-            <Info size={20} />
-          </Tooltip>
-          Tooltip
-        </p>
-
-        <p style={paragraphStyle}>
-          <Tooltip
-            content="This tooltip should flip to the left"
-            position="right"
-            delay={0}
-          >
-            <Info size={20} />
-          </Tooltip>
-          Tooltip
-        </p>
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <p style={paragraphStyle}>
-          <Tooltip
-            content="This is a long tooltip that should shift to stay in viewport"
-            position="top"
-            delay={0}
-          >
-            <Info size={20} />
-          </Tooltip>
-          Tooltip
-        </p>
-
-        <p style={paragraphStyle}>
-          <Tooltip
-            content="This is a long tooltip that should shift to stay in viewport"
-            position="top"
-            delay={0}
-          >
-            <Info size={20} />
-          </Tooltip>
-          Tooltip
-        </p>
-      </div>
-    </div>
-  ),
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

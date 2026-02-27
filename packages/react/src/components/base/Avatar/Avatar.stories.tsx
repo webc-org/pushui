@@ -16,132 +16,73 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   tags: ['autodocs'],
   argTypes: {
-    src: {
-      control: 'text',
-      description: 'Image URL',
-    },
-    alt: {
-      control: 'text',
-      description: 'Alt text for image',
-    },
-    name: {
-      control: 'text',
-      description: 'Name for initials fallback',
-    },
-    width: {
-      control: 'text',
-      description: 'Size of the avatar',
-      table: {
-        defaultValue: { summary: '3rem' },
-      },
-    },
+    src: { control: 'text', description: 'Image URL' },
+    alt: { control: 'text', description: 'Alt text for image' },
+    name: { control: 'text', description: 'Name for initials fallback' },
+    width: { control: 'text', description: 'Size of the avatar' },
     fontSize: {
       control: { type: 'number', min: 1, max: 9 },
       description: 'Font size scale (1-9)',
-      table: {
-        defaultValue: { summary: '2' },
-      },
     },
     variant: {
       control: 'select',
       options: variants,
-      description: 'Background color variant for fallback',
-      table: {
-        defaultValue: { summary: 'none (grey)' },
-      },
-    },
-    defaultLabel: {
-      control: 'text',
-      description: 'Default aria-label when no alt or name provided',
+      description: 'Background color variant',
     },
   },
-  args: {
-    variant: undefined,
-  },
+  args: { variant: undefined },
 }
 
 export default meta
 type Story = StoryObj<typeof Avatar>
 
-export const WithImage: Story = {
-  args: {
-    src: 'https://i.pravatar.cc/150?u=john',
-    alt: 'John Doe',
-    name: 'John Doe',
-  },
-}
-
-export const WithInitials: Story = {
-  args: {
-    name: 'John Doe',
-    variant: 'primary',
-  },
-}
-
-export const SingleName: Story = {
-  args: {
-    name: 'John',
-    variant: 'secondary',
-  },
-}
-
-export const Fallback: Story = {
-  args: {},
-}
-
-export const CustomSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Avatar
-        width="3rem"
-        fontSize={2}
-        name="John Doe"
-        variant="primary"
-      />
-      <Avatar
-        width="4rem"
-        fontSize={3}
-        name="John Doe"
-        variant="primary"
-      />
-      <Avatar
-        width="5rem"
-        fontSize={4}
-        name="John Doe"
-        variant="primary"
-      />
-      <Avatar
-        width="6rem"
-        fontSize={5}
-        name="John Doe"
-        variant="primary"
-      />
-    </div>
-  ),
-}
-
-export const AllVariants: Story = {
-  render: () => (
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
       {variants.map((v) => (
         <Avatar key={v} variant={v} name="JD" />
       ))}
     </div>
-  ),
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Avatar
+        src="https://i.pravatar.cc/150?u=john"
+        alt="With image"
+        name="John Doe"
+      />
+      <Avatar name="John Doe" variant="primary" />
+      <Avatar name="John" variant="secondary" />
+      <Avatar variant="info" />
+      <Avatar
+        src="https://broken.url/img.jpg"
+        name="Fallback"
+        variant="success"
+      />
+    </div>
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      {[
+        ['3rem', 2],
+        ['4rem', 3],
+        ['5rem', 4],
+        ['6rem', 5],
+      ].map(([w, f]) => (
+        <Avatar
+          key={String(w)}
+          width={String(w)}
+          fontSize={Number(f)}
+          name="JD"
+          variant="primary"
+        />
+      ))}
+    </div>
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const ImageWithFallback: Story = {
-  args: {
-    src: 'https://broken-url.com/image.jpg',
-    name: 'Jane Smith',
-    variant: 'success',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'When the image fails to load, initials are shown as fallback.',
-      },
-    },
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

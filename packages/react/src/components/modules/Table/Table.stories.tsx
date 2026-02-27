@@ -15,22 +15,10 @@ const meta: Meta<typeof Table> = {
   component: Table,
   tags: ['autodocs'],
   argTypes: {
-    striped: {
-      control: 'boolean',
-      description: 'Adds striped rows',
-    },
-    hoverable: {
-      control: 'boolean',
-      description: 'Adds hover effect on rows',
-    },
-    compact: {
-      control: 'boolean',
-      description: 'Makes the table more compact',
-    },
-    bordered: {
-      control: 'boolean',
-      description: 'Adds border to all cells',
-    },
+    striped: { control: 'boolean' },
+    hoverable: { control: 'boolean' },
+    compact: { control: 'boolean' },
+    bordered: { control: 'boolean' },
   },
   args: {
     striped: true,
@@ -61,250 +49,56 @@ const sampleData = [
   { id: 5, name: 'Emma Petit', email: 'emma@example.com', role: 'Admin' },
 ]
 
-export const Playground: Story = {
-  render: (args) => (
-    <Table {...args}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
-}
+const DataHead = () => (
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>Name</TableHeaderCell>
+      <TableHeaderCell>Email</TableHeaderCell>
+      <TableHeaderCell>Role</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+)
 
-export const Basic: Story = {
-  render: () => (
+const DataRows = () => (
+  <>
+    {sampleData.map((row) => (
+      <TableRow key={row.id}>
+        <TableCell>{row.name}</TableCell>
+        <TableCell>{row.email}</TableCell>
+        <TableCell>{row.role}</TableCell>
+      </TableRow>
+    ))}
+  </>
+)
+
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
     <Table>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
+      <TableCaption>With caption (top)</TableCaption>
+      <DataHead />
       <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
+        <DataRows />
       </TableBody>
     </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const WithCaption: Story = {
-  render: () => (
-    <Table>
-      <TableCaption>List of team members</TableCaption>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sampleData.slice(0, 3).map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const CaptionBottom: Story = {
-  render: () => (
-    <Table>
-      <TableCaption position="bottom">
-        Source: Company directory
-      </TableCaption>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sampleData.slice(0, 3).map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const Hoverable: Story = {
-  render: () => (
     <Table hoverable>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
+      <DataHead />
       <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
+        <DataRows />
       </TableBody>
     </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const Compact: Story = {
-  render: () => (
-    <Table compact>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
+    <Table compact striped bordered={false}>
+      <DataHead />
       <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
+        <DataRows />
       </TableBody>
     </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const NoBorders: Story = {
-  render: () => (
-    <Table bordered={false}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const NoStripes: Story = {
-  render: () => (
-    <Table striped={false}>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sampleData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const WithFooter: Story = {
-  render: () => (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Product</TableHeaderCell>
-          <TableHeaderCell>Quantity</TableHeaderCell>
-          <TableHeaderCell>Price</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableCell>Widget A</TableCell>
-          <TableCell>10</TableCell>
-          <TableCell>€50.00</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Widget B</TableCell>
-          <TableCell>5</TableCell>
-          <TableCell>€75.00</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>Widget C</TableCell>
-          <TableCell>20</TableCell>
-          <TableCell>€30.00</TableCell>
-        </TableRow>
-      </TableBody>
-      <TableFoot>
-        <TableRow>
-          <TableCell>Total</TableCell>
-          <TableCell>35</TableCell>
-          <TableCell>€155.00</TableCell>
-        </TableRow>
-      </TableFoot>
-    </Table>
-  ),
-  parameters: { controls: { disable: true } },
-}
-
-export const FullFeatured: Story = {
-  render: () => (
     <Table hoverable compact>
-      <TableCaption>Q4 2024 Sales Report</TableCaption>
+      <TableCaption>Q4 Sales Report</TableCaption>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Month</TableHeaderCell>
           <TableHeaderCell>Sales</TableHeaderCell>
           <TableHeaderCell>Revenue</TableHeaderCell>
-          <TableHeaderCell>Growth</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -312,19 +106,16 @@ export const FullFeatured: Story = {
           <TableCell>October</TableCell>
           <TableCell>1,234</TableCell>
           <TableCell>€45,000</TableCell>
-          <TableCell>+12%</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>November</TableCell>
           <TableCell>1,456</TableCell>
           <TableCell>€52,000</TableCell>
-          <TableCell>+15%</TableCell>
         </TableRow>
         <TableRow>
           <TableCell>December</TableCell>
           <TableCell>1,890</TableCell>
           <TableCell>€68,000</TableCell>
-          <TableCell>+31%</TableCell>
         </TableRow>
       </TableBody>
       <TableFoot>
@@ -332,10 +123,18 @@ export const FullFeatured: Story = {
           <TableCell>Total</TableCell>
           <TableCell>4,580</TableCell>
           <TableCell>€165,000</TableCell>
-          <TableCell>+19% avg</TableCell>
         </TableRow>
       </TableFoot>
     </Table>
-  ),
-  parameters: { controls: { disable: true } },
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
+}
+
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }

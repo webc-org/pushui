@@ -43,7 +43,7 @@ export function HeaderSearch({
   }
 
   return (
-    <div className={styles[theme]}>
+    <div className={theme}>
       <button
         type="button"
         className={clsx(styles.trigger, className)}

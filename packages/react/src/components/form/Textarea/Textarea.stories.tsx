@@ -7,32 +7,11 @@ const meta: Meta<typeof InputTextarea> = {
   component: InputTextarea,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-      description: 'Textarea label',
-    },
-    placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
-    },
-    maxLength: {
-      control: 'number',
-      description: 'Maximum character length',
-    },
-    showCount: {
-      control: 'boolean',
-      description: 'Show character count',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the textarea is disabled',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
+    maxLength: { control: 'number' },
+    showCount: { control: 'boolean' },
+    disabled: { control: 'boolean' },
   },
   args: {
     label: 'Label',
@@ -45,41 +24,56 @@ const meta: Meta<typeof InputTextarea> = {
 export default meta
 type Story = StoryObj<typeof InputTextarea>
 
-const TextareaWithState = (args: {
+const TextareaWithState = ({
+  label,
+  placeholder,
+  maxLength,
+  showCount,
+  disabled,
+}: {
   label?: string
   placeholder?: string
-  value?: string
   maxLength?: number
   showCount?: boolean
   disabled?: boolean
 }) => {
-  const [value, setValue] = useState(args.value || '')
-  return <InputTextarea {...args} value={value} onChange={setValue} />
+  const [value, setValue] = useState('')
+  return (
+    <InputTextarea
+      label={label}
+      placeholder={placeholder}
+      value={value}
+      onChange={setValue}
+      maxLength={maxLength}
+      showCount={showCount}
+      disabled={disabled}
+    />
+  )
 }
 
-export const Playground: Story = {
-  render: (args) => <TextareaWithState {...args} />,
-  args: {
-    label: 'Description',
-    placeholder: 'Enter description',
-  },
+const Variants = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <TextareaWithState label="Default" placeholder="Enter text" />
+    <TextareaWithState
+      label="With character count"
+      placeholder="Max 280 chars"
+      maxLength={280}
+      showCount
+    />
+    <TextareaWithState
+      label="Disabled"
+      placeholder="Cannot edit"
+      disabled
+    />
+  </div>
+)
+
+export const Light: Story = {
+  parameters: { theme: 'light' },
+  render: () => <Variants />,
 }
 
-export const WithCharacterCount: Story = {
-  render: (args) => <TextareaWithState {...args} />,
-  args: {
-    label: 'Bio',
-    placeholder: 'Write a short bio',
-    maxLength: 280,
-    showCount: true,
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => <TextareaWithState {...args} />,
-  args: {
-    label: 'Notes',
-    placeholder: 'Enter notes',
-    disabled: true,
-  },
+export const Dark: Story = {
+  parameters: { theme: 'dark' },
+  render: () => <Variants />,
 }
