@@ -8,6 +8,5 @@ export type LinkTypes = ComponentPropsWithRef<'a'> & {
   disabled?: boolean
   variant?: ColorVariant
   appearance?: ActionAppearance
-  contrast?: boolean
   asChild?: boolean
 }

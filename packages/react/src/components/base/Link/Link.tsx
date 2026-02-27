@@ -11,7 +11,6 @@ export function Link({
   children,
   className,
   appearance,
-  contrast,
   variant,
   asChild,
   ...rest
@@ -23,7 +22,6 @@ export function Link({
     isStyled && styles.styled,
     variant && styles[`variant-${variant}`],
     appearance && styles[`appearance-${appearance}`],
-    contrast && styles.contrast,
     disabled && styles.disabled,
     className
   )

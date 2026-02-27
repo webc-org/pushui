@@ -10,7 +10,6 @@ export function HeaderMobileMainLink({
   current,
   appearance,
   variant,
-  contrast,
   ...props
 }: HeaderMobileMainLinkTypes) {
   const Comp = asChild ? Slot : 'a'
@@ -22,7 +21,6 @@ export function HeaderMobileMainLink({
         current && styles.current,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
-        contrast && styles.contrast,
         className
       )}
       aria-current={current ? 'page' : undefined}

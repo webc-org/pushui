@@ -29,7 +29,6 @@ const meta: Meta<typeof Button> = {
       control: 'select',
       options: [undefined, ...appearances],
     },
-    contrast: { control: 'boolean', description: 'For dark backgrounds' },
     loading: { control: 'boolean' },
     disabled: { control: 'boolean' },
     children: { control: 'text' },

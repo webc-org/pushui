@@ -13,7 +13,6 @@ export function ThemeToggle({
 }: ThemeToggleTypes) {
   const { theme, setTheme } = useTheme()
   const isDark = theme === 'dark'
-  const isContrast = isDark
 
   return (
     <Button
@@ -21,7 +20,6 @@ export function ThemeToggle({
       type="button"
       appearance="icon"
       variant="primary"
-      contrast={isContrast}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className={clsx(styles.toggle, className)}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}

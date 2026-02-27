@@ -10,12 +10,9 @@ export type VerticalAlignTypes = VerticalAlign
 export type BannerTextAlignTypes = HorizontalAlign
 
 export type BannerOverlay = 'none' | 'light' | 'dark'
-export type BannerTextColor = 'light' | 'dark'
 
 /** @deprecated Use BannerOverlay instead */
 export type BannerOverlayTypes = BannerOverlay
-/** @deprecated Use BannerTextColor instead */
-export type BannerTextColorTypes = BannerTextColor
 
 export type BannerBackgroundVideo = {
   src: string
@@ -35,7 +32,7 @@ export type BannerTypes = ComponentPropsWithRef<'div'> & {
 export type BannerContentTypes = ComponentPropsWithRef<'div'> & {
   maxWidth?: string
   textAlign?: HorizontalAlign
-  textColor?: BannerTextColor
+  theme?: 'light' | 'dark'
 }
 
 export type BannerTitleTypes = TitleTypes

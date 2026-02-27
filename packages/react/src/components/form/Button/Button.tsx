@@ -10,7 +10,6 @@ export function Button({
   children,
   className,
   appearance,
-  contrast,
   loading = false,
   type = 'button',
   variant,
@@ -22,7 +21,6 @@ export function Button({
     isStyled && styles.styled,
     variant && styles[`variant-${variant}`],
     appearance && styles[`appearance-${appearance}`],
-    contrast && styles.contrast,
     className
   )
 

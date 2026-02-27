@@ -55,13 +55,13 @@ const Variants = () => (
       overlay="dark"
       horizontalAlign="center"
     >
-      <BannerContent textColor="light" textAlign="center">
+      <BannerContent theme="dark" textAlign="center">
         <BannerTitle>Dark Overlay — Center</BannerTitle>
         <BannerSubtitle>
           Adventure awaits beyond the horizon
         </BannerSubtitle>
         <BannerActions className="mt-4">
-          <Button variant="primary" contrast appearance="button">
+          <Button variant="primary" appearance="button">
             Book Now
           </Button>
         </BannerActions>
@@ -72,7 +72,7 @@ const Variants = () => (
       overlay="light"
       horizontalAlign="left"
     >
-      <BannerContent textColor="dark">
+      <BannerContent theme="light">
         <BannerTitle>Light Overlay — Left</BannerTitle>
         <BannerSubtitle>Find your peace</BannerSubtitle>
         <BannerActions className="mt-4">
@@ -89,11 +89,11 @@ const Variants = () => (
       minHeight="50rem"
       verticalAlign="end"
     >
-      <BannerContent textColor="light" maxWidth="50rem">
+      <BannerContent theme="dark" maxWidth="50rem">
         <BannerTitle level="h2">Right Aligned — Bottom</BannerTitle>
         <BannerSubtitle>Exclusive designs for you</BannerSubtitle>
         <BannerActions className="mt-4">
-          <Button variant="secondary" contrast appearance="button">
+          <Button variant="secondary" appearance="button">
             Shop Now
           </Button>
         </BannerActions>

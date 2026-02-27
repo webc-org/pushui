@@ -7,6 +7,5 @@ export type ButtonAppearance = ActionAppearance
 export type ButtonTypes = ComponentPropsWithRef<'button'> & {
   variant?: ColorVariant
   appearance?: ActionAppearance
-  contrast?: boolean
   loading?: boolean
 }

@@ -29,7 +29,6 @@ const meta: Meta<typeof Link> = {
       control: 'select',
       options: [undefined, ...appearances],
     },
-    contrast: { control: 'boolean', description: 'For dark backgrounds' },
     disabled: { control: 'boolean' },
     href: { control: 'text' },
     children: { control: 'text' },

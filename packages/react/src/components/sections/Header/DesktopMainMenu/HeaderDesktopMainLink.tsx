@@ -10,7 +10,6 @@ export function HeaderDesktopMainLink({
   current,
   appearance,
   variant,
-  contrast,
   ...props
 }: HeaderDesktopMainLinkTypes) {
   const Comp = asChild ? Slot : 'a'
@@ -21,7 +20,6 @@ export function HeaderDesktopMainLink({
         styles.link,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
-        contrast && styles.contrast,
         current && styles.current,
         className
       )}

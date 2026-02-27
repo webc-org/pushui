@@ -24,7 +24,6 @@ export type HeaderMobileTopLinkTypes = ComponentPropsWithRef<'a'> & {
   children: ReactNode
   current?: boolean
   variant?: ColorVariant
-  contrast?: boolean
 }
 
 export type HeaderMobileTopNavTypes = ComponentPropsWithRef<'div'> & {

@@ -9,7 +9,6 @@ export function HeaderMobileTopLink({
   className,
   current,
   variant,
-  contrast,
   ...props
 }: HeaderMobileTopLinkTypes) {
   const Comp = asChild ? Slot : 'a'
@@ -21,7 +20,6 @@ export function HeaderMobileTopLink({
         styles.link,
         appearance && styles[`appearance-${appearance}`],
         variant && styles[`variant-${variant}`],
-        contrast && styles.contrast,
         current && styles.current,
         className
       )}

@@ -68,10 +68,6 @@
     $hover: var(--theme-action-#{$name}-hover);
     $actionText: var(--theme-action-#{$name}-text);
 
-    // CONTRAST (explicit override for colored backgrounds)
-    $text-contrast: var(--color-white);
-    $base-contrast: var(--color-#{$name}-contrast);
-    $hover-contrast: var(--color-#{$name}-3);
 
     &.variant-#{$name} {
       background: transparent;
@@ -117,48 +113,6 @@
         }
       }
 
-      &.contrast {
-        color: $text-contrast;
-
-        &[aria-selected='true']:not([disabled], [aria-disabled='true']),
-        &:hover:not([disabled], [aria-disabled='true']),
-        &:focus-visible:not([disabled], [aria-disabled='true']) {
-          color: $base-contrast;
-        }
-
-        &.appearance-button {
-          background: $base-contrast;
-          color: var(--color-#{$name}-1);
-
-          &[aria-selected='true']:not([disabled], [aria-disabled='true']),
-          &:focus-visible:not([disabled], [aria-disabled='true']),
-          &:hover:not([disabled], [aria-disabled='true']) {
-            background: $hover-contrast;
-            color: var(--color-#{$name}-1);
-          }
-        }
-
-        &.appearance-outline {
-          border-color: $base-contrast;
-          color: $base-contrast;
-
-          &[aria-selected='true']:not([disabled], [aria-disabled='true']),
-          &:focus-visible:not([disabled], [aria-disabled='true']),
-          &:hover:not([disabled], [aria-disabled='true']) {
-            background: var(--color-#{$name}-3);
-            border-color: var(--color-#{$name}-3);
-            color: var(--color-#{$name}-1);
-          }
-        }
-
-        &.appearance-underline {
-          color: $base-contrast;
-          
-          &::before {
-            background: $base-contrast;
-          }
-        }
-      }
     }
   }
 }

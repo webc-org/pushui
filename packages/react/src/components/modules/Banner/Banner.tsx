@@ -70,7 +70,7 @@ export function Banner({
 export function BannerContent({
   ref,
   textAlign,
-  textColor = 'dark',
+  theme,
   maxWidth,
   className,
   style,
@@ -82,8 +82,8 @@ export function BannerContent({
       ref={ref}
       className={clsx(
         styles.content,
-        styles[`text-${textColor}`],
         textAlign && styles[`text-align-${textAlign}`],
+        theme,
         className
       )}
       style={{ ...style, maxWidth }}

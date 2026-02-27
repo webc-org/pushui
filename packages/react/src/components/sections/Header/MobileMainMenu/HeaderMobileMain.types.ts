@@ -30,7 +30,6 @@ export type HeaderMobileMainLinkTypes = ComponentPropsWithRef<'a'> & {
   current?: boolean
   appearance?: ActionAppearance
   variant?: ColorVariant
-  contrast?: boolean
 }
 
 export type HeaderMobileMainDropdownLinkTypes =
