@@ -1,3 +1,14 @@
+@mixin anim-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition-default);
+
+  > * {
+    overflow: hidden;
+  }
+}
+
 @mixin anim-fade {
   opacity: 0;
   transition: all var(--transition-default);

@@ -1,10 +1,5 @@
 @use 'styles/mixins/typo' as *;
 
-$bg-color-row-even: var(--theme-bg-2);
-$bg-color-row-hover: var(--theme-bg-2);
-$bg-color-head: var(--theme-bg-2);
-$bg-color-foot: var(--theme-bg-2);
-
 .table {
   @include base-table;
 
@@ -20,7 +15,7 @@ $bg-color-foot: var(--theme-bg-2);
 }
 
 .table.striped tbody tr:nth-child(even) {
-  background-color: $bg-color-row-even;
+  background-color: var(--theme-bg-2);
 }
 
 .table:not(.striped) tbody tr:nth-child(even) {
@@ -28,7 +23,7 @@ $bg-color-foot: var(--theme-bg-2);
 }
 
 .table.hoverable tbody tr:hover {
-  background-color: $bg-color-row-hover;
+  background-color: var(--theme-bg-2);
 }
 
 .table.compact th,
@@ -37,11 +32,11 @@ $bg-color-foot: var(--theme-bg-2);
 }
 
 .head {
-  background-color: $bg-color-head;
+  background-color: var(--theme-bg-2);
 }
 
 .foot {
-  background-color: $bg-color-foot;
+  background-color: var(--theme-bg-2);
   font-weight: var(--font-weight-strong);
 }
 

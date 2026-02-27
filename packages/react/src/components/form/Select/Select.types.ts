@@ -36,6 +36,8 @@ export type ChoiceClearTypes = ComponentProps<'button'>
 
 export type SelectActionsTypes = ComponentProps<'div'>
 
+export type SelectBoxTypes = ComponentProps<'div'>
+
 export type SelectPlaceholderTypes = ComponentProps<'span'>
 
 export type SelectModalTypes = ComponentProps<'div'>
@@ -61,6 +63,7 @@ export type SelectRootTypes = Omit<ComponentProps<'div'>, 'onChange'> & {
   selectedOptionsLabel?: string
   removeLabel?: string
   searchLabel?: string
+  inline?: boolean
 }
 
 // CONTEXT
@@ -82,6 +85,7 @@ export type SelectContextTypes = {
   searchInputRef: RefObject<HTMLInputElement | null>
   choiceButtonRefs: RefObject<Map<string, HTMLButtonElement>>
   controlId: string
+  labelId?: string
   value: OptionTypes[]
   options: OptionTypes[]
   filteredOptions: OptionTypes[]
@@ -100,4 +104,5 @@ export type SelectContextTypes = {
   selectedOptionsLabel: string
   removeLabel: string
   searchLabel: string
+  inline?: boolean
 }

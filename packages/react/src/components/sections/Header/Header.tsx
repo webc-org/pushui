@@ -1,6 +1,5 @@
 import { useId, useMemo, useState } from 'react'
 import clsx from 'clsx'
-import { useTheme } from 'utils'
 import { HeaderContext } from './HeaderContext'
 import { useHeaderCustomStyles } from './useHeaderCustomStyles'
 import { useHeaderMobileToggle } from './useHeaderMobileToggle'
@@ -32,10 +31,6 @@ export function Header({
     isScrolled,
     isActive
   )
-  const { theme } = useTheme(() =>
-    !isScrolled && !isActive && themeOverlay ? themeOverlay : undefined
-  )
-
   const value = useMemo(
     () => ({
       isOpen,
@@ -64,7 +59,7 @@ export function Header({
       <header
         ref={ref}
         data-header-root
-        className={clsx(styles.header, theme, className)}
+        className={clsx(styles.header, className)}
         onMouseEnter={() => setIsActive(true)}
         onMouseLeave={() => setIsActive(false)}
         onFocus={() => setIsActive(true)}

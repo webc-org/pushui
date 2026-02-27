@@ -26,21 +26,29 @@ export function useHeaderCustomStyles(
       desktop: {
         top: {
           light: {
-            bgColor: desktopTopLight?.bgColor ?? 'var(--color-grey-9)',
+            bgColor:
+              desktopTopLight?.bgColor ??
+              'var(--theme-header-desktop-top-bg)',
             bgOpacity: desktopTopLight?.bgOpacity ?? '1',
           },
           dark: {
-            bgColor: desktopTopDark?.bgColor ?? 'var(--color-grey-1)',
+            bgColor:
+              desktopTopDark?.bgColor ??
+              'var(--theme-header-desktop-top-bg)',
             bgOpacity: desktopTopDark?.bgOpacity ?? '1',
           },
         },
         main: {
           light: {
-            bgColor: desktopMainLight?.bgColor ?? 'var(--color-white)',
+            bgColor:
+              desktopMainLight?.bgColor ??
+              'var(--theme-header-desktop-main-bg)',
             bgOpacity: desktopMainLight?.bgOpacity ?? '1',
           },
           dark: {
-            bgColor: desktopMainDark?.bgColor ?? 'var(--color-grey-2)',
+            bgColor:
+              desktopMainDark?.bgColor ??
+              'var(--theme-header-desktop-main-bg)',
             bgOpacity: desktopMainDark?.bgOpacity ?? '1',
           },
         },
@@ -48,20 +56,28 @@ export function useHeaderCustomStyles(
       mobile: {
         top: {
           light: {
-            bgColor: mobileTopLight?.bgColor ?? 'var(--color-white)',
+            bgColor:
+              mobileTopLight?.bgColor ??
+              'var(--theme-header-mobile-top-bg)',
             bgOpacity: mobileTopLight?.bgOpacity ?? '1',
           },
           dark: {
-            bgColor: mobileTopDark?.bgColor ?? 'var(--color-grey-1)',
+            bgColor:
+              mobileTopDark?.bgColor ??
+              'var(--theme-header-mobile-top-bg)',
             bgOpacity: mobileTopDark?.bgOpacity ?? '1',
           },
         },
         main: {
           light: {
-            bgColor: mobileMainLight?.bgColor ?? 'var(--color-white)',
+            bgColor:
+              mobileMainLight?.bgColor ??
+              'var(--theme-header-mobile-main-bg)',
           },
           dark: {
-            bgColor: mobileMainDark?.bgColor ?? 'var(--color-grey-1)',
+            bgColor:
+              mobileMainDark?.bgColor ??
+              'var(--theme-header-mobile-main-bg)',
           },
         },
       },

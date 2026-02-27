@@ -31,6 +31,7 @@ export type HeaderDesktopMainLinkTypes = ComponentPropsWithRef<'a'> & {
   current?: boolean
   appearance?: ActionAppearance
   variant?: ColorVariant
+  contrast?: boolean
 }
 
 export type HeaderDesktopMainDropdownLinkTypes =

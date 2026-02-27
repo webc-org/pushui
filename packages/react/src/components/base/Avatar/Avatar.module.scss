@@ -1,9 +1,9 @@
 .avatar {
   align-items: center;
   aspect-ratio: 1;
-  background-color: var(--action-secondary-base);
+  background-color: var(--theme-action-secondary-base);
   border-radius: 50%;
-  color: var(--action-secondary-on);
+  color: var(--theme-action-secondary-text);
   display: inline-flex;
   flex-shrink: 0;
   justify-content: center;
@@ -26,7 +26,7 @@ $variants: primary, secondary, success, danger, warning, info;
 
 @each $variant in $variants {
   .variant-#{$variant} {
-    background-color: var(--action-#{$variant}-base);
-    color: var(--action-#{$variant}-on);
+    background-color: var(--theme-action-#{$variant}-base);
+    color: var(--theme-action-#{$variant}-text);
   }
 }

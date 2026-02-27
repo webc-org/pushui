@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Slot, useTheme } from 'utils'
+import { Slot } from 'utils'
 import type { HeaderMobileTopLinkTypes } from './HeaderMobileTop.types'
 import styles from './headerMobileTop.module.scss'
 
@@ -9,11 +9,10 @@ export function HeaderMobileTopLink({
   className,
   current,
   variant,
+  contrast,
   ...props
 }: HeaderMobileTopLinkTypes) {
-  const { theme } = useTheme()
   const Comp = asChild ? Slot : 'a'
-  const contrast = theme === 'dark'
   const appearance = 'icon'
 
   return (

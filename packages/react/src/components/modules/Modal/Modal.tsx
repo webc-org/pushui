@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import clsx from 'clsx'
 import { Button, Title } from 'components'
 import { X } from 'lucide-react'
-import { getFocusableElements, useTheme } from 'utils'
+import { getFocusableElements } from 'utils'
 import styles from './Modal.module.scss'
 import type { ModalTypes } from './Modal.types'
 
@@ -19,7 +19,6 @@ export function Modal({
   closeLabel = 'Close modal',
   hideCloseButton = false,
 }: ModalTypes) {
-  const { theme } = useTheme()
   const [active, setActive] = useState(false)
   const [removing, setRemoving] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
@@ -127,52 +126,50 @@ export function Modal({
   if (typeof document === 'undefined') return null
 
   return createPortal(
-    <div className={theme}>
+    <div
+      className={clsx(
+        styles.modalBackdrop,
+        position === 'top' && styles.top,
+        removing && styles.removing,
+        active && !removing && styles.active
+      )}
+      onClick={handleBackdropClick}
+      role="presentation"
+    >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? modalTitleId : undefined}
+        aria-describedby={modalDescId}
+        ref={modalRef}
         className={clsx(
-          styles.modalBackdrop,
-          position === 'top' && styles.top,
+          styles.modal,
           removing && styles.removing,
           active && !removing && styles.active
         )}
-        onClick={handleBackdropClick}
-        role="presentation"
+        style={{ ...(width ? { width } : {}) }}
+        onClick={(e) => e.stopPropagation()}
       >
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={title ? modalTitleId : undefined}
-          aria-describedby={modalDescId}
-          ref={modalRef}
-          className={clsx(
-            styles.modal,
-            removing && styles.removing,
-            active && !removing && styles.active
-          )}
-          style={{ ...(width ? { width } : {}) }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {title && (
-            <div className={styles.modalHeader} id={modalTitleId}>
-              <Title level="h4">{title}</Title>
-            </div>
-          )}
-
-          {!hideCloseButton && (
-            <Button
-              type="button"
-              title={closeLabel}
-              onClick={handleRemove}
-              aria-label={closeLabel}
-              className={styles.close}
-            >
-              <X size={16} aria-hidden />
-            </Button>
-          )}
-
-          <div id={modalDescId} className={styles.modalBody}>
-            {children}
+        {title && (
+          <div className={styles.modalHeader} id={modalTitleId}>
+            <Title level="h4">{title}</Title>
           </div>
+        )}
+
+        {!hideCloseButton && (
+          <Button
+            type="button"
+            title={closeLabel}
+            onClick={handleRemove}
+            aria-label={closeLabel}
+            className={styles.close}
+          >
+            <X size={16} aria-hidden />
+          </Button>
+        )}
+
+        <div id={modalDescId} className={styles.modalBody}>
+          {children}
         </div>
       </div>
     </div>,

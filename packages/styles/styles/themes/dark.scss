@@ -1,0 +1,78 @@
+.dark {
+  // Opacity
+  --theme-opacity-disabled: 0.7;
+  --theme-opacity-muted: 0.7;
+
+  // Backgrounds
+
+  --theme-bg: var(--color-grey-1);
+  --theme-bg-2: var(--color-grey-2);
+  --theme-bg-3: var(--color-grey-3);
+
+  // Text & borders
+
+  --theme-text: var(--color-white);
+  --theme-accent: var(--color-primary-contrast);
+  --theme-border: var(--color-grey-2);
+  --theme-border-2: var(--color-grey-4);
+
+  // Actions — dark uses contrast palette (lighter tones) for accessibility
+
+  --theme-action-primary-base: var(--color-primary-contrast);
+  --theme-action-primary-hover: var(--color-primary-3);
+  --theme-action-primary-text: var(--color-primary-1);
+  --theme-action-secondary-base: var(--color-secondary-contrast);
+  --theme-action-secondary-hover: var(--color-secondary-3);
+  --theme-action-secondary-text: var(--color-secondary-1);
+  --theme-action-success-base: var(--color-success-contrast);
+  --theme-action-success-hover: var(--color-success-3);
+  --theme-action-success-text: var(--color-success-1);
+  --theme-action-danger-base: var(--color-danger-contrast);
+  --theme-action-danger-hover: var(--color-danger-3);
+  --theme-action-danger-text: var(--color-danger-1);
+  --theme-action-warning-base: var(--color-warning-contrast);
+  --theme-action-warning-hover: var(--color-warning-3);
+  --theme-action-warning-text: var(--color-warning-1);
+  --theme-action-info-base: var(--color-info-contrast);
+  --theme-action-info-hover: var(--color-info-3);
+  --theme-action-info-text: var(--color-info-1);
+
+  // Surfaces — dark: muted dark tones
+
+  --theme-surface-primary-bg: var(--color-primary-dark);
+  --theme-surface-primary-border: var(--color-primary-contrast);
+  --theme-surface-primary-text: var(--color-primary-3);
+  --theme-surface-secondary-bg: var(--color-secondary-dark);
+  --theme-surface-secondary-border: var(--color-secondary-contrast);
+  --theme-surface-secondary-text: var(--color-secondary-3);
+  --theme-surface-success-bg: var(--color-success-dark);
+  --theme-surface-success-border: var(--color-success-contrast);
+  --theme-surface-success-text: var(--color-success-3);
+  --theme-surface-danger-bg: var(--color-danger-dark);
+  --theme-surface-danger-border: var(--color-danger-contrast);
+  --theme-surface-danger-text: var(--color-danger-3);
+  --theme-surface-warning-bg: var(--color-warning-dark);
+  --theme-surface-warning-border: var(--color-warning-contrast);
+  --theme-surface-warning-text: var(--color-warning-3);
+  --theme-surface-info-bg: var(--color-info-dark);
+  --theme-surface-info-border: var(--color-info-contrast);
+  --theme-surface-info-text: var(--color-info-3);
+
+  // Components
+  --theme-card-bg: var(--color-grey-2);
+  --theme-card-section-bg: var(--color-grey-3);
+  --theme-close-bg: var(--color-grey-3);
+  --theme-modal-backdrop: var(--color-white-20);
+  --theme-toast-bg: var(--color-grey-9);
+  --theme-toast-text: var(--color-black);
+  --theme-code-bg: var(--color-grey-2);
+  --theme-audio-filter: invert(1) hue-rotate(180deg);
+  --theme-header-desktop-main-bg: var(--color-grey-2);
+  --theme-header-desktop-top-bg: var(--color-grey-1);
+  --theme-header-mobile-main-bg: var(--color-grey-2);
+  --theme-header-mobile-top-bg: var(--color-grey-1);
+  --theme-footer-bg: var(--color-grey-2);
+  --theme-footer-menu-bg: var(--color-grey-1);
+  --theme-dashboard-sidebar-bg: var(--color-grey-2);
+  --theme-dashboard-nav-bg: var(--color-grey-3);
+}

@@ -1,11 +1,5 @@
 @use 'styles/mixins/form' as *;
 
-$tx-color-trigger-active: var(--theme-accent);
-$tx-color-button-active: var(--action-primary-on);
-$bg-color-button-active: var(--theme-accent);
-$bg-color-button-1: var(--theme-bg-2);
-$bg-color-button-2: var(--theme-border);
-
 .wrapper {
   @include form-wrapper;
 }
@@ -46,7 +40,7 @@ $bg-color-button-2: var(--theme-border);
   }
 
   &:is(:hover, :focus-visible):not(:disabled) {
-    color: $tx-color-trigger-active;
+    color: var(--theme-accent);
     opacity: 1;
   }
 }
@@ -59,11 +53,11 @@ $bg-color-button-2: var(--theme-border);
 
   &:is(:hover, :focus-within) {
     .input:not(:disabled) {
-      border-color: $bg-color-button-active;
+      border-color: var(--theme-accent);
     }
 
     .trigger:not(:disabled) {
-      color: $tx-color-trigger-active;
+      color: var(--theme-accent);
       opacity: 1;
     }
   }
@@ -84,7 +78,7 @@ $bg-color-button-2: var(--theme-border);
 
 .monthYear {
   align-items: center;
-  background-color: $bg-color-button-1;
+  background-color: var(--theme-bg-2);
   display: flex;
   flex: 1;
   font-size: var(--font-size-4);
@@ -96,7 +90,7 @@ $bg-color-button-2: var(--theme-border);
 .day {
   align-items: center;
   aspect-ratio: 1;
-  background-color: $bg-color-button-1;
+  background-color: var(--theme-bg-2);
   border-radius: var(--radius-2);
   cursor: pointer;
   display: flex;
@@ -112,18 +106,18 @@ $bg-color-button-2: var(--theme-border);
 
   &.selected,
   &:is(:hover, :focus-visible):not(:disabled) {
-    background-color: $bg-color-button-active;
-    color: $tx-color-button-active;
+    background-color: var(--theme-accent);
+    color: var(--theme-action-primary-text);
   }
 
   &.today {
-    background-color: $bg-color-button-2;
+    background-color: var(--theme-border);
   }
 }
 
 .navButton {
   align-items: center;
-  background-color: $bg-color-button-1;
+  background-color: var(--theme-bg-2);
   border-radius: var(--radius-2);
   color: var(--theme-text);
   cursor: pointer;
@@ -132,9 +126,10 @@ $bg-color-button-2: var(--theme-border);
   justify-content: center;
   width: 4rem;
 
-  &:is(:hover, :focus-visible) {
-    background-color: $bg-color-button-active;
-    color: $tx-color-button-active;
+  &:hover:not([disabled], [aria-disabled='true']),
+  &:focus-visible:not([disabled], [aria-disabled='true']) {
+    background-color: var(--theme-accent);
+    color: var(--theme-action-primary-text);
   }
 }
 

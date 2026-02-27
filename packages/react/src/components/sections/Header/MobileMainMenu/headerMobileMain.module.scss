@@ -1,6 +1,7 @@
-@use 'styles/mixins/mq' as *;
 @use 'styles/mixins/action' as *;
+@use 'styles/mixins/anim' as *;
 @use 'styles/mixins/color' as *;
+@use 'styles/mixins/mq' as *;
 @use 'styles/mixins/theme' as *;
 
 .menu {
@@ -125,10 +126,9 @@
 }
 
 .dropdown {
-  display: grid;
-  grid-template-rows: 0fr;
+  @include anim-collapse;
   padding: 0 1rem;
-  transition: padding var(--transition-default), grid-template-rows var(--transition-default);
+  transition: grid-template-rows var(--transition-default), padding var(--transition-default);
 
   &.isOpen {
     grid-template-rows: 1fr;

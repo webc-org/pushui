@@ -7,6 +7,7 @@ import {
   OptionList,
   OptionListItem,
   SelectActions,
+  SelectBox,
   SelectModal,
   SelectPlaceholder,
   SelectRoot,
@@ -101,25 +102,27 @@ const SelectStory = ({
       flip={flip}
       loading={loading}
     >
-      {multiple && (
-        <ChoiceList selectedOptions={value}>
-          {value.map((opt) => (
-            <ChoiceListItem
-              key={opt.value}
-              option={opt}
-              onRemove={(o) =>
-                setValue(value.filter((v) => v.value !== o.value))
-              }
-            />
-          ))}
-        </ChoiceList>
-      )}
-      <SelectSearch />
-      <SelectPlaceholder />
-      <SelectActions>
-        {multiple && showClearAll && <ChoiceClear />}
-        <SelectTrigger />
-      </SelectActions>
+      <SelectBox>
+        {multiple && (
+          <ChoiceList selectedOptions={value}>
+            {value.map((opt) => (
+              <ChoiceListItem
+                key={opt.value}
+                option={opt}
+                onRemove={(o) =>
+                  setValue(value.filter((v) => v.value !== o.value))
+                }
+              />
+            ))}
+          </ChoiceList>
+        )}
+        <SelectSearch />
+        <SelectPlaceholder />
+        <SelectActions>
+          {multiple && showClearAll && <ChoiceClear />}
+          <SelectTrigger />
+        </SelectActions>
+      </SelectBox>
       <SelectModal>
         <OptionListWithContext controlId={controlId} />
       </SelectModal>

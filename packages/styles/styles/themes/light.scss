@@ -1,0 +1,79 @@
+:root, .light {
+  // Opacity
+  --theme-opacity-disabled: 0.6;
+  --theme-opacity-muted: 0.6;
+
+  // Backgrounds — 1=page, 2=surface (cards/inputs), 3=inset (form inside card)
+
+  --theme-bg: var(--color-grey-9);
+  --theme-bg-2: var(--color-grey-8);
+  --theme-bg-3: var(--color-grey-7);
+
+  // Text & borders
+
+  --theme-text: var(--color-black);
+  --theme-accent: var(--color-primary-2);
+  --theme-border: var(--color-grey-7);
+  --theme-border-2: var(--color-grey-4);
+
+  // Actions — base=bg, hover=hover bg, text=text on top of base
+
+  --theme-action-primary-base: var(--color-primary-2);
+  --theme-action-primary-hover: var(--color-primary-1);
+  --theme-action-primary-text: var(--color-white);
+  --theme-action-secondary-base: var(--color-secondary-2);
+  --theme-action-secondary-hover: var(--color-secondary-1);
+  --theme-action-secondary-text: var(--color-white);
+  --theme-action-success-base: var(--color-success-2);
+  --theme-action-success-hover: var(--color-success-1);
+  --theme-action-success-text: var(--color-white);
+  --theme-action-danger-base: var(--color-danger-2);
+  --theme-action-danger-hover: var(--color-danger-1);
+  --theme-action-danger-text: var(--color-white);
+  --theme-action-warning-base: var(--color-warning-2);
+  --theme-action-warning-hover: var(--color-warning-1);
+  --theme-action-warning-text: var(--color-white);
+  --theme-action-info-base: var(--color-info-2);
+  --theme-action-info-hover: var(--color-info-1);
+  --theme-action-info-text: var(--color-white);
+
+  // Surfaces — informational areas (alerts, badges). Light: pastels.
+
+  --theme-surface-primary-bg: var(--color-primary-3);
+  --theme-surface-primary-border: var(--color-primary-2);
+  --theme-surface-primary-text: var(--color-primary-1);
+  --theme-surface-secondary-bg: var(--color-secondary-3);
+  --theme-surface-secondary-border: var(--color-secondary-2);
+  --theme-surface-secondary-text: var(--color-secondary-1);
+  --theme-surface-success-bg: var(--color-success-3);
+  --theme-surface-success-border: var(--color-success-2);
+  --theme-surface-success-text: var(--color-success-1);
+  --theme-surface-danger-bg: var(--color-danger-3);
+  --theme-surface-danger-border: var(--color-danger-2);
+  --theme-surface-danger-text: var(--color-danger-1);
+  --theme-surface-warning-bg: var(--color-warning-3);
+  --theme-surface-warning-border: var(--color-warning-2);
+  --theme-surface-warning-text: var(--color-warning-1);
+  --theme-surface-info-bg: var(--color-info-3);
+  --theme-surface-info-border: var(--color-info-2);
+  --theme-surface-info-text: var(--color-info-1);
+
+  // Components
+  --theme-card-bg: var(--color-white);
+  --theme-card-border: transparent;
+  --theme-card-section-bg: var(--color-grey-8);
+  --theme-close-bg: var(--color-grey-8);
+  --theme-modal-backdrop: var(--color-black-50);
+  --theme-toast-bg: var(--color-grey-1);
+  --theme-toast-text: var(--color-white);
+  --theme-code-bg: var(--color-black);
+  --theme-audio-filter: none;
+  --theme-header-desktop-main-bg: var(--color-grey-9);
+  --theme-header-desktop-top-bg: var(--color-grey-8);
+  --theme-header-mobile-main-bg: var(--color-grey-9);
+  --theme-header-mobile-top-bg: var(--color-grey-8);
+  --theme-footer-bg: var(--color-grey-8);
+  --theme-footer-menu-bg: var(--color-grey-7);
+  --theme-dashboard-sidebar-bg: var(--color-grey-8);
+  --theme-dashboard-nav-bg: var(--color-grey-7);
+}

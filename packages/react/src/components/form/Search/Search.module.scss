@@ -1,11 +1,5 @@
 @use 'styles/mixins/form' as *;
 
-$tx-color-clear-active: var(--theme-accent);
-$bg-color-dropdown: var(--theme-bg-3);
-$bd-color-dropdown: var(--theme-border-2);
-$bg-color-result-active: var(--theme-bg-2);
-$tx-color-no-result: var(--theme-text);
-
 .wrapper {
   @include form-wrapper;
 }
@@ -62,16 +56,15 @@ $tx-color-no-result: var(--theme-text);
 
   &:hover,
   &:focus-visible {
-    color: $tx-color-clear-active;
+    color: var(--theme-accent);
     opacity: 1;
   }
 }
 
 .dropdown {
-  background-color: $bg-color-dropdown;
-  border: 0.1rem solid $bd-color-dropdown;
+  background-color: var(--theme-bg-3);
+  border: 0.1rem solid var(--theme-border-2);
   border-radius: var(--radius-3);
-  box-shadow: var(--shadow-2);
   max-height: 30rem;
   overflow-y: auto;
   position: fixed;
@@ -92,7 +85,6 @@ $tx-color-no-result: var(--theme-text);
 .resultList {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0;
 }
 
 .resultItem {
@@ -101,12 +93,12 @@ $tx-color-no-result: var(--theme-text);
   transition: background-color var(--transition-default);
 
   &.focused {
-    background-color: $bg-color-result-active;
+    background-color: var(--theme-bg-2);
   }
 }
 
 .noResults {
-  color: $tx-color-no-result;
+  color: var(--theme-text);
   opacity: 0.5;
   padding: 1rem;
   text-align: center;

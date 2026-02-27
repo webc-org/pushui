@@ -23,6 +23,7 @@ import type {
   OptionListTypes,
   OptionTypes,
   SelectActionsTypes,
+  SelectBoxTypes,
   SelectContextTypes,
   SelectModalTypes,
   SelectPlaceholderTypes,
@@ -316,6 +317,110 @@ const ChoiceListItem = memo(
 )
 ChoiceListItem.displayName = 'ChoiceListItem'
 
+// SELECT BOX (styled trigger container)
+const SelectBox = memo(
+  ({ className, children, ...rest }: SelectBoxTypes) => {
+    const {
+      isOpen,
+      setIsOpen,
+      disabled,
+      controlId,
+      labelId,
+      rootRef,
+      searchable,
+      focusedIndex,
+      filteredOptions,
+      setFocusedIndex,
+      toggleOption,
+      value,
+      placeholder,
+    } = useSelectContext()
+
+    const handleRootClick = useCallback(() => {
+      if (disabled) return
+      setIsOpen(!isOpen)
+    }, [disabled, isOpen, setIsOpen])
+
+    const handleRootKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (disabled) return
+
+        if (!isOpen) {
+          if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
+            e.preventDefault()
+            setIsOpen(true)
+          }
+          return
+        }
+
+        if (searchable) {
+          if (e.key === 'Escape') {
+            e.preventDefault()
+            setIsOpen(false)
+          }
+          return
+        }
+
+        handleKeyboardNavigation(e, {
+          focusedIndex,
+          filteredOptions,
+          setFocusedIndex,
+          toggleOption,
+          setIsOpen,
+          rootRef,
+        })
+      },
+      [
+        disabled,
+        isOpen,
+        searchable,
+        focusedIndex,
+        filteredOptions,
+        setFocusedIndex,
+        toggleOption,
+        setIsOpen,
+        rootRef,
+      ]
+    )
+
+    const activeDescendant =
+      isOpen && !searchable && focusedIndex >= 0
+        ? `${controlId}-option-${focusedIndex}`
+        : undefined
+
+    const accessibleValue = value.length
+      ? value.map((v) => v.label).join(', ')
+      : placeholder
+
+    return (
+      <div
+        ref={rootRef}
+        id={controlId}
+        role="combobox"
+        tabIndex={disabled ? -1 : 0}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-controls={isOpen ? `${controlId}-listbox` : undefined}
+        aria-activedescendant={activeDescendant}
+        aria-disabled={disabled || undefined}
+        aria-labelledby={labelId}
+        aria-label={!labelId ? accessibleValue : undefined}
+        onClick={handleRootClick}
+        onKeyDown={handleRootKeyDown}
+        className={clsx(
+          styles.selectRoot,
+          disabled && styles.disabled,
+          className
+        )}
+        {...rest}
+      >
+        {children}
+      </div>
+    )
+  }
+)
+SelectBox.displayName = 'SelectBox'
+
 // SELECT MODAL
 const SelectModal = memo(
   ({ children, className, ...rest }: SelectModalTypes) => {
@@ -332,6 +437,7 @@ const SelectModal = memo(
       searchable,
       setIsOpen,
       rootRef,
+      inline,
     } = useSelectContext()
 
     // SSR safety: only render portal after mount
@@ -364,7 +470,37 @@ const SelectModal = memo(
       return () => document.removeEventListener('keydown', handleTab)
     }, [isOpen, searchable, setIsOpen, rootRef])
 
-    if (!isOpen || !mounted) return null
+    if (!mounted) return null
+
+    if (inline) {
+      return (
+        <div
+          className={clsx(
+            styles.selectModal,
+            styles.inline,
+            isOpen && styles.open,
+            className
+          )}
+          {...rest}
+        >
+          <div
+            ref={menuRef}
+            id={controlId}
+            onScroll={handleScroll}
+            aria-busy={loading || undefined}
+          >
+            {children}
+            {loading && (
+              <div className={styles.selectLoading}>
+                <Spinner inline />
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    if (!isOpen) return null
 
     return createPortal(
       <div className={theme}>
@@ -382,7 +518,6 @@ const SelectModal = memo(
           {...rest}
         >
           {children}
-
           {loading && (
             <div className={styles.selectLoading}>
               <Spinner inline />
@@ -439,6 +574,7 @@ const SelectSearch = memo(() => {
     placeholder,
     value,
     searchLabel,
+    inline,
   } = useSelectContext()
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -455,8 +591,9 @@ const SelectSearch = memo(() => {
   // Only render when searchable and open
   if (!searchable || !isOpen) return null
 
-  // Show placeholder only when no selections
-  const showPlaceholder = value.length === 0
+  // In inline mode, show selected value as placeholder so it's visible while searching
+  const inputPlaceholder =
+    inline && value.length > 0 ? value[0].label : placeholder
 
   return (
     <input
@@ -467,7 +604,7 @@ const SelectSearch = memo(() => {
       onChange={(e) => setSearchQuery(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={(e) => e.stopPropagation()}
-      placeholder={showPlaceholder ? placeholder : ''}
+      placeholder={inputPlaceholder}
       className={styles.selectSearchInline}
       aria-label={searchLabel}
       aria-controls={`${controlId}-listbox`}
@@ -539,6 +676,7 @@ const SelectRoot = (props: SelectRootTypes) => {
     selectedOptionsLabel = 'Selected options',
     removeLabel = 'Remove',
     searchLabel = 'Search',
+    inline = false,
     ...restProps
   } = props
 
@@ -700,54 +838,7 @@ const SelectRoot = (props: SelectRootTypes) => {
     if (isOpen) requestAnimationFrame(updateMenuPosition)
   }, [disabled, isOpen, onChange, updateMenuPosition])
 
-  const handleRootClick = useCallback(() => {
-    if (disabled) return
-    setIsOpenState((prev) => !prev)
-  }, [disabled])
-
-  const handleRootKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (disabled) return
-
-      // Open on Enter/Space/Arrow when closed
-      if (!isOpen) {
-        if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
-          e.preventDefault()
-          setIsOpenState(true)
-        }
-        return
-      }
-
-      // When open and searchable, let search input handle keys
-      if (searchable) {
-        // Only handle Escape at root level
-        if (e.key === 'Escape') {
-          e.preventDefault()
-          setIsOpenState(false)
-        }
-        return
-      }
-
-      // Non-searchable: handle navigation at root
-      handleKeyboardNavigation(e, {
-        focusedIndex,
-        filteredOptions,
-        setFocusedIndex,
-        toggleOption,
-        setIsOpen,
-        rootRef,
-      })
-    },
-    [
-      disabled,
-      isOpen,
-      searchable,
-      focusedIndex,
-      filteredOptions,
-      toggleOption,
-      setIsOpen,
-    ]
-  )
+  const labelId = label ? `${controlId}-label` : undefined
 
   const contextValue = useMemo<SelectContextTypes>(
     () => ({
@@ -759,6 +850,7 @@ const SelectRoot = (props: SelectRootTypes) => {
       searchInputRef,
       choiceButtonRefs,
       controlId,
+      labelId,
       value,
       options,
       filteredOptions,
@@ -780,6 +872,7 @@ const SelectRoot = (props: SelectRootTypes) => {
       selectedOptionsLabel,
       removeLabel,
       searchLabel,
+      inline,
     }),
     [
       isOpen,
@@ -806,42 +899,9 @@ const SelectRoot = (props: SelectRootTypes) => {
       selectedOptionsLabel,
       removeLabel,
       searchLabel,
+      inline,
+      labelId,
     ]
-  )
-
-  const activeDescendant =
-    isOpen && !searchable && focusedIndex >= 0
-      ? `${controlId}-option-${focusedIndex}`
-      : undefined
-
-  const accessibleValue = value.length
-    ? value.map((v) => v.label).join(', ')
-    : placeholder
-
-  const selectElement = (
-    <div
-      ref={rootRef}
-      id={controlId}
-      role="combobox"
-      tabIndex={disabled ? -1 : 0}
-      aria-expanded={isOpen}
-      aria-haspopup="listbox"
-      aria-controls={isOpen ? `${controlId}-listbox` : undefined}
-      aria-activedescendant={activeDescendant}
-      aria-disabled={disabled || undefined}
-      aria-labelledby={label ? `${controlId}-label` : undefined}
-      aria-label={label ? undefined : accessibleValue}
-      onClick={handleRootClick}
-      onKeyDown={handleRootKeyDown}
-      className={clsx(
-        styles.selectRoot,
-        disabled && styles.disabled,
-        className
-      )}
-      {...restProps}
-    >
-      {children}
-    </div>
   )
 
   if (label) {
@@ -855,7 +915,12 @@ const SelectRoot = (props: SelectRootTypes) => {
           >
             {label}
           </label>
-          {selectElement}
+          <div
+            className={clsx(styles.selectColumn, className)}
+            {...restProps}
+          >
+            {children}
+          </div>
         </div>
       </SelectContextRoot>
     )
@@ -863,7 +928,9 @@ const SelectRoot = (props: SelectRootTypes) => {
 
   return (
     <SelectContextRoot value={contextValue}>
-      {selectElement}
+      <div className={clsx(styles.selectColumn, className)} {...restProps}>
+        {children}
+      </div>
     </SelectContextRoot>
   )
 }
@@ -875,6 +942,7 @@ export {
   OptionList,
   OptionListItem,
   SelectActions,
+  SelectBox,
   SelectModal,
   SelectPlaceholder,
   SelectRoot,

@@ -10,6 +10,7 @@ import {
   OptionList,
   OptionListItem,
   SelectActions,
+  SelectBox,
   SelectModal,
   SelectPlaceholder,
   SelectRoot,
@@ -65,14 +66,14 @@ const SingleSelect = ({
       disabled={disabled}
       searchable={searchable}
       label={label}
-      data-testid="select-root"
     >
-      <SelectSearch />
-      <SelectPlaceholder data-testid="placeholder" />
-      <SelectActions>
-        <SelectTrigger />
-      </SelectActions>
-
+      <SelectBox data-testid="select-root">
+        <SelectSearch />
+        <SelectPlaceholder data-testid="placeholder" />
+        <SelectActions>
+          <SelectTrigger />
+        </SelectActions>
+      </SelectBox>
       <SelectModal data-testid="modal">
         <OptionListWithContext controlId="single-test" />
       </SelectModal>
@@ -97,26 +98,26 @@ const MultiSelect = ({
       options={options}
       onChange={setValue}
       disabled={disabled}
-      data-testid="select-root"
     >
-      <ChoiceList selectedOptions={value} data-testid="choice-list">
-        {value.map((opt) => (
-          <ChoiceListItem
-            key={opt.value}
-            option={opt}
-            onRemove={(o) =>
-              setValue(value.filter((v) => v.value !== o.value))
-            }
-          />
-        ))}
-      </ChoiceList>
-      <SelectSearch />
-      <SelectPlaceholder data-testid="placeholder" />
-      <SelectActions>
-        <ChoiceClear data-testid="clear-all" />
-        <SelectTrigger />
-      </SelectActions>
-
+      <SelectBox data-testid="select-root">
+        <ChoiceList selectedOptions={value} data-testid="choice-list">
+          {value.map((opt) => (
+            <ChoiceListItem
+              key={opt.value}
+              option={opt}
+              onRemove={(o) =>
+                setValue(value.filter((v) => v.value !== o.value))
+              }
+            />
+          ))}
+        </ChoiceList>
+        <SelectSearch />
+        <SelectPlaceholder data-testid="placeholder" />
+        <SelectActions>
+          <ChoiceClear data-testid="clear-all" />
+          <SelectTrigger />
+        </SelectActions>
+      </SelectBox>
       <SelectModal data-testid="modal">
         <OptionListWithContext controlId="multi-test" />
       </SelectModal>

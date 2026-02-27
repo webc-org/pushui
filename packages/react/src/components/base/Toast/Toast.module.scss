@@ -1,9 +1,6 @@
 @use 'styles/mixins/action' as *;
 @use 'styles/mixins/mq' as *;
 
-$bg-color-toast: var(--toast-bg);
-$tx-color-toast: var(--toast-text);
-
 .toasts {
   align-items: center;
   bottom: 0;
@@ -24,8 +21,8 @@ $tx-color-toast: var(--toast-text);
 }
 
 .toast {
-  background-color: $bg-color-toast;
-  color: $tx-color-toast;
+  background-color: var(--theme-toast-bg);
+  color: var(--theme-toast-text);
   border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;
@@ -78,7 +75,7 @@ $tx-color-toast: var(--toast-text);
   @include action-close;
 
   background-color: transparent;
-  color: $tx-color-toast;
+  color: var(--theme-toast-text);
   right: 0.25rem;
   top: 0.25rem;
 }

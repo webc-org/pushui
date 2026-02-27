@@ -1,8 +1,5 @@
 @use './styles/mixins/mq' as *;
 
-$tx-color-gpc: var(--surface-warning-text);
-$bg-color-gpc: var(--surface-warning-bg);
-
 .gdpr {
   display: flex;
   flex-direction: column;
@@ -14,9 +11,9 @@ $bg-color-gpc: var(--surface-warning-bg);
 }
 
 .gpcNotice {
-  background: $bg-color-gpc;
+  background: var(--theme-surface-warning-bg);
   border-radius: var(--radius-2);
-  color: $tx-color-gpc;
+  color: var(--theme-surface-warning-text);
   font-size: var(--font-size-2);
   margin: 0;
   padding: 1rem 1.5rem;

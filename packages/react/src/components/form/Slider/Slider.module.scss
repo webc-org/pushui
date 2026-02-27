@@ -7,19 +7,6 @@ $rail-size-sm: 0.3rem;
 $rail-size-md: 0.4rem;
 $label-offset: 1rem;
 
-// COLORS
-$bg-color-rail: var(--theme-border);
-$bg-color-track: var(--theme-accent);
-$bg-color-track-inverted: var(--theme-border-2);
-$bg-color-thumb: var(--theme-accent);
-$bd-color-thumb: var(--theme-bg);
-$bg-color-value: var(--theme-text);
-$tx-color-value: var(--theme-bg);
-$bg-color-mark: var(--theme-border-2);
-$bg-color-mark-active: var(--theme-accent);
-$tx-color-label: var(--theme-text);
-$bd-color-label-after: var(--theme-text);
-
 .slider {
   position: relative;
   touch-action: none;
@@ -32,24 +19,24 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .rail {
-  background-color: $bg-color-rail;
+  background-color: var(--theme-border);
   cursor: pointer;
   position: relative;
 }
 
 .track {
-  background-color: $bg-color-track;
+  background-color: var(--theme-accent);
   border-radius: inherit;
   position: absolute;
 }
 
 .track.inverted {
-  background-color: $bg-color-track-inverted;
+  background-color: var(--theme-border-2);
 }
 
 .thumb {
-  background-color: $bg-color-thumb;
-  border: 0.2rem solid $bd-color-thumb;
+  background-color: var(--theme-accent);
+  border: 0.2rem solid var(--theme-bg);
   border-radius: 50%;
   box-shadow: var(--shadow-1);
   cursor: grab;
@@ -63,9 +50,9 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .valueLabel {
-  background-color: $bg-color-value;
+  background-color: var(--theme-text);
   border-radius: var(--radius-2);
-  color: $tx-color-value;
+  color: var(--theme-bg);
   font-size: var(--font-size-3);
   padding: 0.5rem 1rem;
   pointer-events: none;
@@ -88,7 +75,7 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .markDot {
-  background-color: $bg-color-mark;
+  background-color: var(--theme-border-2);
   border-radius: 50%;
   display: block;
   height: 0.4rem;
@@ -96,7 +83,7 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .markLabel {
-  color: $tx-color-label;
+  color: var(--theme-text);
   font-size: var(--font-size-3);
   opacity: 0.5;
   position: absolute;
@@ -104,11 +91,11 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .noTrack .rail {
-  background-color: $bg-color-rail;
+  background-color: var(--theme-border);
 }
 
 .markActive .markDot {
-  background-color: $bg-color-mark-active;
+  background-color: var(--theme-accent);
 }
 
 .sm .thumb {
@@ -147,7 +134,7 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .horizontal .valueLabel::after {
-  border-top-color: $bd-color-label-after;
+  border-top-color: var(--theme-text);
   left: 50%;
   top: 100%;
   transform: translateX(-50%);
@@ -205,7 +192,7 @@ $bd-color-label-after: var(--theme-text);
 }
 
 .vertical .valueLabel::after {
-  border-right-color: $bd-color-label-after;
+  border-right-color: var(--theme-text);
   right: 100%;
   top: 50%;
   transform: translateY(-50%);

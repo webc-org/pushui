@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Slot, useTheme } from 'utils'
+import { Slot } from 'utils'
 import type { HeaderMobileMainLinkTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
 
@@ -10,11 +10,10 @@ export function HeaderMobileMainLink({
   current,
   appearance,
   variant,
+  contrast,
   ...props
 }: HeaderMobileMainLinkTypes) {
   const Comp = asChild ? Slot : 'a'
-  const { theme } = useTheme()
-  const contrast = theme === 'dark'
 
   return (
     <Comp

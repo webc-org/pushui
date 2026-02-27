@@ -1,4 +1,3 @@
-// Modal mode
 @use 'styles/mixins/theme' as *;
 
 .modalTrigger {
@@ -9,31 +8,13 @@
   @include theme-link;
 }
 
-.modalButton {
-  align-items: center;
-  background-color: var(--theme-bg-2);
-  border: 1px solid transparent;
-  border-radius: var(--radius-2);
-  color: inherit;
-  cursor: pointer;
+.modalContent {
   display: flex;
-  font-size: var(--font-size-3);
-  gap: 0.75rem;
-  padding: 1rem;
-  text-decoration: none;
-
-  &:hover,
-  &:focus-visible {
-    border-color: var(--theme-accent);
-  }
-
-  &.active {
-    border-color: var(--theme-accent);
-    color: var(--theme-accent);
-    font-weight: var(--font-weight-strong);
-  }
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.checkIcon {
-  margin-left: auto;
+.modalActions {
+  display: flex;
+  gap: 1rem;
 }

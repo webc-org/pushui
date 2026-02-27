@@ -1,11 +1,6 @@
 @use 'styles/mixins/form' as *;
 @use 'styles/mixins/theme' as *;
 
-$bg-color-checkbox: var(--theme-bg);
-$bg-color-checkbox-active: var(--theme-accent);
-$bd-color-checkbox: var(--theme-border-2);
-$bd-color-checkbox-active: var(--theme-accent);
-
 .wrapper {
   align-items: center;
   cursor: pointer;
@@ -21,8 +16,8 @@ $bd-color-checkbox-active: var(--theme-accent);
 
 .checkbox {
   align-items: center;
-  background-color: $bg-color-checkbox;
-  border-color: $bd-color-checkbox;
+  background-color: var(--theme-bg);
+  border-color: var(--theme-border-2);
   border-radius: var(--radius-2);
   border-style: solid;
   border-width: 0.1rem;
@@ -33,17 +28,17 @@ $bd-color-checkbox-active: var(--theme-accent);
   width: 2rem;
 
   &.checked {
-    background-color: $bg-color-checkbox-active;
-    border-color: $bd-color-checkbox-active;
+    background-color: var(--theme-accent);
+    border-color: var(--theme-accent);
   }
 }
 
 .hiddenInput:focus-visible + .checkbox:not(.checked) {
-  border-color: $bd-color-checkbox-active;
+  border-color: var(--theme-accent);
 }
 
 .wrapper:hover:not(.disabled) .checkbox:not(.checked) {
-  border-color: $bd-color-checkbox-active;
+  border-color: var(--theme-accent);
 }
 
 .checkIcon {
@@ -53,6 +48,7 @@ $bd-color-checkbox-active: var(--theme-accent);
 
 .label {
   @include form-label;
+  font-size: var(--font-size-4);
 }
 
 .hiddenInput {

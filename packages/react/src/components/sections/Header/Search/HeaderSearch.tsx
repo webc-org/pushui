@@ -2,12 +2,10 @@ import clsx from 'clsx'
 import { InputSearch } from 'form/Search/Search'
 import { Search } from 'lucide-react'
 import { useModals } from 'modules/Modal/ModalsContext'
-import { useTheme } from 'utils'
 import styles from './HeaderSearch.module.scss'
 import type { HeaderSearchTypes } from './HeaderSearch.types'
 
 export function HeaderSearch({
-  width = '56rem',
   className,
   modalTitle = 'Search',
   triggerLabel = 'Search',
@@ -19,7 +17,6 @@ export function HeaderSearch({
   renderResult,
 }: HeaderSearchTypes) {
   const { addModal } = useModals()
-  const { theme } = useTheme()
 
   const openModal = () => {
     addModal({
@@ -36,22 +33,20 @@ export function HeaderSearch({
           renderResult={renderResult}
         />
       ),
-      width,
-      closeOnBackdrop: true,
+      width: '56rem',
       position: 'top',
+      closeOnBackdrop: true,
     })
   }
 
   return (
-    <div className={theme}>
-      <button
-        type="button"
-        className={clsx(styles.trigger, className)}
-        onClick={openModal}
-        aria-label={triggerLabel}
-      >
-        <Search size={24} aria-hidden="true" />
-      </button>
-    </div>
+    <button
+      type="button"
+      className={clsx(styles.trigger, className)}
+      onClick={openModal}
+      aria-label={triggerLabel}
+    >
+      <Search size={24} aria-hidden="true" />
+    </button>
   )
 }

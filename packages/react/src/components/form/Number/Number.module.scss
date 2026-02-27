@@ -1,12 +1,5 @@
 @use 'styles/mixins/form' as *;
 
-$bd-color-input-active: var(--theme-accent);
-$bg-color-nav: var(--theme-border-2);
-$bg-color-nav-active: var(--theme-accent);
-$bg-color-button: var(--theme-bg);
-$bg-color-button-active: var(--theme-accent);
-$tx-color-button-active: var(--action-primary-on);
-
 .wrapper {
   @include form-wrapper;
 
@@ -45,12 +38,12 @@ $tx-color-button-active: var(--action-primary-on);
 
   .wrapper:not(.disabled):hover &,
   .wrapper:not(.disabled):focus-within & {
-    border: 0.1rem solid $bd-color-input-active;
+    border: 0.1rem solid var(--theme-accent);
   }
 }
 
 .nav {
-  background-color: $bg-color-nav;
+  background-color: var(--theme-border-2);
   border-radius: 0 var(--radius-2) var(--radius-2) 0;
   bottom: 0;
   display: flex;
@@ -64,13 +57,13 @@ $tx-color-button-active: var(--action-primary-on);
 
   .wrapper:not(.disabled):hover &,
   .wrapper:not(.disabled):focus-within & {
-    background-color: $bg-color-nav-active;
+    background-color: var(--theme-accent);
   }
 }
 
 .button {
   align-items: center;
-  background-color: $bg-color-button;
+  background-color: var(--theme-bg);
   color: var(--theme-text);
   cursor: pointer;
   display: flex;
@@ -78,22 +71,17 @@ $tx-color-button-active: var(--action-primary-on);
   justify-content: center;
   min-width: 4rem;
 
-  svg {
-    opacity: 0.5;
-  }
+
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
 
-  &:is(:focus-visible, :hover):not(:disabled) {
-    background: $bg-color-button-active;
-    color: $tx-color-button-active;
-
-    svg {
-      opacity: 1;
-    }
+  &:focus-visible:not(:disabled),
+  &:hover:not(:disabled) {
+    background: var(--theme-accent);
+    color: var(--theme-action-primary-text);
   }
 
   &.increment {

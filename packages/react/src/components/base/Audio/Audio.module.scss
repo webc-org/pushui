@@ -8,7 +8,7 @@
 
 .audio {
   display: block;
-  filter: var(--audio-filter, none);
+  filter: var(--theme-audio-filter, none);
   width: 100%;
 }
 

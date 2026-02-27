@@ -1,7 +1,5 @@
-$bg-color-progress: var(--theme-border);
-
 .progress {
-  background-color: $bg-color-progress;
+  background-color: var(--theme-border);
   border-radius: 9999px;
   height:.5rem;
   overflow: hidden;
@@ -33,7 +31,7 @@ $variants: primary, secondary, success, danger, warning, info;
 
 @each $variant in $variants {
   .variant-#{$variant} .bar {
-    background-color: var(--action-#{$variant}-base);
+    background-color: var(--theme-action-#{$variant}-base);
   }
 }
 

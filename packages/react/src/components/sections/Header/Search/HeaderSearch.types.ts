@@ -4,7 +4,6 @@ import type { SearchResultTypes } from 'form/Search/Search.types'
 export type HeaderSearchTypes = {
   triggerLabel?: string
   modalTitle?: ReactNode
-  width?: string
   className?: string
   // Dropdown
   onSearch?: (query: string) => void

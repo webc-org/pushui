@@ -1,12 +1,7 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-footer: var(--theme-bg-2);
-$bg-color-menu: var(--theme-bg);
-$bd-color-bottom: var(--theme-border);
-$tx-color-link-hover: var(--theme-accent);
-
 .footer {
-  background: $bg-color-footer;
+  background: var(--theme-footer-bg);
   display: block;
 }
 
@@ -46,7 +41,7 @@ $tx-color-link-hover: var(--theme-accent);
   flex: 1;
 
   @include mq-md {
-    background: $bg-color-menu;
+    background: var(--theme-footer-menu-bg);
     border-radius: var(--radius-2);
     padding: 4rem;
   }
@@ -63,7 +58,7 @@ $tx-color-link-hover: var(--theme-accent);
 }
 
 .bottom {
-  border-top: .1rem solid $bd-color-bottom;
+  border-top: .1rem solid var(--theme-border);
   display: flex;
   flex-direction: column-reverse;
   gap: 2rem;
@@ -93,14 +88,14 @@ $tx-color-link-hover: var(--theme-accent);
   color: inherit;
   text-decoration: none;
 
-  &:hover,
-  &:focus-visible {
-    color: $tx-color-link-hover;
+  &:hover:not([disabled], [aria-disabled="true"]),
+  &:focus-visible:not([disabled], [aria-disabled="true"]) {
+    color: var(--theme-accent);
     text-decoration: underline;
   }
 
   &.current {
-    color: $tx-color-link-hover;
+    color: var(--theme-accent);
     cursor: default;
     text-decoration: none;
   }

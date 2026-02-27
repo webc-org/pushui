@@ -12,5 +12,7 @@ export type LocaleTypes = {
   section?: 'top' | 'main'
   triggerLabel?: string
   modalTitle?: string
+  applyLabel?: string
+  cancelLabel?: string
   className?: string
 }

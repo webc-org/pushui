@@ -1,10 +1,5 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-overlay-light: var(--color-white-50);
-$bg-color-overlay-dark: var(--color-black-50);
-$tx-color-light: var(--color-white);
-$tx-color-dark: var(--color-black);
-
 .banner {
   background-position: center;
   background-repeat: no-repeat;
@@ -24,11 +19,11 @@ $tx-color-dark: var(--color-black);
   }
 
   &.overlay-light::before {
-    background: $bg-color-overlay-light;
+    background: var(--color-white-50);
   }
 
   &.overlay-dark::before {
-    background: $bg-color-overlay-dark;
+    background: var(--color-black-50);
   }
 }
 
@@ -98,11 +93,11 @@ $tx-color-dark: var(--color-black);
   }
 
   &.text-light {
-    color: $tx-color-light;
+    color: var(--color-white);
   }
 
   &.text-dark {
-    color: $tx-color-dark;
+    color: var(--color-black);
   }
 }
 

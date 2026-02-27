@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react'
 import clsx from 'clsx'
-import { useTheme } from 'utils'
 import { useHeader } from '../HeaderContext'
 import type { HeaderDesktopTopMenuTypes } from './HeaderDesktopTop.types'
 import styles from './headerDesktopTop.module.scss'
@@ -14,7 +13,6 @@ export function HeaderDesktopTopMenu({
   ...rest
 }: HeaderDesktopTopMenuTypes) {
   const { isScrolled, themeStyles } = useHeader()
-  const { theme } = useTheme()
   const desktopTopStyles = themeStyles.desktop.top
 
   // BACKGROUND
@@ -33,7 +31,7 @@ export function HeaderDesktopTopMenu({
           '--header-desktop-top-opacity': opacity,
         } as CSSProperties
       }
-      className={clsx(styles.menu, theme, className)}
+      className={clsx(styles.menu, className)}
       {...rest}
     >
       <div className={clsx(styles.container, containerClassName)}>

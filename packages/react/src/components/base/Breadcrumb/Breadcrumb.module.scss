@@ -1,5 +1,3 @@
-$tx-color-link-active: var(--theme-accent);
-
 .breadcrumb {
   display: flex;
 }
@@ -23,13 +21,13 @@ $tx-color-link-active: var(--theme-accent);
 
   &:hover:not([disabled], [aria-disabled="true"]),
   &:focus-visible:not([disabled], [aria-disabled="true"]) {
-    color: $tx-color-link-active;
+    color: var(--theme-accent);
     text-decoration: underline;
   }
 }
 
 .current {
-  color: $tx-color-link-active;
+  color: var(--theme-accent);
 }
 
 .separator {

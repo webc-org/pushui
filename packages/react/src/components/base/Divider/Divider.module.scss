@@ -1,11 +1,9 @@
 @use 'styles/mixins/typo' as *;
 
-$bd-color-divider: var(--theme-border-2);
-
 .divider {
   @include base-hr;
 
-  border-top-color: $bd-color-divider;
+  border-top-color: var(--theme-border-2);
   width: 100%;
 }
 

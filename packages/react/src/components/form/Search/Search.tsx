@@ -37,8 +37,8 @@ export function InputSearch({
   ariaLabel,
   ...rest
 }: InputSearchTypes) {
-  const { theme } = useTheme()
   const id = useId()
+  const { theme } = useTheme()
   const [internalValue, setInternalValue] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [focusedIndex, setFocusedIndex] = useState(-1)

@@ -1,7 +1,5 @@
 @use 'styles/mixins/mq' as *;
 
-$bg-color-form: var(--card-section-bg);
-
 .section {
   align-items: center;
   display: flex;
@@ -41,7 +39,7 @@ $bg-color-form: var(--card-section-bg);
 }
 
 .form {
-  background: $bg-color-form;
+  background: var(--theme-card-section-bg);
   border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;

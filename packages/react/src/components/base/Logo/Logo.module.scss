@@ -1,16 +1,13 @@
-$tx-color-logo: var(--theme-text);
-$tx-color-logo-active: var(--theme-accent);
-
 .logo {
   align-items: center;
-  color: $tx-color-logo;
+  color: var(--theme-text);
   display: inline-flex;
   overflow: hidden;
   text-decoration: none;
 
   &:hover,
   &:focus-visible {
-    color: $tx-color-logo-active;
+    color: var(--theme-accent);
     text-decoration: none;
   }
 }

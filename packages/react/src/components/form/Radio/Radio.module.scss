@@ -1,10 +1,5 @@
 @use 'styles/mixins/form' as *;
 
-$bd-color-radio: var(--theme-border-2);
-$bg-color-radio-after: var(--theme-accent);
-$bd-color-radio-active: var(--theme-accent);
-$tx-color-label: var(--theme-text);
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -44,7 +39,7 @@ $tx-color-label: var(--theme-text);
 }
 
 .radio {
-  border: 0.1rem solid $bd-color-radio;
+  border: 0.1rem solid var(--theme-border-2);
   border-radius: 50%;
   flex-shrink: 0;
   height: 2rem;
@@ -52,7 +47,7 @@ $tx-color-label: var(--theme-text);
   width: 2rem;
 
   &::after {
-    background-color: $bg-color-radio-after;
+    background-color: var(--theme-accent);
     border-radius: 50%;
     content: '';
     height: 1rem;
@@ -72,11 +67,11 @@ $tx-color-label: var(--theme-text);
   width: 0;
 
   &:focus-visible + .radio {
-    border-color: $bd-color-radio-active;
+    border-color: var(--theme-accent);
   }
 
   &:checked + .radio {
-    border-color: $bd-color-radio-active;
+    border-color: var(--theme-accent);
 
     &::after {
       transform: translate(-50%, -50%) scale(1);
@@ -85,5 +80,6 @@ $tx-color-label: var(--theme-text);
 }
 
 .label {
-  color: $tx-color-label;
+  color: var(--theme-text);
+  font-size: var(--font-size-4);
 }

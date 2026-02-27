@@ -1,9 +1,3 @@
-$bg-color-sidebar: var(--theme-bg);
-$bg-color-main: var(--theme-bg-2);
-$bg-color-link: var(--theme-border);
-$bg-color-link-active: var(--action-primary-base);
-$tx-color-link-active: var(--action-primary-on);
-
 .layout {
   display: flex;
   min-height: 100vh;
@@ -11,7 +5,7 @@ $tx-color-link-active: var(--action-primary-on);
 }
 
 .sidebar {
-  background-color: $bg-color-sidebar;
+  background-color: var(--theme-dashboard-sidebar-bg);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -39,7 +33,7 @@ $tx-color-link-active: var(--action-primary-on);
 }
 
 .main {
-  background-color: $bg-color-main;
+  background-color: var(--theme-bg);
   flex: 1;
   margin-left: 25rem;
   padding: 2rem 4rem 4rem;
@@ -74,7 +68,7 @@ $tx-color-link-active: var(--action-primary-on);
 
 .navLink {
   align-items: center;
-  background-color: $bg-color-link;
+  background-color: var(--theme-dashboard-nav-bg);
   border-radius: var(--radius-2);
   color: var(--theme-text);
   cursor: pointer;
@@ -90,14 +84,14 @@ $tx-color-link-active: var(--action-primary-on);
 
   &:hover:not([disabled], [aria-disabled="true"]),
   &:focus-visible:not([disabled], [aria-disabled="true"]) {
-    background-color: $bg-color-link-active;
-    color: $tx-color-link-active;
+    background-color: var(--theme-action-primary-base);
+    color: var(--theme-action-primary-text);
     text-decoration: none;
   }
 
   &.current {
-    background-color: $bg-color-link-active;
-    color: $tx-color-link-active;
+    background-color: var(--theme-action-primary-base);
+    color: var(--theme-action-primary-text);
     cursor: default;
   }
 }

@@ -1,15 +1,5 @@
 @use 'styles/mixins/form' as *;
 
-$bg-color-button: var(--theme-bg);
-$bd-color-button: var(--theme-text);
-$bg-color-button-active: var(--action-primary-base);
-$bd-color-button-active: var(--action-primary-base);
-$tx-color-dropzone-active: var(--action-primary-base);
-$bg-color-dropzone: var(--theme-bg-2);
-$bg-color-dropzone-active: var(--surface-primary-bg);
-$bd-color-dropzone: var(--theme-border-2);
-$bd-color-dropzone-active: var(--action-primary-base);
-
 .wrapper {
   @include form-wrapper;
 }
@@ -33,8 +23,8 @@ $bd-color-dropzone-active: var(--action-primary-base);
 
 .button {
   align-items: center;
-  background-color: $bg-color-button;
-  border: 0.1rem solid $bd-color-button;
+  background-color: var(--theme-bg);
+  border: 0.1rem solid var(--theme-text);
   border-radius: var(--radius-3);
   cursor: pointer;
   display: inline-flex;
@@ -46,9 +36,9 @@ $bd-color-dropzone-active: var(--action-primary-base);
   text-decoration: none;
 
   &:is(:focus-visible, :hover):not(:disabled) {
-    background-color: $bg-color-button-active;
-    border-color: $bd-color-button-active;
-    color: var(--action-primary-on);
+    background-color: var(--theme-action-primary-base);
+    border-color: var(--theme-action-primary-base);
+    color: var(--theme-action-primary-text);
     text-decoration: none;
   }
 
@@ -65,8 +55,8 @@ $bd-color-dropzone-active: var(--action-primary-base);
 
 .dropzone {
   align-items: center;
-  background-color: $bg-color-dropzone;
-  border: 0.2rem dashed $bd-color-dropzone;
+  background-color: var(--theme-bg-2);
+  border: 0.2rem dashed var(--theme-border-2);
   border-radius: var(--radius-3);
   cursor: pointer;
   display: flex;
@@ -78,14 +68,14 @@ $bd-color-dropzone-active: var(--action-primary-base);
   transition: all var(--transition-default);
 
   &:focus {
-    border-color: $bd-color-dropzone-active;
-    color: $tx-color-dropzone-active;
+    border-color: var(--theme-action-primary-base);
+    color: var(--theme-action-primary-base);
   }
 
   &:hover:not(.disabled), &.dragging {
-    background-color: $bg-color-dropzone-active;
-    border-color: $bd-color-dropzone-active;
-    color: $tx-color-dropzone-active;
+    background-color: var(--theme-surface-primary-bg);
+    border-color: var(--theme-action-primary-base);
+    color: var(--theme-action-primary-base);
   }
 
   &.disabled {

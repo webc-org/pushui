@@ -14,7 +14,7 @@ const withTheme: Decorator = (Story, context) => {
       <div
         className={theme}
         style={{
-          backgroundColor: theme === 'dark' ? 'var(--color-grey-1)' : 'var(--color-grey-8)',
+          backgroundColor: 'var(--theme-bg)',
           color: 'var(--theme-text)',
           minHeight: '100%',
           padding: fullscreen ? '0' : '4rem',
@@ -29,7 +29,7 @@ const withTheme: Decorator = (Story, context) => {
 const preview: Preview = {
   decorators: [withTheme],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
     controls: {
       matchers: {
         color: /(background|color)$/i,

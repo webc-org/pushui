@@ -1,15 +1,9 @@
+@use './styles/mixins/anim' as *;
 @use './styles/mixins/mq' as *;
 
-$bg-color-accordion: var(--theme-bg);
-$bd-color-accordion: var(--theme-border);
-$tx-color-trigger: var(--theme-text);
-$tx-color-trigger-active: var(--theme-accent);
-$bg-color-accordion-expanded: var(--theme-bg-2);
-$bg-color-accordion-inner-expanded: var(--theme-bg-2);
-
 .accordion {
-  background: $bg-color-accordion;
-  border: 0.1rem solid $bd-color-accordion;
+  background: var(--theme-bg);
+  border: 0.1rem solid var(--theme-border);
   border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;
@@ -17,7 +11,7 @@ $bg-color-accordion-inner-expanded: var(--theme-bg-2);
 }
 
 .item {
-  border-bottom: 0.1rem solid $bd-color-accordion;
+  border-bottom: 0.1rem solid var(--theme-border);
   display: flex;
   flex-direction: column;
 
@@ -34,7 +28,7 @@ $bg-color-accordion-inner-expanded: var(--theme-bg-2);
 .trigger {
   align-items: center;
   background: transparent;
-  color: $tx-color-trigger;
+  color: var(--theme-text);
   cursor: pointer;
   display: flex;
   font-weight: var(--font-weight-strong);
@@ -52,7 +46,7 @@ $bg-color-accordion-inner-expanded: var(--theme-bg-2);
   &.expanded,
   &:hover,
   &:focus-visible {
-    color: $tx-color-trigger-active;
+    color: var(--theme-accent);
 
   }
 
@@ -72,13 +66,11 @@ $bg-color-accordion-inner-expanded: var(--theme-bg-2);
 }
 
 .content {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
+  @include anim-collapse;
   transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.contentExpanded {
-    background: $bg-color-accordion-expanded;
+    background: var(--theme-bg-2);
     grid-template-rows: 1fr;
   }
 }
@@ -90,7 +82,7 @@ $bg-color-accordion-inner-expanded: var(--theme-bg-2);
   transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   .contentExpanded & {
-    border-color: $bg-color-accordion-inner-expanded;
+    border-color: var(--theme-bg-2);
     padding: 2rem 1rem;
 
     @include mq-md {

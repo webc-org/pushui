@@ -13,7 +13,7 @@ $tx-color-label: var(--theme-text);
 @mixin form-label {
   color: $tx-color-label;
   font-size: var(--font-size-3);
-  opacity: var(--opacity-muted);
+  opacity: var(--theme-opacity-muted);
 }
 
 @mixin form-input {
@@ -37,18 +37,18 @@ $tx-color-label: var(--theme-text);
 
   &:disabled {
     cursor: not-allowed;
-    opacity: var(--opacity-disabled);
+    opacity: var(--theme-opacity-disabled);
   }
 
   &::placeholder {
     color: var(--theme-text);
-    opacity: var(--opacity-muted);
+    opacity: var(--theme-opacity-muted);
   }
 }
 
 @mixin form-disabled {
   cursor: not-allowed;
-  opacity: var(--opacity-disabled);
+  opacity: var(--theme-opacity-disabled);
 }
 
 @mixin form-spinner {

@@ -1,9 +1,6 @@
-$bg-color-card: var(--card-bg);
-$bd-color-card: var(--card-border);
-
 .card {
-  background-color: $bg-color-card;
-  border: 0.1rem solid $bd-color-card;
+  background-color: var(--theme-card-bg);
+  border: 0.1rem solid var(--theme-card-border);
   border-radius: var(--radius-3);
   display: flex;
   flex-direction: column;

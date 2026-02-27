@@ -4,10 +4,6 @@ $track-width: 4.4rem;
 $track-height: 2.4rem;
 $thumb-size: 1.8rem;
 $thumb-margin: 0.3rem;
-$bg-color-track: var(--theme-border-2);
-$bg-color-track-focus: var(--theme-border-2);
-$bg-color-track-active: var(--theme-accent);
-$bg-color-thumb: var(--theme-bg);
 
 .wrapper {
   align-items: center;
@@ -21,7 +17,7 @@ $bg-color-thumb: var(--theme-bg);
 }
 
 .track {
-  background-color: $bg-color-track;
+  background-color: var(--theme-border-2);
   border-radius: $track-height;
   display: inline-flex;
   height: $track-height;
@@ -30,7 +26,7 @@ $bg-color-thumb: var(--theme-bg);
   width: $track-width;
 
   &.checked {
-    background-color: $bg-color-track-active;
+    background-color: var(--theme-accent);
   }
 }
 
@@ -41,16 +37,16 @@ $bg-color-thumb: var(--theme-bg);
   width: 0;
 
   &:focus-visible + .track {
-    background-color: $bg-color-track-focus;
+    background-color: var(--theme-border-2);
 
     &.checked {
-      background-color: $bg-color-track-active;
+      background-color: var(--theme-accent);
     }
   }
 }
 
 .thumb {
-  background-color: $bg-color-thumb;
+  background-color: var(--theme-bg);
   border-radius: 50%;
   box-shadow: var(--shadow-1);
   height: $thumb-size;
