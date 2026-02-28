@@ -1,22 +1,22 @@
 .dark {
-  // Color palette — dark (−1: medium tint for text/hover, −2: interactive, −3: dark bg tint)
-  --color-primary-1: #93c5fd;
-  --color-primary-2: #60a5fa;
+  // Color palette — dark (−1: hover/400, −2: base/300, −3: dark bg tint)
+  --color-primary-1: #60a5fa;
+  --color-primary-2: #93c5fd;
   --color-primary-3: #37374a;
-  --color-secondary-1: #c4b5fd;
-  --color-secondary-2: #a78bfa;
+  --color-secondary-1: #a78bfa;
+  --color-secondary-2: #c4b5fd;
   --color-secondary-3: #3e374a;
-  --color-success-1: #86efac;
-  --color-success-2: #4ade80;
+  --color-success-1: #4ade80;
+  --color-success-2: #86efac;
   --color-success-3: #3e4d44;
-  --color-danger-1: #fca5a5;
-  --color-danger-2: #f87171;
+  --color-danger-1: #f87171;
+  --color-danger-2: #fca5a5;
   --color-danger-3: #463737;
-  --color-warning-1: #fcd34d;
-  --color-warning-2: #fbbf24;
+  --color-warning-1: #fbbf24;
+  --color-warning-2: #fcd34d;
   --color-warning-3: #4a3e32;
-  --color-info-1: #67e8f9;
-  --color-info-2: #22d3ee;
+  --color-info-1: #22d3ee;
+  --color-info-2: #67e8f9;
   --color-info-3: #32404a;
 
   // Opacity
@@ -40,22 +40,22 @@
 
   --theme-action-primary-base: var(--color-primary-2);
   --theme-action-primary-hover: var(--color-primary-1);
-  --theme-action-primary-text: var(--color-white);
+  --theme-action-primary-text: var(--color-primary-3);
   --theme-action-secondary-base: var(--color-secondary-2);
   --theme-action-secondary-hover: var(--color-secondary-1);
-  --theme-action-secondary-text: var(--color-white);
+  --theme-action-secondary-text: var(--color-secondary-3);
   --theme-action-success-base: var(--color-success-2);
   --theme-action-success-hover: var(--color-success-1);
-  --theme-action-success-text: var(--color-white);
+  --theme-action-success-text: var(--color-success-3);
   --theme-action-danger-base: var(--color-danger-2);
   --theme-action-danger-hover: var(--color-danger-1);
-  --theme-action-danger-text: var(--color-white);
+  --theme-action-danger-text: var(--color-danger-3);
   --theme-action-warning-base: var(--color-warning-2);
   --theme-action-warning-hover: var(--color-warning-1);
-  --theme-action-warning-text: var(--color-white);
+  --theme-action-warning-text: var(--color-warning-3);
   --theme-action-info-base: var(--color-info-2);
   --theme-action-info-hover: var(--color-info-1);
-  --theme-action-info-text: var(--color-white);
+  --theme-action-info-text: var(--color-info-3);
 
   // Surfaces — informational areas (alerts, badges). Dark: muted dark tones.
 
