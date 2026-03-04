@@ -25,3 +25,7 @@ coverage/
 
 # Storybook
 storybook-static/
+
+# Claude
+CLAUDE.md
+.claude/
