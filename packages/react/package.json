@@ -1,6 +1,6 @@
 {
   "name": "@pushui/react",
-  "version": "0.0.78",
+  "version": "0.0.79",
   "description": "Push UI React component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -29,7 +29,7 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "biome check src/",
+    "lint": "eslint src/",
     "clean": "rm -rf dist"
   },
   "dependencies": {
@@ -43,7 +43,6 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.11",
     "@storybook/react": "^10.1.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.0",

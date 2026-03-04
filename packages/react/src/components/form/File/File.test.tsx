@@ -11,10 +11,9 @@ class MockDataTransfer {
   files: File[] = []
 
   constructor() {
-    const self = this
     this.items = {
-      add(file: File) {
-        self.files.push(file)
+      add: (file: File) => {
+        this.files.push(file)
       },
     } as unknown as { add: (file: File) => void }[]
   }

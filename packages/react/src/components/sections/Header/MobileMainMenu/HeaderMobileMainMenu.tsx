@@ -6,7 +6,6 @@ import type { HeaderMobileMainMenuTypes } from './HeaderMobileMain.types'
 import styles from './headerMobileMain.module.scss'
 
 export function HeaderMobileMainMenu({
-  ref,
   children,
   className,
   containerClassName,

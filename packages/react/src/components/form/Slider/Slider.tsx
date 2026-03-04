@@ -247,38 +247,38 @@ export function Slider(props: SliderTypes) {
       let newValue = currentValue
 
       switch (e.key) {
-        case 'ArrowRight':
-        case 'ArrowUp':
-          e.preventDefault()
-          newValue = e.shiftKey
-            ? currentValue + largeStep
-            : currentValue + stepSize
-          break
-        case 'ArrowLeft':
-        case 'ArrowDown':
-          e.preventDefault()
-          newValue = e.shiftKey
-            ? currentValue - largeStep
-            : currentValue - stepSize
-          break
-        case 'Home':
-          e.preventDefault()
-          newValue = min
-          break
-        case 'End':
-          e.preventDefault()
-          newValue = max
-          break
-        case 'PageUp':
-          e.preventDefault()
-          newValue = currentValue + largeStep
-          break
-        case 'PageDown':
-          e.preventDefault()
-          newValue = currentValue - largeStep
-          break
-        default:
-          return
+      case 'ArrowRight':
+      case 'ArrowUp':
+        e.preventDefault()
+        newValue = e.shiftKey
+          ? currentValue + largeStep
+          : currentValue + stepSize
+        break
+      case 'ArrowLeft':
+      case 'ArrowDown':
+        e.preventDefault()
+        newValue = e.shiftKey
+          ? currentValue - largeStep
+          : currentValue - stepSize
+        break
+      case 'Home':
+        e.preventDefault()
+        newValue = min
+        break
+      case 'End':
+        e.preventDefault()
+        newValue = max
+        break
+      case 'PageUp':
+        e.preventDefault()
+        newValue = currentValue + largeStep
+        break
+      case 'PageDown':
+        e.preventDefault()
+        newValue = currentValue - largeStep
+        break
+      default:
+        return
       }
 
       if (step !== null) {

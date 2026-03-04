@@ -178,29 +178,29 @@ export function InputDate({
       let newDate: Date | null = null
 
       switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault()
-          newIndex = currentIndex - 1
-          break
-        case 'ArrowRight':
-          e.preventDefault()
-          newIndex = currentIndex + 1
-          break
-        case 'ArrowUp':
-          e.preventDefault()
-          newIndex = currentIndex - 7
-          break
-        case 'ArrowDown':
-          e.preventDefault()
-          newIndex = currentIndex + 7
-          break
-        case 'Enter':
-        case ' ':
-          e.preventDefault()
-          handleSelectDate(date)
-          return
-        default:
-          return
+      case 'ArrowLeft':
+        e.preventDefault()
+        newIndex = currentIndex - 1
+        break
+      case 'ArrowRight':
+        e.preventDefault()
+        newIndex = currentIndex + 1
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        newIndex = currentIndex - 7
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        newIndex = currentIndex + 7
+        break
+      case 'Enter':
+      case ' ':
+        e.preventDefault()
+        handleSelectDate(date)
+        return
+      default:
+        return
       }
 
       if (newIndex < firstDayOfMonth) {

@@ -247,7 +247,7 @@ describe('Accordion', () => {
   })
 
   it('disabled item cannot be toggled', async () => {
-    const _user = userEvent.setup()
+    userEvent.setup()
     render(
       <Accordion>
         <AccordionItem value="item-1" disabled>

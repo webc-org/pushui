@@ -56,14 +56,14 @@ export function Grid({
   // Wrap children with masonryItem class when in masonry mode
   const wrappedChildren = masonry
     ? Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          const element = child as ReactElement<{ className?: string }>
-          return cloneElement(element, {
-            className: clsx(styles.masonryItem, element.props.className),
-          })
-        }
-        return child
-      })
+      if (isValidElement(child)) {
+        const element = child as ReactElement<{ className?: string }>
+        return cloneElement(element, {
+          className: clsx(styles.masonryItem, element.props.className),
+        })
+      }
+      return child
+    })
     : children
 
   return (

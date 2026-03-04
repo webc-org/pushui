@@ -5,21 +5,33 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "lint:fix": "eslint packages --fix",
     "lint:css": "stylelint \"packages/**/*.scss\"",
     "lint:css:fix": "stylelint \"packages/**/*.scss\" --fix",
+    "format": "prettier --write packages/",
     "test": "turbo test",
     "clean": "turbo clean",
-    "storybook": "pnpm --filter @pushui/storybook-react dev",
-    "build-storybook": "pnpm --filter @pushui/storybook-react build",
+    "storybook": "bun --filter @pushui/storybook-react dev",
+    "build-storybook": "bun --filter @pushui/storybook-react build",
     "pushui": "./scripts/release.sh"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.11",
+    "@eslint/js": "^9.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.0.0",
     "stylelint": "^17.0.0",
+    "stylelint-config-recommended": "^18.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-order": "^7.0.1",
     "turbo": "^2.3.0",
     "typescript": "^5.7.0"
   },
-  "packageManager": "pnpm@9.15.0"
+  "workspaces": ["packages/*", "apps/*"],
+  "packageManager": "bun@1.2.22"
 }

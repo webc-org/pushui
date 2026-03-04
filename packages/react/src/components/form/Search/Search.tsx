@@ -181,31 +181,31 @@ export function InputSearch({
       }
 
       switch (e.key) {
-        case 'ArrowDown':
+      case 'ArrowDown':
+        e.preventDefault()
+        setFocusedIndex((prev) =>
+          prev < results.length - 1 ? prev + 1 : 0
+        )
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        setFocusedIndex((prev) =>
+          prev > 0 ? prev - 1 : results.length - 1
+        )
+        break
+      case 'Enter':
+        if (focusedIndex >= 0 && results[focusedIndex]) {
           e.preventDefault()
-          setFocusedIndex((prev) =>
-            prev < results.length - 1 ? prev + 1 : 0
-          )
-          break
-        case 'ArrowUp':
-          e.preventDefault()
-          setFocusedIndex((prev) =>
-            prev > 0 ? prev - 1 : results.length - 1
-          )
-          break
-        case 'Enter':
-          if (focusedIndex >= 0 && results[focusedIndex]) {
-            e.preventDefault()
-            handleSelect(results[focusedIndex])
-          }
-          break
-        case 'Escape':
-          e.preventDefault()
-          setIsOpen(false)
-          break
-        case 'Tab':
-          setIsOpen(false)
-          break
+          handleSelect(results[focusedIndex])
+        }
+        break
+      case 'Escape':
+        e.preventDefault()
+        setIsOpen(false)
+        break
+      case 'Tab':
+        setIsOpen(false)
+        break
       }
     },
     [mode, isOpen, value, handleClear, results, focusedIndex, handleSelect]
@@ -295,10 +295,10 @@ export function InputSearch({
         style={
           !inline
             ? {
-                top: `${menuPosition.top}px`,
-                left: `${menuPosition.left}px`,
-                width: `${menuPosition.width}px`,
-              }
+              top: `${menuPosition.top}px`,
+              left: `${menuPosition.left}px`,
+              width: `${menuPosition.width}px`,
+            }
             : undefined
         }
       >
@@ -337,9 +337,9 @@ export function InputSearch({
   const dropdownElement =
     !inline && dropdownContent && mounted
       ? createPortal(
-          <div className={theme}>{dropdownContent}</div>,
-          document.body
-        )
+        <div className={theme}>{dropdownContent}</div>,
+        document.body
+      )
       : dropdownContent
 
   if (mode === 'redirect') {

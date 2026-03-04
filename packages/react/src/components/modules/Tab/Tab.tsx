@@ -87,22 +87,22 @@ export function TabList({
     let nextIndex: number | null = null
 
     switch (e.key) {
-      case 'ArrowLeft':
-        e.preventDefault()
-        nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1
-        break
-      case 'ArrowRight':
-        e.preventDefault()
-        nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0
-        break
-      case 'Home':
-        e.preventDefault()
-        nextIndex = 0
-        break
-      case 'End':
-        e.preventDefault()
-        nextIndex = tabs.length - 1
-        break
+    case 'ArrowLeft':
+      e.preventDefault()
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1
+      break
+    case 'ArrowRight':
+      e.preventDefault()
+      nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0
+      break
+    case 'Home':
+      e.preventDefault()
+      nextIndex = 0
+      break
+    case 'End':
+      e.preventDefault()
+      nextIndex = tabs.length - 1
+      break
     }
 
     if (nextIndex !== null) {

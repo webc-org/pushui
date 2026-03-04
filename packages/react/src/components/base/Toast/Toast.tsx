@@ -18,7 +18,7 @@ export function Toast({
   const handleRemove = useEffectEvent(() => {
     setRemoving(true)
     setTimeout(() => {
-      id && onRemove(id)
+      if (id) onRemove(id)
     }, 200)
   })
 

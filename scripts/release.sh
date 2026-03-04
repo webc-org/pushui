@@ -29,28 +29,28 @@ if git diff --cached --quiet; then
 fi
 
 echo -e "${GREEN}[1/6] Linting...${NC}"
-if ! pnpm lint; then
+if ! bun run lint; then
   echo -e "${RED}Lint failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
 echo -e "${GREEN}[2/6] Running tests...${NC}"
-if ! pnpm test; then
+if ! bun run test; then
   echo -e "${RED}Tests failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
 echo -e "${GREEN}[3/6] Building packages...${NC}"
-if ! pnpm build > /dev/null 2>&1; then
+if ! bun run build > /dev/null 2>&1; then
   echo -e "${RED}Build failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
 echo -e "${GREEN}[4/6] Building storybook...${NC}"
-if ! pnpm build-storybook > /dev/null 2>&1; then
+if ! bun run build-storybook > /dev/null 2>&1; then
   echo -e "${RED}Storybook build failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
@@ -58,29 +58,23 @@ fi
 
 echo -e "${GREEN}[5/6] Bumping versions...${NC}"
 
-# Bump @pushui/styles
-cd packages/styles
-CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
-if [ "$CURRENT_PATCH" -ge 99 ]; then
-  pnpm version minor --no-git-tag-version > /dev/null
-else
-  pnpm version patch --no-git-tag-version > /dev/null
-fi
-STYLES_VERSION=$(node -p "require('./package.json').version")
-echo -e "  @pushui/styles: ${YELLOW}${STYLES_VERSION}${NC}"
-cd ../..
+bump_version() {
+  local pkg="$1"
+  node -e "
+    const fs = require('fs');
+    const p = JSON.parse(fs.readFileSync('$pkg/package.json','utf8'));
+    const [maj,min,pat] = p.version.split('.').map(Number);
+    p.version = pat >= 99 ? maj+'.'+( min+1)+'.0' : maj+'.'+min+'.'+(pat+1);
+    fs.writeFileSync('$pkg/package.json', JSON.stringify(p, null, 2) + '\n');
+    process.stdout.write(p.version);
+  "
+}
 
-# Bump @pushui/react
-cd packages/react
-CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
-if [ "$CURRENT_PATCH" -ge 99 ]; then
-  pnpm version minor --no-git-tag-version > /dev/null
-else
-  pnpm version patch --no-git-tag-version > /dev/null
-fi
-REACT_VERSION=$(node -p "require('./package.json').version")
+STYLES_VERSION=$(bump_version packages/styles)
+echo -e "  @pushui/styles: ${YELLOW}${STYLES_VERSION}${NC}"
+
+REACT_VERSION=$(bump_version packages/react)
 echo -e "  @pushui/react:  ${YELLOW}${REACT_VERSION}${NC}"
-cd ../..
 
 git add .
 git commit -m "$MESSAGE (v$REACT_VERSION)"

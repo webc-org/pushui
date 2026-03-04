@@ -193,24 +193,24 @@ export function AccordionTrigger({
     let nextIndex: number | null = null
 
     switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault()
-        nextIndex =
+    case 'ArrowDown':
+      e.preventDefault()
+      nextIndex =
           currentIndex < triggers.length - 1 ? currentIndex + 1 : 0
-        break
-      case 'ArrowUp':
-        e.preventDefault()
-        nextIndex =
+      break
+    case 'ArrowUp':
+      e.preventDefault()
+      nextIndex =
           currentIndex > 0 ? currentIndex - 1 : triggers.length - 1
-        break
-      case 'Home':
-        e.preventDefault()
-        nextIndex = 0
-        break
-      case 'End':
-        e.preventDefault()
-        nextIndex = triggers.length - 1
-        break
+      break
+    case 'Home':
+      e.preventDefault()
+      nextIndex = 0
+      break
+    case 'End':
+      e.preventDefault()
+      nextIndex = triggers.length - 1
+      break
     }
 
     if (nextIndex !== null) {

@@ -50,40 +50,40 @@ const handleKeyboardNavigation = (
   }
 ) => {
   switch (e.key) {
-    case 'ArrowDown':
-      e.preventDefault()
-      setFocusedIndex(
-        focusedIndex < filteredOptions.length - 1 ? focusedIndex + 1 : 0
-      )
-      break
-    case 'ArrowUp':
-      e.preventDefault()
-      setFocusedIndex(
-        focusedIndex > 0 ? focusedIndex - 1 : filteredOptions.length - 1
-      )
-      break
-    case 'Home':
-      e.preventDefault()
-      setFocusedIndex(0)
-      break
-    case 'End':
-      e.preventDefault()
-      setFocusedIndex(filteredOptions.length - 1)
-      break
-    case 'Enter':
-      e.preventDefault()
-      if (filteredOptions[focusedIndex]) {
-        toggleOption(filteredOptions[focusedIndex])
-      }
-      break
-    case 'Escape':
-      e.preventDefault()
-      setIsOpen(false)
-      rootRef.current?.focus()
-      break
-    case 'Tab':
-      setIsOpen(false)
-      break
+  case 'ArrowDown':
+    e.preventDefault()
+    setFocusedIndex(
+      focusedIndex < filteredOptions.length - 1 ? focusedIndex + 1 : 0
+    )
+    break
+  case 'ArrowUp':
+    e.preventDefault()
+    setFocusedIndex(
+      focusedIndex > 0 ? focusedIndex - 1 : filteredOptions.length - 1
+    )
+    break
+  case 'Home':
+    e.preventDefault()
+    setFocusedIndex(0)
+    break
+  case 'End':
+    e.preventDefault()
+    setFocusedIndex(filteredOptions.length - 1)
+    break
+  case 'Enter':
+    e.preventDefault()
+    if (filteredOptions[focusedIndex]) {
+      toggleOption(filteredOptions[focusedIndex])
+    }
+    break
+  case 'Escape':
+    e.preventDefault()
+    setIsOpen(false)
+    rootRef.current?.focus()
+    break
+  case 'Tab':
+    setIsOpen(false)
+    break
   }
 }
 

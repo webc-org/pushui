@@ -6,7 +6,6 @@ export function DashboardNav({
   ref,
   children,
   className,
-  title,
   ...rest
 }: DashboardNavTypes) {
   return (
