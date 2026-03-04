@@ -25,28 +25,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Build packages
-        run: pnpm build
+        run: bun run build
 
       - name: Run tests
-        run: pnpm test
+        run: bun run test
         env:
           CI: true
 
       - name: Lint
-        run: pnpm lint
+        run: bun run lint
 
   storybook:
     needs: test
@@ -57,20 +56,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Build Storybook
-        run: pnpm build-storybook
+        run: bun run build-storybook
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -104,21 +102,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Build packages
-        run: pnpm build
+        run: bun run build
 
       - name: Get @pushui/styles version
         id: styles_version
@@ -158,13 +155,13 @@ jobs:
 
       - name: Publish @pushui/styles
         if: steps.check_styles.outputs.EXISTS != 'true'
-        run: pnpm --filter @pushui/styles publish --no-git-checks --access public
+        run: cd packages/styles && npm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @pushui/react
         if: steps.check_react.outputs.EXISTS != 'true'
-        run: pnpm --filter @pushui/react publish --no-git-checks --access public
+        run: cd packages/react && npm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -197,7 +194,7 @@ jobs:
 
             ### Installation
             ```bash
-            pnpm add @pushui/styles@${{ steps.styles_version.outputs.VERSION }}
+            bun add @pushui/styles@${{ steps.styles_version.outputs.VERSION }}
             ```
           generate_release_notes: false
         env:
@@ -214,7 +211,7 @@ jobs:
 
             ### Installation
             ```bash
-            pnpm add @pushui/react@${{ steps.react_version.outputs.VERSION }}
+            bun add @pushui/react@${{ steps.react_version.outputs.VERSION }}
             ```
           generate_release_notes: false
         env:
