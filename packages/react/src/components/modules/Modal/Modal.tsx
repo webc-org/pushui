@@ -94,7 +94,7 @@ export function Modal({
 
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [active, removing, hideCloseButton])
+  }, [active, removing, hideCloseButton]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-close duration
   useEffect(() => {
@@ -102,7 +102,7 @@ export function Modal({
 
     const timer = setTimeout(handleRemove, duration)
     return () => clearTimeout(timer)
-  }, [duration])
+  }, [duration]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Body scroll lock
   useEffect(() => {

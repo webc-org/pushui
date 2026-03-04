@@ -34,7 +34,7 @@ export function Toast({
 
     const timer = setTimeout(handleRemove, duration)
     return () => clearTimeout(timer)
-  }, [duration])
+  }, [duration]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div

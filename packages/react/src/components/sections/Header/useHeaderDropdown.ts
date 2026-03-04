@@ -71,7 +71,7 @@ export function useHeaderDropdown(isLink: boolean) {
       document.removeEventListener('mousedown', handleClickOutside)
       document.removeEventListener('keydown', handleEscape)
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     isOpen,
